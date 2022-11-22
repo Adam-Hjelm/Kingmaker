@@ -25,11 +25,21 @@ public class HP : MonoBehaviour
         {
             TakeDamage(25);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GainHP(25);
+        }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+    }
+
+    public void GainHP(int HP)
+    {
+        currentHealth += HP;
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 }
