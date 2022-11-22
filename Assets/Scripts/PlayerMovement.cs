@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         currentPos = rbody.position;
-        hAxis = Input.GetAxis($"Horizontal {playerNumber}");
-        vAxis = Input.GetAxis($"Vertical {playerNumber}");
+        hAxis = Input.GetAxisRaw($"Horizontal {playerNumber}");
+        vAxis = Input.GetAxisRaw($"Vertical {playerNumber}");
         Vector2 inputVector = new Vector2(hAxis, vAxis);
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
         Vector2 movement = inputVector * movementSpeed;
