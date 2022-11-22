@@ -27,7 +27,7 @@ public class HP : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
