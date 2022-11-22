@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - greenPlayer
+  - bluePlayer
+  - redPlayer
+  - yellowPlayer
+  - bullet
+  - Player1HealthBar
+  - Player2HealthBar
+  - Player3HealthBar
+  - Player4HealthBar
   layers:
   - Default
   - TransparentFX
