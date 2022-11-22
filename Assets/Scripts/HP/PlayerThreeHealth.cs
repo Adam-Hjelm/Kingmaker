@@ -29,6 +29,10 @@ public class PlayerThreeHealth : MonoBehaviour
         {
             PlayerHeal(25);
         }
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
