@@ -4,40 +4,57 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class HP : MonoBehaviour
+public class HP
 {
-    public Image healthBar;
+    int currentHealth;
+    int maxHealth;
 
-    public int currentHealth;
-    public int maxHealth;
-
-    void Start()
+    public int Health
     {
-        healthBar.fillAmount = maxHealth;
-        currentHealth = maxHealth;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
+        get
         {
-            TakeDamage(25);
+            return currentHealth;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        set
         {
-            GainHP(25);
+            currentHealth = value;
         }
     }
-
-    public void TakeDamage(int damage)
+    public int MaxHealth
     {
-        currentHealth -= damage;
-        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        get
+        {
+            return maxHealth;
+        }
+        set
+        {
+            maxHealth = value;
+        }
     }
 
-    public void GainHP(int HP)
+    public HP(int health, int maxhp)
     {
-        currentHealth += HP;
-        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        currentHealth = health;
+        maxHealth = maxhp;
+    }
+
+    public void DmgUnit(int dmgAmount)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= dmgAmount;
+        }
+    }
+
+    public void HealUnit(int healAmount)
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += healAmount;
+        }
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 }

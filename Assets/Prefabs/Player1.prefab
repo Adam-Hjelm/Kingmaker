@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180638627256074267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 0.547, z: 0}
+  m_LocalPosition: {x: 0.002, y: 0.696, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753709221305505239}
   - component: {fileID: 1753709221305505238}
-  - component: {fileID: 1753709221305505233}
+  - component: {fileID: 5873259388376604875}
   - component: {fileID: 3620701524542173329}
   - component: {fileID: 2445163105356265177}
   - component: {fileID: 8667341333850783490}
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1753709221305505233
+--- !u!114 &5873259388376604875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,11 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1753709221305505236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494f2fe782930244bba9d299cbe67c14, type: 3}
+  m_Script: {fileID: 11500000, guid: b9ec077f7eb1902418b79bc0f6126a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  currentHealth: 100
+  Healthbar: {fileID: 0}
+  currentHealth: 0
   maxHealth: 100
 --- !u!114 &3620701524542173329
 MonoBehaviour:
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cc71dc770312a498542bd35d85b2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   movementSpeed: 3
   currentPos: {x: 0, y: 0}
   hAxis: 0
@@ -164,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad15720514ad2940b0d749fbf172d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  Spawnpoint: {fileID: 0}
+  bulletPrefab: {fileID: 4237042467830726594, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
+  bulletSpeed: 10
+  Spawnpoint: {fileID: 1617048629000344266}
 --- !u!50 &8667341333850783490
 Rigidbody2D:
   serializedVersion: 4

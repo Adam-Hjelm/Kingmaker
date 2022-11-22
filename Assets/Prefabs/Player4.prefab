@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4322801967422083598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.62, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,10 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6576325310836204096}
   - component: {fileID: 6576325310836204099}
-  - component: {fileID: 6576325310836204097}
+  - component: {fileID: 5087423727411370407}
   - component: {fileID: 9108983593762058741}
   - component: {fileID: 6033332916288837016}
   - component: {fileID: 8478239875393623718}
+  - component: {fileID: 6170047218243386936}
   m_Layer: 0
   m_Name: Player4
   m_TagString: redPlayer
@@ -120,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6576325310836204097
+--- !u!114 &5087423727411370407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,12 +130,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6576325310836204098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494f2fe782930244bba9d299cbe67c14, type: 3}
+  m_Script: {fileID: 11500000, guid: e1aa04197dcb72842af93ddb2aba1374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  currentHealth: 100
-  maxHealth: 100
+  Healthbar: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 0
 --- !u!114 &9108983593762058741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cc71dc770312a498542bd35d85b2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   movementSpeed: 3
   currentPos: {x: 0, y: 0}
   hAxis: 0
@@ -187,3 +189,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6170047218243386936
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576325310836204098}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
