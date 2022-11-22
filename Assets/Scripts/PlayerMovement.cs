@@ -6,7 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 1f;
+    public int playerNumber = 1;
+
+    public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
     public float hAxis = 0;
     public float vAxis = 0;
@@ -22,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         currentPos = rbody.position;
-        hAxis = Input.GetAxis("Horizontal");
-        vAxis = Input.GetAxis("Vertical");
+        hAxis = Input.GetAxis($"Horizontal {playerNumber}");
+        vAxis = Input.GetAxis($"Vertical {playerNumber}");
         Vector2 inputVector = new Vector2(hAxis, vAxis);
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
         Vector2 movement = inputVector * movementSpeed;
