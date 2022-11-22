@@ -11,14 +11,12 @@ public class HP : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
-    // Start is called before the first frame update
     void Start()
     {
         healthBar.fillAmount = maxHealth;
-        maxHealth = currentHealth;
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))
