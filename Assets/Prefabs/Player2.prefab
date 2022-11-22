@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4668886029192281168}
   - component: {fileID: 4668886029192281175}
+  - component: {fileID: 5776488036992149335}
   - component: {fileID: 3805694149056235564}
-  - component: {fileID: 6842729519569287964}
   - component: {fileID: 2509827653310699415}
   - component: {fileID: 5421233916566630437}
   - component: {fileID: 3928440507981681532}
@@ -121,6 +121,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5776488036992149335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668886029192281169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ec077f7eb1902418b79bc0f6126a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Healthbar: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 100
 --- !u!114 &3805694149056235564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,18 +153,6 @@ MonoBehaviour:
   currentPos: {x: 0, y: 0}
   hAxis: 0
   vAxis: 0
---- !u!114 &6842729519569287964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4668886029192281169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b7a644abc7fbf498150e18b756d858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2509827653310699415
 MonoBehaviour:
   m_ObjectHideFlags: 0

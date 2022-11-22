@@ -734,6 +734,10 @@ PrefabInstance:
       propertyPath: currentHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6637776602924675488, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
+      propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 1071305195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
 --- !u!4 &507819156 stripped
@@ -2441,6 +2445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1289414699}
     m_Modifications:
+    - target: {fileID: 2312533749312356140, guid: 098c91a4fd375334cb840af7dd7b86eb, type: 3}
+      propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 941598423}
     - target: {fileID: 3317465886211111233, guid: 098c91a4fd375334cb840af7dd7b86eb, type: 3}
       propertyPath: m_Name
       value: Player3
@@ -2586,6 +2594,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1511216814}
+    - target: {fileID: 5776488036992149335, guid: 62fc8ba6b5665b2438f0aeee1e4ee996, type: 3}
+      propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 1511216814}
     - target: {fileID: 6842729519569287964, guid: 62fc8ba6b5665b2438f0aeee1e4ee996, type: 3}
       propertyPath: Healthbar
       value: 
@@ -2607,6 +2619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1289414699}
     m_Modifications:
+    - target: {fileID: 2830173792781543305, guid: 2471c4928b24af247a857f1d41fdea47, type: 3}
+      propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 1106086113}
     - target: {fileID: 5087423727411370407, guid: 2471c4928b24af247a857f1d41fdea47, type: 3}
       propertyPath: Healthbar
       value: 

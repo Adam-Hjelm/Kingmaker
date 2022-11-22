@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerOneHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    public HP playerhealth1 = new HP(100, 100);
+    public HP playerhealth = new HP(100, 100);
     public Image Healthbar;
 
     public int currentHealth;
