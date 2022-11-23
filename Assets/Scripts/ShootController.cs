@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
+    public int playerNumber = 1;
     public GameObject bulletPrefab;
 
     public float bulletSpeed;
 
     public Transform Spawnpoint;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown($"Fir{playerNumber}"))
         {
             var newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
             newBullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
             Destroy(newBullet, 2);
         }
-
-        Vector2 MousePos = Input.mousePosition;
-
-        MousePos = Camera.main.ScreenToWorldPoint(MousePos);
-
-        transform.up = (Vector3)MousePos - transform.position;
-
-       
     }
 }

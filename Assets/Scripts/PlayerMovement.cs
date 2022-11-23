@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public int playerNumber = 1;
 
     public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
-    public float hAxis = 0;
-    public float vAxis = 0;
-
-    Rigidbody2D rbody;
-
-
-    void Awake()
-    {
-        rbody = GetComponent<Rigidbody2D>();
-    }
 
     void FixedUpdate()
     {
-        currentPos = rbody.position;
-        hAxis = Input.GetAxisRaw($"Horizontal {playerNumber}");
-        vAxis = Input.GetAxisRaw($"Vertical {playerNumber}");
-        Vector2 inputVector = new Vector2(hAxis, vAxis);
-        inputVector = Vector2.ClampMagnitude(inputVector, 1);
-        Vector2 movement = inputVector * movementSpeed;
-        Vector2 newPos = currentPos + movement * Time.fixedDeltaTime;
-        rbody.MovePosition(newPos);
+        currentPos = transform.position;
+
+        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
+        Vector2 RDirection = new Vector2(Input.GetAxisRaw($"RHorizontal {playerNumber}"), Input.GetAxisRaw($"RVertical {playerNumber}"));
+        RDirection.Normalize();
+
+        float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);
+        LDirection.Normalize();
+
+        transform.Translate(LDirection * movementSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+
+        if (RDirection != Vector2.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, RDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
+        }
+        else if (LDirection != Vector2.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, LDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
+        }
     }
 }
