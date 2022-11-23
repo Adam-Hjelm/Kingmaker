@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3218794097898453061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668886029192281168}
   - component: {fileID: 4668886029192281175}
-  - component: {fileID: 4668886029192281174}
+  - component: {fileID: 5776488036992149335}
   - component: {fileID: 3805694149056235564}
   - component: {fileID: 2509827653310699415}
   - component: {fileID: 5421233916566630437}
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4668886029192281174
+--- !u!114 &5776488036992149335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,11 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4668886029192281169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494f2fe782930244bba9d299cbe67c14, type: 3}
+  m_Script: {fileID: 11500000, guid: b9ec077f7eb1902418b79bc0f6126a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  currentHealth: 100
+  Healthbar: {fileID: 0}
+  currentHealth: 0
   maxHealth: 100
 --- !u!114 &3805694149056235564
 MonoBehaviour:
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cc71dc770312a498542bd35d85b2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   movementSpeed: 3
   currentPos: {x: 0, y: 0}
   hAxis: 0
