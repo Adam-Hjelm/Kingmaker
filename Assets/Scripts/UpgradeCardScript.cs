@@ -32,7 +32,7 @@ public class UpgradeCardScript : MonoBehaviour
     void Start()
     {
         randomNumber = Random.Range(0, 100);
-        Debug.Log(randomNumber);
+        //Debug.Log(randomNumber);
         if (randomNumber <= 80)
         {
             StatCard();
@@ -42,7 +42,7 @@ public class UpgradeCardScript : MonoBehaviour
         if (randomNumber > 80)
         {
             //Instantiate() rare card here
-            Debug.Log("Rare Card Acquired!");
+            //Debug.Log("Rare Card Acquired!");
 
             this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPECIAL \n CARD";
 
@@ -70,6 +70,8 @@ public class UpgradeCardScript : MonoBehaviour
 
             case 2:
                 Debug.Log("Given health card");
+
+
 
                 this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
                 break;

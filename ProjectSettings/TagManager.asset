@@ -13,6 +13,11 @@ TagManager:
   - Player2HealthBar
   - Player3HealthBar
   - Player4HealthBar
+  - Player1
+  - Card
+  - Player2
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

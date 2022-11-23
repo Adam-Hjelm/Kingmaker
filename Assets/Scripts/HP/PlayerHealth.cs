@@ -10,12 +10,14 @@ public class PlayerHealth : MonoBehaviour
 
     public int currentHealth;
     public int maxHealth;
+    public int addedHealth = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Healthbar.fillAmount = maxHealth;
-        currentHealth = maxHealth;
+        currentHealth = maxHealth + addedHealth;
     }
 
     // Update is called once per frame
