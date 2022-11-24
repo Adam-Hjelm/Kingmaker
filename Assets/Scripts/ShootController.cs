@@ -27,7 +27,7 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        if (Input.GetButtonDown($"Fir{playerNumber}") && timer >= playerController.fireRate) // TODO: FIX THAT I CANNOT SHOOT
+        if (Input.GetButtonDown($"Fir{playerNumber}") && timer <= playerController.fireRate) // TODO: FIX THAT I CANNOT SHOOT
         {
             //dostuff
             Debug.Log("SHOT");

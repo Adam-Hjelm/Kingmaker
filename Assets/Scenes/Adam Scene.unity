@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4786ccbf416ccd4a8b3e22b87493b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: 0}
+  playerStats: {fileID: 0}
   HealthButton: {fileID: 0}
   DamageButton: {fileID: 0}
   SpeedButton: {fileID: 0}
@@ -3062,7 +3062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4786ccbf416ccd4a8b3e22b87493b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: 0}
+  playerStats: {fileID: 0}
   HealthButton: {fileID: 0}
   DamageButton: {fileID: 0}
   SpeedButton: {fileID: 0}
