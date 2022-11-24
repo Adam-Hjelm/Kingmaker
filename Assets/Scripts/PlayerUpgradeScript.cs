@@ -7,7 +7,7 @@ using TMPro;
 
 public class PlayerUpgradeScript : MonoBehaviour
 {
-    public PlayerHealth playerHP;
+    public PlayerController playerStats;
 
     [Header("Upgrades")]
 
@@ -19,11 +19,6 @@ public class PlayerUpgradeScript : MonoBehaviour
     public Button SpeedButton;
     public Button BulletSizeButton;
 
-    public Button Player1Button;
-    public Button Player2Button;
-    public Button Player3Button;
-    public Button Player4Button;
-
     public Button[] playerButtons;
 
     public Button cardButton;
@@ -32,10 +27,6 @@ public class PlayerUpgradeScript : MonoBehaviour
     public Transform cardSpawnSpot;
     public bool doUpgrade;
     public GameObject card;
-
-    private int amountOfStats = 4;
-    private int randomNumber;
-    private int oldRandomNumber;
 
     void Start()
     {
@@ -78,50 +69,45 @@ public class PlayerUpgradeScript : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject.name == "Player1Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
         }
 
         if (EventSystem.current.currentSelectedGameObject.name == "Player2Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
         }
         if (EventSystem.current.currentSelectedGameObject.name == "Player3Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>();
         }
         if (EventSystem.current.currentSelectedGameObject.name == "Player4Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>();
         }
         Debug.Log("added health");
-        playerHP.addedHealth += 100;
+        playerStats.maxHealth += 100;
     }
 
     public void DamageUpgrade()
     {
         if (EventSystem.current.currentSelectedGameObject.name == "Player1Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
         }
 
         if (EventSystem.current.currentSelectedGameObject.name == "Player2Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
         }
         if (EventSystem.current.currentSelectedGameObject.name == "Player3Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player3").GetComponent<PlayerController>();
         }
         if (EventSystem.current.currentSelectedGameObject.name == "Player4Button")
         {
-            playerHP = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerHealth>();
+            playerStats = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>();
         }
-        Debug.Log("added health");
-        playerHP.addedHealth += 100;
-    }
-
-    public void SetHealthUpgrade()
-    {
-
+        Debug.Log("added damage");
+        // Add Damage
     }
 }

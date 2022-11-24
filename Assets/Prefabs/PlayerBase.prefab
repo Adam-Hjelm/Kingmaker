@@ -41,11 +41,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1753709221305505239}
   - component: {fileID: 1753709221305505238}
-  - component: {fileID: 6637776602924675488}
   - component: {fileID: 3620701524542173329}
   - component: {fileID: 2445163105356265177}
   - component: {fileID: 8667341333850783490}
   - component: {fileID: -3216920035296463917}
+  - component: {fileID: 7597301704783487341}
+  - component: {fileID: 8415444977898453432}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Player1
@@ -121,22 +122,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6637776602924675488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753709221305505236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ec077f7eb1902418b79bc0f6126a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Healthbar: {fileID: 0}
-  currentHealth: 100
-  maxHealth: 100
-  addedHealth: 0
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +137,6 @@ MonoBehaviour:
   playerNumber: 1
   movementSpeed: 3
   currentPos: {x: 0, y: 0}
-  hAxis: 0
-  vAxis: 0
 --- !u!114 &2445163105356265177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,9 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad15720514ad2940b0d749fbf172d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   bulletPrefab: {fileID: 4237042467830726594, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
   bulletSpeed: 10
   Spawnpoint: {fileID: 1617048629000344266}
+  playerController: {fileID: 0}
 --- !u!50 &8667341333850783490
 Rigidbody2D:
   serializedVersion: 4
@@ -206,3 +191,35 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7597301704783487341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753709221305505236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bff9cf2544ffff47aaacf232f2159c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  maxHealth: 100
+  bulletDamage: 0
+  fireRate: 300
+--- !u!114 &8415444977898453432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753709221305505236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63ed08f4e12af147a099cda4b81a68e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  Healthbar: {fileID: 0}
+  currentHealth: 0
+  addedHealth: 0
