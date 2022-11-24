@@ -6,18 +6,22 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public HP playerhealth = new HP(100, 100);
+    public PlayerController playerController;
     public Image Healthbar;
 
     public int currentHealth;
-    public int maxHealth;
-    public int addedHealth = 0;
+    //public int maxHealth;
+    //public int addedHealth = 0;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Healthbar.fillAmount = maxHealth;
-        currentHealth = maxHealth + addedHealth;
+        playerController = gameObject.GetComponent<PlayerController>();
+
+        currentHealth = playerController.maxHealth /*+ addedHealth*/;
+        Healthbar.fillAmount = playerController.maxHealth;
     }
 
     // Update is called once per frame
@@ -48,11 +52,11 @@ public class PlayerHealth : MonoBehaviour
     private void PlayerTakeDmg(int dmg)
     {
         currentHealth -= dmg;
-        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        Healthbar.fillAmount = (float)currentHealth / (float)playerController.maxHealth;
     }
     private void PlayerHeal(int healing)
     {
         currentHealth += healing;
-        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        Healthbar.fillAmount = (float)currentHealth / (float)playerController.maxHealth;
     }
 }
