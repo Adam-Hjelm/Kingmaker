@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public int maxHealth;
     public float bulletDamage;
-    public float fireRate = 200;
+    public float fireRate = 0.7f;
 
 
 

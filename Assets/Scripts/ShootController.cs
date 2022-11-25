@@ -13,7 +13,7 @@ public class ShootController : MonoBehaviour
 
     public PlayerController playerController;
     private float timer;
-    private float startTimer = 10f;
+    private float startTimer = 1f;
 
 
     private void Start()
