@@ -29,7 +29,6 @@ public class ShootController : MonoBehaviour
         if (Input.GetButton($"Fir{playerNumber}") && timer <= playerController.fireRate)
         {
             //dostuff
-            Debug.Log("SHOT");
             Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
 
             timer = startTimer;

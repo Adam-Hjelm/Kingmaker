@@ -614,10 +614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  HealthButton: {fileID: 0}
-  DamageButton: {fileID: 0}
-  SpeedButton: {fileID: 0}
-  BulletSizeButton: {fileID: 0}
   playerButtons:
   - {fileID: 1712973719}
   - {fileID: 1771555345}
@@ -626,8 +622,7 @@ MonoBehaviour:
   cardButton: {fileID: 1771555345}
   numberOfCards: 5
   cardSpawnSpot: {fileID: 605617669}
-  doUpgrade: 0
-  card: {fileID: 579474519}
+  selectedCard: {fileID: 0}
 --- !u!4 &371131561
 Transform:
   m_ObjectHideFlags: 0
@@ -696,7 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -818,7 +813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -998,7 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1161,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 579474519}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &644254985
@@ -1246,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1517,7 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2599,7 +2594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2721,7 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2880,7 +2875,7 @@ GameObject:
   - component: {fileID: 1930771113}
   - component: {fileID: 1930771117}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UpgradeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2989,16 +2984,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  HealthButton: {fileID: 0}
-  DamageButton: {fileID: 0}
-  SpeedButton: {fileID: 0}
-  BulletSizeButton: {fileID: 0}
   playerButtons: []
   cardButton: {fileID: 0}
   numberOfCards: 5
   cardSpawnSpot: {fileID: 605617669}
-  doUpgrade: 0
-  card: {fileID: 579474519}
+  selectedCard: {fileID: 0}
 --- !u!1 &1952882949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 1
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

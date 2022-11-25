@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Stats")]
-    public float speed;
+    public float moveSpeed;
     public int maxHealth;
     public float bulletDamage;
     public float fireRate = 0.7f;

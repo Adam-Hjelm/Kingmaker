@@ -8,10 +8,17 @@ public class PlayerMovement : MonoBehaviour
 {
     public int playerNumber = 1;
 
-    public float movementSpeed = 3;
+    //public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
 
     public GameObject handCrosshair;
+    public PlayerController playerController;
+
+
+    private void Start()
+    {
+        playerController = gameObject.GetComponent<PlayerController>();
+    }
 
     void FixedUpdate()
     {
@@ -24,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);
         LDirection.Normalize();
 
-        transform.Translate(LDirection * movementSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+        transform.Translate(LDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
 
         if (RDirection != Vector2.zero)
         {

@@ -14,10 +14,10 @@ public class PlayerUpgradeScript : MonoBehaviour
 
     [Space]
 
-    public Button HealthButton;
-    public Button DamageButton;
-    public Button SpeedButton;
-    public Button BulletSizeButton;
+    //public Button HealthButton;
+    //public Button DamageButton;
+    //public Button SpeedButton;
+    //public Button BulletSizeButton;
 
     public Button[] playerButtons;
 
@@ -25,8 +25,11 @@ public class PlayerUpgradeScript : MonoBehaviour
 
     public int numberOfCards = 5;
     public Transform cardSpawnSpot;
-    public bool doUpgrade;
-    public GameObject card;
+
+    private GameObject newSelectedGameObject;
+    public GameObject lastSelectedGameObject;
+
+    public Button selectedCard;
 
     void Start()
     {
@@ -41,25 +44,28 @@ public class PlayerUpgradeScript : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject == null)
         {
+            selectedCard = null;
             return;
         }
 
         else if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text == "HEALTH")
         {
+            selectedCard = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+
             for (int i = 0; i < playerButtons.Length; i++)
             {
                 playerButtons[i].onClick.RemoveAllListeners();
-                int closureIndex = i; // Prevents the closure problem
                 playerButtons[i].onClick.AddListener(() => HealthUpgrade());
             }
         }
 
         else if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text == "DMG")
         {
+            selectedCard = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+
             for (int i = 0; i < playerButtons.Length; i++)
             {
                 playerButtons[i].onClick.RemoveAllListeners();
-                int closureIndex = i; // Prevents the closure problem
                 playerButtons[i].onClick.AddListener(() => DamageUpgrade());
             }
         }
@@ -109,5 +115,21 @@ public class PlayerUpgradeScript : MonoBehaviour
         }
         Debug.Log("added damage");
         // Add Damage
+    }
+
+    public void ChangeToPlayerButtons()
+    {
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
+
+        //EventSystem.current.currentSelectedGameObject = playerButtons[1];
+    }
+
+    private void GetLastGameObjectSelected()
+    {
+        if (EventSystem.current.currentSelectedGameObject != newSelectedGameObject)
+        {
+            lastSelectedGameObject = newSelectedGameObject;
+            newSelectedGameObject = EventSystem.current.currentSelectedGameObject;
+        }
     }
 }
