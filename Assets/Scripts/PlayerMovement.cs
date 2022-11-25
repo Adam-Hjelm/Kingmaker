@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
 
+    public GameObject handCrosshair;
+
     void FixedUpdate()
     {
         currentPos = transform.position;
@@ -27,12 +29,14 @@ public class PlayerMovement : MonoBehaviour
         if (RDirection != Vector2.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, RDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
+            handCrosshair.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
         }
         else if (LDirection != Vector2.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, LDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
+            handCrosshair.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
         }
+
+
     }
 }

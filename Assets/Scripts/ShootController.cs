@@ -8,13 +8,12 @@ public class ShootController : MonoBehaviour
     public int playerNumber = 1;
     public GameObject bulletPrefab;
 
-    public float bulletSpeed;
 
     public Transform Spawnpoint;
 
     public PlayerController playerController;
     private float timer;
-    private float startTimer;
+    private float startTimer = 10f;
 
 
     private void Start()
@@ -27,13 +26,12 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        if (Input.GetButtonDown($"Fir{playerNumber}") && timer <= playerController.fireRate) // TODO: FIX THAT I CANNOT SHOOT
+        if (Input.GetButton($"Fir{playerNumber}") && timer <= playerController.fireRate)
         {
             //dostuff
             Debug.Log("SHOT");
-            var newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
-            newBullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
-            Destroy(newBullet, 2);
+            Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+
             timer = startTimer;
         }
 

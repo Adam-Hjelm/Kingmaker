@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,23 +19,33 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindHealthBars();
+
         playerController = gameObject.GetComponent<PlayerController>();
 
         currentHealth = playerController.maxHealth /*+ addedHealth*/;
-        Healthbar.fillAmount = playerController.maxHealth;
+        //Healthbar.fillAmount = playerController.maxHealth;
+    }
+
+    private void FindHealthBars()
+    {
+        if (gameObject.name.Contains("1"))
+        {
+            // TODO: INSERT FETCHING OF HEALTHBARS AND ADD ONE FOR EACH PLAYER. MAKE IT IN A SMARTER WAY?
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            PlayerTakeDmg(25);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PlayerHeal(25);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    PlayerTakeDmg(25);
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    PlayerHeal(25);
+        //}
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
