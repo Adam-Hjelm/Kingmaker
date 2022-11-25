@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +8,33 @@ public class ShootController : MonoBehaviour
     public int playerNumber = 1;
     public GameObject bulletPrefab;
 
-    public float bulletSpeed;
 
     public Transform Spawnpoint;
 
+    public PlayerController playerController;
+    private float timer;
+    private float startTimer = 1f;
+
+
+    private void Start()
+    {
+        playerController = gameObject.GetComponent<PlayerController>();
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown($"Fir{playerNumber}"))
+        timer -= Time.deltaTime;
+
+        //Debug.Log(timer);
+        if (Input.GetButton($"Fir{playerNumber}") && timer <= playerController.fireRate)
         {
-            var newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
-            newBullet.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
-            Destroy(newBullet, 2);
+            //dostuff
+            Debug.Log("SHOT");
+            Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+
+            timer = startTimer;
         }
+
 
         // Vector2 MousePos = Input.mousePosition;
         // MousePos = Camera.main.ScreenToWorldPoint(MousePos);
