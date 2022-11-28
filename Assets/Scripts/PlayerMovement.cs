@@ -7,12 +7,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public int playerNumber = 1;
-
     //public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
-
     public GameObject handCrosshair;
-    public PlayerController playerController;
+    
+    PlayerController playerController;
 
 
     private void Start()
