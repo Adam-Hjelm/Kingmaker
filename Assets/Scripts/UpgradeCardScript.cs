@@ -74,11 +74,7 @@ public class UpgradeCardScript : MonoBehaviour
         {
             if (currentCardType == CardType.HealthUp)       // TODO: Make this code more clean by moving it into a single for loop?
             {
-                for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
-                {
-                    playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
-                    playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.HealthUpgrade());
-                }
+                AddOnClickFunction();
             }
 
             if (currentCardType == CardType.DamageUp)
@@ -102,4 +98,12 @@ public class UpgradeCardScript : MonoBehaviour
         }
     }
 
+    private void AddOnClickFunction()
+    {
+        for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
+        {
+            playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
+            playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.HealthUpgrade());
+        }
+    }
 }
