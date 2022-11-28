@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 public class EscMenu : MonoBehaviour
@@ -39,5 +40,10 @@ public class EscMenu : MonoBehaviour
     {
         transform.DOMoveY(startPosY, 1).OnComplete(Complete).SetEase(Ease.InBounce);
         Debug.Log("pressed");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

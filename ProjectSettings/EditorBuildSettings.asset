@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jennys workspace.unity
     guid: 8ef17611a2785e84191e15ad3264265f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: baa04b0429d1fa14a9f550d69ab8fcd5
   m_configObjects: {}
