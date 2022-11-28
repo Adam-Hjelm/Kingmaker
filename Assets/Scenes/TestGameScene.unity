@@ -1588,6 +1588,10 @@ PrefabInstance:
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 323387854}
+    - target: {fileID: 5738851895012876740, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 6473239685426228385, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: m_Name
       value: Player1 Variant

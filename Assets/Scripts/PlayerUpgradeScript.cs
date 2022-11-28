@@ -8,37 +8,17 @@ using TMPro;
 public class PlayerUpgradeScript : MonoBehaviour
 {
     public PlayerController playerStats;
+    public UpgradeCardScript upgradeCardScript;
 
     [Header("Upgrades")]
 
-
     [Space]
-
-    //public Button HealthButton;
-    //public Button DamageButton;
-    //public Button SpeedButton;
-    //public Button BulletSizeButton;
-
-    public Button[] playerButtons;
-
-    public Button cardButton;
-
     public int numberOfCards = 5;
+    public Button cardButton;
     public Transform cardSpawnSpot;
-
-    private GameObject newSelectedGameObject;
     public GameObject lastSelectedGameObject;
-
     public Button selectedCard;
-
-    void Start()
-    {
-        //for (int i = 0; i < numberOfCards; i++)
-        //{
-        //    //var UpgradeCardObj = Instantiate(card, cardSpawnSpot.position + new Vector3(4 * i, 0, 0), Quaternion.identity);
-        //    //UpgradeCardObj.transform.parent = gameObject.transform;
-        //}
-    }
+    public Button[] playerButtons;
 
     void Update()
     {
@@ -47,30 +27,51 @@ public class PlayerUpgradeScript : MonoBehaviour
             selectedCard = null;
             return;
         }
-
-        else if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text == "HEALTH")
+        else if (EventSystem.current.currentSelectedGameObject.CompareTag("Card"))
         {
             selectedCard = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        }
 
-            for (int i = 0; i < playerButtons.Length; i++)
-            {
-                playerButtons[i].onClick.RemoveAllListeners();
-                playerButtons[i].onClick.AddListener(() => HealthUpgrade());
-            }
+        if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text == "HEALTH")
+        {
+
+            //for (int i = 0; i < playerButtons.Length; i++)
+            //{
+            //    playerButtons[i].onClick.RemoveAllListeners();
+            //    playerButtons[i].onClick.AddListener(() => HealthUpgrade());
+            //}
         }
 
         else if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text == "DMG")
         {
             selectedCard = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
 
-            for (int i = 0; i < playerButtons.Length; i++)
-            {
-                playerButtons[i].onClick.RemoveAllListeners();
-                playerButtons[i].onClick.AddListener(() => DamageUpgrade());
-            }
+            //for (int i = 0; i < playerButtons.Length; i++)
+            //{
+            //    playerButtons[i].onClick.RemoveAllListeners();
+            //    playerButtons[i].onClick.AddListener(() => DamageUpgrade());
+            //}
+        }
+
+        if (Input.GetButton("Cancel"))
+        {
+            ReturnFromPlayerButtons();
         }
     }
 
+    private void ReturnFromPlayerButtons()
+    {
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(selectedCard.gameObject);
+        Debug.Log("getted");
+    }
+    public void ChangeToPlayerButtons()
+    {
+        lastSelectedGameObject = EventSystem.current.currentSelectedGameObject.GetComponent<GameObject>();
+
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
+    }
+
+    #region Card Upgrades
     public void HealthUpgrade(/*int healthMod*/)
     {
         if (EventSystem.current.currentSelectedGameObject.name == "Player1Button")
@@ -117,19 +118,6 @@ public class PlayerUpgradeScript : MonoBehaviour
         // Add Damage
     }
 
-    public void ChangeToPlayerButtons()
-    {
-        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
 
-        //EventSystem.current.currentSelectedGameObject = playerButtons[1];
-    }
-
-    private void GetLastGameObjectSelected()
-    {
-        if (EventSystem.current.currentSelectedGameObject != newSelectedGameObject)
-        {
-            lastSelectedGameObject = newSelectedGameObject;
-            newSelectedGameObject = EventSystem.current.currentSelectedGameObject;
-        }
-    }
+    #endregion
 }
