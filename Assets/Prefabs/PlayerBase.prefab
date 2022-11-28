@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1753709221305505239}
   - component: {fileID: 1753709221305505238}
+  - component: {fileID: 7597301704783487341}
   - component: {fileID: 3620701524542173329}
   - component: {fileID: 2445163105356265177}
-  - component: {fileID: 8667341333850783490}
-  - component: {fileID: 7597301704783487341}
-  - component: {fileID: 8415444977898453432}
   - component: {fileID: 2647724134982397618}
   m_Layer: 0
   m_Name: PlayerBase
@@ -91,6 +89,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7597301704783487341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753709221305505236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bff9cf2544ffff47aaacf232f2159c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
+  moveSpeed: 3.5
+  maxHealth: 100
+  bulletDamage: 25
+  fireRate: 0.4
+  currentHealth: 100
+  Healthbar: {fileID: 0}
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +123,6 @@ MonoBehaviour:
   playerNumber: 1
   currentPos: {x: 0, y: 0}
   handCrosshair: {fileID: 2778926511010374773}
-  playerController: {fileID: 0}
 --- !u!114 &2445163105356265177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,59 +138,6 @@ MonoBehaviour:
   playerNumber: 1
   bulletPrefab: {fileID: 4237042467830726594, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
   Spawnpoint: {fileID: 4594921739533266442}
-  playerController: {fileID: 0}
---- !u!50 &8667341333850783490
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753709221305505236}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &7597301704783487341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753709221305505236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bff9cf2544ffff47aaacf232f2159c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  maxHealth: 100
-  bulletDamage: 0
-  fireRate: 0.4
---- !u!114 &8415444977898453432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753709221305505236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63ed08f4e12af147a099cda4b81a68e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  Healthbar: {fileID: 0}
-  currentHealth: 0
 --- !u!70 &2647724134982397618
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

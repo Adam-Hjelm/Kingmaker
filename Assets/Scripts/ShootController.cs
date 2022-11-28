@@ -10,7 +10,7 @@ public class ShootController : MonoBehaviour
 
     public Transform Spawnpoint;
 
-    public PlayerController playerController;
+    PlayerController playerController;
     private float timer;
     private float startTimer = 1f;
 
