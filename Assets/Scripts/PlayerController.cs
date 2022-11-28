@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth /*+ addedHealth*/;
     }
 
+    void Start()
+    {
+        GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
+    }
+
     private void PlayerTakeDmg(int dmg)
     {
         Debug.Log("take damage");

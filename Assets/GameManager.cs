@@ -54,15 +54,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        canvasHandler = FindObjectOfType<CanvasHandler>();
         canvasHandler.RoundText = $"Round: {currentRound}";
     }
 
     public void AddCanvasHandler(CanvasHandler canvasHandler)
     {
-        this.canvasHandler = canvasHandler;
+        //this.canvasHandler = canvasHandler;
     }
 
-    public void AddPlayer(int playerNumber, GameObject playerObject)
+    public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
     {
         Debug.Log("added player: " + playerNumber);
 
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
                 ID = playerNumber,
                 name = GetPlayerName(playerNumber),
                 gameObject = playerObject,
+                controller = controller,
                 score = 0,
                 isAlive = true
             });
@@ -186,6 +188,8 @@ public class GameManager : MonoBehaviour
 
             player.isAlive = true;
             player.gameObject.SetActive(true);
+            player.controller.currentHealth = player.controller.maxHealth;
+            canvasHandler.UpdateScore(player.ID, player.score);
         }
 
         //TODO: change state of UI
@@ -233,6 +237,7 @@ public class GameManager : MonoBehaviour
         public int ID;
         public string name;
         public GameObject gameObject;
+        public PlayerController controller;
         public int score;
         public bool isAlive;
     }
