@@ -40,11 +40,4 @@ public class ShootController : MonoBehaviour
         // transform.up = (Vector3)MousePos - transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("bullet"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
 }
