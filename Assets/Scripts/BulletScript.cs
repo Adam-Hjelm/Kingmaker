@@ -15,5 +15,6 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
+
     }
 }

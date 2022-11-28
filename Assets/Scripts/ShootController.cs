@@ -8,7 +8,6 @@ public class ShootController : MonoBehaviour
     public int playerNumber = 1;
     public GameObject bulletPrefab;
 
-
     public Transform Spawnpoint;
 
     public PlayerController playerController;
@@ -29,7 +28,8 @@ public class ShootController : MonoBehaviour
         if (Input.GetButton($"Fir{playerNumber}") && timer <= playerController.fireRate)
         {
             //dostuff
-            Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+            GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+            Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
             timer = startTimer;
         }
