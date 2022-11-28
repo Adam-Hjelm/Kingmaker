@@ -11,7 +11,9 @@ public class EscMenu : MonoBehaviour
 {
     public float endPosY;
     private float startPosY;
+
     public bool hidden;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,20 @@ public class EscMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape) && hidden == true)
         {
-            transform.DOMoveY(endPosY, 1).OnComplete(Complete).SetEase(Ease.OutBounce);
+            var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
+            test.SetUpdate(true);
+            Time.timeScale = 0;
+            Debug.Log("You paused");
+
         }
         if (Input.GetKeyDown(KeyCode.Escape) && hidden == false)
         {
-            transform.DOMoveY(startPosY, 1).OnComplete(Complete).SetEase(Ease.InBounce);
+            transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
+            Time.timeScale = 1;
+            Debug.Log("You unpaused");
         }
     }
 
@@ -38,7 +47,8 @@ public class EscMenu : MonoBehaviour
     }
     public void Resume()
     {
-        transform.DOMoveY(startPosY, 1).OnComplete(Complete).SetEase(Ease.InBounce);
+        transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
+        Time.timeScale = 1;
         Debug.Log("pressed");
     }
 
