@@ -40,7 +40,7 @@ public class PlayerCardDropZone : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < slotsToPlace.Length; i++) // TODO: Check if this actually works when you have multiple player inputs for submit (aka when the new inputmanager is done)
+        for (int i = 0; i < slotsToPlace.Length; i++)  // TODO: Fix so players can't give themselves a card
         {
             //Debug.Log("forloop enter");
             if (i >= slotsUsed)

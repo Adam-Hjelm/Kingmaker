@@ -17,24 +17,11 @@ public class DragNDroppableObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("entered");
-
-
-
         if (transform.parent == null && other.gameObject.CompareTag("DropZone"))
         {
             //Debug.Log("entered right");
             playerCardDropZone = other.gameObject.GetComponent<PlayerCardDropZone>();
             playerCardDropZone.PositionCard(gameObject);
-
-            //        CheckIfAbleToGiveCard();
         }
     }
-
-    //private bool CheckIfAbleToGiveCard()
-    //{
-    //    if(playerCardDropZone)
-
-    //    return true;
-    //}
 }
