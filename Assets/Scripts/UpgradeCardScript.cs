@@ -10,14 +10,13 @@ public class UpgradeCardScript : MonoBehaviour
     private int amountOfStats = 4;
     private int randomNumber;
 
-    public PlayerUpgradeScript playerUpgradeScript;
     public CardType currentCardType;
 
     public enum CardType
     {
         DamageUp,
         HealthUp,
-        BulletSize,
+        FireRateUp,
         SpeedUp,
     }
 
@@ -32,7 +31,7 @@ public class UpgradeCardScript : MonoBehaviour
         if (randomNumber > 80)
         {
             //Insert special card function
-            this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPECIAL\n CARD";
+            //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPECIAL\n CARD";
         }
     }
 
@@ -44,25 +43,25 @@ public class UpgradeCardScript : MonoBehaviour
         {
             case 1:
                 Debug.Log("Given damage card");
-                this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "DMG";
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "DMG";
                 currentCardType = CardType.DamageUp;
                 break;
 
             case 2:
                 Debug.Log("Given health card");
-                this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
                 currentCardType = CardType.HealthUp;
                 break;
 
             case 3:
                 Debug.Log("Given bulletSize card");
-                this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "BULLET\n SIZE";
-                currentCardType = CardType.BulletSize;
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FIRE RATE";
+                currentCardType = CardType.FireRateUp;
                 break;
 
             case 4:
                 Debug.Log("Given speed card");
-                this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
                 currentCardType = CardType.SpeedUp;
                 break;
         }
@@ -70,40 +69,42 @@ public class UpgradeCardScript : MonoBehaviour
 
     private void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == gameObject)
-        {
-            if (currentCardType == CardType.HealthUp)       // TODO: Make this code more clean by moving it into a single for loop?
-            {
-                AddOnClickFunction();
-            }
 
-            if (currentCardType == CardType.DamageUp)
-            {
-                for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
-                {
-                    playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
-                    playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.DamageUpgrade());
-                }
-            }
 
-            if (currentCardType == CardType.BulletSize)
-            {
+        //if (EventSystem.current.currentSelectedGameObject == gameObject)
+        //{
+        //    if (currentCardType == CardType.HealthUp)       // TODO: Make this code more clean by moving it into a single for loop?
+        //    {
+        //        AddOnClickFunction();
+        //    }
 
-            }
+        //    if (currentCardType == CardType.DamageUp)
+        //    {
+        //        for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
+        //        {
+        //            playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
+        //            playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.DamageUpgrade());
+        //        }
+        //    }
 
-            if (currentCardType == CardType.SpeedUp)
-            {
+        //    if (currentCardType == CardType.BulletSize)
+        //    {
 
-            }
-        }
+        //    }
+
+        //    if (currentCardType == CardType.SpeedUp)
+        //    {
+
+        //    }
+        //}
     }
 
-    private void AddOnClickFunction()
-    {
-        for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
-        {
-            playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
-            playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.HealthUpgrade());
-        }
-    }
+    //private void AddOnClickFunction()
+    //{
+    //    for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
+    //    {
+    //        playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
+    //        playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.HealthUpgrade());
+    //    }
+    //}
 }

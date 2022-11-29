@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DragNDroppableObject : MonoBehaviour
 {
-    public PlayerCardDropZone playerDropZone;
+    public PlayerController playerStats;
+
+    public PlayerCardDropZone playerCardDropZone;
 
     [Header("Stats In Card")]
     public float moveSpeed;
@@ -12,23 +15,26 @@ public class DragNDroppableObject : MonoBehaviour
     public float bulletDamage;
     public float fireRate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (transform.parent == null && other.gameObject.CompareTag("PlayerZone"))
+        //Debug.Log("entered");
+
+
+
+        if (transform.parent == null && other.gameObject.CompareTag("DropZone"))
         {
-            playerDropZone = other.GetComponent<PlayerCardDropZone>();
+            //Debug.Log("entered right");
+            playerCardDropZone = other.gameObject.GetComponent<PlayerCardDropZone>();
+            playerCardDropZone.PositionCard(gameObject);
+
+            //        CheckIfAbleToGiveCard();
         }
     }
+
+    //private bool CheckIfAbleToGiveCard()
+    //{
+    //    if(playerCardDropZone)
+
+    //    return true;
+    //}
 }
