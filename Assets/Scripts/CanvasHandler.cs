@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -12,10 +10,11 @@ public class CanvasHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerScore3;
     [SerializeField] TextMeshProUGUI playerScore4;
 
-    void Start()
-    {
-        GameManager.Instance.AddCanvasHandler(this);
-    }
+    [SerializeField] GameObject scoreScreen;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] TextMeshProUGUI winGameText;
+    [SerializeField] TextMeshProUGUI winRoundText;
+
 
     public void UpdateScore(int playerNumber, int score)
     {
@@ -40,6 +39,29 @@ public class CanvasHandler : MonoBehaviour
 
     public void StartWinScreen(string playerName)
     {
+        winScreen.SetActive(true);
+        winGameText.text = $"{playerName} wins the game!";
+    }
 
+    public void StartWinRoundScreen(string playerName)
+    {
+        winRoundText.gameObject.SetActive(true);
+        winRoundText.text = $"{playerName} wins the round!";
+    }
+
+    public void StartNewRound()
+    {
+        winScreen.SetActive(false);
+        winRoundText.gameObject.SetActive(false);
+    }
+
+    public void StartNewGame()
+    {
+        winScreen.SetActive(false);
+        scoreScreen.SetActive(true);
+        for (int i = 1; i <= 4; i++)
+        {
+            UpdateScore(i, 0);
+        }
     }
 }

@@ -58,15 +58,8 @@ public class GameManager : MonoBehaviour
         canvasHandler.RoundText = $"Round: {currentRound}";
     }
 
-    public void AddCanvasHandler(CanvasHandler canvasHandler)
-    {
-        //this.canvasHandler = canvasHandler;
-    }
-
     public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
     {
-        Debug.Log("added player: " + playerNumber);
-
         if (players.Count >= 4)
             return;
 
@@ -81,13 +74,12 @@ public class GameManager : MonoBehaviour
                 score = 0,
                 isAlive = true
             });
+            canvasHandler.UpdateScore(playerNumber, 0);
         }
     }
 
     public void RemovePlayer(int playerNumber)
     {
-        Debug.Log("removed player: " + playerNumber);
-
         PlayerInstance player = players.FirstOrDefault(p => p.ID == playerNumber);
 
         if (player != null)
@@ -99,14 +91,14 @@ public class GameManager : MonoBehaviour
         switch (playerNumber)
         {
             case 1:
-                return "Green";
+                return "Green Player";
             case 2:
-                return "Red";
+                return "Red Player";
             case 3:
-                return "Blue";
+                return "Blue Player";
             case 4:
             default:
-                return "Yellow";
+                return "Yellow Player";
         }
     }
 
@@ -122,6 +114,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if a player has won or if a new round should be started.
+    /// </summary>
     private void CheckWin(PlayerInstance lastKilledPlayer)
     {
         var livingPlayers = players.Where(p => p.isAlive).ToList();
@@ -133,29 +128,31 @@ public class GameManager : MonoBehaviour
         else
             return; // do this to avoid the win condition check below
 
-        var leadingPlayer = players.OrderBy(p => p.score).FirstOrDefault();
+        var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
         if (leadingPlayer.score >= maxScoreToWin || currentRound >= maxNumberOfRounds)
             HandleWin(leadingPlayer);
         else
-            HandleNewRound();
+            StartCoroutine(HandleNewRound(livingPlayers[0].name));
     }
 
-    private void HandleNewRound()
+    private IEnumerator HandleNewRound(string playerName)
     {
         currentRound++;
+        canvasHandler.StartWinRoundScreen(playerName);
+
+        yield return new WaitForSeconds(3);
+
+        canvasHandler.StartNewRound();
+
+        foreach (var player in players)
+        {
+            player.controller.SetPlayerHealthToMax();
+        }
+
+        //TODO: go to upgrade screen
 
         ResetScene();
-
-        //foreach (var player in players)
-        //{
-        //    player.isAlive = true;
-        //    player.gameObject.SetActive(true);
-        //}
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //canvasHandler.RoundText = $"Round: {currentRound}";
-        //TODO: go to upgrade screen
     }
 
     /// <summary>
@@ -164,8 +161,6 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         canvasHandler.RoundText = $"Round: {currentRound}";
-
-        //TODO: player positions
 
         foreach (var player in players)
         {
@@ -191,14 +186,15 @@ public class GameManager : MonoBehaviour
             player.controller.currentHealth = player.controller.maxHealth;
             canvasHandler.UpdateScore(player.ID, player.score);
         }
-
-        //TODO: change state of UI
     }
 
     private void HandleWin(PlayerInstance winningPlayer)
     {
         canvasHandler.StartWinScreen(winningPlayer.name);
+        //TODO: change states
     }
+
+    #region scene functions
 
     public void StartNewGame()
     {
@@ -211,12 +207,12 @@ public class GameManager : MonoBehaviour
             player.gameObject.SetActive(true);
         }
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //TODO: Reset the players stats to default, or just load the game scene and auto assign back players to the same characters.
     }
 
     public void GoToMainMenu()
     {
-
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ExitGame()
@@ -227,6 +223,8 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    #endregion
 
 
     private class PlayerInstance

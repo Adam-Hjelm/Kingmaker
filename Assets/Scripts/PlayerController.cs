@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerController : MonoBehaviour
 {
@@ -50,6 +51,12 @@ public class PlayerController : MonoBehaviour
     private void PlayerHeal(int healing)
     {
         currentHealth += healing;
+        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+    }
+
+    public void SetPlayerHealthToMax()
+    {
+        currentHealth = maxHealth;
         Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 
