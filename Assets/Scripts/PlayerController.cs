@@ -14,7 +14,17 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.7f;
     public int currentHealth = 100;
 
+    [Header("Materials")]
+    public Material flashMaterial;
+    private Material originalMaterial;
+
+    [Header("Flash")]
+    public float flashDuration;
+    private Coroutine flashRoutine;
+
     [SerializeField] Image Healthbar;
+
+    SpriteRenderer spriteRenderer;
 
 
     void Awake()
@@ -33,6 +43,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        originalMaterial = spriteRenderer.material;
     }
 
     private void PlayerTakeDmg(int dmg)
@@ -40,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("take damage");
         currentHealth -= dmg;
         Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        Flash();
 
         if (currentHealth <= 0)
         {
@@ -61,4 +76,25 @@ public class PlayerController : MonoBehaviour
             PlayerTakeDmg(25);
         }
     }
+
+    public void Flash()
+    {
+        if(flashRoutine != null)
+        {
+            StopCoroutine(FlashRoutine());
+        }
+
+        flashRoutine = StartCoroutine(FlashRoutine());
+    }
+
+    private IEnumerator FlashRoutine()
+    {
+        spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        spriteRenderer.material = originalMaterial;
+
+        flashRoutine = null;
+            }
 }
