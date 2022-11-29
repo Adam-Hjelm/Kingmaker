@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         currentHealth -= dmg;
         Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
         
-
         if (currentHealth <= 0)
         {
             GameManager.Instance.KillPlayer(playerNumber);
