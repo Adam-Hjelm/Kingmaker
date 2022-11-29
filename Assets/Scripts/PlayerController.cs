@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    CameraShake shake;
+
 
     void Awake()
     {
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
 
+        shake = Camera.main.GetComponent<CameraShake>();
+
 
         if (GameManager.Instance != null)
         {
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0 && GameManager.Instance != null)
         {
             GameManager.Instance.KillPlayer(playerNumber);
+            shake.start = true;
         }
     }
 
