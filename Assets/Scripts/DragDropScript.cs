@@ -7,10 +7,10 @@ public class DragDropScript : MonoBehaviour
 {
     public int playerNumber;
     public float dragSpeed;
-
     public bool colliding = false;
 
     public GameObject draggedObject;
+    //public Collider2D draggedCollider;
     public State currentState;
 
     public enum State
@@ -19,13 +19,11 @@ public class DragDropScript : MonoBehaviour
         Waiting,
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         currentState = State.Waiting;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
@@ -46,38 +44,34 @@ public class DragDropScript : MonoBehaviour
     private void DragObject()
     {
         draggedObject.transform.SetParent(gameObject.transform);
-
+        draggedObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
         currentState = State.Dragging;
     }
 
     private void DropObject()
     {
-        Debug.Log("dropped");
         draggedObject.transform.SetParent(null);
+        draggedObject.GetComponent<Collider2D>().enabled = true;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+        colliding = false;
         currentState = State.Waiting;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Draggable"))
+        if (other.gameObject.CompareTag($"DraggablePlayer{playerNumber}"))
         {
             colliding = true;
             draggedObject = other.gameObject;
-        }
-
-        if (other.gameObject.CompareTag($"PlayerZone"))
-        {
-
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Draggable"))
+        if (other.gameObject.CompareTag($"DraggablePlayer{playerNumber}"))
         {
             colliding = false;
         }
     }
-
-   
 }
