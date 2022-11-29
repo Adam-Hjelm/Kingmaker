@@ -596,34 +596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3978805965595336067, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978805965595336067, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978805965595336067, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5048229976598964536, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 612053211}
-    - target: {fileID: 5048229976598964536, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: playerNumber
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048229976598964536, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: flashDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048229976598964536, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
-      propertyPath: flashMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
 --- !u!1 &508899850
@@ -1263,22 +1239,6 @@ PrefabInstance:
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 2033345277}
-    - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: playerNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: flashDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: flashMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
-    - target: {fileID: 4730821529132710952, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6329439064393183565, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
       propertyPath: m_Name
       value: Player2 Variant
@@ -1327,20 +1287,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6329439064393183567, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6329439064393183567, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6329439064393183567, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4272061081236823329, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
 --- !u!1 &1157242749
 GameObject:
