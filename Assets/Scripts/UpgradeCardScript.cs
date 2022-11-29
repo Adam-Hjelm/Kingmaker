@@ -8,9 +8,16 @@ using TMPro;
 public class UpgradeCardScript : MonoBehaviour
 {
     private int amountOfStats = 4;
+    private int amountOfRares = 4;
     private int randomNumber;
 
     public CardType currentCardType;
+
+    [Header("Stats Upgrade")]
+    public float moveSpeedModifier = 2f;
+    public int maxHealthModifier = 100;
+    public int bulletDamageModifier = 25;
+    public float fireRateModifier = 0.2f;
 
     public enum CardType
     {
@@ -18,6 +25,7 @@ public class UpgradeCardScript : MonoBehaviour
         HealthUp,
         FireRateUp,
         SpeedUp,
+        SpecialCard,
     }
 
     void Start()
@@ -30,7 +38,7 @@ public class UpgradeCardScript : MonoBehaviour
 
         if (randomNumber > 80)
         {
-            //Insert special card function
+            SpecialCard();
             //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPECIAL\n CARD";
         }
     }
@@ -54,7 +62,7 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 3:
-                Debug.Log("Given bulletSize card");
+                Debug.Log("Given fire rate card");
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FIRE RATE";
                 currentCardType = CardType.FireRateUp;
                 break;
@@ -67,44 +75,28 @@ public class UpgradeCardScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void SpecialCard()
     {
+        Debug.Log("Given SPECIAL CARD");
+        currentCardType = CardType.SpecialCard;
+        int chosenRare = Random.Range(0, amountOfRares);
+        switch (chosenRare)
+        {
+            case 1:
 
+                break;
 
-        //if (EventSystem.current.currentSelectedGameObject == gameObject)
-        //{
-        //    if (currentCardType == CardType.HealthUp)       // TODO: Make this code more clean by moving it into a single for loop?
-        //    {
-        //        AddOnClickFunction();
-        //    }
+            case 2:
 
-        //    if (currentCardType == CardType.DamageUp)
-        //    {
-        //        for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
-        //        {
-        //            playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
-        //            playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.DamageUpgrade());
-        //        }
-        //    }
+                break;
 
-        //    if (currentCardType == CardType.BulletSize)
-        //    {
+            case 3:
 
-        //    }
+                break;
 
-        //    if (currentCardType == CardType.SpeedUp)
-        //    {
+            case 4:
 
-        //    }
-        //}
+                break;
+        }
     }
-
-    //private void AddOnClickFunction()
-    //{
-    //    for (int i = 0; i < playerUpgradeScript.playerButtons.Length; i++)
-    //    {
-    //        playerUpgradeScript.playerButtons[i].onClick.RemoveAllListeners();
-    //        playerUpgradeScript.playerButtons[i].onClick.AddListener(() => playerUpgradeScript.HealthUpgrade());
-    //    }
-    //}
 }
