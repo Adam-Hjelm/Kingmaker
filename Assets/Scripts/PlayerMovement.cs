@@ -52,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
+        if(LDirection.x < 0)
+        {
+            playerController.spriteRenderer.flipX = true;
+        }
+
+        else if (LDirection.x > 0)
+        {
+            playerController.spriteRenderer.flipX = false;
+        }
 
     }
 }

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Image Healthbar;
 
-    SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     CameraShake shake;
 
