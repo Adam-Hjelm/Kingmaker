@@ -11,10 +11,6 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2949001963458631704, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: flashMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
     - target: {fileID: 6473239685426228385, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: m_Name
       value: Player2 Variant
@@ -67,29 +63,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6473239685426228387, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473239685426228387, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473239685426228387, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6948221822056910764, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: playerNumber
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7291089394397411022, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: thrust
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7291089394397411022, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-      propertyPath: knockTime
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8339730648545249764, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: playerNumber
@@ -97,29 +73,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
---- !u!1 &6329439064393183565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6473239685426228385, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
-  m_PrefabInstance: {fileID: 1009719431668456940}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1039310837
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6329439064393183565}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4

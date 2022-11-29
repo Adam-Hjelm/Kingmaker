@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2445163105356265177}
   - component: {fileID: 2642728012354391995}
   - component: {fileID: 2647724134982397618}
-  - component: {fileID: -7339517637162529606}
+  - component: {fileID: 6604308490892735951}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Player1
@@ -103,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bff9cf2544ffff47aaacf232f2159c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
+  playerNumber: 2
   moveSpeed: 3.5
   maxHealth: 100
   bulletDamage: 25
   fireRate: 0.4
   currentHealth: 100
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
   flashDuration: 0.1
   Healthbar: {fileID: 0}
 --- !u!114 &3620701524542173329
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2cc71dc770312a498542bd35d85b2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
+  playerNumber: 2
   currentPos: {x: 0, y: 0}
   handCrosshair: {fileID: 2778926511010374773}
 --- !u!114 &2445163105356265177
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad15720514ad2940b0d749fbf172d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
+  playerNumber: 2
   bulletPrefab: {fileID: 4237042467830726594, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
   Spawnpoint: {fileID: 4594921739533266442}
 --- !u!114 &2642728012354391995
@@ -172,7 +172,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05, y: -0.05}
   m_Size: {x: 0.6, y: 1.5}
   m_Direction: 0
---- !u!50 &-7339517637162529606
+--- !u!50 &6604308490892735951
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

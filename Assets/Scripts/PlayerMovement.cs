@@ -6,7 +6,7 @@ using UnityEngine;
 //[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    //public int playerNumber = 1;
+    public int playerNumber = 1;
     //public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
     public GameObject handCrosshair;
@@ -23,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         currentPos = transform.position;
 
-        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"LVertical {playerController.playerNumber}"));
-        Vector2 RDirection = new Vector2(Input.GetAxisRaw($"RHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"RVertical {playerController.playerNumber}"));
+        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
+        Vector2 RDirection = new Vector2(Input.GetAxisRaw($"RHorizontal {playerNumber}"), Input.GetAxisRaw($"RVertical {playerNumber}"));
         RDirection.Normalize();
 
         float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);

@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         originalMaterial = spriteRenderer.material;
+
+        GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
     }
 
     private void PlayerTakeDmg(int dmg)
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("take damage");
         currentHealth -= dmg;
         Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
-        Flash();
+        
 
         if (currentHealth <= 0)
         {
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("bullet"))
         {
+            Flash();
             Destroy(other.gameObject);
             PlayerTakeDmg(25);
         }
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     public void Flash()
     {
-        if(flashRoutine != null)
+        if (flashRoutine != null)
         {
             StopCoroutine(FlashRoutine());
         }
@@ -103,5 +104,5 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.material = originalMaterial;
 
         flashRoutine = null;
-            }
+    }
 }
