@@ -47,7 +47,11 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
 
-        GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
+        }
     }
 
     private void PlayerTakeDmg(int dmg)
@@ -55,8 +59,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("take damage");
         currentHealth -= dmg;
         Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
-        
-        if (currentHealth <= 0)
+
+        if (currentHealth <= 0 && GameManager.Instance != null)
         {
             GameManager.Instance.KillPlayer(playerNumber);
         }
