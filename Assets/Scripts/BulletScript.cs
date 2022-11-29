@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BulletScript : MonoBehaviour
 {
     public float bulletSpeed;
+    public int bulletDamage = 25;
+
+    //private string[] allPlayerTags = { "Player1", "Player2", "Player3", "Player4" };
 
 
     void Start()

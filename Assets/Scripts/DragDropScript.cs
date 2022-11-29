@@ -31,12 +31,12 @@ public class DragDropScript : MonoBehaviour
         LDirection.Normalize();
         transform.Translate(LDirection * dragSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
 
-        if (Input.GetButtonDown("Submit") && currentState == State.Dragging)
+        if (Input.GetButtonDown($"Submit{playerNumber}") && currentState == State.Dragging)
         {
             DropObject();
         }
 
-        if (Input.GetButtonDown("Submit") && colliding)
+        if (Input.GetButtonDown($"Submit{playerNumber}") && colliding)
         {
             DragObject();
         }
@@ -52,10 +52,10 @@ public class DragDropScript : MonoBehaviour
     private void DropObject()
     {
         draggedObject.transform.SetParent(null);
-        draggedObject.GetComponent<Collider2D>().enabled = true;
-        gameObject.GetComponent<Collider2D>().enabled = true;
         colliding = false;
         currentState = State.Waiting;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+        draggedObject.GetComponent<Collider2D>().enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -30,6 +30,7 @@ public class ShootController : MonoBehaviour
             //dostuff
             GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
             Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
             timer = startTimer;
         }

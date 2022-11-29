@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Stats")]
     public float moveSpeed = 3.5f;
     public int maxHealth = 100;
-    public float bulletDamage = 25;
+    public int bulletDamage = 25;
     public float fireRate = 0.7f;
     public int currentHealth = 100;
 
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             Flash();
             Destroy(other.gameObject);
-            PlayerTakeDmg(25);
+            PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
         }
     }
 

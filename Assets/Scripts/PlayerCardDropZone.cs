@@ -19,7 +19,7 @@ public class PlayerCardDropZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class PlayerCardDropZone : MonoBehaviour
 
     public void PositionCard(GameObject CardToPosition)
     {
-        
+
 
         for (int j = 0; j < tagsOfCardsPlaced.Count; j++)
         {
@@ -47,21 +47,38 @@ public class PlayerCardDropZone : MonoBehaviour
             {
                 CardToPosition.transform.position = slotsToPlace[i].transform.position;
                 CardToPosition.GetComponent<Collider2D>().enabled = false;
+                upgradeCardScript = CardToPosition.GetComponent<UpgradeCardScript>();
                 tagsOfCardsPlaced.Add(CardToPosition.tag);
+                slotsUsed++;
+                UpgradePlayerStats();
                 return;
             }
-            slotsUsed++;
         }
 
-        UpgradePlayerStats();
     }
 
     private void UpgradePlayerStats()
     {
+        playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
+        Debug.Log("upgrading...");
         if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
         {
-
+            playerStats.maxHealth += 100;
         }
-        
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
+        {
+            playerStats.bulletDamage += 25;
+        }
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
+        {
+            playerStats.moveSpeed += 2;
+        }
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
+        {
+            playerStats.fireRate += 0.15f;
+        }
     }
 }
