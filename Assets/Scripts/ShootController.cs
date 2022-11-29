@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
-    //public int playerNumber = 1;
+    public int playerNumber = 1;
     public GameObject bulletPrefab;
 
     public Transform Spawnpoint;
@@ -25,7 +25,7 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        if (Input.GetButton($"Fir{playerController.playerNumber}") && timer <= playerController.fireRate)
+        if (Input.GetButton($"Fir{playerNumber}") && timer <= playerController.fireRate)
         {
             //dostuff
             GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
