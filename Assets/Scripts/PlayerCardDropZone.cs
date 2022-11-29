@@ -19,7 +19,7 @@ public class PlayerCardDropZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,13 +28,13 @@ public class PlayerCardDropZone : MonoBehaviour
 
     }
 
-    public void PositionCard(GameObject CardToPosition)
+    public void PositionCard(GameObject CardObject)
     {
-        
+
 
         for (int j = 0; j < tagsOfCardsPlaced.Count; j++)
         {
-            if (CardToPosition.tag == tagsOfCardsPlaced[j])
+            if (CardObject.tag == tagsOfCardsPlaced[j])
             {
                 return;
             }
@@ -42,26 +42,43 @@ public class PlayerCardDropZone : MonoBehaviour
 
         for (int i = 0; i < slotsToPlace.Length; i++) // TODO: Check if this actually works when you have multiple player inputs for submit (aka when the new inputmanager is done)
         {
-            //Debug.Log("forloop enter");
+            Debug.Log("forloop enter");
             if (i >= slotsUsed)
             {
-                CardToPosition.transform.position = slotsToPlace[i].transform.position;
-                CardToPosition.GetComponent<Collider2D>().enabled = false;
-                tagsOfCardsPlaced.Add(CardToPosition.tag);
+                CardObject.transform.position = slotsToPlace[i].transform.position;
+                CardObject.GetComponent<Collider2D>().enabled = false;
+                tagsOfCardsPlaced.Add(CardObject.tag);
                 return;
             }
             slotsUsed++;
         }
-
+        Debug.Log("before upgrade");
         UpgradePlayerStats();
     }
 
     private void UpgradePlayerStats()
     {
+        Debug.Log("UPGRADING?");
+        playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
+        Debug.Log("UPGRADING");
         if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
         {
-
+            playerStats.maxHealth += 100;
         }
-        
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
+        {
+            playerStats.bulletDamage += 25;
+        }
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
+        {
+            playerStats.moveSpeed += 2;
+        }
+
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
+        {
+            playerStats.fireRate += 0.15f;
+        }
     }
 }
