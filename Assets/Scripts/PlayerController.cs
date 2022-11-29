@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private Material originalMaterial;
 
     [Header("Flash")]
-    public float flashDuration;
+    public float flashDuration = 0.1f;
     private Coroutine flashRoutine;
 
     [SerializeField] Image Healthbar;
