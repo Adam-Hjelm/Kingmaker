@@ -1239,10 +1239,6 @@ PrefabInstance:
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 2033345277}
-    - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
-      propertyPath: originalMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 1ec62b1a90f157f489acc4cafd77e37e, type: 2}
     - target: {fileID: 6329439064393183565, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
       propertyPath: m_Name
       value: Player2 Variant
@@ -1793,10 +1789,6 @@ MonoBehaviour:
   playerScore2: {fileID: 0}
   playerScore3: {fileID: 0}
   playerScore4: {fileID: 0}
-  scoreScreen: {fileID: 0}
-  winScreen: {fileID: 0}
-  winGameText: {fileID: 0}
-  winRoundText: {fileID: 0}
 --- !u!1 &1818776495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,12 +2021,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921449890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0de0c7d25372d6745be4f09ba5e0c354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasHandler: {fileID: 0}
+  canvasHandler: {fileID: 1808401435}
   playerPos1: {fileID: 1452659678}
   playerPos2: {fileID: 508899851}
   playerPos3: {fileID: 994424122}
