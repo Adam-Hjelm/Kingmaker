@@ -15,10 +15,6 @@ TagManager:
   - Player4
   - DropZone
   - DraggablePlayer1
-  - DraggablePlayer2
-  - DraggablePlayer3
-  - DraggablePlayer4
-  - Card
   layers:
   - Default
   - TransparentFX
