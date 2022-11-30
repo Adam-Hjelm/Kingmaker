@@ -110,9 +110,11 @@ MonoBehaviour:
   bulletDamage: 25
   fireRate: 0.4
   currentHealth: 100
+  healthBarDegradeModifier: 0.3
   flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
   flashDuration: 0.1
-  Healthbar: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthBarBackdrop: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!114 &3620701524542173329
 MonoBehaviour:
