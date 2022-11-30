@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int bulletDamage = 25;
     public float fireRate = 0.7f;
     public int currentHealth = 100;
+    public float healthBarDegradeModifier;
 
     [Header("Materials")]
     public Material flashMaterial;
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
     public float flashDuration = 0.1f;
     private Coroutine flashRoutine;
 
-    [SerializeField] Image Healthbar;
+    [SerializeField] Image healthBar;
+    [SerializeField] Image healthBarBackdrop;
 
     public SpriteRenderer spriteRenderer;
 
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+        healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
 
@@ -58,29 +60,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (healthBarBackdrop.fillAmount > healthBar.fillAmount)
+        {
+            healthBarBackdrop.fillAmount -= Time.deltaTime * healthBarDegradeModifier;
+        }
+    }
+
     private void PlayerTakeDmg(int dmg)
     {
         Debug.Log("take damage");
         currentHealth -= dmg;
-        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
 
         if (currentHealth <= 0 && GameManager.Instance != null)
         {
+            healthBarBackdrop.fillAmount = healthBar.fillAmount;
             GameManager.Instance.KillPlayer(playerNumber);
             shake.start = true;
         }
     }
 
+
+
     private void PlayerHeal(int healing)
     {
         currentHealth += healing;
-        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 
     public void SetPlayerHealthToMax()
     {
         currentHealth = maxHealth;
-        Healthbar.fillAmount = (float)currentHealth / (float)maxHealth;
+        healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
