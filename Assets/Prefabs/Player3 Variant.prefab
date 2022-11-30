@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3581143498055189767, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d43df71508a7fba4897e0a26b27ea417, type: 2}
     - target: {fileID: 3620701524542173329, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
       propertyPath: playerNumber
       value: 3
