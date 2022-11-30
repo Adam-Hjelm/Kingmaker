@@ -91,14 +91,14 @@ public class GameManager : MonoBehaviour
         switch (playerNumber)
         {
             case 1:
-                return "Green Player";
-            case 2:
                 return "Red Player";
-            case 3:
+            case 2:
                 return "Blue Player";
+            case 3:
+                return "Green Player";
             case 4:
             default:
-                return "Yellow Player";
+                return "Purple Player";
         }
     }
 

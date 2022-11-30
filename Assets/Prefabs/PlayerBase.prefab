@@ -112,6 +112,7 @@ MonoBehaviour:
   currentHealth: 100
   healthBarDegradeModifier: 0.3
   flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   flashDuration: 0.1
   healthBar: {fileID: 0}
   healthBarBackdrop: {fileID: 0}

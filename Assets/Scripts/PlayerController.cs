@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Materials")]
     public Material flashMaterial;
-    private Material originalMaterial;
+    public Material defaultMaterial;
 
     [Header("Flash")]
     public float flashDuration = 0.1f;
@@ -43,24 +43,24 @@ public class PlayerController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         currentHealth = maxHealth /*+ addedHealth*/;
+
     }
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalMaterial = spriteRenderer.material;
-
+        //originalMaterial = spriteRenderer.material; aja baja dumma bug
+        spriteRenderer.material = defaultMaterial;
         shake = Camera.main.GetComponent<CameraShake>();
-
 
         if (GameManager.Instance != null)
         {
             GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
         }
+        healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
+        healthBarBackdrop = GameObject.Find($"p{playerNumber}HealthbarBackdrop").GetComponent<Image>();
 
-
-            healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
-        
+        //healthBarBackdrop.fillAmount = 1; 
     }
 
     private void Update()
@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
             if (healthBarBackdrop.fillAmount > healthBar.fillAmount)
             {
                 healthBarBackdrop.fillAmount -= Time.deltaTime * healthBarDegradeModifier;
+            }
+
+            if (healthBarBackdrop.fillAmount < healthBar.fillAmount)
+            {
+                healthBarBackdrop.fillAmount = healthBar.fillAmount;
             }
         }
     }
@@ -82,6 +87,8 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0 && GameManager.Instance != null)
         {
+            StopCoroutine(flashRoutine);
+            spriteRenderer.material = defaultMaterial;
             healthBarBackdrop.fillAmount = healthBar.fillAmount;
             GameManager.Instance.KillPlayer(playerNumber);
             shake.start = true;
@@ -128,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(flashDuration);
 
-        spriteRenderer.material = originalMaterial;
+        spriteRenderer.material = defaultMaterial;
 
         flashRoutine = null;
     }
