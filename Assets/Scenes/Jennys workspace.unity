@@ -608,6 +608,10 @@ PrefabInstance:
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 612053211}
+    - target: {fileID: 5048229976598964536, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 612053211}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
 --- !u!1001 &410072711
@@ -619,6 +623,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
       propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 2033345277}
+    - target: {fileID: 2805685188809049588, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
+      propertyPath: healthBar
       value: 
       objectReference: {fileID: 2033345277}
     - target: {fileID: 6329439064393183565, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
@@ -941,6 +949,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3511241727152874702, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
       propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 728588677}
+    - target: {fileID: 3511241727152874702, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
+      propertyPath: healthBar
       value: 
       objectReference: {fileID: 728588677}
     - target: {fileID: 4720629085428174964, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
@@ -1825,6 +1837,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2949001963458631704, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: Healthbar
+      value: 
+      objectReference: {fileID: 1511216814}
+    - target: {fileID: 2949001963458631704, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: healthBar
       value: 
       objectReference: {fileID: 1511216814}
     - target: {fileID: 6473239685426228385, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
