@@ -18,6 +18,8 @@ TagManager:
   - Card
   - DraggablePlayer2
   - Environment
+  - DraggablePlayer3
+  - DraggablePlayer4
   layers:
   - Default
   - TransparentFX
