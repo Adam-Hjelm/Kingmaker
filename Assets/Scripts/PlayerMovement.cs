@@ -10,15 +10,17 @@ public class PlayerMovement : MonoBehaviour
     //public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
     public GameObject handCrosshair;
+    public SpriteRenderer handCrosshairSprite;
 
     Animator anim;
-    
+
     PlayerController playerController;
 
 
     private void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
+        handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
@@ -39,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, RDirection);
             handCrosshair.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360);
-            
+
         }
         else if (LDirection != Vector2.zero)
         {
@@ -52,14 +54,16 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        if(LDirection.x < 0)
+        if (LDirection.x < 0)
         {
             playerController.spriteRenderer.flipX = true;
+            handCrosshairSprite.flipX = true;
         }
 
         else if (LDirection.x > 0)
         {
             playerController.spriteRenderer.flipX = false;
+            handCrosshairSprite.flipX = false;
         }
 
     }

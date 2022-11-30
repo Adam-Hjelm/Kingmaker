@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
 
@@ -58,13 +57,20 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
         }
+
+
+            healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
+        
     }
 
     private void Update()
     {
-        if (healthBarBackdrop.fillAmount > healthBar.fillAmount)
+        if (healthBarBackdrop != null)
         {
-            healthBarBackdrop.fillAmount -= Time.deltaTime * healthBarDegradeModifier;
+            if (healthBarBackdrop.fillAmount > healthBar.fillAmount)
+            {
+                healthBarBackdrop.fillAmount -= Time.deltaTime * healthBarDegradeModifier;
+            }
         }
     }
 
