@@ -13,11 +13,13 @@ public class ShootController : MonoBehaviour
     PlayerController playerController;
     private float timer;
     private float startTimer = 1f;
+    public Animator handAnim;
 
 
     private void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
+        handAnim = Spawnpoint.GetComponent<Animator>();
     }
 
     void Update()
@@ -27,6 +29,7 @@ public class ShootController : MonoBehaviour
         //Debug.Log(timer);
         if (Input.GetButton($"Fir{playerController.playerNumber}") && timer <= playerController.fireRate)
         {
+            handAnim.SetTrigger("Casting");
             //dostuff
             GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
             Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
