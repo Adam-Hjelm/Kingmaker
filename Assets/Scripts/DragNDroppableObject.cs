@@ -8,6 +8,7 @@ public class DragNDroppableObject : MonoBehaviour
     public PlayerController playerStats;
 
     public PlayerCardDropZone playerCardDropZone;
+    public DragDropScript dragDropScript;
 
     [Header("Stats In Card")]
     public float moveSpeed;
@@ -21,7 +22,25 @@ public class DragNDroppableObject : MonoBehaviour
         {
             //Debug.Log("entered right");
             playerCardDropZone = other.gameObject.GetComponent<PlayerCardDropZone>();
+
+            StartCoroutine(CallFunctions());
             playerCardDropZone.PositionCard(gameObject);
+            dragDropScript.colliding = false;
+        }
+    }
+
+    IEnumerator CallFunctions() // This is for a bugfix
+    {
+        yield return new WaitForSeconds(0.075f);
+        playerCardDropZone.PositionCard(gameObject);
+        dragDropScript.colliding = false;
+    }
+
+    private void Update()
+    {
+        if (transform.parent != null)
+        {
+            dragDropScript = transform.parent.GetComponent<DragDropScript>();
         }
     }
 }

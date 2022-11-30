@@ -190,12 +190,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
+  upgradeCardScript: {fileID: 0}
+  dragDropScript: {fileID: 0}
   slotsToPlace:
   - {fileID: 2089504304528971652}
   - {fileID: 2089504305493766168}
   - {fileID: 2089504304424282265}
+  tagsOfCardsPlaced: []
   slotsUsed: 0
   maxSlots: 3
+  playerNumberToGiveStat: 0
+  speed: 10
 --- !u!1 &2089504305493766168
 GameObject:
   m_ObjectHideFlags: 0

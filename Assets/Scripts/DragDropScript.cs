@@ -26,10 +26,7 @@ public class DragDropScript : MonoBehaviour
 
     void Update()
     {
-        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
-        float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);
-        LDirection.Normalize();
-        transform.Translate(LDirection * dragSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+        MoveDragNDropCursor();
 
         if (Input.GetButtonDown($"Submit{playerNumber}") && currentState == State.Dragging)
         {
@@ -41,21 +38,39 @@ public class DragDropScript : MonoBehaviour
             DragObject();
         }
     }
+
+    private void MoveDragNDropCursor()
+    {
+        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
+        float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);
+        LDirection.Normalize();
+        transform.Translate(LDirection * dragSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+    }
+
     private void DragObject()
     {
-        draggedObject.transform.SetParent(gameObject.transform);
         draggedObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
+        draggedObject.transform.SetParent(gameObject.transform);
         currentState = State.Dragging;
     }
 
     private void DropObject()
     {
-        draggedObject.transform.SetParent(null);
-        colliding = false;
-        currentState = State.Waiting;
         gameObject.GetComponent<Collider2D>().enabled = true;
         draggedObject.GetComponent<Collider2D>().enabled = true;
+        draggedObject.transform.SetParent(null);
+
+        colliding = false;
+        currentState = State.Waiting;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag($"DraggablePlayer{playerNumber}"))
+        {
+            colliding = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,14 +79,6 @@ public class DragDropScript : MonoBehaviour
         {
             colliding = true;
             draggedObject = other.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag($"DraggablePlayer{playerNumber}"))
-        {
-            colliding = false;
         }
     }
 }
