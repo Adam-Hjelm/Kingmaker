@@ -13,7 +13,7 @@ public class Knockback : MonoBehaviour
         {
             Rigidbody2D player = this.GetComponent<Rigidbody2D>();
 
-            if (player != null)
+            if (player != null && player.gameObject.activeInHierarchy)
             {
                 player.isKinematic = false;
                 Vector2 difference = other.gameObject.GetComponent<Rigidbody2D>().velocity;
