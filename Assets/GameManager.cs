@@ -54,18 +54,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         if (_instance != null && _instance != this)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             _instance = this;
-        }
-
-        //var test = FindAllPrefabVariants(playerPrefab).ToList();
     }
 
     void Start()
@@ -243,14 +235,16 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        SceneManager.LoadScene(0);
+
         currentRound = 0;
 
-        foreach (var player in players)
-        {
-            player.score = 0;
-            player.isAlive = true;
-            player.gameObject.SetActive(true);
-        }
+        //foreach (var player in players)
+        //{
+        //    player.score = 0;
+        //    player.isAlive = true;
+        //    player.gameObject.SetActive(true);
+        //}
 
         //TODO: Reset the players stats to default, or just load the game scene and auto assign back players to the same characters.
     }
