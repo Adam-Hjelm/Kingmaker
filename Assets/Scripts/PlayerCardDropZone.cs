@@ -11,6 +11,8 @@ public class PlayerCardDropZone : MonoBehaviour
     public DragDropScript dragDropScript;
     public GameObject[] slotsToPlace;
 
+    public UpgradeManager upgradeManager;
+
     public List<string> tagsOfCardsPlaced = new List<string>();
     public int slotsUsed;
     public int maxSlots;
@@ -22,6 +24,8 @@ public class PlayerCardDropZone : MonoBehaviour
     void Start()
     {
         AddSelfToTags();
+
+        upgradeManager = gameObject.GetComponentInParent<UpgradeManager>();
     }
 
     private void AddSelfToTags()
@@ -67,12 +71,15 @@ public class PlayerCardDropZone : MonoBehaviour
                 //CardToPosition.transform.position = Vector3.MoveTowards(CardToPosition.transform.position, slotsToPlace[i].transform.position, speed * Time.deltaTime);
                 upgradeCardScript = CardToPosition.GetComponent<UpgradeCardScript>();
                 tagsOfCardsPlaced.Add(CardToPosition.tag);
+                CardToPosition.transform.parent = gameObject.transform;
+
                 slotsUsed++;
+                upgradeManager.CheckIfPlayerDone();
                 CardToPosition.GetComponent<Collider2D>().enabled = false;
                 UpgradePlayerStats();
                 return;
 
-                
+
             }
         }
 

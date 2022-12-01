@@ -28,12 +28,13 @@ public class DragDropScript : MonoBehaviour
     {
         MoveDragNDropCursor();
 
-        if (Input.GetButtonDown($"Submit{playerNumber}") && currentState == State.Dragging)
+        if (Input.GetButtonDown($"Fir{playerNumber}") && currentState == State.Dragging)
         {
+            Debug.Log("pressed submit");
             DropObject();
         }
 
-        if (Input.GetButtonDown($"Submit{playerNumber}") && colliding)
+        if (Input.GetButtonDown($"Fir{playerNumber}") && colliding)
         {
             DragObject();
         }

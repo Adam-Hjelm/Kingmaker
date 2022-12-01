@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance
-    { 
+    {
         get
         {
             if (_instance == null)
@@ -28,34 +28,41 @@ public class GameManager : MonoBehaviour
     public const int maxScoreToWin = 3; // placeholder value
     public const int maxNumberOfRounds = 7; // placeholder value
 
+    private GameObject currentUpgradeScreen;
+    public GameObject upgradeScreen;
+    public GameObject gameScene;
+    public GameObject lastPlayer;
+
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
     int currentRound = 0;
     [SerializeField] CanvasHandler canvasHandler;
 
-    [SerializeField] Transform playerPos1;
-    [SerializeField] Transform playerPos2;
-    [SerializeField] Transform playerPos3;
-    [SerializeField] Transform playerPos4;
+    [SerializeField] Transform player1SpawnPos;
+    [SerializeField] Transform player2SpawnPos;
+    [SerializeField] Transform player3SpawnPos;
+    [SerializeField] Transform player4SpawnPos;
 
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        //if (_instance != null && _instance != this)
+        //{
+        //    Destroy(gameObject);
+        //}
+
+
+        _instance = this;
+
     }
 
     void Start()
     {
         canvasHandler = FindObjectOfType<CanvasHandler>();
         canvasHandler.RoundText = $"Round: {currentRound}";
+
+        gameScene = GameObject.Find("GameScene");
     }
 
     public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
@@ -109,9 +116,17 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             player.isAlive = false;
-            player.gameObject.SetActive(false);
+            PlayerEnabled(false, player.gameObject);
+            //player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             CheckWin(player);
         }
+    }
+
+    private void PlayerEnabled(bool isDisabled, GameObject playerToEnable)
+    {
+        playerToEnable.GetComponent<SpriteRenderer>().enabled = isDisabled;
+        playerToEnable.GetComponent<Collider2D>().enabled = isDisabled;
+        playerToEnable.GetComponent<PlayerMovement>().enabled = isDisabled;
     }
 
     /// <summary>
@@ -122,7 +137,11 @@ public class GameManager : MonoBehaviour
         var livingPlayers = players.Where(p => p.isAlive).ToList();
 
         if (livingPlayers.Count() == 1)
+        {
             livingPlayers[0].score++;
+            lastPlayer = livingPlayers[0].gameObject;
+
+        }
         else if (livingPlayers.Count() < 1)
             lastKilledPlayer.score++;
         else
@@ -143,6 +162,32 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
+        StartUpgradeScreen();
+    }
+
+    private void StartUpgradeScreen()
+    {
+        gameScene.SetActive(false);
+
+        PlayerEnabled(false, lastPlayer);
+
+        GameObject upgradeScreenInstance = Instantiate(upgradeScreen, transform.position, Quaternion.identity);
+        upgradeScreenInstance = currentUpgradeScreen;
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeSelf == false)
+        {
+            gameObject.SetActive(true);
+        }
+    }
+
+    public void FinishedUpgrade()
+    {
+
+        //PlayerEnabled(true, lastPlayer);
+        Debug.Log("UPGRADE DONE");
         canvasHandler.StartNewRound();
 
         foreach (var player in players)
@@ -150,9 +195,9 @@ public class GameManager : MonoBehaviour
             player.controller.SetPlayerHealthToMax();
         }
 
-        //TODO: go to upgrade screen
-
         ResetScene();
+
+
     }
 
     /// <summary>
@@ -160,6 +205,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetScene()
     {
+        gameScene.SetActive(true);
+
+        Debug.Log("RESETTING SCENE");
         canvasHandler.RoundText = $"Round: {currentRound}";
 
         foreach (var player in players)
@@ -167,17 +215,21 @@ public class GameManager : MonoBehaviour
             switch (player.ID)
             {
                 case 1:
-                    player.gameObject.transform.position = playerPos1.position;
+                    player.gameObject.transform.position = player1SpawnPos.position;
+                    PlayerEnabled(true, player.gameObject);
                     break;
                 case 2:
-                    player.gameObject.transform.position = playerPos2.position;
+                    player.gameObject.transform.position = player2SpawnPos.position;
+                    PlayerEnabled(true, player.gameObject);
                     break;
                 case 3:
-                    player.gameObject.transform.position = playerPos3.position;
+                    player.gameObject.transform.position = player3SpawnPos.position;
+                    PlayerEnabled(true, player.gameObject);
                     break;
                 case 4:
                 default:
-                    player.gameObject.transform.position = playerPos4.position;
+                    player.gameObject.transform.position = player4SpawnPos.position;
+                    PlayerEnabled(true, player.gameObject);
                     break;
             }
 
@@ -198,14 +250,16 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        SceneManager.LoadScene(0);
+
         currentRound = 0;
 
-        foreach (var player in players)
-        {
-            player.score = 0;
-            player.isAlive = true;
-            player.gameObject.SetActive(true);
-        }
+        //foreach (var player in players)
+        //{
+        //    player.score = 0;
+        //    player.isAlive = true;
+        //    player.gameObject.SetActive(true);
+        //}
 
         //TODO: Reset the players stats to default, or just load the game scene and auto assign back players to the same characters.
     }

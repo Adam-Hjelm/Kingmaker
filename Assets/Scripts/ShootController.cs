@@ -10,6 +10,8 @@ public class ShootController : MonoBehaviour
 
     public Transform Spawnpoint;
 
+    private bool canShoot = true;
+
     PlayerController playerController;
     private float timer;
     private float startTimer = 1f;
@@ -27,7 +29,7 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        if (Input.GetButton($"Fir{playerController.playerNumber}") && timer <= playerController.fireRate)
+        if (Input.GetButton($"Fir{playerController.playerNumber}") && timer <= playerController.fireRate && canShoot == true)
         {
             handAnim.SetTrigger("Casting");
             //dostuff
@@ -38,6 +40,16 @@ public class ShootController : MonoBehaviour
             timer = startTimer;
         }
 
+        if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        {
+            canShoot = false;
+            Spawnpoint.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            canShoot = true;
+            Spawnpoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
 
         // Vector2 MousePos = Input.mousePosition;
         // MousePos = Camera.main.ScreenToWorldPoint(MousePos);

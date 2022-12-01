@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         currentHealth = maxHealth /*+ addedHealth*/;
 
     }
@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
                 healthBarBackdrop.fillAmount = healthBar.fillAmount;
             }
         }
+
+
     }
 
     private void PlayerTakeDmg(int dmg)

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 currentPos = new Vector2();
     public GameObject handCrosshair;
     public SpriteRenderer handCrosshairSprite;
+    public Rigidbody2D rBody2D;
 
     Animator anim;
 
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         playerController = gameObject.GetComponent<PlayerController>();
         handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        rBody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         LDirection.Normalize();
 
         transform.Translate(LDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+        //rBody2D.velocity = LDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime;
 
         if (RDirection != Vector2.zero)
         {
