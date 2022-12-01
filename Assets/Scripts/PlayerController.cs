@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
                 healthBarBackdrop.fillAmount = healthBar.fillAmount;
             }
         }
+
+
     }
 
     private void PlayerTakeDmg(int dmg)

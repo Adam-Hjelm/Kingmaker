@@ -38,7 +38,7 @@ public class DragNDroppableObject : MonoBehaviour
 
     private void Update()
     {
-        if (transform.parent != null)
+        if (transform.parent != null && transform.parent.GetComponent<DragDropScript>() == true)
         {
             dragDropScript = transform.parent.GetComponent<DragDropScript>();
         }

@@ -30,6 +30,7 @@ public class DragDropScript : MonoBehaviour
 
         if (Input.GetButtonDown($"Submit{playerNumber}") && currentState == State.Dragging)
         {
+            Debug.Log("pressed submit");
             DropObject();
         }
 

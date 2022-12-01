@@ -29,7 +29,7 @@ public class Knockback : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             player.velocity = Vector2.zero;
-            player.isKinematic = true;
+            //player.isKinematic = true;
         }
     }
 }
