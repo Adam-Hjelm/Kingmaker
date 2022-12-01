@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8449808430859360056}
   - component: {fileID: 8449808430859360057}
   - component: {fileID: 7245095852552449507}
+  - component: {fileID: 1831394775486813946}
   m_Layer: 0
   m_Name: UpgradeCard 1
   m_TagString: DraggablePlayer1
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
   playerCardDropZone: {fileID: 0}
+  dragDropScript: {fileID: 0}
   moveSpeed: 0
   maxHealth: 0
   bulletDamage: 0
@@ -165,5 +167,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f052a79484ec59d48bd20227d165499f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUpgradeScript: {fileID: 0}
   currentCardType: 0
+  damageCardAnimController: {fileID: 9100000, guid: 127af1176748aa847b97250258bbcbaa, type: 2}
+  healthCardAnimController: {fileID: 9100000, guid: 0b3ee0edc02555847914d0e8689c7362, type: 2}
+  fireRateCardAnimController: {fileID: 9100000, guid: 99121a5bf58d5904d96b469397390fc1, type: 2}
+  speedCardAnimController: {fileID: 9100000, guid: e365e00e6e491f441b4896472e558b67, type: 2}
+  anim: {fileID: 0}
+  moveSpeedModifier: 2
+  maxHealthModifier: 100
+  bulletDamageModifier: 25
+  fireRateModifier: 0.2
+--- !u!95 &1831394775486813946
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449808430859360068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
