@@ -27,30 +27,30 @@ public class EscMenu : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) && hidden == true && inplace == false)
-        {
-            var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
-            test.SetUpdate(true);
-            Time.timeScale = 0;
-            Debug.Log("You paused");
+        //if (Input.GetKeyDown(KeyCode.Escape) && hidden == true && inplace == false)
+        //{
+        //    var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
+        //    test.SetUpdate(true);
+        //    Time.timeScale = 0;
+        //    Debug.Log("You paused");
 
-            if (endPosY <= 0f)
-            {
-                inplace = true;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && hidden == false && inplace == true)
-        {
-            var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
-            test.SetUpdate(true);
-            Time.timeScale = 1;
-            Debug.Log("You unpaused");
+        //    if (endPosY <= 0f)
+        //    {
+        //        inplace = true;
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.Escape) && hidden == false && inplace == true)
+        //{
+        //    var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
+        //    test.SetUpdate(true);
+        //    Time.timeScale = 1;
+        //    Debug.Log("You unpaused");
 
-            if (startPosY >= 10f)
-            {
-                inplace = false;
-            }
-        }
+        //    if (startPosY >= 10f)
+        //    {
+        //        inplace = false;
+        //    }
+        //}
     }
 
     void Complete()

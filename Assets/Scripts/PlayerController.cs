@@ -6,7 +6,7 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerNumber = 1;
+    public int playerNumber = 0;
 
     [Header("Stats")]
     public float moveSpeed = 3.5f;
@@ -53,10 +53,6 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
         shake = Camera.main.GetComponent<CameraShake>();
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.AddPlayer(playerNumber, gameObject, this);
-        }
         healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
         healthBarBackdrop = GameObject.Find($"p{playerNumber}HealthbarBackdrop").GetComponent<Image>();
 
@@ -92,7 +88,7 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(flashRoutine);
             spriteRenderer.material = defaultMaterial;
             healthBarBackdrop.fillAmount = healthBar.fillAmount;
-            GameManager.Instance.KillPlayer(playerNumber);
+            GameManager.Instance.KillPlayer(gameObject);
             shake.start = true;
         }
     }

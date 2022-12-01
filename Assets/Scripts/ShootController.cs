@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShootController : MonoBehaviour
 {
@@ -29,16 +30,7 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        if (Input.GetButton($"Fir{playerController.playerNumber}") && timer <= playerController.fireRate && canShoot == true)
-        {
-            handAnim.SetTrigger("Casting");
-            //dostuff
-            GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
-            Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
-
-            timer = startTimer;
-        }
+        
 
         if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
         {
@@ -56,4 +48,17 @@ public class ShootController : MonoBehaviour
         // transform.up = (Vector3)MousePos - transform.position;
     }
 
+    void OnFire()
+    {
+        if (timer <= playerController.fireRate && canShoot == true)
+        {
+            handAnim.SetTrigger("Casting");
+            //dostuff
+            GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+            Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
+
+            timer = startTimer;
+        }
+    }
 }

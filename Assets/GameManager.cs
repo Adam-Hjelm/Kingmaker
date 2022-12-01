@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -25,22 +26,30 @@ public class GameManager : MonoBehaviour
     private static GameStates _gameState = GameStates.MainMenu;
     public static GameStates GameState { get => _gameState; }
 
+    public int currentRound = 0;
+    public int playersConnected = 0;
     public const int maxScoreToWin = 3; // placeholder value
     public const int maxNumberOfRounds = 7; // placeholder value
 
-    private GameObject currentUpgradeScreen;
+    [SerializeField] GameObject currentUpgradeScreen;
     public GameObject upgradeScreen;
     public GameObject gameScene;
     public GameObject lastPlayer;
 
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
-    int currentRound = 0;
     [SerializeField] CanvasHandler canvasHandler;
 
     [SerializeField] Transform player1SpawnPos;
     [SerializeField] Transform player2SpawnPos;
     [SerializeField] Transform player3SpawnPos;
     [SerializeField] Transform player4SpawnPos;
+
+    [SerializeField] GameObject player1Prefab;
+    [SerializeField] GameObject player2Prefab;
+    [SerializeField] GameObject player3Prefab;
+    [SerializeField] GameObject player4Prefab;
+
+    PlayerInputManager pim;
 
 
     void Awake()
@@ -55,6 +64,8 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        //var test = FindAllPrefabVariants(playerPrefab).ToList();
     }
 
     void Start()
@@ -63,55 +74,32 @@ public class GameManager : MonoBehaviour
         canvasHandler.RoundText = $"Round: {currentRound}";
 
         gameScene = GameObject.Find("GameScene");
-    }
 
-    public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
-    {
-        if (players.Count >= 4)
-            return;
-
-        if (!players.Any(p => p.ID == playerNumber))
-        {
-            players.Add(new PlayerInstance
-            {
-                ID = playerNumber,
-                name = GetPlayerName(playerNumber),
-                gameObject = playerObject,
-                controller = controller,
-                score = 0,
-                isAlive = true
-            });
-            canvasHandler.UpdateScore(playerNumber, 0);
-        }
-    }
-
-    public void RemovePlayer(int playerNumber)
-    {
-        PlayerInstance player = players.FirstOrDefault(p => p.ID == playerNumber);
-
-        if (player != null)
-            players.Remove(player);
+        pim = PlayerInputManager.instance;
+        if (player1Prefab != null)
+            pim.playerPrefab = player1Prefab;
     }
 
     private string GetPlayerName(int playerNumber)
     {
         switch (playerNumber)
         {
-            case 1:
+            case 0:
                 return "Red Player";
-            case 2:
+            case 1:
                 return "Blue Player";
-            case 3:
+            case 2:
                 return "Green Player";
-            case 4:
-            default:
+            case 3:
                 return "Purple Player";
+            default:
+                return "TOO MANY PLAYERS";
         }
     }
 
-    public void KillPlayer(int playerNumber)
+    public void KillPlayer(GameObject playerObject)
     {
-        var player = players.FirstOrDefault(p => p.ID == playerNumber);
+        var player = players.FirstOrDefault(p => p.gameObject == playerObject);
 
         if (player != null)
         {
@@ -212,31 +200,36 @@ public class GameManager : MonoBehaviour
 
         foreach (var player in players)
         {
-            switch (player.ID)
-            {
-                case 1:
-                    player.gameObject.transform.position = player1SpawnPos.position;
-                    PlayerEnabled(true, player.gameObject);
-                    break;
-                case 2:
-                    player.gameObject.transform.position = player2SpawnPos.position;
-                    PlayerEnabled(true, player.gameObject);
-                    break;
-                case 3:
-                    player.gameObject.transform.position = player3SpawnPos.position;
-                    PlayerEnabled(true, player.gameObject);
-                    break;
-                case 4:
-                default:
-                    player.gameObject.transform.position = player4SpawnPos.position;
-                    PlayerEnabled(true, player.gameObject);
-                    break;
-            }
+            RespawnPlayer(player);
 
             player.isAlive = true;
             player.gameObject.SetActive(true);
             player.controller.currentHealth = player.controller.maxHealth;
             canvasHandler.UpdateScore(player.ID, player.score);
+        }
+    }
+
+    private void RespawnPlayer(PlayerInstance player)
+    {
+        switch (player.ID)
+        {
+            case 0:
+                player.gameObject.transform.position = player1SpawnPos.position;
+                PlayerEnabled(true, player.gameObject);
+                break;
+            case 1:
+                player.gameObject.transform.position = player2SpawnPos.position;
+                PlayerEnabled(true, player.gameObject);
+                break;
+            case 2:
+                player.gameObject.transform.position = player3SpawnPos.position;
+                PlayerEnabled(true, player.gameObject);
+                break;
+            case 3:
+            default:
+                player.gameObject.transform.position = player4SpawnPos.position;
+                PlayerEnabled(true, player.gameObject);
+                break;
         }
     }
 
@@ -278,6 +271,88 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    void OnPlayerJoined(PlayerInput player)
+    {
+        Debug.Log("ON PLAYER JOIN METHOD TRIGGERED!");
+        Debug.Log(player.playerIndex);
+
+        //playersConnected++;
+        int playerNumber = player.playerIndex;
+
+        //while (players.Any(p => p.ID == playerNumber))
+        //{
+        //    playerNumber++;
+        //}
+        PlayerInstance newPlayer = new PlayerInstance
+        {
+            ID = playerNumber,
+            name = GetPlayerName(playerNumber),
+            gameObject = player.gameObject,
+            controller = player.GetComponent<PlayerController>(),
+            score = 0,
+            isAlive = true
+        };
+        players.Add(newPlayer);
+        RespawnPlayer(newPlayer);
+
+        canvasHandler.UpdateScore(playerNumber, 0);
+
+        switch (playerNumber)
+        {
+            case 0:
+                pim.playerPrefab = player2Prefab;
+                break;
+            case 1:
+                pim.playerPrefab = player3Prefab;
+                break;
+            case 2:
+                pim.playerPrefab = player4Prefab;
+                break;
+            case 3:
+            default:
+                pim.playerPrefab = player1Prefab;
+                PlayerInputManager.instance.DisableJoining();
+                break;
+        }
+    }
+
+    private void OnPlayerLeft(PlayerInput player)
+    {
+        Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
+
+        PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
+
+        if (player != null)
+            players.Remove(_player);
+    }
+
+    //public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
+    //{
+    //    if (players.Count >= 4)
+    //        return;
+
+    //    if (!players.Any(p => p.ID == playerNumber))
+    //    {
+    //        players.Add(new PlayerInstance
+    //        {
+    //            ID = playerNumber,
+    //            name = GetPlayerName(playerNumber),
+    //            gameObject = playerObject,
+    //            controller = controller,
+    //            score = 0,
+    //            isAlive = true
+    //        });
+    //        canvasHandler.UpdateScore(playerNumber, 0);
+    //    }
+    //}
+
+    //public void RemovePlayer(int playerNumber)
+    //{
+    //    PlayerInstance player = players.FirstOrDefault(p => p.ID == playerNumber);
+
+    //    if (player != null)
+    //        players.Remove(player);
+    //}
 
     private class PlayerInstance
     {
@@ -290,6 +365,21 @@ public class GameManager : MonoBehaviour
         public PlayerController controller;
         public int score;
         public bool isAlive;
+    }
+
+    IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)
+    {
+        return FindAllPrefabVariants(AssetDatabase.LoadAssetAtPath<GameObject>(parentAssetPath));
+    }
+
+    IEnumerable<GameObject> FindAllPrefabVariants(GameObject parent)
+    {
+        return AssetDatabase.FindAssets("t:prefab").
+            Select(AssetDatabase.GUIDToAssetPath).
+            Select(AssetDatabase.LoadAssetAtPath<GameObject>).
+            Where(go => go != null).
+            Where(go => PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.Variant).
+            Where(go => PrefabUtility.GetCorrespondingObjectFromSource(go) == parent);
     }
 }
 
