@@ -110,8 +110,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: Handv2_cast_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 37
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: Handv2_cast_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 74
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: Handv2_cast_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 111
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: Handv2_cast_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 148
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: Handv2_cast_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 185
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,6 +226,27 @@ TextureImporter:
       bones: []
       spriteID: de0e7746cfb7d2a4e9852c119a60d7c1
       internalID: -1185580790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Handv2_cast_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dbec15caa833934092483400258dcd3
+      internalID: -1973274918
       vertices: []
       indices: 
       edges: []
@@ -246,6 +267,7 @@ TextureImporter:
       Handv2_cast_spritesheet_0: 293524392
       Handv2_cast_spritesheet_5: -1185580790
       Handv2_cast_spritesheet_2: -1926543179
+      Handv2_cast_spritesheet_6: -1973274918
       Handv2_cast_spritesheet_3: -1796741703
   spritePackingTag: 
   pSDRemoveMatte: 0
