@@ -37,10 +37,10 @@ public class GameManager : MonoBehaviour
     int currentRound = 0;
     [SerializeField] CanvasHandler canvasHandler;
 
-    [SerializeField] Transform playerPos1;
-    [SerializeField] Transform playerPos2;
-    [SerializeField] Transform playerPos3;
-    [SerializeField] Transform playerPos4;
+    [SerializeField] Transform player1SpawnPos;
+    [SerializeField] Transform player2SpawnPos;
+    [SerializeField] Transform player3SpawnPos;
+    [SerializeField] Transform player4SpawnPos;
 
 
     void Awake()
@@ -215,20 +215,20 @@ public class GameManager : MonoBehaviour
             switch (player.ID)
             {
                 case 1:
-                    player.gameObject.transform.position = playerPos1.position;
+                    player.gameObject.transform.position = player1SpawnPos.position;
                     PlayerEnabled(true, player.gameObject);
                     break;
                 case 2:
-                    player.gameObject.transform.position = playerPos2.position;
+                    player.gameObject.transform.position = player2SpawnPos.position;
                     PlayerEnabled(true, player.gameObject);
                     break;
                 case 3:
-                    player.gameObject.transform.position = playerPos3.position;
+                    player.gameObject.transform.position = player3SpawnPos.position;
                     PlayerEnabled(true, player.gameObject);
                     break;
                 case 4:
                 default:
-                    player.gameObject.transform.position = playerPos4.position;
+                    player.gameObject.transform.position = player4SpawnPos.position;
                     PlayerEnabled(true, player.gameObject);
                     break;
             }
