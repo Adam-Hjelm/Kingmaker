@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragDropScript : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class DragDropScript : MonoBehaviour
     public GameObject draggedObject;
     //public Collider2D draggedCollider;
     public State currentState;
+
+    public PlayerInput pInput;
+    [SerializeField] Vector2 moveDirection;
+
 
     public enum State
     {
@@ -27,25 +33,32 @@ public class DragDropScript : MonoBehaviour
     void Update()
     {
         MoveDragNDropCursor();
+    }
 
-        if (Input.GetButtonDown($"Fir{playerNumber}") && currentState == State.Dragging)
+    public void OnFire()
+    {
+        if (currentState == State.Dragging)
         {
             Debug.Log("pressed submit");
             DropObject();
         }
 
-        if (Input.GetButtonDown($"Fir{playerNumber}") && colliding)
+        if (colliding)
         {
             DragObject();
         }
     }
 
+    public void OnMove(Vector2 direction)
+    {
+        moveDirection = direction;
+    }
+
     private void MoveDragNDropCursor()
     {
-        Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerNumber}"), Input.GetAxisRaw($"LVertical {playerNumber}"));
-        float inputMagnitude = Mathf.Clamp01(LDirection.magnitude);
-        LDirection.Normalize();
-        transform.Translate(LDirection * dragSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
+        float inputMagnitude = Mathf.Clamp01(moveDirection.magnitude);
+        //LDirection.Normalize();
+        transform.Translate(moveDirection.normalized * dragSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
     }
 
     private void DragObject()

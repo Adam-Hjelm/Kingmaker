@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     CameraShake shake;
+    public DragDropScript dragDropPlayer;
 
 
     void Awake()
@@ -136,5 +138,15 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
 
         flashRoutine = null;
+    }
+
+    public void OnMoveCursor(InputValue input)
+    {
+        dragDropPlayer.OnMove(input.Get<Vector2>());
+    }
+
+    public void OnFireCursor()
+    {
+        dragDropPlayer.OnFire();
     }
 }

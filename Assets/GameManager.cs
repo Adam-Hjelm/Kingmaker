@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private static GameStates _gameState = GameStates.MainMenu;
-    public static GameStates GameState { get => _gameState; }
+    //private static GameStates _gameState = GameStates.SelectionScreen;
+    public static GameStates GameState { get; private set; } = GameStates.SelectionScreen;
 
     public int currentRound = 0;
     public int playersConnected = 0;
@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
 
+    [SerializeField] DragDropScript playerDragDrop1;
+    [SerializeField] DragDropScript playerDragDrop2;
+    [SerializeField] DragDropScript playerDragDrop3;
+    [SerializeField] DragDropScript playerDragDrop4;
+
     PlayerInputManager pim;
 
 
@@ -70,6 +75,12 @@ public class GameManager : MonoBehaviour
         pim = PlayerInputManager.instance;
         if (player1Prefab != null)
             pim.playerPrefab = player1Prefab;
+    }
+
+    public PlayerInput GetPlayerInput(int ID)
+    {
+        var player = players.FirstOrDefault(p => p.ID == ID);
+        return player != null ? player.playerInput : null;
     }
 
     private string GetPlayerName(int playerNumber)
@@ -98,21 +109,21 @@ public class GameManager : MonoBehaviour
             player.isAlive = false;
             PlayerEnabled(false, player.gameObject);
             //player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            CheckWin(player);
+            CheckRoundOver(player);
         }
     }
 
-    private void PlayerEnabled(bool isDisabled, GameObject playerToEnable)
+    private void PlayerEnabled(bool enabled, GameObject playerObject)
     {
-        playerToEnable.GetComponent<SpriteRenderer>().enabled = isDisabled;
-        playerToEnable.GetComponent<Collider2D>().enabled = isDisabled;
-        playerToEnable.GetComponent<PlayerMovement>().enabled = isDisabled;
+        playerObject.GetComponent<SpriteRenderer>().enabled = enabled;
+        playerObject.GetComponent<Collider2D>().enabled = enabled;
+        //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
     }
 
     /// <summary>
     /// Checks if a player has won or if a new round should be started.
     /// </summary>
-    private void CheckWin(PlayerInstance lastKilledPlayer)
+    private void CheckRoundOver(PlayerInstance lastKilledPlayer)
     {
         var livingPlayers = players.Where(p => p.isAlive).ToList();
 
@@ -125,7 +136,7 @@ public class GameManager : MonoBehaviour
         else if (livingPlayers.Count() < 1)
             lastKilledPlayer.score++;
         else
-            return; // do this to avoid the win condition check below
+            return; // do this to avoid the win conditions check below
 
         var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
@@ -147,37 +158,30 @@ public class GameManager : MonoBehaviour
 
     private void StartUpgradeScreen()
     {
+        GameState = GameStates.UpgradeScreen;
         gameScene.SetActive(false);
 
         PlayerEnabled(false, lastPlayer);
-
-        GameObject upgradeScreenInstance = Instantiate(upgradeScreen, transform.position, Quaternion.identity);
-        upgradeScreenInstance = currentUpgradeScreen;
-    }
-
-    private void Update()
-    {
-        if (gameObject.activeSelf == false)
+        foreach (var player in players)
         {
-            gameObject.SetActive(true);
+            player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
         }
+
+        currentUpgradeScreen.SetActive(true);
     }
 
     public void FinishedUpgrade()
     {
-
-        //PlayerEnabled(true, lastPlayer);
         Debug.Log("UPGRADE DONE");
-        canvasHandler.StartNewRound();
+        
 
         foreach (var player in players)
         {
             player.controller.SetPlayerHealthToMax();
+            player.playerInput.SwitchCurrentActionMap("Player");
         }
-
+        currentUpgradeScreen.SetActive(false);
         ResetScene();
-
-
     }
 
     /// <summary>
@@ -185,9 +189,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetScene()
     {
-        gameScene.SetActive(true);
-
         Debug.Log("RESETTING SCENE");
+
+        gameScene.SetActive(true);
+        canvasHandler.StartNewRound();
         canvasHandler.RoundText = $"Round: {currentRound}";
 
         foreach (var player in players)
@@ -207,28 +212,85 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 player.gameObject.transform.position = player1SpawnPos.position;
-                PlayerEnabled(true, player.gameObject);
                 break;
             case 1:
                 player.gameObject.transform.position = player2SpawnPos.position;
-                PlayerEnabled(true, player.gameObject);
                 break;
             case 2:
                 player.gameObject.transform.position = player3SpawnPos.position;
-                PlayerEnabled(true, player.gameObject);
                 break;
             case 3:
             default:
                 player.gameObject.transform.position = player4SpawnPos.position;
-                PlayerEnabled(true, player.gameObject);
                 break;
         }
+
+        PlayerEnabled(true, player.gameObject);
     }
 
     private void HandleWin(PlayerInstance winningPlayer)
     {
         canvasHandler.StartWinScreen(winningPlayer.name);
         //TODO: change states
+    }
+
+    public void OnPlayerJoined(PlayerInput playerInput)
+    {
+        Debug.Log("ON PLAYER JOIN METHOD TRIGGERED! " + playerInput.playerIndex);
+
+        playersConnected++;
+        int playerNumber = playerInput.playerIndex;
+
+        PlayerInstance player = new PlayerInstance
+        {
+            ID = playerNumber,
+            name = GetPlayerName(playerNumber),
+            gameObject = playerInput.gameObject,
+            controller = playerInput.GetComponent<PlayerController>(),
+            playerInput = playerInput,
+            score = 0,
+            isAlive = true
+        };
+
+        players.Add(player);
+        RespawnPlayer(player);
+
+        canvasHandler.UpdateScore(playerNumber, 0);
+
+        switch (playerNumber)
+        {
+            case 0:
+                pim.playerPrefab = player2Prefab;
+                player.controller.dragDropPlayer = playerDragDrop1;
+                break;
+            case 1:
+                pim.playerPrefab = player3Prefab;
+                player.controller.dragDropPlayer = playerDragDrop2;
+                break;
+            case 2:
+                pim.playerPrefab = player4Prefab;
+                player.controller.dragDropPlayer = playerDragDrop3;
+                break;
+            case 3:
+            default:
+                pim.playerPrefab = player1Prefab;
+                player.controller.dragDropPlayer = playerDragDrop4;
+                PlayerInputManager.instance.DisableJoining();
+                break;
+        }
+    }
+
+    public void OnPlayerLeft(PlayerInput player)
+    {
+        Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
+
+        PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
+
+        if (player != null)
+        {
+            players.Remove(_player);
+            playersConnected--;
+        }
     }
 
     #region scene functions
@@ -265,124 +327,37 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    void OnPlayerJoined(PlayerInput player)
-    {
-        Debug.Log("ON PLAYER JOIN METHOD TRIGGERED!");
-        Debug.Log(player.playerIndex);
-
-        //playersConnected++;
-        int playerNumber = player.playerIndex;
-
-        //while (players.Any(p => p.ID == playerNumber))
-        //{
-        //    playerNumber++;
-        //}
-        PlayerInstance newPlayer = new PlayerInstance
-        {
-            ID = playerNumber,
-            name = GetPlayerName(playerNumber),
-            gameObject = player.gameObject,
-            controller = player.GetComponent<PlayerController>(),
-            score = 0,
-            isAlive = true
-        };
-        players.Add(newPlayer);
-        RespawnPlayer(newPlayer);
-
-        canvasHandler.UpdateScore(playerNumber, 0);
-
-        switch (playerNumber)
-        {
-            case 0:
-                pim.playerPrefab = player2Prefab;
-                break;
-            case 1:
-                pim.playerPrefab = player3Prefab;
-                break;
-            case 2:
-                pim.playerPrefab = player4Prefab;
-                break;
-            case 3:
-            default:
-                pim.playerPrefab = player1Prefab;
-                PlayerInputManager.instance.DisableJoining();
-                break;
-        }
-    }
-
-    private void OnPlayerLeft(PlayerInput player)
-    {
-        Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
-
-        PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
-
-        if (player != null)
-            players.Remove(_player);
-    }
-
-    //public void AddPlayer(int playerNumber, GameObject playerObject, PlayerController controller)
-    //{
-    //    if (players.Count >= 4)
-    //        return;
-
-    //    if (!players.Any(p => p.ID == playerNumber))
-    //    {
-    //        players.Add(new PlayerInstance
-    //        {
-    //            ID = playerNumber,
-    //            name = GetPlayerName(playerNumber),
-    //            gameObject = playerObject,
-    //            controller = controller,
-    //            score = 0,
-    //            isAlive = true
-    //        });
-    //        canvasHandler.UpdateScore(playerNumber, 0);
-    //    }
-    //}
-
-    //public void RemovePlayer(int playerNumber)
-    //{
-    //    PlayerInstance player = players.FirstOrDefault(p => p.ID == playerNumber);
-
-    //    if (player != null)
-    //        players.Remove(player);
-    //}
-
     private class PlayerInstance
     {
-        /// <summary>
-        /// Same as player number
-        /// </summary>
         public int ID;
         public string name;
         public GameObject gameObject;
         public PlayerController controller;
+        public PlayerInput playerInput;
         public int score;
         public bool isAlive;
     }
 
-    IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)
-    {
-        return FindAllPrefabVariants(AssetDatabase.LoadAssetAtPath<GameObject>(parentAssetPath));
-    }
+    //IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)
+    //{
+    //    return FindAllPrefabVariants(AssetDatabase.LoadAssetAtPath<GameObject>(parentAssetPath));
+    //}
 
-    IEnumerable<GameObject> FindAllPrefabVariants(GameObject parent)
-    {
-        return AssetDatabase.FindAssets("t:prefab").
-            Select(AssetDatabase.GUIDToAssetPath).
-            Select(AssetDatabase.LoadAssetAtPath<GameObject>).
-            Where(go => go != null).
-            Where(go => PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.Variant).
-            Where(go => PrefabUtility.GetCorrespondingObjectFromSource(go) == parent);
-    }
+    //IEnumerable<GameObject> FindAllPrefabVariants(GameObject parent)
+    //{
+    //    return AssetDatabase.FindAssets("t:prefab").
+    //        Select(AssetDatabase.GUIDToAssetPath).
+    //        Select(AssetDatabase.LoadAssetAtPath<GameObject>).
+    //        Where(go => go != null).
+    //        Where(go => PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.Variant).
+    //        Where(go => PrefabUtility.GetCorrespondingObjectFromSource(go) == parent);
+    //}
 }
 
 public enum GameStates
 {
-    MainMenu,
     SelectionScreen,
     Playing,
-    RoundWinScreen,
     UpgradeScreen,
     GameWinScreen
 }

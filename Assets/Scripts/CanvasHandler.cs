@@ -20,16 +20,16 @@ public class CanvasHandler : MonoBehaviour
     {
         switch (playerNumber)
         {
-            case 1:
+            case 0:
                 playerScore1.text = $"Score: {score}";
                 return;
-            case 2:
+            case 1:
                 playerScore2.text = $"Score: {score}";
                 return;
-            case 3:
+            case 2:
                 playerScore3.text = $"Score: {score}";
                 return;
-            case 4:
+            case 3:
                 playerScore4.text = $"Score: {score}";
                 return;
             default:

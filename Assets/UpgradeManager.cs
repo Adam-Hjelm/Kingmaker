@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,6 @@ public class UpgradeManager : MonoBehaviour
 {
     public PlayerCardDropZone[] playerCardDropZones;
     public int playersDone;
-    public GameManager gameManager;
-
-    private void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
 
     public void CheckIfPlayerDone()
     {
@@ -29,8 +24,13 @@ public class UpgradeManager : MonoBehaviour
         }
         else if (playersDone == 4)
         {
-            gameManager.Invoke("FinishedUpgrade", 3);
-            Destroy(gameObject, 3);
+            StartCoroutine(FinishedUpgrade());
         }
+    }
+
+    private IEnumerator FinishedUpgrade()
+    {
+        yield return new WaitForSeconds(3);
+        GameManager.Instance.FinishedUpgrade();
     }
 }
