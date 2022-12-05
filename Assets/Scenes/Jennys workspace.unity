@@ -552,6 +552,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 855535347598403303, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25984526
+      objectReference: {fileID: 0}
+    - target: {fileID: 855535347598403303, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+      propertyPath: m_Size.y
+      value: 0.52318764
+      objectReference: {fileID: 0}
+    - target: {fileID: 855535347598403303, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.051270247
+      objectReference: {fileID: 0}
+    - target: {fileID: 855535347598403303, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.20589828
+      objectReference: {fileID: 0}
     - target: {fileID: 2221159476696288594, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
       propertyPath: m_Controller
       value: 
@@ -676,6 +692,14 @@ PrefabInstance:
     - target: {fileID: 6329439064393183566, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727712309585742379, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.543843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727712309585742379, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15953365
       objectReference: {fileID: 0}
     - target: {fileID: 9093336628702257566, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
       propertyPath: m_Controller
@@ -1007,6 +1031,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d43df71508a7fba4897e0a26b27ea417, type: 2}
+    - target: {fileID: 9037595289102691089, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.54667777
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037595289102691089, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.16095105
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
 --- !u!1 &728588675
@@ -1835,6 +1867,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1883854399692246202, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883854399692246202, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2949001963458631704, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: Healthbar
       value: 
@@ -1890,6 +1930,14 @@ PrefabInstance:
     - target: {fileID: 6473239685426228386, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295100350697953223, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5279798
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295100350697953223, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.15160206
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
@@ -2257,11 +2305,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de0c7d25372d6745be4f09ba5e0c354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeScreen: {fileID: 0}
+  gameScene: {fileID: 0}
+  lastPlayer: {fileID: 0}
   canvasHandler: {fileID: 0}
-  playerPos1: {fileID: 1452659678}
-  playerPos2: {fileID: 508899851}
-  playerPos3: {fileID: 994424122}
-  playerPos4: {fileID: 1428316596}
+  player1SpawnPos: {fileID: 0}
+  player2SpawnPos: {fileID: 0}
+  player3SpawnPos: {fileID: 0}
+  player4SpawnPos: {fileID: 0}
 --- !u!4 &1921449892
 Transform:
   m_ObjectHideFlags: 0
