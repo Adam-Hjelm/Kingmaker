@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     CameraShake shake;
     public DragDropScript dragDropPlayer;
 
+    public AudioClip Explosion;
+    public AudioSource Source;
+
 
     void Awake()
     {
@@ -91,6 +94,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.material = defaultMaterial;
             healthBarBackdrop.fillAmount = healthBar.fillAmount;
             GameManager.Instance.KillPlayer(gameObject);
+            //ExplosionSound();
             shake.start = true;
         }
     }
@@ -148,5 +152,10 @@ public class PlayerController : MonoBehaviour
     public void OnFireCursor()
     {
         dragDropPlayer.OnFire();
+    }
+
+    private void ExplosionSound()
+    {
+        Source.PlayOneShot(Explosion);
     }
 }
