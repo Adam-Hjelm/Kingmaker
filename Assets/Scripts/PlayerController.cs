@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip Explosion;
     public AudioSource Source;
 
+    public GameObject DeathPrefab;
+    public Transform DeathAnimationPoint;
+
 
     void Awake()
     {
@@ -93,6 +96,8 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(flashRoutine);
             spriteRenderer.material = defaultMaterial;
             healthBarBackdrop.fillAmount = healthBar.fillAmount;
+            GameObject newDeath = Instantiate(DeathPrefab, DeathAnimationPoint.position, DeathAnimationPoint.rotation);
+            Destroy(newDeath, 1);
             GameManager.Instance.KillPlayer(gameObject);
             //ExplosionSound();
             shake.start = true;

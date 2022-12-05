@@ -8,6 +8,9 @@ public class BulletScript : MonoBehaviour
     public float bulletSpeed;
     public int bulletDamage = 25;
 
+    public GameObject explosionPrefab;
+    public Transform explosionPoint;
+
     //private string[] allPlayerTags = { "Player1", "Player2", "Player3", "Player4" };
 
 
@@ -24,9 +27,10 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Environment"))
+        if (other.CompareTag("Environment") || other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Player3") || other.CompareTag("Player4"))
         {
-            // Do fancy impact n particles stuff
+            GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+            Destroy(newExplosion, 0.8f);
             Destroy(gameObject);
         }
     }
