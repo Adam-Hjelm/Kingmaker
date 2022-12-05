@@ -151,13 +151,10 @@ MonoBehaviour:
   healthBarBackdrop: {fileID: 0}
   spriteRenderer: {fileID: 0}
   dragDropPlayer: {fileID: 0}
-<<<<<<< Updated upstream
   Explosion: {fileID: 8300000, guid: 83297c3f780004b47a7506cf2c9dcbee, type: 3}
   Source: {fileID: 8694816148440275922}
   DeathPrefab: {fileID: 2152205224053370364, guid: 423bd28745ed88847abe936b8381655d, type: 3}
   DeathAnimationPoint: {fileID: 1229098084452305636}
-=======
->>>>>>> Stashed changes
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,13 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 1
   knockTime: 0.2
-<<<<<<< Updated upstream
   OnHit: {fileID: 8300000, guid: ddec69b66b0bd8948865a784cad9be52, type: 3}
   Source: {fileID: 8694816148440275922}
-=======
-  Source: {fileID: 0}
-  Explosion: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!70 &2647724134982397618
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

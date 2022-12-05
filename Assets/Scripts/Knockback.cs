@@ -7,16 +7,11 @@ public class Knockback : MonoBehaviour
     public float thrust;
     public float knockTime;
 
-<<<<<<< Updated upstream
     //public GameObject explosionPrefab;
     //public Transform explosionPoint;
 
     public AudioClip OnHit;
     public AudioSource Source;
-=======
-    public AudioSource Source;
-    public AudioClip Explosion;
->>>>>>> Stashed changes
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,14 +26,10 @@ public class Knockback : MonoBehaviour
                 difference = difference.normalized * thrust;
                 player.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(KnockBack(player));
-<<<<<<< Updated upstream
 
                 //GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
                 //Destroy(newExplosion, 0.8f);
                 PlayOnHit();
-=======
-                ExplosionSound();
->>>>>>> Stashed changes
             }
         }
     }
@@ -52,14 +43,8 @@ public class Knockback : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
     private void PlayOnHit()
     {
         Source.PlayOneShot(OnHit);
-=======
-    private void ExplosionSound()
-    {
-        Source.PlayOneShot(Explosion);
->>>>>>> Stashed changes
     }
 }
