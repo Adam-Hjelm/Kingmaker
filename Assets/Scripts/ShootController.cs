@@ -18,6 +18,9 @@ public class ShootController : MonoBehaviour
     private float startTimer = 1f;
     public Animator handAnim;
 
+    public AudioSource Source;
+    public AudioClip Fireball;
+
 
     private void Start()
     {
@@ -58,7 +61,14 @@ public class ShootController : MonoBehaviour
             Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
+            FireBallSound();
+
             timer = startTimer;
         }
+    }
+
+    private void FireBallSound()
+    {
+        Source.PlayOneShot(Fireball);
     }
 }

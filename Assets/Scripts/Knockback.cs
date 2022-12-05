@@ -7,6 +7,9 @@ public class Knockback : MonoBehaviour
     public float thrust;
     public float knockTime;
 
+    public AudioClip OnHit;
+    public AudioSource Source;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("bullet"))
@@ -20,6 +23,7 @@ public class Knockback : MonoBehaviour
                 difference = difference.normalized * thrust;
                 player.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(KnockBack(player));
+                PlayOnHit();
             }
         }
     }
@@ -31,5 +35,10 @@ public class Knockback : MonoBehaviour
             player.velocity = Vector2.zero;
             //player.isKinematic = true;
         }
+    }
+
+    private void PlayOnHit()
+    {
+        Source.PlayOneShot(OnHit);
     }
 }
