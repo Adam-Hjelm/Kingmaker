@@ -15,6 +15,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject handCrosshair;
     public SpriteRenderer handCrosshairSprite;
     public Rigidbody2D rBody2D;
+    public SpriteRenderer PlayerRenderer;
+
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
 
     Animator anim;
 
@@ -26,10 +33,18 @@ public class PlayerMovement : MonoBehaviour
         handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rBody2D = gameObject.GetComponent<Rigidbody2D>();
+        PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        rBody2D.gravityScale = 0f;
     }
 
     void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         currentPos = transform.position;
 
         //Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"LVertical {playerController.playerNumber}"));
@@ -78,5 +93,26 @@ public class PlayerMovement : MonoBehaviour
     void OnLook(InputValue input)
     {
         lookDirection = input.Get<Vector2>();
+    }
+
+    void OnDash()
+    {
+        if(canDash == true)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
+        canDash = false;
+        isDashing = true;
+        rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y)* dashingPower;
+        yield return new WaitForSeconds(dashingTime);
+        rBody2D.velocity = new Vector2(0f, 0f);
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
