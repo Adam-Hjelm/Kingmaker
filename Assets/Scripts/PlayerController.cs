@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public Transform DeathAnimationPoint;
 
     public bool dashing;
+    public bool isBlocking;
 
 
     void Awake()
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("bullet") && !dashing)
+        if (other.gameObject.CompareTag("bullet") && !dashing || other.gameObject.CompareTag("bullet") && !isBlocking)
         {
             Flash();
             Destroy(other.gameObject);
