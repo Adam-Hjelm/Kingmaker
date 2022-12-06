@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTime;
     public float dashingCooldown;
 
+    public GameObject smokePrefab;
+    public Transform smokePoint;
+
     Animator anim;
 
     PlayerController playerController;
@@ -106,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash()
     {
-        if(canDash == true)
+        if (canDash == true)
         {
             StartCoroutine(Dash());
         }
@@ -115,17 +118,34 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Dash()
     {
         PlayerPhysicsBypass(true);
+
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
         canDash = false;
         isDashing = true;
         playerController.dashing = true;
-        rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y)* dashingPower;
+
+        if (moveDirection.x < 0)
+        {
+            GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            newSmoke.GetComponent<SpriteRenderer>().flipX = false;
+            Destroy(newSmoke, 0.3f);
+        }
+        if (moveDirection.x > 0)
+        {
+            GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            newSmoke.GetComponent<SpriteRenderer>().flipX = true;
+            Destroy(newSmoke, 0.3f);
+        }
+
+        rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y) * dashingPower;
         yield return new WaitForSeconds(dashingTime);
+
         rBody2D.velocity = new Vector2(0f, 0f);
         playerController.dashing = false;
         isDashing = false;
         PlayerPhysicsBypass(false);
         yield return new WaitForSeconds(dashingCooldown);
+
         canDash = true;
     }
 
@@ -133,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (var item in players)
         {
-            Physics2D.IgnoreCollision(item, GetComponent<Collider2D>(),ignore);
+            Physics2D.IgnoreCollision(item, GetComponent<Collider2D>(), ignore);
         }
     }
 }

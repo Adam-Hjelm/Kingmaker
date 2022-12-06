@@ -11,6 +11,9 @@ public class BulletScript : MonoBehaviour
     public GameObject explosionPrefab;
     public Transform explosionPoint;
 
+    public AudioSource Source;
+    public AudioClip explosion;
+
     //private string[] allPlayerTags = { "Player1", "Player2", "Player3", "Player4" };
 
 
@@ -18,6 +21,7 @@ public class BulletScript : MonoBehaviour
     {
         Destroy(gameObject, 2);
         gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+        Source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -42,9 +46,16 @@ public class BulletScript : MonoBehaviour
         if (other.CompareTag("Environment"))
         {
             GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+            Explosion();
             Destroy(newExplosion, 0.5f);
             Destroy(gameObject);
+
         }
 
+    }
+    private void Explosion()
+    {
+        Debug.Log("explodedddd");
+        Source.PlayOneShot(explosion);
     }
 }

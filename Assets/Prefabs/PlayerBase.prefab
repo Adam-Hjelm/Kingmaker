@@ -40,6 +40,7 @@ Transform:
   m_Children:
   - {fileID: 1019928324130379953}
   - {fileID: 1229098084452305636}
+  - {fileID: 5477547436412040974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,6 +156,7 @@ MonoBehaviour:
   Source: {fileID: 8694816148440275922}
   DeathPrefab: {fileID: 2152205224053370364, guid: 423bd28745ed88847abe936b8381655d, type: 3}
   DeathAnimationPoint: {fileID: 1229098084452305636}
+  dashing: 0
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +179,8 @@ MonoBehaviour:
   dashingPower: 10
   dashingTime: 0.2
   dashingCooldown: 1
-  tr: {fileID: 0}
+  smokePrefab: {fileID: 3741044013204637155, guid: 4922384c3571c4c478aa36c0d4a05205, type: 3}
+  smokePoint: {fileID: 5477547436412040974}
 --- !u!114 &2445163105356265177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +367,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2523251725728866110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5477547436412040974}
+  m_Layer: 0
+  m_Name: DashSmokePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5477547436412040974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523251725728866110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.204, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1753709221305505239}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2778926511010374773
 GameObject:
   m_ObjectHideFlags: 0

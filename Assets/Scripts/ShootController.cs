@@ -29,6 +29,7 @@ public class ShootController : MonoBehaviour
     {
         playerController = gameObject.GetComponent<PlayerController>();
         handAnim = Spawnpoint.GetComponent<Animator>();
+        Source = GetComponent<AudioSource>();
     }
 
     void Update()
