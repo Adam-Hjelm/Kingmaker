@@ -29,9 +29,15 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("Environment") || other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Player3") || other.CompareTag("Player4"))
         {
-            GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
-            Destroy(newExplosion, 0.5f);
-            Destroy(gameObject);
+            if (other.GetComponent<PlayerController>().dashing == false)
+            {
+
+                GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+                Destroy(newExplosion, 0.5f);
+                Destroy(gameObject);
+            }
+
         }
+
     }
 }

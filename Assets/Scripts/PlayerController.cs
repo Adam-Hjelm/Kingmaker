@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public GameObject DeathPrefab;
     public Transform DeathAnimationPoint;
 
+    public bool dashing;
+
 
     void Awake()
     {
@@ -120,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        if (other.gameObject.CompareTag("bullet") && !dashing)
         {
             Flash();
             Destroy(other.gameObject);

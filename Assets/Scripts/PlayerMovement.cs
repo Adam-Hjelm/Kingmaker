@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
 
     PlayerController playerController;
+    private Collider2D[] players;
 
     private void Start()
     {
@@ -34,6 +36,13 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rBody2D = gameObject.GetComponent<Rigidbody2D>();
         PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        var temp = FindObjectsOfType<PlayerMovement>();
+        players = new Collider2D[temp.Length];
+        for (int i = 0; i < temp.Length; i++)
+        {
+            players[i] = temp[i].GetComponent<Collider2D>();
+        }
 
         rBody2D.gravityScale = 0f;
     }
@@ -105,14 +114,26 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        PlayerPhysicsBypass(true);
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
         canDash = false;
         isDashing = true;
+        playerController.dashing = true;
         rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y)* dashingPower;
         yield return new WaitForSeconds(dashingTime);
         rBody2D.velocity = new Vector2(0f, 0f);
+        playerController.dashing = false;
         isDashing = false;
+        PlayerPhysicsBypass(false);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private void PlayerPhysicsBypass(bool ignore)
+    {
+        foreach (var item in players)
+        {
+            Physics2D.IgnoreCollision(item, GetComponent<Collider2D>(),ignore);
+        }
     }
 }
