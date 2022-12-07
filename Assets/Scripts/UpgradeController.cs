@@ -12,22 +12,22 @@ using UnityEngine.InputSystem.UI;
 public class UpgradeController : MonoBehaviour
 {
     public Transform[] cardSpawnPos;
+    public Button[] playerButtons;
     public List<Button> upgradeCardButtons = new List<Button>();
 
     //public Button[] upgradeCardButtons;
     public Button startUpgradeCard;
     public Button currentlySelectedCard;
-    public Button selectedUpgradeCard;
-    public Button[] playerButtons;
-    public Canvas upgradeCanvas;
+    public Button chosenUpgradeCard;
     public GameObject cardButtonPrefab;
+    public Canvas upgradeCanvas;
+    public TextMeshProUGUI playerChooseText;
+
+    private UpgradeCardScript upgradeCardScript;
+    private PlayerController playerStats;
 
     public int playerNumberToGiveStat;
     public bool inPlayerButtons = false;
-
-    public UpgradeCardScript upgradeCardScript;
-    public PlayerController playerStats;
-    public GameManager gameManager;
 
     public Vector3 cardOffset;
     public int playerToChooseCard = 2;
@@ -39,32 +39,21 @@ public class UpgradeController : MonoBehaviour
 
     public MultiplayerEventSystem eventSysInUse;
 
-    private void Start()
-    {
-        gameManager = GameManager.Instance;
-    }
-
     void Update()
     {
-
-
-
         if (eventSysInUse.currentSelectedGameObject == null)
         {
-            Debug.Log("nothing selected");
             currentlySelectedCard = null;
             return;
         }
         else if (eventSysInUse.currentSelectedGameObject.CompareTag("Card"))
         {
-            Debug.Log("getted card");
-
             currentlySelectedCard = eventSysInUse.currentSelectedGameObject.GetComponent<Button>();
         }
 
-        if (inPlayerButtons && selectedUpgradeCard != null)
+        if (inPlayerButtons && chosenUpgradeCard != null)
         {
-            selectedUpgradeCard.gameObject.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
+            chosenUpgradeCard.gameObject.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
         }
     }
 
@@ -98,7 +87,6 @@ public class UpgradeController : MonoBehaviour
         ////selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
         //upgradeCardButtons.Remove(selectedUpgradeCard);
 
-
         SpawnNewCards();
 
         inPlayerButtons = false;
@@ -108,7 +96,6 @@ public class UpgradeController : MonoBehaviour
     {
         string playerButtonName = EventSystem.current.currentSelectedGameObject.GetComponent<Button>().name;
 
-        Debug.Log(gameObject.name);
         if (playerButtonName.Contains("1"))
         {
             playerNumberToGiveStat = 1;
@@ -132,11 +119,14 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
-        Debug.Log("spawning next card..");
+        //Debug.Log("spawning next card..");
 
         for (int i = 0; i < upgradeCardButtons.Count; i++)
         {
-            Destroy(upgradeCardButtons[i].gameObject, 0.5f);
+            if (upgradeCardButtons[i] != null)
+            {
+                Destroy(upgradeCardButtons[i].gameObject);
+            }
         }
 
         for (int i = 0; i < cardSpawnPos.Length; i++)
@@ -156,6 +146,8 @@ public class UpgradeController : MonoBehaviour
     private void CheckForNextPlayer()
     {
         playerToChooseCard++;
+
+        playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
 
         if (playerToChooseCard == 1)
         {
@@ -182,7 +174,6 @@ public class UpgradeController : MonoBehaviour
             Invoke(nameof(FinishedUpgrade), 3);
         }
 
-        Debug.Log("checking for players!!!");
         playerEventSys1.SetSelectedGameObject(null);
         playerEventSys2.SetSelectedGameObject(null);
         playerEventSys3.SetSelectedGameObject(null);
@@ -201,12 +192,12 @@ public class UpgradeController : MonoBehaviour
         inPlayerButtons = true;
         upgradeCardButtons = upgradeCardButtons.Where(item => item != null).ToList();
 
-        if (selectedUpgradeCard != null)
+        if (chosenUpgradeCard != null)
         {
             // Here you can make the card do some cool animations before it goes away and has been given to the player
-            selectedUpgradeCard.gameObject.SetActive(false); 
+            chosenUpgradeCard.gameObject.SetActive(false);
         }
-        selectedUpgradeCard = currentlySelectedCard;
+        chosenUpgradeCard = currentlySelectedCard;
 
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
     }
