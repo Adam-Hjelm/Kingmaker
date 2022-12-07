@@ -287,7 +287,6 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerLeft(PlayerInput player)
     {
-        pim.JoinPlayer();
         Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
 
         PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
