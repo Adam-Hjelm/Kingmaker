@@ -141,11 +141,11 @@ public class UpgradeController : MonoBehaviour
 
         for (int i = 0; i < cardSpawnPos.Length; i++)
         {
-            GameObject newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity);
+            GameObject newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCanvas.transform);
 
             newButton.GetComponent<Button>().onClick.AddListener(MoveToPlayerButtons);
             startUpgradeCard = newButton.GetComponent<Button>();
-            newButton.transform.SetParent(upgradeCanvas.transform, true);
+            //newButton.transform.SetParent(upgradeCanvas.transform, true);
 
             upgradeCardButtons.Add(newButton.GetComponent<Button>());
         }
@@ -189,27 +189,6 @@ public class UpgradeController : MonoBehaviour
         playerEventSys4.SetSelectedGameObject(null);
 
         eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
-
-        //if (playerToChooseCard == 2)
-        //{
-        //    playerEventSys1.SetSelectedGameObject(null);
-
-        //    playerEventSys2.SetSelectedGameObject(startUpgradeCard.gameObject);
-        //}
-
-        //if (playerToChooseCard == 3)
-        //{
-        //    playerEventSys2.SetSelectedGameObject(null);
-
-        //    playerEventSys3.SetSelectedGameObject(startUpgradeCard.gameObject);
-        //}
-
-        //if (playerToChooseCard == 4)
-        //{
-        //    playerEventSys3.SetSelectedGameObject(null);
-
-        //    playerEventSys4.SetSelectedGameObject(startUpgradeCard.gameObject);
-        //}
     }
 
     void FinishedUpgrade()
