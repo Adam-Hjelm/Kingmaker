@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public const int maxScoreToWin = 3; // placeholder value
     public const int maxNumberOfRounds = 7; // placeholder value
 
-    [SerializeField, Tooltip("Must exist in scene")] UpgradeManager upgradeScreen;
+    [SerializeField, Tooltip("Must exist in scene")] GameObject upgradeScreen;
     [SerializeField] GameObject gameScene;
 
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
 
-    [SerializeField] DragDropScript playerDragDrop1;
-    [SerializeField] DragDropScript playerDragDrop2;
-    [SerializeField] DragDropScript playerDragDrop3;
-    [SerializeField] DragDropScript playerDragDrop4;
+    //[SerializeField] DragDropScript playerDragDrop1;
+    //[SerializeField] DragDropScript playerDragDrop2;
+    //[SerializeField] DragDropScript playerDragDrop3;
+    //[SerializeField] DragDropScript playerDragDrop4;
 
     GameObject lastPlayer;
     PlayerInputManager pim;

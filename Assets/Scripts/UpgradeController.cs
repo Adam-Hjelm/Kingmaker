@@ -30,7 +30,7 @@ public class UpgradeController : MonoBehaviour
     public bool inPlayerButtons = false;
 
     public Vector3 cardOffset;
-    public int playerToChooseCard = 2;
+    public int playerToChooseCard = 1;
 
     public MultiplayerEventSystem playerEventSys1;
     public MultiplayerEventSystem playerEventSys2;
@@ -39,7 +39,14 @@ public class UpgradeController : MonoBehaviour
 
     public MultiplayerEventSystem eventSysInUse;
 
-    void Update()
+
+	public void OnEnable()
+	{
+        eventSysInUse = playerEventSys1;
+        eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
+	}
+
+	void Update()
     {
         if (eventSysInUse.currentSelectedGameObject == null)
         {
@@ -145,36 +152,31 @@ public class UpgradeController : MonoBehaviour
 
     private void CheckForNextPlayer()
     {
-        playerToChooseCard++;
-
         playerChooseText.text = $"Player {playerToChooseCard},Choose a Card";
 
-        if (playerToChooseCard == 1)
-        {
-            eventSysInUse = playerEventSys1;
-        }
+		switch (playerToChooseCard)
+		{
+			case 1:
+				eventSysInUse = playerEventSys1;
+                playerToChooseCard = 2;
+                break;
+			case 2:
+				eventSysInUse = playerEventSys2;
+                playerToChooseCard = 3;
+                break;
+			case 3:
+				eventSysInUse = playerEventSys3;
+                playerToChooseCard = 4;
+                break;
+            default:
+			case 4:
+				eventSysInUse = playerEventSys4;
+                playerToChooseCard = 1;
+                Invoke(nameof(FinishedUpgrade), 3);
+				break;
+		}
 
-        else if (playerToChooseCard == 2)
-        {
-            eventSysInUse = playerEventSys2;
-        }
-
-        else if (playerToChooseCard == 3)
-        {
-            eventSysInUse = playerEventSys3;
-        }
-
-        else if (playerToChooseCard == 4)
-        {
-            eventSysInUse = playerEventSys4;
-        }
-
-        else if (playerToChooseCard > 4)
-        {
-            Invoke(nameof(FinishedUpgrade), 3);
-        }
-
-        playerEventSys1.SetSelectedGameObject(null);
+		playerEventSys1.SetSelectedGameObject(null);
         playerEventSys2.SetSelectedGameObject(null);
         playerEventSys3.SetSelectedGameObject(null);
         playerEventSys4.SetSelectedGameObject(null);

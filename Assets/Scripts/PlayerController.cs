@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     CameraShake shake;
-    public DragDropScript dragDropPlayer;
+    //public DragDropScript dragDropPlayer;
 
     public AudioClip Explosion;
     public AudioSource Source;
@@ -152,15 +152,15 @@ public class PlayerController : MonoBehaviour
         flashRoutine = null;
     }
 
-    public void OnMoveCursor(InputValue input)
-    {
-        dragDropPlayer.OnMove(input.Get<Vector2>());
-    }
+    //public void OnMoveCursor(InputValue input)
+    //{
+    //    dragDropPlayer.OnMove(input.Get<Vector2>());
+    //}
 
-    public void OnFireCursor()
-    {
-        dragDropPlayer.OnFire();
-    }
+    //public void OnFireCursor()
+    //{
+    //    dragDropPlayer.OnFire();
+    //}
 
     private void ExplosionSound()
     {
