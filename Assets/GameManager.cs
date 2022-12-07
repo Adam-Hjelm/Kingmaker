@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //private static GameStates _gameState = GameStates.SelectionScreen;
     public static GameStates GameState { get; private set; } = GameStates.SelectionScreen;
 
     public int currentRound = 0;
@@ -31,10 +30,8 @@ public class GameManager : MonoBehaviour
     public const int maxScoreToWin = 3; // placeholder value
     public const int maxNumberOfRounds = 7; // placeholder value
 
-    [SerializeField] GameObject currentUpgradeScreen;
-    public GameObject upgradeScreen;
-    public GameObject gameScene;
-    public GameObject lastPlayer;
+    [SerializeField, Tooltip("Must exist in scene")] UpgradeManager upgradeScreen;
+    [SerializeField] GameObject gameScene;
 
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
     [SerializeField] CanvasHandler canvasHandler;
@@ -54,6 +51,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DragDropScript playerDragDrop3;
     [SerializeField] DragDropScript playerDragDrop4;
 
+    GameObject lastPlayer;
     PlayerInputManager pim;
 
 
@@ -67,13 +65,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        canvasHandler = FindObjectOfType<CanvasHandler>();
-        canvasHandler.RoundText = $"Round: {currentRound}";
-
-        gameScene = GameObject.Find("GameScene");
-
         pim = PlayerInputManager.instance;
-        if (player1Prefab != null)
+
+        if (canvasHandler == null)
+            canvasHandler = FindObjectOfType<CanvasHandler>();
+        //canvasHandler.RoundText = $"Round: {currentRound}";
+
+        if (gameScene == null)
+            gameScene = GameObject.Find("GameScene");
+
+        if (player1Prefab != null && pim != null)
             pim.playerPrefab = player1Prefab;
     }
 
@@ -167,7 +168,7 @@ public class GameManager : MonoBehaviour
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
         }
 
-        currentUpgradeScreen.SetActive(true);
+        upgradeScreen.gameObject.SetActive(true);
     }
 
     public void FinishedUpgrade()
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
             player.controller.SetPlayerHealthToMax();
             player.playerInput.SwitchCurrentActionMap("Player");
         }
-        currentUpgradeScreen.SetActive(false);
+        upgradeScreen.gameObject.SetActive(false);
         ResetScene();
     }
 
@@ -255,33 +256,38 @@ public class GameManager : MonoBehaviour
         players.Add(player);
         RespawnPlayer(player);
 
-        canvasHandler.UpdateScore(playerNumber, 0);
+        //canvasHandler.UpdateScore(playerNumber, 0);
 
         switch (playerNumber)
         {
             case 0:
                 pim.playerPrefab = player2Prefab;
-                player.controller.dragDropPlayer = playerDragDrop1;
+                //player.controller.dragDropPlayer = playerDragDrop1;
                 break;
             case 1:
                 pim.playerPrefab = player3Prefab;
-                player.controller.dragDropPlayer = playerDragDrop2;
+                //player.controller.dragDropPlayer = playerDragDrop2;
                 break;
             case 2:
                 pim.playerPrefab = player4Prefab;
-                player.controller.dragDropPlayer = playerDragDrop3;
+                //player.controller.dragDropPlayer = playerDragDrop3;
                 break;
             case 3:
             default:
                 pim.playerPrefab = player1Prefab;
-                player.controller.dragDropPlayer = playerDragDrop4;
-                PlayerInputManager.instance.DisableJoining();
+                //player.controller.dragDropPlayer = playerDragDrop4;
                 break;
         }
+
+        //player.playerInput.SwitchCurrentActionMap("SelectionScreen");
+
+        if (players.Count >= pim.maxPlayerCount)
+            pim.DisableJoining();
     }
 
     public void OnPlayerLeft(PlayerInput player)
     {
+        pim.JoinPlayer();
         Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
 
         PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
@@ -290,6 +296,9 @@ public class GameManager : MonoBehaviour
         {
             players.Remove(_player);
             playersConnected--;
+
+            if (players.Count < pim.maxPlayerCount)
+                pim.EnableJoining();
         }
     }
 
