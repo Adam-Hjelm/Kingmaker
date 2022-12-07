@@ -277,6 +277,7 @@ MonoBehaviour:
   DeathPrefab: {fileID: 2152205224053370364, guid: 423bd28745ed88847abe936b8381655d, type: 3}
   DeathAnimationPoint: {fileID: 1229098084452305636}
   dashing: 0
+  isBlocking: 0
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2523251725728866110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.204, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

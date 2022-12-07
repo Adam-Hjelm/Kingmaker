@@ -147,7 +147,7 @@ public class UpgradeController : MonoBehaviour
     {
         playerToChooseCard++;
 
-        playerChooseText.text = $"Player {playerToChooseCard},Choose a Card";
+        playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
 
         if (playerToChooseCard == 1)
         {
