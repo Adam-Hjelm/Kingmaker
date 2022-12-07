@@ -21,11 +21,15 @@ public class ShootController : MonoBehaviour
     public AudioSource Source;
     public AudioClip Fireball;
 
+    //public GameObject SmokePrefab;
+    //public Transform SmokePoint;
+
 
     private void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
         handAnim = Spawnpoint.GetComponent<Animator>();
+        Source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -60,6 +64,9 @@ public class ShootController : MonoBehaviour
             GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
             Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
+
+            //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
+            //Destroy(newSmoke, 1);
 
             FireBallSound();
 

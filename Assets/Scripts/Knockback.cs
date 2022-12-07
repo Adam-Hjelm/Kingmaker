@@ -7,6 +7,9 @@ public class Knockback : MonoBehaviour
     public float thrust;
     public float knockTime;
 
+    //public GameObject explosionPrefab;
+    //public Transform explosionPoint;
+
     public AudioClip OnHit;
     public AudioSource Source;
 
@@ -23,6 +26,9 @@ public class Knockback : MonoBehaviour
                 difference = difference.normalized * thrust;
                 player.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(KnockBack(player));
+
+                //GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+                //Destroy(newExplosion, 0.8f);
                 PlayOnHit();
             }
         }

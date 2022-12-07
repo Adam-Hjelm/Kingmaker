@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -15,10 +16,21 @@ public class PlayerMovement : MonoBehaviour
     public GameObject handCrosshair;
     public SpriteRenderer handCrosshairSprite;
     public Rigidbody2D rBody2D;
+    public SpriteRenderer PlayerRenderer;
+
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
+
+    public GameObject smokePrefab;
+    public Transform smokePoint;
 
     Animator anim;
 
     PlayerController playerController;
+    private Collider2D[] players;
 
     private void Start()
     {
@@ -26,10 +38,25 @@ public class PlayerMovement : MonoBehaviour
         handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rBody2D = gameObject.GetComponent<Rigidbody2D>();
+        PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        var temp = FindObjectsOfType<PlayerMovement>();
+        players = new Collider2D[temp.Length];
+        for (int i = 0; i < temp.Length; i++)
+        {
+            players[i] = temp[i].GetComponent<Collider2D>();
+        }
+
+        rBody2D.gravityScale = 0f;
     }
 
     void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         currentPos = transform.position;
 
         //Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"LVertical {playerController.playerNumber}"));
@@ -78,5 +105,55 @@ public class PlayerMovement : MonoBehaviour
     void OnLook(InputValue input)
     {
         lookDirection = input.Get<Vector2>();
+    }
+
+    void OnDash()
+    {
+        if (canDash == true)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        PlayerPhysicsBypass(true);
+
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
+        canDash = false;
+        isDashing = true;
+        playerController.dashing = true;
+
+        if (moveDirection.x < 0)
+        {
+            GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            newSmoke.GetComponent<SpriteRenderer>().flipX = false;
+            Destroy(newSmoke, 0.3f);
+        }
+        if (moveDirection.x > 0)
+        {
+            GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            newSmoke.GetComponent<SpriteRenderer>().flipX = true;
+            Destroy(newSmoke, 0.3f);
+        }
+
+        rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y) * dashingPower;
+        yield return new WaitForSeconds(dashingTime);
+
+        rBody2D.velocity = new Vector2(0f, 0f);
+        playerController.dashing = false;
+        isDashing = false;
+        PlayerPhysicsBypass(false);
+        yield return new WaitForSeconds(dashingCooldown);
+
+        canDash = true;
+    }
+
+    private void PlayerPhysicsBypass(bool ignore)
+    {
+        foreach (var item in players)
+        {
+            Physics2D.IgnoreCollision(item, GetComponent<Collider2D>(), ignore);
+        }
     }
 }

@@ -33,6 +33,15 @@ public class PlayerController : MonoBehaviour
     CameraShake shake;
     public DragDropScript dragDropPlayer;
 
+    public AudioClip Explosion;
+    public AudioSource Source;
+
+    public GameObject DeathPrefab;
+    public Transform DeathAnimationPoint;
+
+    public bool dashing;
+    public bool isBlocking;
+
 
     void Awake()
     {
@@ -90,7 +99,10 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(flashRoutine);
             spriteRenderer.material = defaultMaterial;
             healthBarBackdrop.fillAmount = healthBar.fillAmount;
+            GameObject newDeath = Instantiate(DeathPrefab, DeathAnimationPoint.position, DeathAnimationPoint.rotation);
+            Destroy(newDeath, 1);
             GameManager.Instance.KillPlayer(gameObject);
+            //ExplosionSound();
             shake.start = true;
         }
     }
@@ -111,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        if (other.gameObject.CompareTag("bullet") && !dashing || other.gameObject.CompareTag("bullet") && !isBlocking)
         {
             Flash();
             Destroy(other.gameObject);
@@ -148,5 +160,10 @@ public class PlayerController : MonoBehaviour
     public void OnFireCursor()
     {
         dragDropPlayer.OnFire();
+    }
+
+    private void ExplosionSound()
+    {
+        Source.PlayOneShot(Explosion);
     }
 }
