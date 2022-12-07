@@ -43,7 +43,7 @@ public class BulletScript : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Environment"))
+        if (other.CompareTag("Environment") || other.CompareTag("Shield"))
         {
             GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
             Explosion();

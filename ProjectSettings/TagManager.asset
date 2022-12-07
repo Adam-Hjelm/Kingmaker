@@ -20,6 +20,7 @@ TagManager:
   - Environment
   - DraggablePlayer3
   - DraggablePlayer4
+  - Shield
   layers:
   - Default
   - TransparentFX
