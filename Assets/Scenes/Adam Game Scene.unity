@@ -1327,8 +1327,8 @@ Canvas:
   m_GameObject: {fileID: 472546622}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 201236128}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3324,10 +3324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRound: 0
   playersConnected: 0
-  currentUpgradeScreen: {fileID: 0}
   upgradeScreen: {fileID: 147223458266145439, guid: 4066a0046cd16d34fa83d4cf1909a692, type: 3}
   gameScene: {fileID: 1282154333}
-  lastPlayer: {fileID: 0}
   canvasHandler: {fileID: 1554350282}
   player1SpawnPos: {fileID: 1559286824}
   player2SpawnPos: {fileID: 843370632}
@@ -4749,6 +4747,7 @@ MonoBehaviour:
   inPlayerButtons: 0
   upgradeCardScript: {fileID: 0}
   playerStats: {fileID: 0}
+  gameManager: {fileID: 0}
   cardOffset: {x: 0, y: 50, z: 0}
   playerToChooseCard: 2
   playerEventSys1: {fileID: 2124354750}
