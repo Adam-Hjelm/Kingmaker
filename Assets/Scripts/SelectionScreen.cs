@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SelectionScreen : MonoBehaviour
 {
@@ -25,70 +27,9 @@ public class SelectionScreen : MonoBehaviour
 
     [SerializeField] internal InputActionProperty m_JoinAction;
     [SerializeField] internal InputActionProperty m_LeaveAction;
-    //public InputActionProperty JoinAction
-    //{
-    //    get => m_JoinAction;
-    //    set
-    //    {
-    //        if (m_JoinAction == value)
-    //            return;
-
-    //        if (m_AllowJoining)
-    //            DisableJoining();
-
-    //        m_JoinAction = value;
-
-    //        if (m_AllowJoining)
-    //            EnableJoining();
-    //    }
-    //}
-
-    //public void EnableJoining()
-    //{
-    //    if (m_JoinAction.action != null)
-    //    {
-    //        if (!m_JoinActionDelegateHooked)
-    //        {
-    //            if (m_JoinActionDelegate == null)
-    //                m_JoinActionDelegate = PlayerJoin;
-
-    //            m_JoinAction.action.performed += m_JoinActionDelegate;
-    //            m_JoinActionDelegateHooked = true;
-    //        }
-    //        m_JoinAction.action.Enable();
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("No join action configured on SelectionScreen. Set an action before proceeding!", this);
-    //    }
-    //}
-
-    //public void DisableJoining()
-    //{
-    //    if (m_JoinActionDelegateHooked)
-    //    {
-    //        if (m_JoinAction.action != null)
-    //            m_JoinAction.action.performed -= m_JoinActionDelegate;
-    //        m_JoinActionDelegateHooked = false;
-    //    }
-    //    m_JoinAction.action?.Disable();
-    //}
 
     private void OnEnable()
     {
-        // if the join action is a reference, clone it so we don't run into problems with the action being disabled by
-        // PlayerInput when devices are assigned to individual players
-        //if (m_JoinAction.reference != null && m_JoinAction.action?.actionMap?.asset != null)
-        //{
-        //    var inputActionAsset = Instantiate(m_JoinAction.action.actionMap.asset);
-        //    var inputActionReference = InputActionReference.Create(inputActionAsset.FindAction(m_JoinAction.action.name));
-        //    m_JoinAction = new InputActionProperty(inputActionReference);
-            
-        //    //DisableJoining();
-        //    //EnableJoining();
-
-        //}
-
         m_JoinActionDelegate = JoinPlayer;
         m_LeaveActionDelegate = RemovePlayer;
 
@@ -101,19 +42,15 @@ public class SelectionScreen : MonoBehaviour
         m_LeaveAction.action.performed += m_LeaveActionDelegate;
         m_LeaveActionDelegateHooked = true;
         m_LeaveAction.action.Enable();
+
+        SceneManager.sceneLoaded += GameSceneLoaded;
     }
 
     private void OnDisable()
     {
         RemoveActionDelegates();
-        //if (m_AllowJoining)
-        //    DisableJoining();
-        //if (m_JoinActionDelegateHooked)
-        //{
-        //    if (m_JoinAction.action != null)
-        //        m_JoinAction.action.performed -= m_JoinActionDelegate;
-        //}
-        //DisableJoining();
+
+        SceneManager.sceneLoaded -= GameSceneLoaded;
     }
 
     private void RemoveActionDelegates()
@@ -136,6 +73,8 @@ public class SelectionScreen : MonoBehaviour
     #endregion
 
 
+    public string gameScene = "GameScene";
+
     [SerializeField] int totalPlayers = 0;
     [SerializeField] int maxAllowedPlayers = 4;
     List<PlayerObject> players = new List<PlayerObject>();
@@ -143,7 +82,6 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] GameObject playerCardPrefab;
     [SerializeField] GameObject canvasObject;
 
-    //Vector3 pos = new Vector3(-280, 9, 0);
     [SerializeField] Transform spawnPos1;
     [SerializeField] Transform spawnPos2;
     [SerializeField] Transform spawnPos3;
@@ -155,10 +93,10 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] GameObject playerCard4;
 
 
-    //public void Start()
-    //{
-        
-    //}
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public void JoinPlayer(InputAction.CallbackContext context)
     {
@@ -205,8 +143,6 @@ public class SelectionScreen : MonoBehaviour
             return;
         }
 
-        //playerCard.transform.localPosition = pos;
-        //pos += Vector3.right * 210;
         playerCard.SetActive(true);
 
         TextMeshProUGUI playerName = playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>();
@@ -250,46 +186,36 @@ public class SelectionScreen : MonoBehaviour
             m_AllowJoining = true;
     }
 
-    //public void OnPlayerJoined(InputDevice device)
-    //{
-    //    var playerCard = Instantiate(playerCardPrefab, canvasObject.transform);
-    //    playerCard.transform.localPosition = pos;
-    //    pos += Vector3.right * 210;
-    //    playerCard.SetActive(true);
-    //    TextMeshProUGUI playerName = playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>();
-    //    TextMeshProUGUI playerInfo = playerCard.transform.Find("user info").GetComponent<TextMeshProUGUI>();
-    //    playerName.text = totalPlayers.ToString();
-    //    playerInfo.text = $"name: '{device.name}'\ndisplayName: '{device.displayName}'\ndeviceId: '{device.deviceId}'\nnative: '{device.native}'";
+    public void StartGame()
+    {
+        Debug.Log("pressed Start Game");
+        SceneManager.LoadScene(gameScene);
+    }
 
-    //    players.Add(new PlayerObject
-    //    {
-    //        device = device,
-    //        card = playerCard,
-    //        playerID = totalPlayers
-    //    });
+    public void GameSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
 
-    //    if (totalPlayers >= maxAllowedPlayers)
-    //        m_AllowJoining = false;
-    //}
+        if (scene.name == gameScene)
+            StartCoroutine(InstantiatePlayers());
+        
+    }
 
-    //public void OnPlayerLeft(InputAction.CallbackContext context)
-    //{
-    //    var device = context.control.device;
+    private IEnumerator InstantiatePlayers()
+    {
+        yield return null;
 
-    //    if (players.Any(p => p.device == device))
-    //        return;
+        var pim = PlayerInputManager.instance;
 
-    //    var player = players.FirstOrDefault(p => p.device == device);
-    //    if (player != null)
-    //    {
-    //        players.Remove(player);
-    //        Destroy(player.card);
-    //        totalPlayers--;
+        players.OrderBy(p => p.playerID);
+        foreach (var player in players)
+        {
+            pim.JoinPlayer(playerIndex: player.playerID, pairWithDevice: player.device);
+        }
 
-    //        if (totalPlayers < maxAllowedPlayers)
-    //            m_AllowJoining = true;
-    //    }
-    //}
+        Destroy(gameObject);
+    }
 
     private class PlayerObject
     {

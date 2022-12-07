@@ -1000,6 +1000,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3eb45f1d-3ba1-4054-b8d1-d50fc7184ee9",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "200a9229-4ecc-4476-8434-51ff65002ee6",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -1016,6 +1027,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Leave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc5e2ab6-0950-479d-8bda-389048fb6b00",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Leave",
                     "isComposite": false,
                     "isPartOfComposite": false

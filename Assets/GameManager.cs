@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
         };
 
         players.Add(player);
-        //RespawnPlayer(player);
+        RespawnPlayer(player);
 
         //canvasHandler.UpdateScore(playerNumber, 0);
 
@@ -279,7 +279,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        player.playerInput.SwitchCurrentActionMap("SelectionScreen");
+        //player.playerInput.SwitchCurrentActionMap("SelectionScreen");
 
         if (players.Count >= pim.maxPlayerCount)
             pim.DisableJoining();
