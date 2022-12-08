@@ -41,7 +41,7 @@ public class UpgradeController : MonoBehaviour
 
 
 	public void OnEnable()
-	{ // kanske måste göra en null check ifall vi någonsin ska ha det att funka med mindre än 4 spelare
+	{ // kanske mï¿½ste gï¿½ra en null check ifall vi nï¿½gonsin ska ha det att funka med mindre ï¿½n 4 spelare
 
 		
 		eventSysInUse = playerEventSys1;
@@ -151,6 +151,7 @@ public class UpgradeController : MonoBehaviour
 			upgradeCardButtons.Add(newButton.GetComponent<Button>());
 		}
 
+        playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
 		//startUpgradeCard = upgradeCardButtons[0].GetComponent<Button>();
 		CheckForNextPlayer();
 	}
@@ -197,7 +198,7 @@ public class UpgradeController : MonoBehaviour
 	public void MoveToPlayerButtons()
 	{
 		inPlayerButtons = true;
-		playerButtons[playerToChooseCard].onClick.RemoveAllListeners(); // Här kan vi graya ut knappen så att spelaren inte tror att den kan interagera med sig själv
+		playerButtons[playerToChooseCard].onClick.RemoveAllListeners(); // Hï¿½r kan vi graya ut knappen sï¿½ att spelaren inte tror att den kan interagera med sig sjï¿½lv
 
 		if (chosenUpgradeCard != null)
 		{

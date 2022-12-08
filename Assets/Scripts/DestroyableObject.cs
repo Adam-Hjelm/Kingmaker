@@ -5,10 +5,13 @@ using UnityEngine;
 public class DestroyableObject : MonoBehaviour
 {
     SpriteRenderer SR;
-    //public Sprite sprite1;
-    //public Sprite sprite2;
-    //public Sprite sprite3;
-    //public Sprite sprite4;
+    public Sprite sprite1;
+    public Sprite sprite2;
+    public Sprite sprite3;
+    public Sprite sprite4;
+    public GameObject DestroyEffectPrefab;
+    //public Transform explosionPoint;
+
 
     Collider2D Col;
 
@@ -20,7 +23,7 @@ public class DestroyableObject : MonoBehaviour
     {
         SR = GetComponent<SpriteRenderer>();
         Col = GetComponent<Collider2D>();
-        timesHit = 3;
+        //timesHit = 3;
         canHit = true;
     }
 
@@ -37,30 +40,33 @@ public class DestroyableObject : MonoBehaviour
     {
         if(other.CompareTag("bullet") && timesHit == 3 && canHit == true)
         {
-            SR.color = Color.blue;
-            //SR.sprite = sprite1;
+            //SR.color = Color.blue;
+            SR.sprite = sprite1;
             timesHit -= 1;
             StartCoroutine(Hit());
         }
         if (other.CompareTag("bullet") && timesHit == 2 && canHit == true)
         {
-            SR.color = Color.red;
-            //SR.sprite = sprite2;
+            //SR.color = Color.red;
+            SR.sprite = sprite2;
             timesHit -= 1;
             StartCoroutine(Hit());
         }
         if (other.CompareTag("bullet") && timesHit == 1 && canHit == true)
         {
-            SR.color = Color.green;
-            //SR.sprite = sprite3;
+            //SR.color = Color.green;
+            SR.sprite = sprite3;
             timesHit -= 1;
             StartCoroutine(Hit());
         }
         if (other.CompareTag("bullet") && timesHit == 0 && canHit == true)
         {
-            SR.color = Color.black;
-            //SR.sprite = sprite4;
+            //SR.color = Color.black;
+            SR.sprite = sprite4;
+            //DestroyEffect.SetActive(true);
             Col.enabled = !Col.enabled;
+            GameObject newExplosion = Instantiate(DestroyEffectPrefab, transform.position, transform.rotation);
+            Destroy(newExplosion, 0.5f);
         }
     }
 

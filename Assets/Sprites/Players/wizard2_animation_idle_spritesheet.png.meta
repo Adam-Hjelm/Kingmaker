@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d0fdf802d36d6d4fb7facfc3ac530ec
+guid: 4de4dfc70dcf69c46b9b93939d5d763b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Breakable_tiles_vertikalt_spritesheet_top_0
+      name: wizard2_animation_idle_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 18
-        height: 18
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b545557e4c127b4db94cb41ddebafcb
-      internalID: 1427594344
+      spriteID: fc9c0c2a4a397ff4996186c4a99c40ee
+      internalID: 939884896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breakable_tiles_vertikalt_spritesheet_top_1
+      name: wizard2_animation_idle_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 18
+        x: 32
         y: 0
-        width: 18
-        height: 18
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f75bf41d33a151945b588f2391a48b3a
-      internalID: -1326309272
+      spriteID: 9996351cd2947364c8d3786750d51562
+      internalID: -15596047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breakable_tiles_vertikalt_spritesheet_top_2
+      name: wizard2_animation_idle_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 36
+        x: 64
         y: 0
-        width: 18
-        height: 18
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee73f1f0baf01a44db8383e528b09a3c
-      internalID: -172836394
+      spriteID: 1f01b2f6ec1a1084cac3a70d70f4a72c
+      internalID: -963315656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breakable_tiles_vertikalt_spritesheet_top_3
+      name: wizard2_animation_idle_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 54
+        x: 96
         y: 0
-        width: 18
-        height: 18
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +182,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdf30f164681acb46bf4b5a971d05b76
-      internalID: -1900722846
+      spriteID: a85239dbb3bf2ee48a938545c3f55680
+      internalID: -621823531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wizard2_animation_idle_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fc5f6e2caf0fb44b16dd9359672200
+      internalID: -931419569
       vertices: []
       indices: 
       edges: []
@@ -199,10 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Breakable_tiles_vertikalt_spritesheet_top_1: -1326309272
-      Breakable_tiles_vertikalt_spritesheet_top_3: -1900722846
-      Breakable_tiles_vertikalt_spritesheet_top_0: 1427594344
-      Breakable_tiles_vertikalt_spritesheet_top_2: -172836394
+      wizard2_animation_idle_spritesheet_4: -931419569
+      wizard2_animation_idle_spritesheet_2: -963315656
+      wizard2_animation_idle_spritesheet_3: -621823531
+      wizard2_animation_idle_spritesheet_1: -15596047
+      wizard2_animation_idle_spritesheet_0: 939884896
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

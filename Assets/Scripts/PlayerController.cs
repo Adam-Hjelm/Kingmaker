@@ -53,10 +53,9 @@ public class PlayerController : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		//DontDestroyOnLoad(gameObject);
-		currentHealth = maxHealth /*+ addedHealth*/;
-
-	}
+        //DontDestroyOnLoad(gameObject);
+        currentHealth = maxHealth /*+ addedHealth*/;
+    }
 
 	void Start()
 	{
@@ -123,15 +122,18 @@ public class PlayerController : MonoBehaviour
 		healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.CompareTag("bullet") && !dashing || other.gameObject.CompareTag("bullet") && !isBlocking)
-		{
-			Flash();
-			Destroy(other.gameObject);
-			PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
-		}
-	}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isBlocking)
+        {
+            if (other.gameObject.CompareTag("bullet") && !dashing)
+            {
+                Flash();
+                Destroy(other.gameObject);
+                PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
+            }
+        }
+    }
 
 	public void Flash()
 	{
