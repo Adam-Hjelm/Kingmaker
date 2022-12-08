@@ -68,7 +68,7 @@ public class ShootController : MonoBehaviour
                 newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
                 //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
-                //Destroy(newSmoke, 1);
+                //Destroy(newSmoke, 0.2f);
 
                 FireBallSound();
 

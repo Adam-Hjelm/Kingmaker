@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer handCrosshairSprite;
     public Rigidbody2D rBody2D;
     public SpriteRenderer PlayerRenderer;
-    public Block blockScript;
 
     private bool canDash = true;
     private bool isDashing;
@@ -40,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rBody2D = gameObject.GetComponent<Rigidbody2D>();
         PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
-        blockScript = GetComponent<Block>();
 
         var temp = FindObjectsOfType<PlayerMovement>();
         players = new Collider2D[temp.Length];
