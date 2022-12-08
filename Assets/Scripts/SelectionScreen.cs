@@ -93,12 +93,22 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] GameObject playerCard4;
 
 
-    public void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-    public void JoinPlayer(InputAction.CallbackContext context)
+	private void Update()
+	{
+        if ((Gamepad.current != null && Gamepad.current.startButton.isPressed))
+            //(Joystick.current != null && Joystick.current.))
+        {
+            Debug.Log("start was pressed");
+            SceneManager.LoadScene(gameScene);
+		}
+	}
+
+	public void JoinPlayer(InputAction.CallbackContext context)
     {
         Debug.Log("JoinPlayer method called");
 
