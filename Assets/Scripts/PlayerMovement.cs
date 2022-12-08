@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
 
     PlayerController playerController;
-    private Collider2D[] players;
+    private List<Collider2D> playerColliders;
+    private List<Collider2D> myColliders;
 
     private void Start()
     {
@@ -40,14 +41,24 @@ public class PlayerMovement : MonoBehaviour
         rBody2D = gameObject.GetComponent<Rigidbody2D>();
         PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        var temp = FindObjectsOfType<PlayerMovement>();
-        players = new Collider2D[temp.Length];
-        for (int i = 0; i < temp.Length; i++)
-        {
-            players[i] = temp[i].GetComponent<Collider2D>();
-        }
+        myColliders = new List<Collider2D>();
+        myColliders.AddRange(GetComponentsInChildren<Collider2D>());
+
+        FindOtherPlayersCollidersForDashAbility();
 
         rBody2D.gravityScale = 0f;
+    }
+
+    private void FindOtherPlayersCollidersForDashAbility()
+    {
+        var playerCharacters = FindObjectsOfType<PlayerMovement>();
+        playerColliders = new List<Collider2D>();
+
+        foreach (var player in playerCharacters)
+        {
+            playerColliders.AddRange(player.GetComponentsInChildren<Collider2D>());
+        }
+
     }
 
     void FixedUpdate()
@@ -166,9 +177,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerPhysicsBypass(bool ignore)
     {
-        foreach (var item in players)
+        foreach (var item in playerColliders)
         {
-            Physics2D.IgnoreCollision(item, GetComponent<Collider2D>(), ignore);
+            foreach (var collider in myColliders)
+            {
+                Physics2D.IgnoreCollision(item, collider, ignore);
+            }
         }
     }
 }
