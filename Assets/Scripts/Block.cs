@@ -50,7 +50,7 @@ public class Block : MonoBehaviour
         rend.enabled = true;
         playerController.isBlocking = true;
         anim.SetBool("isBlocking", true);
-        playerController.moveSpeed = 2f;
+        playerController.moveSpeed = 1f;
         yield return new WaitForSeconds(blockTimeup);
 
         col.enabled = false;
