@@ -158,7 +158,7 @@ Transform:
   - {fileID: 197299797}
   - {fileID: 1925068601}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &60953489
 GameObject:
@@ -975,7 +975,6 @@ GameObject:
   - component: {fileID: 731944132}
   - component: {fileID: 731944131}
   - component: {fileID: 731944130}
-  - component: {fileID: 731944129}
   m_Layer: 0
   m_Name: MultiplayerEventSystemP2
   m_TagString: Untagged
@@ -983,36 +982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &731944129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731944128}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8244aa8babc4b1b4a973791b4907404e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 731944130}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &731944130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2110,10 +2079,10 @@ MonoBehaviour:
   inPlayerButtons: 0
   cardOffset: {x: 0, y: 2, z: 0}
   playerToChooseCard: 1
-  playerEventSys1: {fileID: 2069560423}
-  playerEventSys2: {fileID: 731944131}
-  playerEventSys3: {fileID: 1588569863}
-  playerEventSys4: {fileID: 2098373352}
+  playerEventSys1: {fileID: 0}
+  playerEventSys2: {fileID: 0}
+  playerEventSys3: {fileID: 0}
+  playerEventSys4: {fileID: 0}
   eventSysInUse: {fileID: 731944131}
 --- !u!4 &1307057024
 Transform:
@@ -2122,9 +2091,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307057022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2008998675}
@@ -2664,7 +2633,6 @@ GameObject:
   - component: {fileID: 1588569864}
   - component: {fileID: 1588569863}
   - component: {fileID: 1588569862}
-  - component: {fileID: 1588569861}
   m_Layer: 0
   m_Name: MultiplayerEventSystemP3
   m_TagString: Untagged
@@ -2672,36 +2640,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1588569861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588569860}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8244aa8babc4b1b4a973791b4907404e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 1588569862}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1588569862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2711,10 @@ PrefabInstance:
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -2970,6 +2912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 1
@@ -3094,6 +3040,10 @@ PrefabInstance:
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -3231,7 +3181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2008998675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3263,7 +3213,7 @@ RectTransform:
   - {fileID: 1355126497}
   - {fileID: 1307057024}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3342,7 +3292,6 @@ GameObject:
   - component: {fileID: 2069560426}
   - component: {fileID: 2069560423}
   - component: {fileID: 2069560425}
-  - component: {fileID: 2069560424}
   m_Layer: 0
   m_Name: MultiplayerEventSystemP1
   m_TagString: Untagged
@@ -3366,36 +3315,6 @@ MonoBehaviour:
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
   m_PlayerRoot: {fileID: 2008998674}
---- !u!114 &2069560424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069560422}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8244aa8babc4b1b4a973791b4907404e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 2069560425}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &2069560425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3452,7 +3371,6 @@ GameObject:
   - component: {fileID: 2098373353}
   - component: {fileID: 2098373352}
   - component: {fileID: 2098373351}
-  - component: {fileID: 2098373350}
   m_Layer: 0
   m_Name: MultiplayerEventSystemP4
   m_TagString: Untagged
@@ -3460,36 +3378,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2098373350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098373349}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 8244aa8babc4b1b4a973791b4907404e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 2098373351}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &2098373351
 MonoBehaviour:
   m_ObjectHideFlags: 0

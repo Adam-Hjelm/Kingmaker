@@ -724,6 +724,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2abb62e1-737f-4a33-9407-805beead116a",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
                     "path": "*/{Cancel}",
                     "interactions": "",
