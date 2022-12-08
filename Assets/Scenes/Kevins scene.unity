@@ -652,6 +652,38 @@ PrefabInstance:
       propertyPath: cardOffset.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: startColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: startColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: startColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: startColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: grayedOutColor.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: grayedOutColor.b
+      value: 0.4056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: grayedOutColor.g
+      value: 0.4056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: grayedOutColor.r
+      value: 0.4056604
+      objectReference: {fileID: 0}
     - target: {fileID: 8636872362115587182, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_text
       value: Player 1, Give a card

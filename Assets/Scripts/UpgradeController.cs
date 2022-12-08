@@ -32,6 +32,9 @@ public class UpgradeController : MonoBehaviour
     public Vector3 cardOffset;
     public int playerToChooseCard = 1;
 
+    public Color startColor;
+    public Color grayedOutColor;
+
     public MultiplayerEventSystem playerEventSys1;
     public MultiplayerEventSystem playerEventSys2;
     public MultiplayerEventSystem playerEventSys3;
@@ -209,13 +212,15 @@ public class UpgradeController : MonoBehaviour
         GameManager.Instance.FinishedUpgrade();
     }
 
-    public void MoveToPlayerButtons()
+    public void MoveToPlayerButtons() // TODO: GE EN NONO SOUND EFFECT NÄR SPELAREN FÖRSÖKER VÄLJA SIG SJÄLV ATT GE KORT
     {
         for (int i = 0; i < playerButtons.Length; i++)
         {
             playerButtons[i].onClick.AddListener(UpgradePlayerStat);
+            playerButtons[i].GetComponent<Image>().color = Color.white;
         }
         playerButtons[playerToChooseCard - 1].onClick.RemoveListener(UpgradePlayerStat); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
+        playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
 
         inPlayerButtons = true;
 
