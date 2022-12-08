@@ -37,7 +37,7 @@ public class Block : MonoBehaviour
     }
     void OnBlock()
     {
-        if(canBlock == true)
+        if(canBlock == true && playerController.dashing == false)
         {
             StartCoroutine(blocking());
         }
