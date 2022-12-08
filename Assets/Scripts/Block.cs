@@ -42,15 +42,15 @@ public class Block : MonoBehaviour
 
     private IEnumerator blocking()
     {
-        playerController.isBlocking = true;
         canBlock = false;
         col.enabled = true;
         rend.enabled = true;
+        playerController.isBlocking = true;
         yield return new WaitForSeconds(blockTimeup);
 
-        playerController.isBlocking = false;
         col.enabled = false;
         rend.enabled = false;
+        playerController.isBlocking = false;
         yield return new WaitForSeconds(blockCooldown);
 
         canBlock = true;

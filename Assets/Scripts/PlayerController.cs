@@ -123,11 +123,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("bullet") && !dashing || other.gameObject.CompareTag("bullet") && !isBlocking)
+        if (!isBlocking)
         {
-            Flash();
-            Destroy(other.gameObject);
-            PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
+            if (other.gameObject.CompareTag("bullet") && !dashing)
+            {
+                Flash();
+                Destroy(other.gameObject);
+                PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
+            }
         }
     }
 
