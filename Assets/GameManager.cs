@@ -88,13 +88,13 @@ public class GameManager : MonoBehaviour
     {
         switch (playerNumber)
         {
-            case 0:
-                return "Red Player";
             case 1:
-                return "Blue Player";
+                return "Red Player";
             case 2:
-                return "Green Player";
+                return "Blue Player";
             case 3:
+                return "Green Player";
+            case 4:
                 return "Purple Player";
             default:
                 return "TOO MANY PLAYERS";
@@ -211,16 +211,16 @@ public class GameManager : MonoBehaviour
     {
         switch (player.ID)
         {
-            case 0:
+            case 1:
                 player.gameObject.transform.position = player1SpawnPos.position;
                 break;
-            case 1:
+            case 2:
                 player.gameObject.transform.position = player2SpawnPos.position;
                 break;
-            case 2:
+            case 3:
                 player.gameObject.transform.position = player3SpawnPos.position;
                 break;
-            case 3:
+            case 4:
             default:
                 player.gameObject.transform.position = player4SpawnPos.position;
                 break;
@@ -260,19 +260,19 @@ public class GameManager : MonoBehaviour
 
         switch (playerNumber)
         {
-            case 0:
+            case 1:
                 pim.playerPrefab = player2Prefab;
                 //player.controller.dragDropPlayer = playerDragDrop1;
                 break;
-            case 1:
+            case 2:
                 pim.playerPrefab = player3Prefab;
                 //player.controller.dragDropPlayer = playerDragDrop2;
                 break;
-            case 2:
+            case 3:
                 pim.playerPrefab = player4Prefab;
                 //player.controller.dragDropPlayer = playerDragDrop3;
                 break;
-            case 3:
+            case 4:
             default:
                 pim.playerPrefab = player1Prefab;
                 //player.controller.dragDropPlayer = playerDragDrop4;
