@@ -11,7 +11,11 @@ public class CanvasHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerScore4;
 
     [SerializeField] GameObject scoreScreen;
-    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject p1WinScreen;
+    [SerializeField] GameObject p2WinScreen;
+    [SerializeField] GameObject p3WinScreen;
+    [SerializeField] GameObject p4WinScreen;
+    [SerializeField] GameObject currentWinScreen;
     [SerializeField] TextMeshProUGUI winGameText;
     [SerializeField] TextMeshProUGUI winRoundText;
 
@@ -39,7 +43,24 @@ public class CanvasHandler : MonoBehaviour
 
     public void StartWinScreen(string playerName)
     {
-        winScreen.SetActive(true);
+        if (playerName.Contains("Player 1"))
+        {
+            currentWinScreen = p1WinScreen;
+        }
+        if (playerName.Contains("Player 2"))
+        {
+            currentWinScreen = p2WinScreen;
+        }
+        if (playerName.Contains("Player 3"))
+        {
+            currentWinScreen = p3WinScreen;
+        }
+        if (playerName.Contains("Player 4"))
+        {
+            currentWinScreen = p4WinScreen;
+        }
+
+        currentWinScreen.SetActive(true);
         winGameText.text = $"{playerName} wins the game!";
     }
 
@@ -51,13 +72,13 @@ public class CanvasHandler : MonoBehaviour
 
     public void StartNewRound()
     {
-        winScreen.SetActive(false);
+        currentWinScreen.SetActive(false);
         winRoundText.gameObject.SetActive(false);
     }
 
     public void StartNewGame()
     {
-        winScreen.SetActive(false);
+        currentWinScreen.SetActive(false);
         scoreScreen.SetActive(true);
         for (int i = 1; i <= 4; i++)
         {

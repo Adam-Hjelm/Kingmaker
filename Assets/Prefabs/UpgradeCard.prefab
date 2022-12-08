@@ -163,7 +163,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5976875056413958740}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeController, Assembly-CSharp
-        m_MethodName: ChangeToPlayerButtons
+        m_MethodName: MoveToPlayerButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCardType: 0
-  damageCardAnimController: {fileID: 9100000, guid: 127af1176748aa847b97250258bbcbaa, type: 2}
-  healthCardAnimController: {fileID: 9100000, guid: 0b3ee0edc02555847914d0e8689c7362, type: 2}
-  fireRateCardAnimController: {fileID: 9100000, guid: 99121a5bf58d5904d96b469397390fc1, type: 2}
-  speedCardAnimController: {fileID: 9100000, guid: e365e00e6e491f441b4896472e558b67, type: 2}
+  damageCardAnimController: {fileID: 9100000, guid: 1c57d1b692bf1cf4fa231fb98ddc8876, type: 2}
+  healthCardAnimController: {fileID: 9100000, guid: 3a27aaf61b75d8348ad8fb1b7919f0fe, type: 2}
+  fireRateCardAnimController: {fileID: 9100000, guid: e7ee80c7e744ebf4bb39ff663147e197, type: 2}
+  speedCardAnimController: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
   anim: {fileID: 5976875056413958747}
   moveSpeedModifier: 2
   maxHealthModifier: 100
@@ -303,7 +303,7 @@ Animator:
   m_GameObject: {fileID: 5976875056413958740}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
