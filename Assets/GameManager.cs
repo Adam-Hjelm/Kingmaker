@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -53,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     GameObject lastPlayer;
     PlayerInputManager pim;
+
+    [SerializeField] UpgradeController upgradeController;
 
 
     void Awake()
@@ -257,25 +260,26 @@ public class GameManager : MonoBehaviour
         RespawnPlayer(player);
 
         //canvasHandler.UpdateScore(playerNumber, 0);
+        var multiplayerEventSystem = player.gameObject.GetComponentInChildren<MultiplayerEventSystem>();
 
         switch (playerNumber)
         {
             case 1:
                 pim.playerPrefab = player2Prefab;
-                //player.controller.dragDropPlayer = playerDragDrop1;
+                upgradeController.playerEventSys1 = multiplayerEventSystem;
                 break;
             case 2:
                 pim.playerPrefab = player3Prefab;
-                //player.controller.dragDropPlayer = playerDragDrop2;
+                upgradeController.playerEventSys2 = multiplayerEventSystem;
                 break;
             case 3:
                 pim.playerPrefab = player4Prefab;
-                //player.controller.dragDropPlayer = playerDragDrop3;
+                upgradeController.playerEventSys3 = multiplayerEventSystem;
                 break;
             case 4:
             default:
                 pim.playerPrefab = player1Prefab;
-                //player.controller.dragDropPlayer = playerDragDrop4;
+                upgradeController.playerEventSys4 = multiplayerEventSystem;
                 break;
         }
 

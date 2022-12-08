@@ -43,9 +43,13 @@ public class UpgradeController : MonoBehaviour
 	public void OnEnable()
 	{ // kanske m�ste g�ra en null check ifall vi n�gonsin ska ha det att funka med mindre �n 4 spelare
 
-		
 		eventSysInUse = playerEventSys1;
 		eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
+
+	}
+
+	void Start() {
+		
 	}
 
 	void Update()
@@ -198,7 +202,7 @@ public class UpgradeController : MonoBehaviour
 	public void MoveToPlayerButtons()
 	{
 		inPlayerButtons = true;
-		playerButtons[playerToChooseCard].onClick.RemoveAllListeners(); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
+		playerButtons[playerToChooseCard-1].onClick.RemoveAllListeners(); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
 
 		if (chosenUpgradeCard != null)
 		{
