@@ -175,6 +175,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7c5d121c-081b-4689-b208-3deb094b381f",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
@@ -329,6 +340,17 @@
                 },
                 {
                     "name": "",
+                    "id": "80817b84-e31d-42d6-811a-8687039d0315",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e1abaa5d-5cdd-404b-8865-9732449165f3",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -351,11 +373,33 @@
                 },
                 {
                     "name": "",
+                    "id": "ecf677ee-6bba-4c11-bd5f-edd1c6a32d45",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c52e36a9-ee6d-4bcf-a611-9f6329cb41e7",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Gamepad2;Gamepad3;Gamepad4",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cf26c70-b477-4620-b9db-52bb51c7eda8",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
                     "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -624,6 +668,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Joystick",
+                    "id": "6c58a9c0-2317-4442-a946-66115493df30",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "87a6be79-1199-4b2b-b61a-385359b1e9de",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "23eadafd-206f-42e2-8ee8-a4f6746be7dc",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "1a56b754-405f-477e-aa7b-3beee0203682",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "664e343c-57f3-4b6a-8f45-0b85696ed1ab",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Keyboard",
                     "id": "ff527021-f211-4c02-933e-5976594c46ed",
                     "path": "2DVector",
@@ -739,7 +838,7 @@
                     "path": "<HID::Nintendo GameCube Controller Adapter>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "GameCube",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1066,7 +1165,7 @@
                     "path": "<HID::Nintendo GameCube Controller Adapter>/button2",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "GameCube",
                     "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1099,7 +1198,7 @@
                     "path": "<HID::Nintendo GameCube Controller Adapter>/button3",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "GameCube",
                     "action": "Leave",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1174,6 +1273,17 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "GameCube",
+            "bindingGroup": "GameCube",
+            "devices": [
+                {
+                    "devicePath": "<HID::Nintendo GameCube Controller Adapter>",
                     "isOptional": false,
                     "isOR": false
                 }

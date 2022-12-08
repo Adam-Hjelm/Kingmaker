@@ -41,7 +41,7 @@ public class UpgradeController : MonoBehaviour
 
 
 	public void OnEnable()
-	{ // kanske m�ste g�ra en null check ifall vi n�gonsin ska ha det att funka med mindre �n 4 spelare
+	{ // kanske måste göra en null check ifall vi någonsin ska ha det att funka med mindre än 4 spelare
 
 		eventSysInUse = playerEventSys1;
 		eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
@@ -73,32 +73,31 @@ public class UpgradeController : MonoBehaviour
 	public void UpgradePlayerStat()
 	{
 		CheckPlayerToGiveStats();
+
 		//playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
-		//upgradeCardScript = selectedUpgradeCard.GetComponent<UpgradeCardScript>();
+		playerStats = GameManager.Instance.GetPlayerInput(playerNumberToGiveStat).GetComponent<PlayerController>();
+		upgradeCardScript = chosenUpgradeCard.GetComponent<UpgradeCardScript>();
 
-		//inPlayerButtons = false;
+		inPlayerButtons = true;
 
-		//if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
-		//{
-		//    playerStats.maxHealth += 100;
-		//}
-
-		//if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
-		//{
-		//    playerStats.bulletDamage += 25;
-		//}
-
-		//if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
-		//{
-		//    playerStats.moveSpeed += 2;
-		//}
-
-		//if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
-		//{
-		//    playerStats.fireRate += 0.15f;
-		//}
-		////selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
-		//upgradeCardButtons.Remove(selectedUpgradeCard);
+		if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
+		{
+			playerStats.maxHealth += 100;
+		}
+		else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
+		{
+			playerStats.bulletDamage += 25;
+		}
+		else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
+		{
+			playerStats.moveSpeed += 2;
+		}
+		else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
+		{
+			playerStats.fireRate += 0.15f;
+		}
+		//selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
+		upgradeCardButtons.Remove(chosenUpgradeCard);
 
 		SpawnNewCards();
 		Debug.Log("not in player buttons!!!");
@@ -113,18 +112,15 @@ public class UpgradeController : MonoBehaviour
 		{
 			playerNumberToGiveStat = 1;
 		}
-
-		if (playerButtonName.Contains("2"))
+		else if (playerButtonName.Contains("2"))
 		{
 			playerNumberToGiveStat = 2;
 		}
-
-		if (playerButtonName.Contains("3"))
+		else if (playerButtonName.Contains("3"))
 		{
 			playerNumberToGiveStat = 3;
 		}
-
-		if (playerButtonName.Contains("4"))
+		else if (playerButtonName.Contains("4"))
 		{
 			playerNumberToGiveStat = 4;
 		}
