@@ -2220,6 +2220,7 @@ MonoBehaviour:
   player2Prefab: {fileID: 6329439064393183565, guid: 87ad3b7c742fb694dae86a02d2a933d8, type: 3}
   player3Prefab: {fileID: 4720629085428174967, guid: 4d882b5b4fa62b04cbdc1c0da877d5d6, type: 3}
   player4Prefab: {fileID: 3978805965595336065, guid: 4fbfc46ca45638244aa3f05d1762b201, type: 3}
+  upgradeController: {fileID: 0}
 --- !u!114 &1194055904
 MonoBehaviour:
   m_ObjectHideFlags: 0
