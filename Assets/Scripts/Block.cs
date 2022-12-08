@@ -20,7 +20,7 @@ public class Block : MonoBehaviour
     {
         //col = GetComponent<Collider2D>();
         //rend = GetComponent<SpriteRenderer>();
-        
+
         playerController = gameObject.GetComponent<PlayerController>();
         anim = gameObject.GetComponent<Animator>();
 
@@ -33,11 +33,11 @@ public class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void OnBlock()
     {
-        if(canBlock == true)
+        if (canBlock == true)
         {
             StartCoroutine(blocking());
         }
@@ -45,22 +45,21 @@ public class Block : MonoBehaviour
 
     private IEnumerator blocking()
     {
-        canBlock = false;
-        col.enabled = true;
-        rend.enabled = true;
-        playerController.isBlocking = true;
-        anim.SetBool("isBlocking", true);
-        playerController.moveSpeed = 1f;
-        yield return new WaitForSeconds(blockTimeup);
+            canBlock = false;
+            col.enabled = true;
+            rend.enabled = true;
+            playerController.isBlocking = true;
+            anim.SetBool("isBlocking", true);
+            playerController.moveSpeed = 1f;
+            yield return new WaitForSeconds(blockTimeup);
 
-        col.enabled = false;
-        rend.enabled = false;
-        playerController.isBlocking = false;
-        anim.SetBool("isBlocking", false);
-        playerController.moveSpeed = 3.5f;
-        yield return new WaitForSeconds(blockCooldown);
+            col.enabled = false;
+            rend.enabled = false;
+            playerController.isBlocking = false;
+            anim.SetBool("isBlocking", false);
+            playerController.moveSpeed = 3.5f;
+            yield return new WaitForSeconds(blockCooldown);
 
-        canBlock = true;
-
+            canBlock = true;
     }
 }

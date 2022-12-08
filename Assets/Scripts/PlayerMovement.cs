@@ -107,11 +107,11 @@ public class PlayerMovement : MonoBehaviour
             handCrosshairSprite.flipX = false;
         }
 
-        if(playerController.isBlocking == true)
+        if (playerController.isBlocking == true)
         {
             handCrosshairSprite.gameObject.SetActive(false);
         }
-        else if(playerController.isBlocking == false)
+        else if (playerController.isBlocking == false)
         {
             handCrosshairSprite.gameObject.SetActive(true);
         }
@@ -140,39 +140,42 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerPhysicsBypass(true);
 
-        Quaternion inverseToRotation = Quaternion.LookRotation(Vector3.forward, -moveDirection);
-        canDash = false;
-        isDashing = true;
-        playerController.dashing = true;
+        if (playerController.isBlocking == false)
+        {
+            Quaternion inverseToRotation = Quaternion.LookRotation(Vector3.forward, -moveDirection);
+            canDash = false;
+            isDashing = true;
+            playerController.dashing = true;
 
-        //if (moveDirection.x < 0 && moveDirection.y > 0)
-        //{
-        //    GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
-        //    newSmoke.GetComponent<SpriteRenderer>().flipX = false;
-        //    Destroy(newSmoke, 0.3f);
-        //}
-        //if (moveDirection.x > 0)
-        //{
-        //    GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
-        //    newSmoke.GetComponent<SpriteRenderer>().flipX = true;
-        //    Destroy(newSmoke, 0.3f);
-        //}
+            //if (moveDirection.x < 0 && moveDirection.y > 0)
+            //{
+            //    GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            //    newSmoke.GetComponent<SpriteRenderer>().flipX = false;
+            //    Destroy(newSmoke, 0.3f);
+            //}
+            //if (moveDirection.x > 0)
+            //{
+            //    GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position, smokePoint.rotation);
+            //    newSmoke.GetComponent<SpriteRenderer>().flipX = true;
+            //    Destroy(newSmoke, 0.3f);
+            //}
 
-        GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position - (Vector3)moveDirection.normalized, inverseToRotation);
-        Destroy(newSmoke, 0.3f);
+            GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position - (Vector3)moveDirection.normalized, inverseToRotation);
+            Destroy(newSmoke, 0.3f);
 
 
 
-        rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y) * dashingPower;
-        yield return new WaitForSeconds(dashingTime);
+            rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y) * dashingPower;
+            yield return new WaitForSeconds(dashingTime);
 
-        rBody2D.velocity = new Vector2(0f, 0f);
-        playerController.dashing = false;
-        isDashing = false;
-        PlayerPhysicsBypass(false);
-        yield return new WaitForSeconds(dashingCooldown);
+            rBody2D.velocity = new Vector2(0f, 0f);
+            playerController.dashing = false;
+            isDashing = false;
+            PlayerPhysicsBypass(false);
+            yield return new WaitForSeconds(dashingCooldown);
 
-        canDash = true;
+            canDash = true;
+        }
     }
 
     private void PlayerPhysicsBypass(bool ignore)
