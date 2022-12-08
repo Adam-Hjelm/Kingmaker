@@ -37,7 +37,7 @@ public class ShootController : MonoBehaviour
         timer -= Time.deltaTime;
 
         //Debug.Log(timer);
-        
+
 
         if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
         {
@@ -57,20 +57,23 @@ public class ShootController : MonoBehaviour
 
     void OnFire()
     {
-        if (timer <= playerController.fireRate && canShoot == true)
+        if (playerController.isBlocking == false)
         {
-            handAnim.SetTrigger("Casting");
-            //dostuff
-            GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
-            Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
+            if (timer <= playerController.fireRate && canShoot == true)
+            {
+                handAnim.SetTrigger("Casting");
+                //dostuff
+                GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+                Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+                newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
-            //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
-            //Destroy(newSmoke, 1);
+                //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
+                //Destroy(newSmoke, 1);
 
-            FireBallSound();
+                FireBallSound();
 
-            timer = startTimer;
+                timer = startTimer;
+            }
         }
     }
 

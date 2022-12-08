@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
         //DontDestroyOnLoad(gameObject);
         currentHealth = maxHealth /*+ addedHealth*/;
-
     }
 
     void Start()
