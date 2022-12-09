@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     public int currentRound = 0;
     public int playersConnected = 0;
-    public const int maxScoreToWin = 3; // placeholder value
-    public const int maxNumberOfRounds = 7; // placeholder value
+    public int maxScoreToWin = 3; // placeholder value
+    public int maxNumberOfRounds = 7; // placeholder value
 
     [SerializeField, Tooltip("Must exist in scene")] GameObject upgradeScreen;
     [SerializeField] GameObject gameScene;
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
             case 3:
                 return "Green Player";
             case 4:
-                return "Purple Player";
+                return "Pink Player";
             default:
                 return "TOO MANY PLAYERS";
         }
@@ -236,7 +236,11 @@ public class GameManager : MonoBehaviour
 
     private void HandleWin(PlayerInstance winningPlayer)
     {
-        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name);
+        //foreach (var player in players)
+        //{
+        //}
+        //winningPlayer.gameObject.SetActive(false);
+        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }
 
