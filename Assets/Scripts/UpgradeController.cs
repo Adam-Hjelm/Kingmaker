@@ -104,11 +104,11 @@ public class UpgradeController : MonoBehaviour
         //selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
         upgradeCardButtons.Remove(chosenUpgradeCard);
 
-		//if (playerNumberToGiveStat >= 4)
-  //      {
-  //          Invoke(nameof(FinishedUpgrade), 3);
-  //          return;
-		//}
+        //if (playerNumberToGiveStat >= 4)
+        //      {
+        //          Invoke(nameof(FinishedUpgrade), 3);
+        //          return;
+        //}
 
         SpawnNewCards();
         Debug.Log("not in player buttons!!!");
@@ -162,7 +162,7 @@ public class UpgradeController : MonoBehaviour
 
             upgradeCardButtons.Add(newButton.GetComponent<Button>());
         }
-        
+
         chosenUpgradeCard.gameObject.SetActive(false);
         //chosenUpgradeCard = null;
 
@@ -188,8 +188,8 @@ public class UpgradeController : MonoBehaviour
                 playerToChooseCard = 4;
                 break;
             case 4:
-				eventSysInUse = playerEventSys1;
-				playerToChooseCard = 1;
+                eventSysInUse = playerEventSys1;
+                playerToChooseCard = 1;
 
                 for (int i = 0; i < playerButtons.Length; i++)
                 {
@@ -206,9 +206,8 @@ public class UpgradeController : MonoBehaviour
                 }
                 Invoke(nameof(FinishedUpgrade), 3);
 
-
-
-				break;
+                return;
+                break;
         }
 
         playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
