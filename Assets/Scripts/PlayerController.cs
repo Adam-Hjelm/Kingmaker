@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 	public UpgradeController upgradeController;
 	public GameObject DeathPrefab;
 	public Transform DeathAnimationPoint;
+	public SpriteRenderer shadowSprite;
 
 	public bool dashing;
 	public bool isBlocking;
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
 		//originalMaterial = spriteRenderer.material; aja baja dumma bug
 		spriteRenderer.material = defaultMaterial;
 		shake = Camera.main.GetComponent<CameraShake>();
+
+		shadowSprite.enabled = true;
 
 		healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
 		healthBarBackdrop = GameObject.Find($"p{playerNumber}HealthbarBackdrop").GetComponent<Image>();
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
 		{
 			StopCoroutine(flashRoutine);
 			spriteRenderer.material = defaultMaterial;
+			shadowSprite.enabled = false;
 			healthBarBackdrop.fillAmount = healthBar.fillAmount;
 			GameObject newDeath = Instantiate(DeathPrefab, DeathAnimationPoint.position, DeathAnimationPoint.rotation);
 			Destroy(newDeath, 1);

@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour
     {
         playerObject.GetComponent<SpriteRenderer>().enabled = enabled;
         playerObject.GetComponent<Collider2D>().enabled = enabled;
+        playerObject.GetComponent<PlayerMovement>().enabled = enabled;
+        playerObject.GetComponent<Block>().enabled = enabled;
         //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
     }
 
