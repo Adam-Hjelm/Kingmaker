@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleWin(PlayerInstance winningPlayer)
     {
-        canvasHandler.StartWinScreen(winningPlayer.name);
+        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name);
         //TODO: change states
     }
 

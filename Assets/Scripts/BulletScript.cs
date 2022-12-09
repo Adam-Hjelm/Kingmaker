@@ -55,7 +55,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Explosion()
     {
-        Debug.Log("explodedddd");
+        //Debug.Log("explodedddd");
         Source.PlayOneShot(explosion);
     }
 }

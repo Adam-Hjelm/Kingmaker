@@ -76,6 +76,7 @@ public class UpgradeController : MonoBehaviour
 
     public void UpgradePlayerStat()
     {
+        Debug.Log("Upgrade player stat");
         CheckPlayerToGiveStats();
 
         //playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
@@ -103,6 +104,12 @@ public class UpgradeController : MonoBehaviour
         //selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
         upgradeCardButtons.Remove(chosenUpgradeCard);
 
+		//if (playerNumberToGiveStat >= 4)
+  //      {
+  //          Invoke(nameof(FinishedUpgrade), 3);
+  //          return;
+		//}
+
         SpawnNewCards();
         Debug.Log("not in player buttons!!!");
         inPlayerButtons = false;
@@ -110,7 +117,7 @@ public class UpgradeController : MonoBehaviour
 
     private void CheckPlayerToGiveStats()
     {
-        string playerButtonName = EventSystem.current.currentSelectedGameObject.GetComponent<Button>().name;
+        string playerButtonName = eventSysInUse.currentSelectedGameObject.GetComponent<Button>().name;
 
         if (playerButtonName.Contains("1"))
         {
@@ -132,8 +139,8 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
-        chosenUpgradeCard.gameObject.SetActive(false);
-        chosenUpgradeCard = null;
+        //chosenUpgradeCard.gameObject.SetActive(false);
+        //chosenUpgradeCard = null;
 
         for (int i = 0; i < upgradeCardButtons.Count; i++)
         {
@@ -155,6 +162,9 @@ public class UpgradeController : MonoBehaviour
 
             upgradeCardButtons.Add(newButton.GetComponent<Button>());
         }
+        
+        chosenUpgradeCard.gameObject.SetActive(false);
+        //chosenUpgradeCard = null;
 
         playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
         //startUpgradeCard = upgradeCardButtons[0].GetComponent<Button>();
@@ -177,21 +187,22 @@ public class UpgradeController : MonoBehaviour
                 eventSysInUse = playerEventSys4;
                 playerToChooseCard = 4;
                 break;
-            default:
             case 4:
-                eventSysInUse = playerEventSys1;
-                playerToChooseCard = 1;
+				eventSysInUse = playerEventSys1;
+				playerToChooseCard = 1;
 
-                playerEventSys1.SetSelectedGameObject(null);
-                playerEventSys2.SetSelectedGameObject(null);
-                playerEventSys3.SetSelectedGameObject(null);
-                if (playerEventSys4 != null)
-                {
-                    playerEventSys4.SetSelectedGameObject(null);
-                }
-
+				//playerEventSys1.SetSelectedGameObject(null);
+				//playerEventSys2.SetSelectedGameObject(null);
+				//playerEventSys3.SetSelectedGameObject(null);
+				//if (playerEventSys4 != null)
+				//{
+				//	playerEventSys4.SetSelectedGameObject(null);
+				//}
                 Invoke(nameof(FinishedUpgrade), 3);
-                break;
+
+
+
+				break;
         }
 
         playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
@@ -216,6 +227,7 @@ public class UpgradeController : MonoBehaviour
     {
         for (int i = 0; i < playerButtons.Length; i++)
         {
+            playerButtons[i].onClick.RemoveAllListeners();
             playerButtons[i].onClick.AddListener(UpgradePlayerStat);
             playerButtons[i].GetComponent<Image>().color = Color.white;
         }
@@ -224,13 +236,13 @@ public class UpgradeController : MonoBehaviour
 
         inPlayerButtons = true;
 
-        if (chosenUpgradeCard != null)
-        {
-            // Here you can make the card do some cool animations before it goes away and has been given to the player
-            chosenUpgradeCard.gameObject.SetActive(false);
-        }
+        //if (chosenUpgradeCard != null)
+        //{
+        //    // Here you can make the card do some cool animations before it goes away and has been given to the player
+        //    chosenUpgradeCard.gameObject.SetActive(false);
+        //}
         chosenUpgradeCard = currentlySelectedCard;
 
-        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
+        eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
     }
 }

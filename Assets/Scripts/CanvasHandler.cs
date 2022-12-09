@@ -41,24 +41,24 @@ public class CanvasHandler : MonoBehaviour
         }
     }
 
-    public void StartWinScreen(string playerName)
+    public void StartWinScreen(int ID, string playerName)
     {
-        if (playerName.Contains("Player 1"))
-        {
-            currentWinScreen = p1WinScreen;
-        }
-        if (playerName.Contains("Player 2"))
-        {
-            currentWinScreen = p2WinScreen;
-        }
-        if (playerName.Contains("Player 3"))
-        {
-            currentWinScreen = p3WinScreen;
-        }
-        if (playerName.Contains("Player 4"))
-        {
-            currentWinScreen = p4WinScreen;
-        }
+		switch (ID)
+		{
+			default:
+            case 1:
+                currentWinScreen = p1WinScreen;
+                break;
+            case 2:
+                currentWinScreen = p2WinScreen;
+                break;
+            case 3:
+                currentWinScreen = p3WinScreen;
+                break;
+            case 4:
+                currentWinScreen = p4WinScreen;
+                break;
+		}
 
         currentWinScreen.SetActive(true);
         winGameText.text = $"{playerName} wins the game!";
@@ -72,7 +72,7 @@ public class CanvasHandler : MonoBehaviour
 
     public void StartNewRound()
     {
-        currentWinScreen.SetActive(false);
+        //currentWinScreen.SetActive(false);
         winRoundText.gameObject.SetActive(false);
     }
 
