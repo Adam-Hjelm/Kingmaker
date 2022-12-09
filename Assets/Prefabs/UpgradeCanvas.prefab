@@ -2040,22 +2040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeCard
       objectReference: {fileID: 0}
-    - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8636872361798554062}
-    - target: {fileID: 5976875056413958742, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveToPlayerButtons
-      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958743, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

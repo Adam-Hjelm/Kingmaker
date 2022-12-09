@@ -191,13 +191,19 @@ public class UpgradeController : MonoBehaviour
 				eventSysInUse = playerEventSys1;
 				playerToChooseCard = 1;
 
-				//playerEventSys1.SetSelectedGameObject(null);
-				//playerEventSys2.SetSelectedGameObject(null);
-				//playerEventSys3.SetSelectedGameObject(null);
-				//if (playerEventSys4 != null)
-				//{
-				//	playerEventSys4.SetSelectedGameObject(null);
-				//}
+                for (int i = 0; i < playerButtons.Length; i++)
+                {
+                    playerButtons[i].GetComponent<Image>().color = Color.white;
+
+                }
+
+                playerEventSys1.SetSelectedGameObject(null);
+                playerEventSys2.SetSelectedGameObject(null);
+                playerEventSys3.SetSelectedGameObject(null);
+                if (playerEventSys4 != null)
+                {
+                    playerEventSys4.SetSelectedGameObject(null);
+                }
                 Invoke(nameof(FinishedUpgrade), 3);
 
 
