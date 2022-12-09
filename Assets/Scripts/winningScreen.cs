@@ -10,7 +10,7 @@ public class winningScreen : MonoBehaviour
     public GameObject lightRay;
     public GameObject shadow;
     public GameObject text;
-    public GameObject buttons;
+    //public GameObject buttons;
 
     private void OnEnable()
     {
@@ -29,7 +29,7 @@ public class winningScreen : MonoBehaviour
         shadow.SetActive(true);
         yield return new WaitForSeconds(.5f);
         text.SetActive(true);
-        buttons.SetActive(true);
+        //buttons.SetActive(true);
         yield return null;
     }
 

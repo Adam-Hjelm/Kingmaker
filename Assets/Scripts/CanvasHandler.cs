@@ -16,6 +16,7 @@ public class CanvasHandler : MonoBehaviour
     [SerializeField] GameObject p3WinScreen;
     [SerializeField] GameObject p4WinScreen;
     [SerializeField] GameObject currentWinScreen;
+    [SerializeField] GameObject winCanvasObject;
     [SerializeField] TextMeshProUGUI winGameText;
     [SerializeField] TextMeshProUGUI winRoundText;
 
@@ -59,7 +60,7 @@ public class CanvasHandler : MonoBehaviour
                 currentWinScreen = p4WinScreen;
                 break;
 		}
-
+        //winCanvasObject.SetActive(true);
         currentWinScreen.SetActive(true);
         winGameText.text = $"{playerName} wins the game!";
     }
