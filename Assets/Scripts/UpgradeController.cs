@@ -205,9 +205,9 @@ public class UpgradeController : MonoBehaviour
                     playerEventSys4.SetSelectedGameObject(null);
                 }
                 Invoke(nameof(FinishedUpgrade), 3);
-
+                playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
                 return;
-                break;
+                //break;
         }
 
         playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
@@ -219,6 +219,9 @@ public class UpgradeController : MonoBehaviour
         {
             playerEventSys4.SetSelectedGameObject(null);
         }
+
+        //if (playerToChooseCard >= 4)
+        //    return;
 
         eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
     }

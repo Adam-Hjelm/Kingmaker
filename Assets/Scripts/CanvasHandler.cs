@@ -62,10 +62,9 @@ public class CanvasHandler : MonoBehaviour
                 currentWinScreen = p4WinScreen;
                 break;
 		}
+
 		winCanvasObject.SetActive(true);
-
         playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winCanvasObject.GetComponentInChildren<Button>().gameObject);
-
 		currentWinScreen.SetActive(true);
         winGameText.text = $"{playerName} wins the game!";
     }

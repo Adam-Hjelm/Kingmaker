@@ -98,15 +98,16 @@ public class SelectionScreen : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-	private void Update()
-	{
-        if ((Gamepad.current != null && Gamepad.current.startButton.isPressed))
-            //(Joystick.current != null && Joystick.current.))
-        {
-            Debug.Log("start was pressed");
-            SceneManager.LoadScene(gameScene);
-		}
-	}
+	//private void Update()
+	//{
+ //       if ((Gamepad.current != null && Gamepad.current.startButton.isPressed))
+ //           //(Joystick.current != null && Joystick.current.))
+ //       {
+ //           Debug.Log("start was pressed");
+ //           //SceneManager.LoadScene(gameScene);
+ //           StartGame();
+	//	}
+	//}
 
 	public void JoinPlayer(InputAction.CallbackContext context)
     {
@@ -177,23 +178,24 @@ public class SelectionScreen : MonoBehaviour
 
     public void RemovePlayer(InputAction.CallbackContext context)
     {
-        Debug.Log("RemovePlayer method called");
+        //TODO: Uncomment and fix the bug!
+        //Debug.Log("RemovePlayer method called");
 
-        if (totalPlayers <= 0)
-            return;
+        //if (totalPlayers <= 0)
+        //    return;
 
-        var device = context.control.device;
-        var player = players.FirstOrDefault(p => p.device == device);
+        //var device = context.control.device;
+        //var player = players.FirstOrDefault(p => p.device == device);
 
-        if (player == null)
-            return;
+        //if (player == null)
+        //    return;
 
-        players.Remove(player);
-        Destroy(player.card);
-        totalPlayers--;
+        //players.Remove(player);
+        //Destroy(player.card);
+        //totalPlayers--;
 
-        if (totalPlayers < maxAllowedPlayers)
-            m_AllowJoining = true;
+        //if (totalPlayers < maxAllowedPlayers)
+        //    m_AllowJoining = true;
     }
 
     public void StartGame()

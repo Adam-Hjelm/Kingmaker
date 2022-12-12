@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player2Prefab;
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
+    [SerializeField] GameObject test;
 
     //[SerializeField] DragDropScript playerDragDrop1;
     //[SerializeField] DragDropScript playerDragDrop2;
@@ -239,8 +240,9 @@ public class GameManager : MonoBehaviour
         //foreach (var player in players)
         //{
         //}
-        //winningPlayer.gameObject.SetActive(false);
-        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
+        test.SetActive(false);
+        winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
+		canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }
 
