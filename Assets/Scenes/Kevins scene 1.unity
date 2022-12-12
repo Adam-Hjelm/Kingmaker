@@ -277,6 +277,11 @@ MonoBehaviour:
   playerCard2: {fileID: 0}
   playerCard3: {fileID: 0}
   playerCard4: {fileID: 0}
+  playerSprites:
+  - {fileID: 2038111906, guid: d3ca229b8060500479b242bb56779af4, type: 3}
+  - {fileID: 939884896, guid: 4de4dfc70dcf69c46b9b93939d5d763b, type: 3}
+  - {fileID: 564776602, guid: ae4d67d8bf9eb484786d168e73db95c1, type: 3}
+  - {fileID: 1196765500, guid: 04bada87436d00347ae171d67e3965ea, type: 3}
 --- !u!1 &401512101
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SelectionScreen : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] internal InputActionProperty m_JoinAction;
     [SerializeField] internal InputActionProperty m_LeaveAction;
 
-    private void OnEnable()
+    private void DoOnEnable()
     {
         m_JoinActionDelegate = JoinPlayer;
         m_LeaveActionDelegate = RemovePlayer;
@@ -42,15 +43,11 @@ public class SelectionScreen : MonoBehaviour
         m_LeaveAction.action.performed += m_LeaveActionDelegate;
         m_LeaveActionDelegateHooked = true;
         m_LeaveAction.action.Enable();
-
-        SceneManager.sceneLoaded += GameSceneLoaded;
     }
 
-    private void OnDisable()
+    private void DoOnDisable()
     {
         RemoveActionDelegates();
-
-        SceneManager.sceneLoaded -= GameSceneLoaded;
     }
 
     private void RemoveActionDelegates()
@@ -92,22 +89,41 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] GameObject playerCard3;
     [SerializeField] GameObject playerCard4;
 
+    [SerializeField] List<Sprite> playerSprites = new List<Sprite>();
+
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-	//private void Update()
-	//{
- //       if ((Gamepad.current != null && Gamepad.current.startButton.isPressed))
- //           //(Joystick.current != null && Joystick.current.))
- //       {
- //           Debug.Log("start was pressed");
- //           //SceneManager.LoadScene(gameScene);
- //           StartGame();
-	//	}
-	//}
+	private void OnEnable()
+	{
+        DoOnEnable(); // Do not remove!
+        
+        SceneManager.sceneLoaded += GameSceneLoaded;
+        Debug.Log("sceneloaded delegate is set to gamesceneloaded method!");
+    }
+
+    private void OnDisable()
+    {
+        DoOnDisable(); // Do not remove!
+
+        SceneManager.sceneLoaded -= GameSceneLoaded;
+    }
+
+	private void Update()
+	{
+		if ((Gamepad.current != null && Gamepad.current.startButton.isPressed))
+		//(Joystick.current != null && Joystick.current.))
+		{
+			Debug.Log("start was pressed");
+			//SceneManager.LoadScene(gameScene);
+			StartGame();
+		}
+	}
+
+
 
 	public void JoinPlayer(InputAction.CallbackContext context)
     {
@@ -124,28 +140,50 @@ public class SelectionScreen : MonoBehaviour
         //if (PlayerInput.FindFirstPairedToDevice(device) != null)
         //    return;
 
-        totalPlayers++;
+        int id = 1;
+        List<int> ids = players.Select(p => p.playerID).ToList();
+
+        if (!ids.Any(i => i == 1))
+            id = 1;
+        else if (!ids.Any(i => i == 2))
+            id = 2;
+        else if (!ids.Any(i => i == 3))
+            id = 3;
+        else if (!ids.Any(i => i == 4))
+            id = 4;
+        else
+            return;
+
+        Debug.Log(id);
 
         GameObject playerCard;
 
         if (playerCard1 == null)
         {
             playerCard = Instantiate(playerCardPrefab, spawnPos1.position, spawnPos1.rotation, canvasObject.transform);
+            playerCard.transform.Find("Character").GetComponent<Image>().sprite = playerSprites[0];
+            playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>().text = "Red Player";
             playerCard1 = playerCard;
         }
         else if (playerCard2 == null)
         {
             playerCard = Instantiate(playerCardPrefab, spawnPos2.position, spawnPos2.rotation, canvasObject.transform);
+            playerCard.transform.Find("Character").GetComponent<Image>().sprite = playerSprites[1];
+            playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>().text = "Blue Player";
             playerCard2 = playerCard;
         }
         else if (playerCard3 == null)
         {
             playerCard = Instantiate(playerCardPrefab, spawnPos3.position, spawnPos3.rotation, canvasObject.transform);
+            playerCard.transform.Find("Character").GetComponent<Image>().sprite = playerSprites[2];
+            playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>().text = "Green Player";
             playerCard3 = playerCard;
         }
         else if (playerCard4 == null)
         {
             playerCard = Instantiate(playerCardPrefab, spawnPos4.position, spawnPos4.rotation, canvasObject.transform);
+            playerCard.transform.Find("Character").GetComponent<Image>().sprite = playerSprites[3];
+            playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>().text = "Pink Player";
             playerCard4 = playerCard;
         }
         else
@@ -154,49 +192,51 @@ public class SelectionScreen : MonoBehaviour
             return;
         }
 
-        playerCard.SetActive(true);
+        //playerCard.SetActive(true);
 
-        TextMeshProUGUI playerName = playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI playerInfo = playerCard.transform.Find("user info").GetComponent<TextMeshProUGUI>();
+        //TextMeshProUGUI playerName = playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>();
+        //TextMeshProUGUI playerInfo = playerCard.transform.Find("user info").GetComponent<TextMeshProUGUI>();
 
-        playerName.text = device.displayName;
-        playerInfo.text = $"name: '{device.name}'\ndisplayName: '{device.displayName}'\ndeviceId: '{device.deviceId}'\nnative: '{device.native}'";
+        
 
-        players.Add(new PlayerObject
+        //playerName.text = device.displayName;
+        //playerInfo.text = $"name: '{device.name}'\ndisplayName: '{device.displayName}'\ndeviceId: '{device.deviceId}'\nnative: '{device.native}'";
+
+        var player = new PlayerObject
         {
             device = device,
             card = playerCard,
-            playerID = totalPlayers
-        });
+            playerID = id
+        };
+
+        players.Add(player);
+        totalPlayers++;
 
         if (totalPlayers >= maxAllowedPlayers)
             m_AllowJoining = false;
-
-        //OnPlayerJoined(device);
-        //PlayerInputManager.instance.JoinPlayer(pairWithDevice: device);
     }
 
     public void RemovePlayer(InputAction.CallbackContext context)
     {
-        //TODO: Uncomment and fix the bug!
-        //Debug.Log("RemovePlayer method called");
+		Debug.Log("RemovePlayer method called");
 
-        //if (totalPlayers <= 0)
-        //    return;
+		if (totalPlayers <= 0)
+			return;
 
-        //var device = context.control.device;
-        //var player = players.FirstOrDefault(p => p.device == device);
+		var device = context.control.device;
+		var player = players.FirstOrDefault(p => p.device == device);
 
-        //if (player == null)
-        //    return;
+		if (player == null)
+			return;
 
-        //players.Remove(player);
-        //Destroy(player.card);
-        //totalPlayers--;
+		players.Remove(player);
+		Destroy(player.card);
+		totalPlayers--;
+        Debug.Log("Player was removed!");
 
-        //if (totalPlayers < maxAllowedPlayers)
-        //    m_AllowJoining = true;
-    }
+        if (totalPlayers < maxAllowedPlayers)
+			m_AllowJoining = true;
+	}
 
     public void StartGame()
     {
@@ -207,20 +247,19 @@ public class SelectionScreen : MonoBehaviour
     public void GameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
+        Debug.Log("LoadSceneMode: " + mode);
 
         if (scene.name == gameScene)
             StartCoroutine(InstantiatePlayers());
-        
     }
 
     private IEnumerator InstantiatePlayers()
     {
-        yield return null;
+        yield return 0;
 
         var pim = PlayerInputManager.instance;
+        players = players.OrderBy(p => p.playerID).ToList();
 
-        players.OrderBy(p => p.playerID);
         foreach (var player in players)
         {
             pim.JoinPlayer(playerIndex: player.playerID, pairWithDevice: player.device);
