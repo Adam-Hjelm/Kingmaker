@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5976875056413958746}
   - component: {fileID: 5976875056413958747}
   m_Layer: 5
-  m_Name: UpgradeCard
+  m_Name: PlayerUpgradeCard
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,9 +290,11 @@ MonoBehaviour:
   speedCardAnimController: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
   anim: {fileID: 5976875056413958747}
   moveSpeedModifier: 2
-  maxHealthModifier: 100
-  bulletDamageModifier: 25
+  maxHealthModifier: 2
+  bulletDamageModifier: 1
   fireRateModifier: 0.2
+  sizeDecreaseModifier: 0.5
+  sizeIncreaseModifier: 1.5
 --- !u!95 &5976875056413958747
 Animator:
   serializedVersion: 4

@@ -85,21 +85,24 @@ public class UpgradeController : MonoBehaviour
 
         inPlayerButtons = true;
 
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer)
         {
-            playerStats.maxHealth += 100;
+            playerStats.maxHealth += upgradeCardScript.maxHealthModifier;
+            playerStats.gameObject.transform.localScale *= upgradeCardScript.sizeIncreaseModifier;
         }
-        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
+        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
         {
-            playerStats.bulletDamage += 25;
+            playerStats.bulletDamage += upgradeCardScript.bulletDamageModifier;
+            playerStats.GetComponent<ShootController>().bulletSpeed -= upgradeCardScript.moveSpeedModifier * 2;
         }
         else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
         {
             playerStats.moveSpeed += 2;
         }
-        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
+        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUpButSmallerBullets)
         {
-            playerStats.fireRate += 0.15f;
+            playerStats.fireRate += upgradeCardScript.fireRateModifier;
+            playerStats.bulletSize *= upgradeCardScript.sizeDecreaseModifier;
         }
         //selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
         upgradeCardButtons.Remove(chosenUpgradeCard);

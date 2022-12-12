@@ -89,12 +89,12 @@ public class PlayerCardDropZone : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
         Debug.Log("upgrading...");
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUp)
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer)
         {
             playerStats.maxHealth += 100;
         }
 
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUp)
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
         {
             playerStats.bulletDamage += 25;
         }
@@ -104,7 +104,7 @@ public class PlayerCardDropZone : MonoBehaviour
             playerStats.moveSpeed += 2;
         }
 
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUp)
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUpButSmallerBullets)
         {
             playerStats.fireRate += 0.15f;
         }

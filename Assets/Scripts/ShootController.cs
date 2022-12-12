@@ -8,16 +8,16 @@ public class ShootController : MonoBehaviour
 {
     //public int playerNumber = 1;
     public GameObject bulletPrefab;
-
     public Transform Spawnpoint;
-
-    private bool canShoot = true;
+    public float bulletSpeed;
 
     PlayerController playerController;
+    private bool canShoot = true;
     private float timer;
     private float startTimer = 1f;
-    public Animator handAnim;
+    
 
+    public Animator handAnim;
     public AudioSource Source;
     public AudioClip Fireball;
 
@@ -63,7 +63,12 @@ public class ShootController : MonoBehaviour
             {
                 handAnim.SetTrigger("Casting");
                 //dostuff
+
+                Vector3 scaleChange = playerController.bulletSize; 
+
                 GameObject newBullet = Instantiate(bulletPrefab, Spawnpoint.position, Spawnpoint.rotation);
+                newBullet.GetComponent<Rigidbody2D>().velocity = newBullet.transform.up * bulletSpeed;
+
                 Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                 newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 

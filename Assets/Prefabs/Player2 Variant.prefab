@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7295100350697953223, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8084307699165101170, guid: b42ddb2a804e1f740845cf54faa88b1e, type: 3}
       propertyPath: m_Controller
       value: 

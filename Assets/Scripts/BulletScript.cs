@@ -5,7 +5,6 @@ using System.Linq;
 
 public class BulletScript : MonoBehaviour
 {
-    public float bulletSpeed;
     public int bulletDamage = 25;
 
     public GameObject explosionPrefab;
@@ -14,13 +13,10 @@ public class BulletScript : MonoBehaviour
     public AudioSource Source;
     public AudioClip explosion;
 
-    //private string[] allPlayerTags = { "Player1", "Player2", "Player3", "Player4" };
-
-
     void Start()
     {
         Destroy(gameObject, 2);
-        gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
+        //gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         Source = GetComponent<AudioSource>();
     }
 
@@ -37,6 +33,7 @@ public class BulletScript : MonoBehaviour
             {
 
                 GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+                newExplosion.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
                 Destroy(newExplosion, 0.5f);
                 Destroy(gameObject);
             }

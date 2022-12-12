@@ -26,17 +26,19 @@ public class UpgradeCardScript : MonoBehaviour
 
     [Header("Stats Upgrade")]
     public float moveSpeedModifier = 2f;
-    public int maxHealthModifier = 100;
-    public int bulletDamageModifier = 25;
+    public int maxHealthModifier = 1;
+    public int bulletDamageModifier = 1;
     public float fireRateModifier = 0.2f;
+    public float sizeDecreaseModifier = 0.5f;
+    public float sizeIncreaseModifier = 1.5f;
 
     public enum CardType
     {
-        DamageUp,
-        HealthUp,
-        FireRateUp,
+        DamageUpButSlowerBulletSpeed,
+        HealthUpButBiggerPlayer,
+        FireRateUpButSmallerBullets,
         SpeedUp,
-        SpecialCard,
+        AbilityCard,
     }
 
     void Start()
@@ -66,21 +68,21 @@ public class UpgradeCardScript : MonoBehaviour
                 Debug.Log("Given damage card");
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "DMG";
                 anim.runtimeAnimatorController = damageCardAnimController;
-                currentCardType = CardType.DamageUp;
+                currentCardType = CardType.DamageUpButSlowerBulletSpeed;
                 break;
 
             case 2:
                 Debug.Log("Given health card");
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
                 anim.runtimeAnimatorController = healthCardAnimController;
-                currentCardType = CardType.HealthUp;
+                currentCardType = CardType.HealthUpButBiggerPlayer;
                 break;
 
             case 3:
                 Debug.Log("Given fire rate card");
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FIRE RATE";
                 anim.runtimeAnimatorController = fireRateCardAnimController;
-                currentCardType = CardType.FireRateUp;
+                currentCardType = CardType.FireRateUpButSmallerBullets;
                 break;
 
             case 4:
@@ -91,7 +93,7 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
         }
 
-        if (currentCardType == CardType.DamageUp)
+        if (currentCardType == CardType.DamageUpButSlowerBulletSpeed)
         {
             anim.runtimeAnimatorController = damageCardAnimController;
         }
@@ -100,7 +102,7 @@ public class UpgradeCardScript : MonoBehaviour
     private void SpecialCard()
     {
         Debug.Log("Given SPECIAL CARD");
-        currentCardType = CardType.SpecialCard;
+        currentCardType = CardType.AbilityCard;
         int chosenRare = Random.Range(0, amountOfRares);
         switch (chosenRare)
         {
