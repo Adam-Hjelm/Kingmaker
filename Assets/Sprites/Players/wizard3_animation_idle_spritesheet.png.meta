@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wizard3_animation_idle_0
+      name: wizard3_animation_idle_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,7 +126,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard3_animation_idle_1
+      name: wizard3_animation_idle_spritesheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -147,7 +147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard3_animation_idle_2
+      name: wizard3_animation_idle_spritesheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard3_animation_idle_3
+      name: wizard3_animation_idle_spritesheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wizard3_animation_idle_4
+      name: wizard3_animation_idle_spritesheet_4
       rect:
         serializedVersion: 2
         x: 128
