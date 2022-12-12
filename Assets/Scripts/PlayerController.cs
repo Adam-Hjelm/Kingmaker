@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 	[Header("Stats")]
 	public float moveSpeed = 3.5f;
 	public int maxHealth = 100;
-	public int bulletDamage = 25;
+	public int bulletDamage = 1;
+	public Vector3 bulletSize;
 	public float fireRate = 0.7f;
 	public int currentHealth = 100;
 	public float healthBarDegradeModifier;

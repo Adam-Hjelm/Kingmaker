@@ -283,10 +283,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 2
   moveSpeed: 3.5
-  maxHealth: 100
-  bulletDamage: 25
+  maxHealth: 4
+  bulletDamage: 1
+  bulletSize: {x: 1, y: 1, z: 1}
   fireRate: 0.4
-  currentHealth: 100
+  currentHealth: 4
   healthBarDegradeModifier: 0.3
   flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 660932068092145584, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
   Spawnpoint: {fileID: 4594921739533266442}
+  bulletSpeed: 12
   handAnim: {fileID: 0}
   Source: {fileID: 8694816148440275922}
   Fireball: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}
