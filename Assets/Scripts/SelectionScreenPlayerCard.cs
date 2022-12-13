@@ -14,31 +14,31 @@ public class SelectionScreenPlayerCard : MonoBehaviour
 
     
     public void Initialize(InputDevice device)
-	{
+    {
         this.device = device;
         //var test = new PlayerInput();
         //test.device
         Debug.Log(device.valueType.ToString());
-	}
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (device != null)
-		{
+        {
             //if (device.valueType)
-		}
+        }
     }
 
     void OnReady()
-	{
+    {
         isReady = !isReady;
         Debug.Log("on ready");
         if (isReady)
-		{
+        {
             readyBtn.SetActive(true);
             notReadyBtn.SetActive(false);
-		}
+        }
         else
         {
             readyBtn.SetActive(false);

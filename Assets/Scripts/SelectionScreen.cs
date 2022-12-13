@@ -36,13 +36,13 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] List<Sprite> playerSprites = new List<Sprite>();
     
 
-	private void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-	private void OnEnable()
-	{
+    private void OnEnable()
+    {
         SceneManager.sceneLoaded += GameSceneLoaded;
         Debug.Log("sceneloaded delegate is set to gamesceneloaded method!");
     }
@@ -66,7 +66,7 @@ public class SelectionScreen : MonoBehaviour
         //JoinPlayer(playerInput.gameObject);
         var device = playerInput.devices.FirstOrDefault();
         int ID = (int)playerInput.user.id;
-		List<int> ids = players.Select(p => p.playerID).ToList();
+        List<int> ids = players.Select(p => p.playerID).ToList();
 
         if (!allowJoining || totalPlayers >= maxAllowedPlayers)
             return;
@@ -75,42 +75,42 @@ public class SelectionScreen : MonoBehaviour
             return;
 
         if (ids.Any(i => i == ID))
-		{
+        {
             Debug.LogError("ID already exists!");
             return;
-		}
+        }
 
-		var playerCard = playerInput.gameObject;
+        var playerCard = playerInput.gameObject;
         playerCard.transform.SetParent(canvasObject.transform, false);
 
-		if (playerCard1 == null)
-		{
+        if (playerCard1 == null)
+        {
             SetPositionOfPlayerCard(playerCard, spawnPos1, playerSprites[0], "Red Player");
             playerCard1 = playerCard;
         }
-		else if (playerCard2 == null)
-		{
+        else if (playerCard2 == null)
+        {
             SetPositionOfPlayerCard(playerCard, spawnPos2, playerSprites[1], "Blue Player");
             playerCard2 = playerCard;
         }
         else if (playerCard3 == null)
-		{
-			SetPositionOfPlayerCard(playerCard, spawnPos3, playerSprites[2], "Green Player");
+        {
+            SetPositionOfPlayerCard(playerCard, spawnPos3, playerSprites[2], "Green Player");
             playerCard3 = playerCard;
-		}
-		else if (playerCard4 == null)
-		{
+        }
+        else if (playerCard4 == null)
+        {
             
             SetPositionOfPlayerCard(playerCard, spawnPos4, playerSprites[3], "Pink Player");
             playerCard4 = playerCard;
-		}
-		else
-		{
-			Debug.LogError("JoinPlayer method called but player count is already at maximum");
-			return;
-		}
+        }
+        else
+        {
+            Debug.LogError("JoinPlayer method called but player count is already at maximum");
+            return;
+        }
 
-		var player = new PlayerObject
+        var player = new PlayerObject
         {
             device = device,
             card = playerCard,
@@ -120,9 +120,9 @@ public class SelectionScreen : MonoBehaviour
         players.Add(player);
         totalPlayers++;
 
-		if (totalPlayers >= maxAllowedPlayers)
+        if (totalPlayers >= maxAllowedPlayers)
         {
-			allowJoining = false;
+            allowJoining = false;
             PlayerInputManager.instance.DisableJoining();
         }
     }
@@ -138,33 +138,33 @@ public class SelectionScreen : MonoBehaviour
     }
 
     private void SetPositionOfPlayerCard(GameObject playerCard, Transform spawn, Sprite sprite, string playerName)
-	{
+    {
         playerCard.transform.SetPositionAndRotation(spawn.position, spawn.rotation);
         playerCard.transform.Find("Character").GetComponent<Image>().sprite = sprite;
         playerCard.transform.Find("user text").GetComponent<TextMeshProUGUI>().text = playerName;
     }
 
-	public void RemovePlayer(InputDevice device)
-	{
-		Debug.Log("RemovePlayer method called");
+    public void RemovePlayer(InputDevice device)
+    {
+        Debug.Log("RemovePlayer method called");
 
-		if (totalPlayers <= 0)
-			return;
+        if (totalPlayers <= 0)
+            return;
 
-		var player = players.FirstOrDefault(p => p.device == device);
+        var player = players.FirstOrDefault(p => p.device == device);
 
-		if (player == null)
-			return;
+        if (player == null)
+            return;
 
-		players.Remove(player);
-		Destroy(player.card);
+        players.Remove(player);
+        Destroy(player.card);
 
-		totalPlayers--;
-		Debug.Log("Player was removed!");
+        totalPlayers--;
+        Debug.Log("Player was removed!");
 
-		if (totalPlayers < maxAllowedPlayers)
-			allowJoining = true;
-	}
+        if (totalPlayers < maxAllowedPlayers)
+            allowJoining = true;
+    }
 
     public void StartGame()
     {

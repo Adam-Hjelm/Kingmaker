@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
         //}
         test.SetActive(false);
         winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
-		canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
+        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }
 
