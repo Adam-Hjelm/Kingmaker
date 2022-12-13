@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 	public Vector3 bulletSize;
 	public float fireRate = 0.7f;
 	public int currentHealth = 100;
-	public float healthBarDegradeModifier;
+	public int bulletAmount;
+	public int bulletSpread;
 
 	[Header("Materials")]
 	public Material flashMaterial;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] Image healthBar;
 	[SerializeField] Image healthBarBackdrop;
+	public float healthBarDegradeModifier;
 
 	public SpriteRenderer spriteRenderer;
 
