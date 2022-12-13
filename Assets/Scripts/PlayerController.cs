@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     private Coroutine flashRoutine;
 
 
-    public GameObject playerHealthBar;
-    public Image healthBar;
+    //[SerializeField] GameObject playerHealthBar;
+    [SerializeField] Image healthBar;
     [SerializeField] Image healthBarBackdrop;
     public float healthBarDegradeModifier;
 
@@ -73,9 +73,9 @@ public class PlayerController : MonoBehaviour
 
         shadowSprite.enabled = true;
 
-        healthBar = GameObject.FindWithTag($"Player{playerNumber}HealthBar").GetComponent<Image>();
-        healthBarBackdrop = GameObject.Find($"p{playerNumber}HealthbarBackdrop").GetComponent<Image>();
-        healthBar.GetComponentInParent<TrackTarget>().target = gameObject.transform;
+        //healthBar = GameObject.FindWithTag($"Healthbar").GetComponent<Image>();
+        //healthBarBackdrop = transform.Find($"HealthbarBackdrop").GetComponent<Image>();
+        //healthBar.GetComponentInParent<TrackTarget>().target = gameObject.transform;
 
         //healthBarBackdrop.fillAmount = 1; 
     }
