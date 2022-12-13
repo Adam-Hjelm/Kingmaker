@@ -92,19 +92,19 @@ public class UpgradeController : MonoBehaviour
 
         if (playerButtonName.Contains("1"))
         {
-            playerNumberToGiveStat = 1;
+            playerNumberToGiveStat = 0;
         }
         else if (playerButtonName.Contains("2"))
         {
-            playerNumberToGiveStat = 2;
+            playerNumberToGiveStat = 1;
         }
         else if (playerButtonName.Contains("3"))
         {
-            playerNumberToGiveStat = 3;
+            playerNumberToGiveStat = 2;
         }
         else if (playerButtonName.Contains("4"))
         {
-            playerNumberToGiveStat = 4;
+            playerNumberToGiveStat = 3;
         }
     }
 

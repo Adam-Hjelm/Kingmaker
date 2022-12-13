@@ -85,22 +85,23 @@ public class GameManager : MonoBehaviour
     public PlayerInput GetPlayerInput(int ID)
     {
         var player = players.FirstOrDefault(p => p.ID == ID);
-        return player != null ? player.playerInput : null;
+        return player?.playerInput;
     }
 
     private string GetPlayerName(int playerNumber)
     {
         switch (playerNumber)
         {
-            case 1:
+            case 0:
                 return "Red Player";
-            case 2:
+            case 1:
                 return "Blue Player";
-            case 3:
+            case 2:
                 return "Green Player";
-            case 4:
+            case 3:
                 return "Pink Player";
             default:
+                Debug.LogError("TOO MANY PLAYERS");
                 return "TOO MANY PLAYERS";
         }
     }
@@ -217,16 +218,16 @@ public class GameManager : MonoBehaviour
     {
         switch (player.ID)
         {
-            case 1:
+            case 0:
                 player.gameObject.transform.position = player1SpawnPos.position;
                 break;
-            case 2:
+            case 1:
                 player.gameObject.transform.position = player2SpawnPos.position;
                 break;
-            case 3:
+            case 2:
                 player.gameObject.transform.position = player3SpawnPos.position;
                 break;
-            case 4:
+            case 3:
             default:
                 player.gameObject.transform.position = player4SpawnPos.position;
                 break;
@@ -272,19 +273,19 @@ public class GameManager : MonoBehaviour
 
         switch (playerNumber)
         {
-            case 1:
+            case 0:
                 pim.playerPrefab = player2Prefab;
                 upgradeController.playerEventSys1 = multiplayerEventSystem;
                 break;
-            case 2:
+            case 1:
                 pim.playerPrefab = player3Prefab;
                 upgradeController.playerEventSys2 = multiplayerEventSystem;
                 break;
-            case 3:
+            case 2:
                 pim.playerPrefab = player4Prefab;
                 upgradeController.playerEventSys3 = multiplayerEventSystem;
                 break;
-            case 4:
+            case 3:
             default:
                 pim.playerPrefab = player1Prefab;
                 upgradeController.playerEventSys4 = multiplayerEventSystem;

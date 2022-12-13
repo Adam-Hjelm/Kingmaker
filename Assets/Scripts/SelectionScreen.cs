@@ -87,7 +87,8 @@ public class SelectionScreen : MonoBehaviour
         Debug.Log("OnPlayerJoined() called!");
         //JoinPlayer(playerInput.gameObject);
         var device = playerInput.devices.FirstOrDefault();
-        int ID = (int)playerInput.user.id;
+        int ID = (int)playerInput.playerIndex;
+        Debug.Log("ID = " + ID);
         List<int> ids = players.Select(p => p.PlayerID).ToList();
 
         if (!allowJoining || totalPlayers >= maxAllowedPlayers)

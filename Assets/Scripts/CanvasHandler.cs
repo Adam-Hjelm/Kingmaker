@@ -49,16 +49,16 @@ public class CanvasHandler : MonoBehaviour
         switch (ID)
         {
             default:
-            case 1:
+            case 0:
                 currentWinScreen = p1WinScreen;
                 break;
-            case 2:
+            case 1:
                 currentWinScreen = p2WinScreen;
                 break;
-            case 3:
+            case 2:
                 currentWinScreen = p3WinScreen;
                 break;
-            case 4:
+            case 3:
                 currentWinScreen = p4WinScreen;
                 break;
         }
