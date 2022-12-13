@@ -22,6 +22,10 @@ public class UpgradeController : MonoBehaviour
     public GameObject cardButtonPrefab;
     public Canvas upgradeCanvas;
     public TextMeshProUGUI playerChooseText;
+    public GameObject textPickCard;
+    public GameObject textPickCard2;
+    public GameObject textChoosePlayer;
+    public Animation textfade;
 
 
     private UpgradePlayerStats upgradePlayerStats;
@@ -78,13 +82,17 @@ public class UpgradeController : MonoBehaviour
         CheckPlayerToGiveStats();
 
         inPlayerButtons = true;
-
+       
         upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
 
         SpawnNewCards();
         Debug.Log("not in player buttons!!!");
         inPlayerButtons = false;
+        textPickCard.SetActive(false);
+        textPickCard2.SetActive(true);
+        textChoosePlayer.SetActive(false);
     }
+
 
     private void CheckPlayerToGiveStats()
     {
@@ -214,7 +222,9 @@ public class UpgradeController : MonoBehaviour
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
 
         inPlayerButtons = true;
-
+        textPickCard.SetActive(true);
+        textPickCard2.SetActive(false);
+        textChoosePlayer.SetActive(true);
         //if (chosenUpgradeCard != null)
         //{
         //    // Here you can make the card do some cool animations before it goes away and has been given to the player

@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
     public void FinishedUpgrade()
     {
         Debug.Log("UPGRADE DONE");
-        
+
 
         foreach (var player in players)
         {
