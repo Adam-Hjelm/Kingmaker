@@ -10,27 +10,14 @@ public class SelectionScreenPlayerCard : MonoBehaviour
 
     [SerializeField] GameObject readyBtn;
     [SerializeField] GameObject notReadyBtn;
-    [SerializeField] PlayerInput playerInput;
 
     
     public void Initialize(InputDevice device)
     {
         this.device = device;
-        //var test = new PlayerInput();
-        //test.device
-        Debug.Log(device.valueType.ToString());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (device != null)
-        {
-            //if (device.valueType)
-        }
-    }
-
-    void OnReady()
+    public void OnReady()
     {
         isReady = !isReady;
         Debug.Log("on ready");
@@ -44,5 +31,12 @@ public class SelectionScreenPlayerCard : MonoBehaviour
             readyBtn.SetActive(false);
             notReadyBtn.SetActive(true);
         }
+
+        SelectionScreen.Instance.PlayerChangedReadyState(device, isReady);
+    }
+
+    private void OnLeave()
+    {
+        SelectionScreen.Instance.RemovePlayer(device);
     }
 }

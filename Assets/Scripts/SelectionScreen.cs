@@ -13,6 +13,19 @@ using UnityEngine.UI;
 
 public class SelectionScreen : MonoBehaviour
 {
+    private static SelectionScreen _instance;
+    public static SelectionScreen Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("SelectionScreen instance is null!");
+
+            return _instance;
+        }
+    }
+
+
     [SerializeField] private bool allowJoining = true;
     public string gameScene = "GameScene";
 
@@ -34,10 +47,19 @@ public class SelectionScreen : MonoBehaviour
     [SerializeField] GameObject playerCard4;
 
     [SerializeField] List<Sprite> playerSprites = new List<Sprite>();
-    
+    [SerializeField] TextMeshProUGUI readyTimer;
+
+    private int timeBeforeStartWhenReady = 3;
+    private bool allPlayersReady = false;
+    private Coroutine startTimerCoroutine;
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+            Destroy(gameObject);
+        else
+            _instance = this;
+
         DontDestroyOnLoad(this);
     }
 
@@ -66,12 +88,12 @@ public class SelectionScreen : MonoBehaviour
         //JoinPlayer(playerInput.gameObject);
         var device = playerInput.devices.FirstOrDefault();
         int ID = (int)playerInput.user.id;
-        List<int> ids = players.Select(p => p.playerID).ToList();
+        List<int> ids = players.Select(p => p.PlayerID).ToList();
 
         if (!allowJoining || totalPlayers >= maxAllowedPlayers)
             return;
 
-        if (players.Any(p => p.device == device))
+        if (players.Any(p => p.Device == device))
             return;
 
         if (ids.Any(i => i == ID))
@@ -110,11 +132,12 @@ public class SelectionScreen : MonoBehaviour
             return;
         }
 
+        playerCard.GetComponent<SelectionScreenPlayerCard>().Initialize(device);
         var player = new PlayerObject
         {
-            device = device,
-            card = playerCard,
-            playerID = ID
+            Device = device,
+            PlayerGameObject = playerCard,
+            PlayerID = ID
         };
 
         players.Add(player);
@@ -132,9 +155,28 @@ public class SelectionScreen : MonoBehaviour
         Debug.Log("OnPlayerLeft() called!");
     }
 
-    public void PlayerReady(InputAction input)
+    public void PlayerChangedReadyState(InputDevice device, bool isReady)
     {
         Debug.Log("OnReady() called!");
+        if (!isReady)
+            allPlayersReady = false;
+
+        var player = players.FirstOrDefault(p => p.Device == device);
+        if (player != null)
+        {
+            player.IsReady = isReady;
+
+            if (players.Count >= 2 && players.All(p => p.IsReady))
+            {
+                Debug.Log("ALL PLAYERS ARE READY!");
+                allPlayersReady = true;
+                StartCoroutine(StartReadyTimer());
+            }
+            return;
+        }
+
+        StopCoroutine("StartReadyTimer");
+        readyTimer.gameObject.SetActive(false);
     }
 
     private void SetPositionOfPlayerCard(GameObject playerCard, Transform spawn, Sprite sprite, string playerName)
@@ -151,19 +193,41 @@ public class SelectionScreen : MonoBehaviour
         if (totalPlayers <= 0)
             return;
 
-        var player = players.FirstOrDefault(p => p.device == device);
+        var player = players.FirstOrDefault(p => p.Device == device);
 
         if (player == null)
             return;
 
         players.Remove(player);
-        Destroy(player.card);
+        Destroy(player.PlayerGameObject);
+        allPlayersReady = false;
 
         totalPlayers--;
         Debug.Log("Player was removed!");
 
         if (totalPlayers < maxAllowedPlayers)
+        {
             allowJoining = true;
+            PlayerInputManager.instance.EnableJoining();
+        }
+    }
+
+    private IEnumerator StartReadyTimer()
+    {
+        readyTimer.gameObject.SetActive(true);
+
+        int timer = timeBeforeStartWhenReady;
+        while (timer >= 0 && allPlayersReady)
+        {
+            readyTimer.text = $"Game starts in {timer} seconds!";
+            yield return new WaitForSeconds(1f);
+            timer--;
+        }
+
+        if (allPlayersReady)
+            StartGame();
+        else
+            readyTimer.gameObject.SetActive(false);
     }
 
     public void StartGame()
@@ -174,11 +238,12 @@ public class SelectionScreen : MonoBehaviour
         StartCoroutine(DestroyPlayersAndInputManager());
     }
 
+    // Do this in a coroutine to ensure nothing mess up when changing scenes
     private IEnumerator DestroyPlayersAndInputManager()
     {
         foreach (var player in players)
         {
-            Destroy(player.card);
+            Destroy(player.PlayerGameObject);
             yield return null;
         }
         yield return null;
@@ -201,11 +266,11 @@ public class SelectionScreen : MonoBehaviour
         yield return null;
         yield return null;
 
-        players = players.OrderBy(p => p.playerID).ToList();
+        players = players.OrderBy(p => p.PlayerID).ToList();
 
         foreach (var player in players)
         {
-            PlayerInputManager.instance.JoinPlayer(playerIndex: player.playerID, pairWithDevice: player.device);
+            PlayerInputManager.instance.JoinPlayer(playerIndex: player.PlayerID, pairWithDevice: player.Device);
         }
 
         Destroy(gameObject);
@@ -213,8 +278,10 @@ public class SelectionScreen : MonoBehaviour
 
     private class PlayerObject
     {
-        public InputDevice device { get; set; }
-        public GameObject card { get; set; }
-        public int playerID { get; set; }
+        public int PlayerID { get; set; }
+        public SelectionScreenPlayerCard PlayerCard { get; set; }
+        public InputDevice Device { get; set; }
+        public GameObject PlayerGameObject { get; set; }
+        public bool IsReady { get; set; } = false;
     }
 }
