@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5823552197146371310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8517518844177215930, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -914010765, guid: c877bffb4e4aa8e46b4ac0dab0290259, type: 3}
+    - target: {fileID: 8517518844177215931, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_Size.y
+      value: 0.17359951
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215931, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0054677017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215932, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: sprite1
+      value: 
+      objectReference: {fileID: -914010765, guid: c877bffb4e4aa8e46b4ac0dab0290259, type: 3}
+    - target: {fileID: 8517518844177215932, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: sprite2
+      value: 
+      objectReference: {fileID: -610854581, guid: c877bffb4e4aa8e46b4ac0dab0290259, type: 3}
+    - target: {fileID: 8517518844177215932, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: sprite3
+      value: 
+      objectReference: {fileID: 1984873225, guid: c877bffb4e4aa8e46b4ac0dab0290259, type: 3}
+    - target: {fileID: 8517518844177215932, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: sprite4
+      value: 
+      objectReference: {fileID: 514836300, guid: c877bffb4e4aa8e46b4ac0dab0290259, type: 3}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.787
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215933, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517518844177215934, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}
+      propertyPath: m_Name
+      value: Wall (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88fabdb28d5f192498a1681ea2c8aaaa, type: 3}

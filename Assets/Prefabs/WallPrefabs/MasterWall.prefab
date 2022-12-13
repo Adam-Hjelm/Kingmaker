@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1125867717275111437}
   - component: {fileID: 1125867717275111434}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: MasterWall
   m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0005734265, y: -0.0000035837293}
+  m_Offset: {x: 0.0005734265, y: 0.00069889054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18099636, y: 0.16265695}
+  m_Size: {x: 0.18099636, y: 0.1640619}
   m_EdgeRadius: 0
 --- !u!114 &1125867717275111434
 MonoBehaviour:
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bece86547b1f914180c07a1d96b389a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite1: {fileID: 859786821, guid: b0d89ec5ee46a7540b9271b4f6f1ea36, type: 3}
-  sprite2: {fileID: -1700845808, guid: b0d89ec5ee46a7540b9271b4f6f1ea36, type: 3}
-  sprite3: {fileID: -1939138305, guid: b0d89ec5ee46a7540b9271b4f6f1ea36, type: 3}
-  sprite4: {fileID: -943300218, guid: b0d89ec5ee46a7540b9271b4f6f1ea36, type: 3}
+  sprite1: {fileID: -1057424185, guid: 297541801b0bbba468545ac43881e005, type: 3}
+  sprite2: {fileID: -781257602, guid: 297541801b0bbba468545ac43881e005, type: 3}
+  sprite3: {fileID: -269418288, guid: 297541801b0bbba468545ac43881e005, type: 3}
+  sprite4: {fileID: -1438625896, guid: 297541801b0bbba468545ac43881e005, type: 3}
   DestroyEffectPrefab: {fileID: 2508137144502015579, guid: 61980507d8a70574d84c0aa1721ee36c, type: 3}
-  timesHit: 2
+  timesHit: 6
   canHit: 0

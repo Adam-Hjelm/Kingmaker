@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8120950382441528611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7341437363511758218, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.1728659
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758218, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0051008947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758219, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -157625450, guid: a648cb698cfda7246a94d72627fbaa73, type: 3}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758220, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341437363511758221, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: sprite1
+      value: 
+      objectReference: {fileID: -157625450, guid: a648cb698cfda7246a94d72627fbaa73, type: 3}
+    - target: {fileID: 7341437363511758221, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: sprite2
+      value: 
+      objectReference: {fileID: 1557154406, guid: a648cb698cfda7246a94d72627fbaa73, type: 3}
+    - target: {fileID: 7341437363511758221, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: sprite3
+      value: 
+      objectReference: {fileID: -808988701, guid: a648cb698cfda7246a94d72627fbaa73, type: 3}
+    - target: {fileID: 7341437363511758221, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: sprite4
+      value: 
+      objectReference: {fileID: -78863489, guid: a648cb698cfda7246a94d72627fbaa73, type: 3}
+    - target: {fileID: 7341437363511758223, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
+      propertyPath: m_Name
+      value: Wall (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b7ebdbc9fc8cd64087b473e10741de2, type: 3}
