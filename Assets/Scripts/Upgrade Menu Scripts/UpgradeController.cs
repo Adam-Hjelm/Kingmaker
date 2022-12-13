@@ -23,8 +23,8 @@ public class UpgradeController : MonoBehaviour
     public Canvas upgradeCanvas;
     public TextMeshProUGUI playerChooseText;
 
-    private UpgradeCardScript upgradeCardScript;
-    private PlayerController playerStats;
+
+    private UpgradePlayerStats upgradePlayerStats;
 
     public int playerNumberToGiveStat;
     public bool inPlayerButtons = false;
@@ -48,12 +48,11 @@ public class UpgradeController : MonoBehaviour
 
         eventSysInUse = playerEventSys1;
         eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
-
     }
 
     void Start()
     {
-
+        upgradePlayerStats = GetComponent<UpgradePlayerStats>();
     }
 
     void Update()
@@ -76,42 +75,11 @@ public class UpgradeController : MonoBehaviour
 
     public void UpgradePlayerStat()
     {
-        Debug.Log("Upgrade player stat");
         CheckPlayerToGiveStats();
-
-        //playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
-        playerStats = GameManager.Instance.GetPlayerInput(playerNumberToGiveStat).GetComponent<PlayerController>();
-        upgradeCardScript = chosenUpgradeCard.GetComponent<UpgradeCardScript>();
 
         inPlayerButtons = true;
 
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer)
-        {
-            playerStats.maxHealth += upgradeCardScript.maxHealthModifier;
-            playerStats.gameObject.transform.localScale *= upgradeCardScript.sizeIncreaseModifier;
-        }
-        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
-        {
-            playerStats.bulletDamage += upgradeCardScript.bulletDamageModifier;
-            playerStats.GetComponent<ShootController>().bulletSpeed -= upgradeCardScript.moveSpeedModifier * 2;
-        }
-        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
-        {
-            playerStats.moveSpeed += 2;
-        }
-        else if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.FireRateUpButSmallerBullets)
-        {
-            playerStats.fireRate += upgradeCardScript.fireRateModifier;
-            playerStats.bulletSize *= upgradeCardScript.sizeDecreaseModifier;
-        }
-        //selectedUpgradeCard.GetComponent<SpriteRenderer>().enabled = false;
-        upgradeCardButtons.Remove(chosenUpgradeCard);
-
-        //if (playerNumberToGiveStat >= 4)
-        //      {
-        //          Invoke(nameof(FinishedUpgrade), 3);
-        //          return;
-        //}
+        upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
 
         SpawnNewCards();
         Debug.Log("not in player buttons!!!");

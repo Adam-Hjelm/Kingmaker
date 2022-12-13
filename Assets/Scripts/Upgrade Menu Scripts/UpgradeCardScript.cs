@@ -7,7 +7,7 @@ using TMPro;
 
 public class UpgradeCardScript : MonoBehaviour
 {
-    private int amountOfStats = 4;
+    private int amountOfStats = 6;
     private int amountOfRares = 4;
     private int randomNumber;
 
@@ -25,19 +25,22 @@ public class UpgradeCardScript : MonoBehaviour
     public Animator anim;
 
     [Header("Stats Upgrade")]
-    public float moveSpeedModifier = 2f;
+    public float moveSpeedModifier = 1.25f;
     public int maxHealthModifier = 1;
     public int bulletDamageModifier = 1;
     public float fireRateModifier = 0.2f;
-    public float sizeDecreaseModifier = 0.5f;
-    public float sizeIncreaseModifier = 1.5f;
+    public float sizeDecreaseModifier = 0.75f;
+    public float sizeIncreaseModifier = 1.25f;
 
     public enum CardType
     {
-        DamageUpButSlowerBulletSpeed,
         HealthUpButBiggerPlayer,
-        FireRateUpButSmallerBullets,
+        HealthUpButSlowerPlayerSpeed,
         SpeedUp,
+        DamageUpButSlowerBulletSpeed,
+        FireRateUpButSmallerBullets,
+        BulletSpeedUpButSlowerFireRate,
+        MoreBulletsButMoreSpread,
         AbilityCard,
     }
 
@@ -60,15 +63,16 @@ public class UpgradeCardScript : MonoBehaviour
 
     private void StatCard()
     {
-        int chosenStat = Random.Range(0, amountOfStats + 1);
+        int chosenStatCard = Random.Range(0, amountOfStats + 1);
 
-        switch (chosenStat)
+        switch (chosenStatCard)
         {
             case 1:
                 Debug.Log("Given damage card");
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "DMG";
                 anim.runtimeAnimatorController = damageCardAnimController;
                 currentCardType = CardType.DamageUpButSlowerBulletSpeed;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
                 break;
 
             case 2:
@@ -76,6 +80,7 @@ public class UpgradeCardScript : MonoBehaviour
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
                 anim.runtimeAnimatorController = healthCardAnimController;
                 currentCardType = CardType.HealthUpButBiggerPlayer;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
                 break;
 
             case 3:
@@ -83,6 +88,7 @@ public class UpgradeCardScript : MonoBehaviour
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FIRE RATE";
                 anim.runtimeAnimatorController = fireRateCardAnimController;
                 currentCardType = CardType.FireRateUpButSmallerBullets;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
                 break;
 
             case 4:
@@ -90,12 +96,22 @@ public class UpgradeCardScript : MonoBehaviour
                 //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
                 anim.runtimeAnimatorController = speedCardAnimController;
                 currentCardType = CardType.SpeedUp;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
                 break;
-        }
-
-        if (currentCardType == CardType.DamageUpButSlowerBulletSpeed)
-        {
-            anim.runtimeAnimatorController = damageCardAnimController;
+            case 5:
+                Debug.Log("Given speed card");
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
+                //anim.runtimeAnimatorController = speedCardAnimController;
+                currentCardType = CardType.BulletSpeedUpButSlowerFireRate;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                break;
+            case 6:
+                Debug.Log("Given speed card");
+                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
+                //anim.runtimeAnimatorController = speedCardAnimController;
+                currentCardType = CardType.MoreBulletsButMoreSpread;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                break;
         }
     }
 
