@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
     public void FinishedUpgrade()
     {
         Debug.Log("UPGRADE DONE");
-        
+
 
         foreach (var player in players)
         {
@@ -242,7 +243,7 @@ public class GameManager : MonoBehaviour
         //}
         test.SetActive(false);
         winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
-		canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
+        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }
 
