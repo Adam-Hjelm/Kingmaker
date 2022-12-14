@@ -78,7 +78,7 @@ public class EscMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    void OnEscape()
+    public void OnEscape()
     {
         if (hidden == true && inplace == false)
         {

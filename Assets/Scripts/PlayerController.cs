@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public bool dashing;
     public bool isBlocking;
 
+    EscMenu escMenu;
+
 
     void Awake()
     {
@@ -182,5 +184,10 @@ public class PlayerController : MonoBehaviour
     private void ExplosionSound()
     {
         Source.PlayOneShot(Explosion);
+    }
+
+    void OnEscape()
+    {
+        escMenu.OnEscape();
     }
 }
