@@ -126,8 +126,9 @@ public class GameManager : MonoBehaviour
         playerObject.GetComponent<Collider2D>().enabled = enabled;
         playerObject.GetComponent<PlayerMovement>().enabled = enabled;
         playerObject.GetComponent<Block>().enabled = enabled;
-        //if (playerObject.gameObject.GetComponentInChildren<Canvas>().enabled == false)
+        //if (playerObject.gameObject.GetComponentInChildren<Canvas>() == false)
         //{
+        //    playerObject.gameObject.GetComponent<PlayerController>().healthBarBackdrop.enabled = enabled;
         //    playerObject.gameObject.GetComponentInChildren<Canvas>().enabled = enabled;
         //}
         //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
@@ -175,7 +176,7 @@ public class GameManager : MonoBehaviour
         gameScene.SetActive(false);
 
         PlayerEnabled(false, lastPlayer);
-        lastPlayer.gameObject.GetComponentInChildren<Canvas>().enabled = false;
+        //lastPlayer.gameObject.GetComponentInChildren<Canvas>().enabled = false;
         foreach (var player in players)
         {
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
@@ -239,7 +240,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         PlayerEnabled(true, player.gameObject);
-        player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
+        //player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
     }
 
     private void HandleWin(PlayerInstance winningPlayer)

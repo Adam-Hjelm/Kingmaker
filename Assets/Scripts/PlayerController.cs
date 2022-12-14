@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     //[SerializeField] GameObject playerHealthBar;
     [SerializeField] Image healthBar;
-    [SerializeField] Image healthBarBackdrop;
+    public Image healthBarBackdrop;
     public float healthBarDegradeModifier;
 
     public SpriteRenderer spriteRenderer;
@@ -101,9 +101,11 @@ public class PlayerController : MonoBehaviour
         {
             healthBarBackdrop.transform.parent.gameObject.SetActive(false);
         }
-        else
+
+        if(currentHealth == maxHealth)
         {
             healthBarBackdrop.transform.parent.gameObject.SetActive(true);
+            healthBarBackdrop.GetComponentInParent<Canvas>().enabled = true;
         }
     }
 
