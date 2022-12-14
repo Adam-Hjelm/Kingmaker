@@ -51,7 +51,7 @@ public class SelectionScreen : MonoBehaviour
 
     private int timeBeforeStartWhenReady = 3;
     private bool allPlayersReady = false;
-    private Coroutine startTimerCoroutine;
+
 
     private void Awake()
     {
@@ -109,22 +109,25 @@ public class SelectionScreen : MonoBehaviour
         if (playerCard1 == null)
         {
             SetPositionOfPlayerCard(playerCard, spawnPos1, playerSprites[0], "Red Player");
+            spawnPos1.GetChild(0).gameObject.SetActive(false);
             playerCard1 = playerCard;
         }
         else if (playerCard2 == null)
         {
             SetPositionOfPlayerCard(playerCard, spawnPos2, playerSprites[1], "Blue Player");
+            spawnPos2.GetChild(0).gameObject.SetActive(false);
             playerCard2 = playerCard;
         }
         else if (playerCard3 == null)
         {
             SetPositionOfPlayerCard(playerCard, spawnPos3, playerSprites[2], "Green Player");
+            spawnPos3.GetChild(0).gameObject.SetActive(false);
             playerCard3 = playerCard;
         }
         else if (playerCard4 == null)
         {
-            
             SetPositionOfPlayerCard(playerCard, spawnPos4, playerSprites[3], "Pink Player");
+            spawnPos4.GetChild(0).gameObject.SetActive(false);
             playerCard4 = playerCard;
         }
         else
@@ -198,6 +201,24 @@ public class SelectionScreen : MonoBehaviour
 
         if (player == null)
             return;
+
+        switch (player.PlayerID)
+        {
+            case 0:
+                spawnPos1.GetChild(0).gameObject.SetActive(true);
+                break;
+            case 1:
+                spawnPos2.GetChild(0).gameObject.SetActive(true);
+                break;
+            case 2:
+                spawnPos3.GetChild(0).gameObject.SetActive(true);
+                break;
+            case 3:
+                spawnPos4.GetChild(0).gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
 
         players.Remove(player);
         Destroy(player.PlayerGameObject);
