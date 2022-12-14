@@ -126,10 +126,10 @@ public class GameManager : MonoBehaviour
         playerObject.GetComponent<Collider2D>().enabled = enabled;
         playerObject.GetComponent<PlayerMovement>().enabled = enabled;
         playerObject.GetComponent<Block>().enabled = enabled;
-        if (playerObject.gameObject.GetComponentInChildren<Canvas>().enabled == false)
-        {
-            playerObject.GetComponentInChildren<Canvas>().enabled = enabled;
-        }
+        //if (playerObject.gameObject.GetComponentInChildren<Canvas>().enabled == false)
+        //{
+        //    playerObject.gameObject.GetComponentInChildren<Canvas>().enabled = enabled;
+        //}
         //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
     }
 
@@ -238,8 +238,8 @@ public class GameManager : MonoBehaviour
                 player.gameObject.transform.position = player4SpawnPos.position;
                 break;
         }
-
         PlayerEnabled(true, player.gameObject);
+        player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
     }
 
     private void HandleWin(PlayerInstance winningPlayer)
@@ -248,7 +248,8 @@ public class GameManager : MonoBehaviour
         //{
         //}
         test.SetActive(false);
-        winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
+        //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
+        PlayerEnabled(false, winningPlayer.gameObject);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }

@@ -101,6 +101,10 @@ public class PlayerController : MonoBehaviour
         {
             healthBarBackdrop.transform.parent.gameObject.SetActive(false);
         }
+        else
+        {
+            healthBarBackdrop.transform.parent.gameObject.SetActive(true);
+        }
     }
 
     private void PlayerTakeDmg(int dmg)

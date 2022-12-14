@@ -29,6 +29,7 @@ public class UpgradeController : MonoBehaviour
 
 
     private UpgradePlayerStats upgradePlayerStats;
+    public DisplayPlayerStats displayPlayerStats;
 
     public int playerNumberToGiveStat;
     public bool inPlayerButtons = false;
@@ -84,9 +85,10 @@ public class UpgradeController : MonoBehaviour
         inPlayerButtons = true;
 
         upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
+        displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
 
         SpawnNewCards();
-        Debug.Log("not in player buttons!!!");
+
         inPlayerButtons = false;
         textPickCard.SetActive(false);
         textPickCard2.SetActive(true);
@@ -97,10 +99,11 @@ public class UpgradeController : MonoBehaviour
     private void CheckPlayerToGiveStats()
     {
         string playerButtonName = eventSysInUse.currentSelectedGameObject.GetComponent<Button>().name;
-
+        displayPlayerStats = eventSysInUse.currentSelectedGameObject.GetComponentInChildren<DisplayPlayerStats>();
         if (playerButtonName.Contains("1"))
         {
             playerNumberToGiveStat = 0;
+
         }
         else if (playerButtonName.Contains("2"))
         {
@@ -196,8 +199,8 @@ public class UpgradeController : MonoBehaviour
                 }
                 break;
             case 4:
-                eventSysInUse = playerEventSys1;
-                playerToChooseCard = 1;
+                //eventSysInUse = playerEventSys1;
+                //playerToChooseCard = 1;
 
                 playerEventSys1.SetSelectedGameObject(null);
                 playerEventSys2.SetSelectedGameObject(null);
@@ -210,8 +213,7 @@ public class UpgradeController : MonoBehaviour
                     playerEventSys4.SetSelectedGameObject(null);
                 }
                 Invoke(nameof(FinishedUpgrade), 0.1f);
-                textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
-                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+
                 return;
                 //break;
         }
@@ -238,6 +240,18 @@ public class UpgradeController : MonoBehaviour
 
     void FinishedUpgrade()
     {
+        for (int i = 0; i < playerButtons.Length; i++)
+        {
+            displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+            displayPlayerStats.CleanupStatScreen();
+        }
+        eventSysInUse = playerEventSys1;
+        playerToChooseCard = 1;
+
+        textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+        textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+        textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
+
         GameManager.Instance.FinishedUpgrade();
     }
 

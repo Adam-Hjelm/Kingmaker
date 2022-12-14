@@ -7,6 +7,7 @@ public class UpgradePlayerStats : MonoBehaviour
     private UpgradeCardScript upgradeCardScript;
     private UpgradeController upgradeController;
     private PlayerController playerStats;
+    private DisplayPlayerStats displayPlayerStats;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class UpgradePlayerStats : MonoBehaviour
         //playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
         playerStats = GameManager.Instance.GetPlayerInput(playerNumberToGiveStat).GetComponent<PlayerController>();
         upgradeCardScript = upgradeController.chosenUpgradeCard.GetComponent<UpgradeCardScript>();
+        displayPlayerStats = upgradeController.displayPlayerStats;
 
         switch (upgradeCardScript.currentCardType)
         {
@@ -59,11 +61,13 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeFireRate(float fireRate)
     {
         playerStats.fireRate += fireRate;
+        displayPlayerStats.firerateToAdd += fireRate;
     }
 
     private void ChangePlayerSpeed(float moveSpeed)
     {
         playerStats.moveSpeed += moveSpeed;
+        displayPlayerStats.speedToAdd += moveSpeed;
     }
 
     private void ChangeBulletSpeed(float bulletSpeed = 4)
@@ -74,6 +78,7 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeBulletDamage(int bulletDamage = 1)
     {
         playerStats.bulletDamage += bulletDamage;
+        displayPlayerStats.dmgToAdd += bulletDamage;
     }
 
     private void ChangeBulletScale(float sizeModifier)
@@ -89,5 +94,6 @@ public class UpgradePlayerStats : MonoBehaviour
     private void IncreaseHealth(int maxHealth)
     {
         playerStats.maxHealth += maxHealth;
+        displayPlayerStats.hphToAdd += maxHealth;
     }
 }
