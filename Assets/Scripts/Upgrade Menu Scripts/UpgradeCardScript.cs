@@ -28,9 +28,9 @@ public class UpgradeCardScript : MonoBehaviour
     public float moveSpeedModifier = 1.25f;
     public int maxHealthModifier = 1;
     public int bulletDamageModifier = 1;
-    public float fireRateModifier = 0.2f;
-    public float sizeDecreaseModifier = 0.75f;
-    public float sizeIncreaseModifier = 1.25f;
+    public float fireRateModifier = 0.3f;
+    public float sizeDecreaseModifier = 0.6f;
+    public float sizeIncreaseModifier = 1.1f;
 
     public enum CardType
     {

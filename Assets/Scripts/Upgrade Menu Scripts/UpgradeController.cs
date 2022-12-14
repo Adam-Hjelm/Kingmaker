@@ -82,7 +82,7 @@ public class UpgradeController : MonoBehaviour
         CheckPlayerToGiveStats();
 
         inPlayerButtons = true;
-       
+
         upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
 
         SpawnNewCards();
@@ -152,6 +152,12 @@ public class UpgradeController : MonoBehaviour
 
     private void CheckForNextPlayer()
     {
+        for (int i = 0; i < playerButtons.Length; i++)
+        {
+            playerButtons[i].GetComponent<Image>().color = Color.white;
+
+        }
+
         switch (playerToChooseCard)
         {
             case 1:
@@ -159,41 +165,66 @@ public class UpgradeController : MonoBehaviour
                 playerToChooseCard = 2;
                 break;
             case 2:
-                eventSysInUse = playerEventSys3;
-                playerToChooseCard = 3;
+                if (playerEventSys3 == null)
+                {
+                    playerEventSys1.SetSelectedGameObject(null);
+                    playerEventSys2.SetSelectedGameObject(null);
+
+                    Invoke(nameof(FinishedUpgrade), 3);
+                    return;
+                }
+                else
+                {
+                    eventSysInUse = playerEventSys3;
+                    playerToChooseCard = 3;
+                }
                 break;
             case 3:
-                eventSysInUse = playerEventSys4;
-                playerToChooseCard = 4;
+                if (playerEventSys4 == null)
+                {
+                    playerEventSys1.SetSelectedGameObject(null);
+                    playerEventSys2.SetSelectedGameObject(null);
+                    playerEventSys3.SetSelectedGameObject(null);
+
+                    Invoke(nameof(FinishedUpgrade), 3);
+                    return;
+                }
+                else
+                {
+                    eventSysInUse = playerEventSys4;
+                    playerToChooseCard = 4;
+                }
                 break;
             case 4:
                 eventSysInUse = playerEventSys1;
                 playerToChooseCard = 1;
 
-                for (int i = 0; i < playerButtons.Length; i++)
-                {
-                    playerButtons[i].GetComponent<Image>().color = Color.white;
-
-                }
-
                 playerEventSys1.SetSelectedGameObject(null);
                 playerEventSys2.SetSelectedGameObject(null);
-                playerEventSys3.SetSelectedGameObject(null);
+                if (playerEventSys3 != null)
+                {
+                    playerEventSys3.SetSelectedGameObject(null);
+                }
                 if (playerEventSys4 != null)
                 {
                     playerEventSys4.SetSelectedGameObject(null);
                 }
-                Invoke(nameof(FinishedUpgrade), 3);
-                playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
+                Invoke(nameof(FinishedUpgrade), 0.1f);
+                textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
                 return;
                 //break;
         }
 
-        playerChooseText.text = $"Player {playerToChooseCard}, Give a Card";
+        textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+        textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
 
         playerEventSys1.SetSelectedGameObject(null);
         playerEventSys2.SetSelectedGameObject(null);
-        playerEventSys3.SetSelectedGameObject(null);
+        if (playerEventSys3 != null)
+        {
+            playerEventSys3.SetSelectedGameObject(null);
+        }
         if (playerEventSys4 != null)
         {
             playerEventSys4.SetSelectedGameObject(null);
@@ -225,6 +256,7 @@ public class UpgradeController : MonoBehaviour
         textPickCard.SetActive(true);
         textPickCard2.SetActive(false);
         textChoosePlayer.SetActive(true);
+        textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
         //if (chosenUpgradeCard != null)
         //{
         //    // Here you can make the card do some cool animations before it goes away and has been given to the player
