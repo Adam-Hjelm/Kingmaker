@@ -126,6 +126,10 @@ public class GameManager : MonoBehaviour
         playerObject.GetComponent<Collider2D>().enabled = enabled;
         playerObject.GetComponent<PlayerMovement>().enabled = enabled;
         playerObject.GetComponent<Block>().enabled = enabled;
+        if (playerObject.gameObject.GetComponentInChildren<Canvas>().enabled == false)
+        {
+            playerObject.GetComponentInChildren<Canvas>().enabled = enabled;
+        }
         //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
     }
 
@@ -171,6 +175,7 @@ public class GameManager : MonoBehaviour
         gameScene.SetActive(false);
 
         PlayerEnabled(false, lastPlayer);
+        lastPlayer.gameObject.GetComponentInChildren<Canvas>().enabled = false;
         foreach (var player in players)
         {
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");

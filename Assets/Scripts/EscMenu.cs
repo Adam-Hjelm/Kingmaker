@@ -77,4 +77,32 @@ public class EscMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    void OnEscape()
+    {
+        if (hidden == true && inplace == false)
+        {
+            var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
+            test.SetUpdate(true);
+            Time.timeScale = 0;
+            Debug.Log("You paused");
+
+            if (endPosY <= 0f)
+            {
+                inplace = true;
+            }
+        }
+        if (hidden == false && inplace == true)
+        {
+            var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
+            test.SetUpdate(true);
+            Time.timeScale = 1;
+            Debug.Log("You unpaused");
+
+            if (startPosY >= 10f)
+            {
+                inplace = false;
+            }
+        }
+    }
 }
