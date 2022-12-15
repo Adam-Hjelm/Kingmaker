@@ -898,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636872361627527587, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8636872361627527589, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_Camera
@@ -951,6 +951,10 @@ PrefabInstance:
     - target: {fileID: 8636872361720077467, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361769933429, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 45.90001
       objectReference: {fileID: 0}
     - target: {fileID: 8636872361769933430, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
