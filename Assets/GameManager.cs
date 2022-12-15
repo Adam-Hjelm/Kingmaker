@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] UpgradeController upgradeController;
 
-
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -80,6 +79,26 @@ public class GameManager : MonoBehaviour
 
         if (player1Prefab != null && pim != null)
             pim.playerPrefab = player1Prefab;
+    }
+
+    public int GetPlayerScore(int playerToGetScoreFrom)
+    {
+        if (playerToGetScoreFrom < 5 && playerToGetScoreFrom > -1)
+        {
+            if (playerToGetScoreFrom >= 0 && playerToGetScoreFrom < players.Count)
+            {
+                return players[playerToGetScoreFrom].score;
+            }
+            else
+            {
+                return 69420;
+            }
+        }
+        else
+        {
+            return 69420;
+        }
+
     }
 
     public PlayerInput GetPlayerInput(int ID)

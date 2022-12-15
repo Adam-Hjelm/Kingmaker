@@ -28,7 +28,7 @@ public class UpgradePlayerStats : MonoBehaviour
         {
             case UpgradeCardScript.CardType.HealthUpButBiggerPlayer:
                 IncreaseHealth(upgradeCardScript.maxHealthModifier);
-                ChangePlayerScale(upgradeCardScript.sizeIncreaseModifier);
+                ChangePlayerScale(upgradeCardScript.sizeModifier);
                 break;
             case UpgradeCardScript.CardType.HealthUpButSlowerPlayerSpeed:
                 IncreaseHealth(upgradeCardScript.maxHealthModifier);
@@ -43,7 +43,7 @@ public class UpgradePlayerStats : MonoBehaviour
                 break;
             case UpgradeCardScript.CardType.FireRateUpButSmallerBullets:
                 ChangeFireRate(upgradeCardScript.fireRateModifier);
-                ChangeBulletScale(upgradeCardScript.sizeDecreaseModifier);
+                ChangeBulletScale(upgradeCardScript.sizeModifier);
                 break;
             case UpgradeCardScript.CardType.BulletSpeedUpButSlowerFireRate:
                 ChangeBulletSpeed(upgradeCardScript.moveSpeedModifier * 1.75f);
@@ -81,14 +81,15 @@ public class UpgradePlayerStats : MonoBehaviour
         displayPlayerStats.dmgToAdd += bulletDamage;
     }
 
-    private void ChangeBulletScale(float sizeModifier)
+    private void ChangeBulletScale(Vector3 sizeModifier)
     {
-        playerStats.bulletSize *= sizeModifier;
+        playerStats.bulletSize += sizeModifier;
     }
 
-    private void ChangePlayerScale(float sizeIncrease)
+    private void ChangePlayerScale(Vector3 sizeIncrease)
     {
-        playerStats.gameObject.transform.localScale *= sizeIncrease;
+        Debug.Log(sizeIncrease + " Size of player!");
+        playerStats.gameObject.transform.localScale += sizeIncrease;
     }
 
     private void IncreaseHealth(int maxHealth)

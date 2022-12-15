@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DisplayPlayerStats : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class DisplayPlayerStats : MonoBehaviour
     public TextMeshProUGUI dmgText;
     public TextMeshProUGUI firerateText;
     public TextMeshProUGUI speedText;
-
-
+    public int playerNumberDisplayBelongsTo;
+    public int currentScore;
 
     public float hphToAdd;
     public float dmgToAdd;
@@ -19,6 +20,15 @@ public class DisplayPlayerStats : MonoBehaviour
 
     private PlayerController playerStats;
     public Animator anim;
+
+    public Image scoreCrown1;
+    public Image scoreCrown2;
+    public Image scoreCrown3;
+
+    public Sprite crownEmpty;
+    public Sprite crownPoint;
+
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -29,8 +39,6 @@ public class DisplayPlayerStats : MonoBehaviour
         firerateText.text = playerStats.fireRate.ToString();
         speedText.text = playerStats.moveSpeed.ToString();
     }
-
-
 
     public void UpdateStatScreen(int playerNumberToUpdate)
     {
@@ -43,19 +51,19 @@ public class DisplayPlayerStats : MonoBehaviour
         if (hphToAdd != 0)
         {
             ResetStatScreen(hpText);
-            hpText.text = $"{hpText.text} +  <color=green>{hphToAdd}</color>";
+            hpText.text = $"{hpText.text} +  <color=#73ad41>{hphToAdd}</color>";
         }
 
         if (dmgToAdd != 0)
         {
             ResetStatScreen(dmgText);
-            dmgText.text = $"{dmgText.text} +  <color=green>{dmgToAdd}</color>";
+            dmgText.text = $"{dmgText.text} +  <color=#73ad41>{dmgToAdd}</color>";
         }
 
         if (firerateToAdd > 0)
         {
             ResetStatScreen(firerateText);
-            firerateText.text = $"{firerateText.text} +  <color=green>{firerateToAdd}</color>";
+            firerateText.text = $"{firerateText.text} +  <color=#73ad41c>{firerateToAdd}</color>";
         }
         else if (firerateToAdd < 0)
         {
@@ -66,7 +74,7 @@ public class DisplayPlayerStats : MonoBehaviour
         if (speedToAdd > 0)
         {
             ResetStatScreen(speedText);
-            speedText.text = $"{speedText.text} + <color=green>{speedToAdd}</color>";
+            speedText.text = $"{speedText.text} + <color=#73ad41>{speedToAdd}</color>";
         }
         else if (speedToAdd < 0)
         {
@@ -92,7 +100,6 @@ public class DisplayPlayerStats : MonoBehaviour
             return;
         }
 
-
         hpText.text = (playerStats.maxHealth).ToString();
         dmgText.text = (playerStats.bulletDamage).ToString();
         firerateText.text = (playerStats.fireRate).ToString();
@@ -102,5 +109,29 @@ public class DisplayPlayerStats : MonoBehaviour
         dmgToAdd = 0;
         firerateToAdd = 0;
         speedToAdd = 0;
+    }
+
+    public void OnEnable() // its in update. i dont care, fight me about it why dont'chu
+    {
+        if (GameManager.Instance.GetPlayerScore(playerNumberDisplayBelongsTo - 1) > 0 && GameManager.Instance.GetPlayerScore(playerNumberDisplayBelongsTo - 1) < 5)
+        {
+            currentScore = GameManager.Instance.GetPlayerScore(playerNumberDisplayBelongsTo - 1);
+        }
+
+        if (currentScore == 0)
+        {
+            scoreCrown1.sprite = crownEmpty;
+            scoreCrown2.sprite = crownEmpty;
+            scoreCrown3.sprite = crownEmpty;
+        }
+        else if (currentScore == 1)
+        {
+            scoreCrown1.sprite = crownPoint;
+        }
+        else if (currentScore == 2)
+        {
+            scoreCrown1.sprite = crownPoint;
+            scoreCrown2.sprite = crownPoint;
+        }
     }
 }

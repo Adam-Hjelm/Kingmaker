@@ -13,14 +13,11 @@ TagManager:
   - Player2
   - Player3
   - Player4
-  - DropZone
-  - DraggablePlayer1
   - Card
-  - DraggablePlayer2
   - Environment
-  - DraggablePlayer3
-  - DraggablePlayer4
   - Shield
+  - GameManager
+  - PlayerStatScreen
   layers:
   - Default
   - TransparentFX

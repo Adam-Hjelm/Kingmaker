@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2848253011271423528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 2476117124646458817}
   m_Layer: 0
   m_Name: PlayerStatsScreen
-  m_TagString: Untagged
+  m_TagString: PlayerStatScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,11 +645,19 @@ MonoBehaviour:
   dmgText: {fileID: 2362296974435332168}
   firerateText: {fileID: 896454531426015578}
   speedText: {fileID: 6601423301324287533}
+  playerNumberDisplayBelongsTo: 0
+  currentScore: 0
   hphToAdd: 0
   dmgToAdd: 0
   firerateToAdd: 0
   speedToAdd: 0
   anim: {fileID: 0}
+  scoreCrown1: {fileID: 1675924363829421250}
+  scoreCrown2: {fileID: 2421293410290209896}
+  scoreCrown3: {fileID: 295690912386387644}
+  crownEmpty: {fileID: 21300000, guid: c2789feda05c7444189042cafa9c79a2, type: 3}
+  crownPoint: {fileID: 21300000, guid: d384b7e6c3459374ebf326a9075ce9d5, type: 3}
+  gameManager: {fileID: 0}
 --- !u!1 &4045734238047531013
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3404487637006329016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -819,7 +827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8842325747026392977
 RectTransform:
   m_ObjectHideFlags: 0

@@ -26,11 +26,11 @@ public class UpgradeCardScript : MonoBehaviour
 
     [Header("Stats Upgrade")]
     public float moveSpeedModifier = 1.25f;
-    public int maxHealthModifier = 1;
+    public int maxHealthModifier = 4;
     public int bulletDamageModifier = 1;
     public float fireRateModifier = 0.3f;
-    public float sizeDecreaseModifier = 0.6f;
-    public float sizeIncreaseModifier = 1.1f;
+    //public Vector3 sizeDecreaseModifier = new Vector3(0.6f, 0.6f, 0.6f);
+    public Vector3 sizeModifier = new Vector3(0.6f, 0.6f, 0.6f);
 
     public enum CardType
     {
