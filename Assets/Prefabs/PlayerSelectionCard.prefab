@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 2474016273898050101}
   - component: {fileID: 3635270128999231376}
   - component: {fileID: 7971731424406252867}
+  - component: {fileID: 587345853158365136}
   - component: {fileID: 2147181205236380980}
   m_Layer: 0
   m_Name: PlayerSelectionCard
@@ -462,7 +463,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyBtn: {fileID: 2346597705867191249}
   notReadyBtn: {fileID: 1929648904222370281}
-  playerInput: {fileID: 0}
+  rumbler: {fileID: 587345853158365136}
+--- !u!114 &587345853158365136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5661398130770407780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c7eb26cb77b8a4f875322eb165414e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2147181205236380980
 MonoBehaviour:
   m_ObjectHideFlags: 0
