@@ -42,12 +42,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip Explosion;
     public AudioSource Source;
     public UpgradeController upgradeController;
+    public GameManager gameManager;
     public GameObject DeathPrefab;
     public Transform DeathAnimationPoint;
     public SpriteRenderer shadowSprite;
 
     public bool dashing;
     public bool isBlocking;
+    public bool roundOver = false;
 
     EscMenu escMenu;
 
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
             healthBarBackdrop.transform.parent.gameObject.SetActive(false);
         }
 
-        if(currentHealth == maxHealth)
+        if (currentHealth == maxHealth && roundOver == false)
         {
             healthBarBackdrop.transform.parent.gameObject.SetActive(true);
             healthBarBackdrop.GetComponentInParent<Canvas>().enabled = true;

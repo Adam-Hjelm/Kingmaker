@@ -176,7 +176,8 @@ public class GameManager : MonoBehaviour
         gameScene.SetActive(false);
 
         PlayerEnabled(false, lastPlayer);
-        //lastPlayer.gameObject.GetComponentInChildren<Canvas>().enabled = false;
+        lastPlayer.GetComponent<PlayerController>().roundOver = true;
+        lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
         foreach (var player in players)
         {
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
@@ -188,7 +189,8 @@ public class GameManager : MonoBehaviour
     public void FinishedUpgrade()
     {
         Debug.Log("UPGRADE DONE");
-
+        lastPlayer.GetComponent<PlayerController>().roundOver = false;
+        lastPlayer.GetComponentInChildren<Canvas>().enabled = true;
 
         foreach (var player in players)
         {
