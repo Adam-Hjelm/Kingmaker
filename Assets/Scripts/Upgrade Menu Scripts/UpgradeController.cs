@@ -25,6 +25,7 @@ public class UpgradeController : MonoBehaviour
     public GameObject textPickCard;
     public GameObject textPickCard2;
     public GameObject textChoosePlayer;
+    public GameObject arrowIndicator;
     public Animation textfade;
 
 
@@ -70,11 +71,13 @@ public class UpgradeController : MonoBehaviour
         else if (eventSysInUse.currentSelectedGameObject.CompareTag("Card"))
         {
             currentlySelectedCard = eventSysInUse.currentSelectedGameObject.GetComponent<Button>();
+            arrowIndicator.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
         }
 
         if (inPlayerButtons && chosenUpgradeCard != null)
         {
-            chosenUpgradeCard.gameObject.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
+            arrowIndicator.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
+            //chosenUpgradeCard.gameObject.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
         }
     }
 
@@ -173,7 +176,7 @@ public class UpgradeController : MonoBehaviour
                     playerEventSys1.SetSelectedGameObject(null);
                     playerEventSys2.SetSelectedGameObject(null);
 
-                    Invoke(nameof(FinishedUpgrade), 3);
+                    Invoke(nameof(FinishedUpgrade), 0.1f);
                     return;
                 }
                 else
@@ -189,7 +192,7 @@ public class UpgradeController : MonoBehaviour
                     playerEventSys2.SetSelectedGameObject(null);
                     playerEventSys3.SetSelectedGameObject(null);
 
-                    Invoke(nameof(FinishedUpgrade), 3);
+                    Invoke(nameof(FinishedUpgrade), 0.1f);
                     return;
                 }
                 else
@@ -243,7 +246,7 @@ public class UpgradeController : MonoBehaviour
         for (int i = 0; i < playerButtons.Length; i++)
         {
             displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
-            displayPlayerStats.CleanupStatScreen();
+            displayPlayerStats.CleanupStatScreen(i);
         }
         eventSysInUse = playerEventSys1;
         playerToChooseCard = 1;
@@ -263,6 +266,9 @@ public class UpgradeController : MonoBehaviour
             playerButtons[i].onClick.AddListener(UpgradePlayerStat);
             playerButtons[i].GetComponent<Image>().color = Color.white;
         }
+
+
+
         playerButtons[playerToChooseCard - 1].onClick.RemoveListener(UpgradePlayerStat); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
 

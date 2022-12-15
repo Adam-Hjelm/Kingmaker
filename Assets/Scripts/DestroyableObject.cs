@@ -10,6 +10,7 @@ public class DestroyableObject : MonoBehaviour
     public Sprite sprite3;
     public Sprite sprite4;
     public GameObject DestroyEffectPrefab;
+    public GameManager gameManager;
     //public Transform explosionPoint;
 
 
@@ -23,6 +24,7 @@ public class DestroyableObject : MonoBehaviour
     {
         SR = GetComponent<SpriteRenderer>();
         Col = GetComponent<Collider2D>();
+        //gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         //timesHit = 3;
         canHit = true;
     }
@@ -30,7 +32,7 @@ public class DestroyableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canHit)
+        if (canHit)
         {
             return;
         }
@@ -42,7 +44,7 @@ public class DestroyableObject : MonoBehaviour
         {
             timesHit -= 1;
 
-            if(timesHit == 6)
+            if (timesHit == 6)
             {
                 SR.sprite = sprite1;
                 StartCoroutine(Hit());

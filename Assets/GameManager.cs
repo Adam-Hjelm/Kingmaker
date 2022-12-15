@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-
-
     public static GameStates GameState { get; private set; } = GameStates.SelectionScreen;
 
     public int currentRound = 0;
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
     [SerializeField] GameObject test;
+    [SerializeField] DestroyableObject[] allWallScripts;
 
     //[SerializeField] DragDropScript playerDragDrop1;
     //[SerializeField] DragDropScript playerDragDrop2;
@@ -126,8 +125,9 @@ public class GameManager : MonoBehaviour
         playerObject.GetComponent<Collider2D>().enabled = enabled;
         playerObject.GetComponent<PlayerMovement>().enabled = enabled;
         playerObject.GetComponent<Block>().enabled = enabled;
-        //if (playerObject.gameObject.GetComponentInChildren<Canvas>().enabled == false)
+        //if (playerObject.gameObject.GetComponentInChildren<Canvas>() == false)
         //{
+        //    playerObject.gameObject.GetComponent<PlayerController>().healthBarBackdrop.enabled = enabled;
         //    playerObject.gameObject.GetComponentInChildren<Canvas>().enabled = enabled;
         //}
         //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
@@ -175,7 +175,8 @@ public class GameManager : MonoBehaviour
         gameScene.SetActive(false);
 
         PlayerEnabled(false, lastPlayer);
-        lastPlayer.gameObject.GetComponentInChildren<Canvas>().enabled = false;
+        lastPlayer.GetComponent<PlayerController>().roundOver = true;
+        lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
         foreach (var player in players)
         {
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
@@ -187,7 +188,8 @@ public class GameManager : MonoBehaviour
     public void FinishedUpgrade()
     {
         Debug.Log("UPGRADE DONE");
-
+        lastPlayer.GetComponent<PlayerController>().roundOver = false;
+        lastPlayer.GetComponentInChildren<Canvas>().enabled = true;
 
         foreach (var player in players)
         {
@@ -204,8 +206,15 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         Debug.Log("RESETTING SCENE");
-
         gameScene.SetActive(true);
+
+        allWallScripts = test.GetComponentsInChildren<DestroyableObject>();
+        foreach (DestroyableObject wallScript in allWallScripts)
+        {
+            wallScript.timesHit = 6;
+            wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
+        }
+        Debug.Log("resetting for reals");
         canvasHandler.StartNewRound();
         canvasHandler.RoundText = $"Round: {currentRound}";
 
@@ -239,7 +248,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
         PlayerEnabled(true, player.gameObject);
-        player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
+        //player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
+
     }
 
     private void HandleWin(PlayerInstance winningPlayer)

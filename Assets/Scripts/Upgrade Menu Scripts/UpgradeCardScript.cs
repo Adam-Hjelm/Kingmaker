@@ -69,48 +69,40 @@ public class UpgradeCardScript : MonoBehaviour
         {
             case 1:
                 Debug.Log("Given damage card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "DMG";
-                anim.runtimeAnimatorController = damageCardAnimController;
+                //anim.runtimeAnimatorController = damageCardAnimController;
                 currentCardType = CardType.DamageUpButSlowerBulletSpeed;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "MORE DAMAGE BUT SLOWER FIREBALLS";
                 break;
 
             case 2:
                 Debug.Log("Given health card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "HEALTH";
-                anim.runtimeAnimatorController = healthCardAnimController;
+                //anim.runtimeAnimatorController = healthCardAnimController;
                 currentCardType = CardType.HealthUpButBiggerPlayer;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "MORE HEALTH BUT BIGGER SIZE";
                 break;
 
             case 3:
                 Debug.Log("Given fire rate card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FIRE RATE";
-                anim.runtimeAnimatorController = fireRateCardAnimController;
+                //anim.runtimeAnimatorController = fireRateCardAnimController;
                 currentCardType = CardType.FireRateUpButSmallerBullets;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER FIRE RATE BUT SMALLER FIREBALLS";
                 break;
 
             case 4:
                 Debug.Log("Given speed card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
-                anim.runtimeAnimatorController = speedCardAnimController;
+                //anim.runtimeAnimatorController = speedCardAnimController;
                 currentCardType = CardType.SpeedUp;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER MOVESPEED BUT SLOWER FIREBALLS";
                 break;
             case 5:
-                Debug.Log("Given speed card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
-                //anim.runtimeAnimatorController = speedCardAnimController;
+                Debug.Log("Given BulletSpeedUpButSlowerFireRate card");
                 currentCardType = CardType.BulletSpeedUpButSlowerFireRate;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER FIREBALLS BUT SLOWER FIRE RATE";
                 break;
             case 6:
-                Debug.Log("Given speed card");
-                //this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SPEED";
-                //anim.runtimeAnimatorController = speedCardAnimController;
+                Debug.Log("Given more bullets card card");
                 currentCardType = CardType.MoreBulletsButMoreSpread;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = currentCardType.ToString();
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "MORE FIREBALLS BUT MORE SPREAD";
                 break;
         }
     }
