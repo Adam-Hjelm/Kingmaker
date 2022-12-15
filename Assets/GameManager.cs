@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-
-
     public static GameStates GameState { get; private set; } = GameStates.SelectionScreen;
 
     public int currentRound = 0;
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
     [SerializeField] GameObject test;
+    [SerializeField] DestroyableObject[] allWallScripts;
 
     //[SerializeField] DragDropScript playerDragDrop1;
     //[SerializeField] DragDropScript playerDragDrop2;
@@ -207,8 +206,15 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         Debug.Log("RESETTING SCENE");
-
         gameScene.SetActive(true);
+
+        allWallScripts = test.GetComponentsInChildren<DestroyableObject>();
+        foreach (DestroyableObject wallScript in allWallScripts)
+        {
+            wallScript.timesHit = 6;
+            wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
+        }
+        Debug.Log("resetting for reals");
         canvasHandler.StartNewRound();
         canvasHandler.RoundText = $"Round: {currentRound}";
 
@@ -243,6 +249,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerEnabled(true, player.gameObject);
         //player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
+
     }
 
     private void HandleWin(PlayerInstance winningPlayer)
