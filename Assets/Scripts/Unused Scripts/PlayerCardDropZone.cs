@@ -99,7 +99,7 @@ public class PlayerCardDropZone : MonoBehaviour
             playerStats.bulletDamage += 25;
         }
 
-        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUp)
+        if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed)
         {
             playerStats.moveSpeed += 2;
         }

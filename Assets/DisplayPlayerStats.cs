@@ -51,35 +51,35 @@ public class DisplayPlayerStats : MonoBehaviour
         if (hphToAdd != 0)
         {
             ResetStatScreen(hpText);
-            hpText.text = $"{hpText.text} +  <color=#73ad41>{hphToAdd}</color>";
+            hpText.text = $"{hpText.text}+<color=#73ad41>{hphToAdd}</color>";
         }
 
         if (dmgToAdd != 0)
         {
             ResetStatScreen(dmgText);
-            dmgText.text = $"{dmgText.text} +  <color=#73ad41>{dmgToAdd}</color>";
+            dmgText.text = $"{dmgText.text}+<color=#73ad41>{dmgToAdd}</color>";
         }
 
         if (firerateToAdd > 0)
         {
             ResetStatScreen(firerateText);
-            firerateText.text = $"{firerateText.text} +  <color=#73ad41c>{firerateToAdd}</color>";
+            firerateText.text = $"{firerateText.text}+<color=#73ad41>{firerateToAdd}</color>";
         }
         else if (firerateToAdd < 0)
         {
             ResetStatScreen(firerateText);
-            firerateText.text = $"{firerateText.text} -  <color=red>{-firerateToAdd}</color>";
+            firerateText.text = $"{firerateText.text}-<color=red>{-firerateToAdd}</color>";
         }
 
         if (speedToAdd > 0)
         {
             ResetStatScreen(speedText);
-            speedText.text = $"{speedText.text} + <color=#73ad41>{speedToAdd}</color>";
+            speedText.text = $"{speedText.text}+<color=#73ad41>{speedToAdd}</color>";
         }
         else if (speedToAdd < 0)
         {
             ResetStatScreen(speedText);
-            speedText.text = $"{speedText.text} - <color=red>{-speedToAdd}</color>";
+            speedText.text = $"{speedText.text}-<color=red>{-speedToAdd}</color>";
         }
     }
 
