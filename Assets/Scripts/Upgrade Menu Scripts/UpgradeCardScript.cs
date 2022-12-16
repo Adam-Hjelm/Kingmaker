@@ -7,7 +7,7 @@ using TMPro;
 
 public class UpgradeCardScript : MonoBehaviour
 {
-    private int amountOfStats = 6;
+    private int amountOfStats = 7;
     private int amountOfRares = 4;
     private int randomNumber;
 
@@ -63,7 +63,9 @@ public class UpgradeCardScript : MonoBehaviour
 
     private void StatCard()
     {
-        int chosenStatCard = Random.Range(0, amountOfStats + 1);
+        int chosenStatCard = Random.Range(0 + 1, amountOfStats + 1);
+
+        Debug.Log(chosenStatCard);
 
         switch (chosenStatCard)
         {
@@ -82,24 +84,31 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 3:
+                Debug.Log("Given health card");
+                //anim.runtimeAnimatorController = healthCardAnimController;
+                currentCardType = CardType.HealthUpButSlowerPlayerSpeed;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "MORE HEALTH BUT SLOWER MOVESPEED";
+                break;
+
+            case 4:
                 Debug.Log("Given fire rate card");
                 //anim.runtimeAnimatorController = fireRateCardAnimController;
                 currentCardType = CardType.FireRateUpButSmallerBullets;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER FIRE RATE BUT SMALLER FIREBALLS";
                 break;
 
-            case 4:
+            case 5:
                 Debug.Log("Given speed card");
                 //anim.runtimeAnimatorController = speedCardAnimController;
                 currentCardType = CardType.SpeedUp;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER MOVESPEED BUT SLOWER FIREBALLS";
                 break;
-            case 5:
+            case 6:
                 Debug.Log("Given BulletSpeedUpButSlowerFireRate card");
                 currentCardType = CardType.BulletSpeedUpButSlowerFireRate;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "FASTER FIREBALLS BUT SLOWER FIRE RATE";
                 break;
-            case 6:
+            case 7:
                 Debug.Log("Given more bullets card card");
                 currentCardType = CardType.MoreBulletsButMoreSpread;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "MORE FIREBALLS BUT MORE SPREAD";
