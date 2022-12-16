@@ -33,6 +33,7 @@ public class UpgradeController : MonoBehaviour
     private UpgradePlayerStats upgradePlayerStats;
     public DisplayPlayerStats displayPlayerStats;
 
+    public GameObject upgradeCardsHolder;
     public int playerNumberToGiveStat;
     public bool inPlayerButtons = false;
 
@@ -87,6 +88,7 @@ public class UpgradeController : MonoBehaviour
     {
         CheckPlayerToGiveStats();
 
+        cardAnim.SetTrigger("MoveCardBack");
         inPlayerButtons = true;
 
         if (GameManager.Instance.GetPlayerInput(playerNumberToGiveStat) == null)
@@ -134,6 +136,7 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
+        
         amountOfTimesSpawned++;
         //chosenUpgradeCard.gameObject.SetActive(false);
         //chosenUpgradeCard = null;
@@ -161,7 +164,7 @@ public class UpgradeController : MonoBehaviour
             }
             randomNumbers.Add(randomNumber);
 
-            var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCanvas.transform).GetComponent<Button>();
+            var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
             newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
             newButton.onClick.AddListener(MoveToPlayerButtons);
             //newButton.transform.SetParent(upgradeCanvas.transform, true);
@@ -277,6 +280,8 @@ public class UpgradeController : MonoBehaviour
 
     void FinishedUpgrade()
     {
+        cardAnim.SetTrigger("MoveCardBack");
+
         for (int i = 0; i < playerButtons.Length; i++)
         {
             displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
@@ -289,7 +294,7 @@ public class UpgradeController : MonoBehaviour
         textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
         textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
 
-        amountOfTimesSpawned = 0;
+        amountOfTimesSpawned = 1;
         GameManager.Instance.FinishedUpgrade();
     }
 
