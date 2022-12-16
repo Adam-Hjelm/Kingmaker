@@ -8,7 +8,7 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerController : MonoBehaviour
 {
-    public int playerNumber = 0;
+    //public int playerNumber = 0;
 
     [Header("Stats")]
     public float moveSpeed = 3.5f;
@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 bulletSize;
     public float fireRate = 0.7f;
     public int currentHealth = 100;
-    public int bulletAmount;
-    public int bulletSpread;
+    public int bulletAmount = 1;
+    public int bulletSpread = 0;
 
     [Header("Materials")]
     public Material flashMaterial;
@@ -26,51 +26,50 @@ public class PlayerController : MonoBehaviour
 
     [Header("Flash")]
     public float flashDuration = 0.1f;
-    private Coroutine flashRoutine;
-
-
-    //[SerializeField] GameObject playerHealthBar;
-    [SerializeField] Image healthBar;
-    public Image healthBarBackdrop;
-    public float healthBarDegradeModifier;
 
     public SpriteRenderer spriteRenderer;
 
-    CameraShake shake;
-    //public DragDropScript dragDropPlayer;
-
-    public AudioClip Explosion;
-    public AudioSource Source;
-    public UpgradeController upgradeController;
-    public GameManager gameManager;
-    public GameObject DeathPrefab;
-    public Transform DeathAnimationPoint;
-    public SpriteRenderer shadowSprite;
-
-    public bool dashing;
-    public bool isBlocking;
+    public bool dashing = false;
+    public bool isBlocking = false;
     public bool roundOver = false;
+    public bool playerWon = false;
 
-    EscMenu escMenu;
+    //[SerializeField] GameObject playerHealthBar;
+    [SerializeField] Image healthBar;
+    [SerializeField] Image healthBarBackdrop;
+    [SerializeField] float healthBarDegradeModifier;
+
+    [SerializeField] AudioClip Explosion;
+    [SerializeField] AudioSource Source;
+    //public UpgradeController upgradeController;
+    //public GameManager gameManager;
+    [SerializeField] GameObject DeathPrefab;
+    [SerializeField] Transform DeathAnimationPoint;
+    [SerializeField] SpriteRenderer shadowSprite;
+
+    [SerializeField] EscMenu escMenu;
+    [SerializeField] SpriteRenderer crownObject;
+
+    Coroutine flashRoutine;
+    CameraShake shake;
 
 
     void Awake()
     {
         PlayerController[] playerInstances = FindObjectsOfType<PlayerController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (playerInstances.Length > 4)
         {
             Destroy(gameObject);
         }
 
-        //DontDestroyOnLoad(gameObject);
         currentHealth = maxHealth /*+ addedHealth*/;
     }
 
     void Start()
     {
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
         //originalMaterial = spriteRenderer.material; aja baja dumma bug
         spriteRenderer.material = defaultMaterial;
         shake = Camera.main.GetComponent<CameraShake>();
@@ -132,7 +131,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
     private void PlayerHeal(int healing)
     {
         currentHealth += healing;
@@ -179,22 +177,26 @@ public class PlayerController : MonoBehaviour
         flashRoutine = null;
     }
 
-    //public void OnMoveCursor(InputValue input)
-    //{
-    //    dragDropPlayer.OnMove(input.Get<Vector2>());
-    //}
+    public void SetPlayerEnabled(bool enabled)
+    {
+        spriteRenderer.enabled = enabled;
+        GetComponent<Collider2D>().enabled = enabled;
+        GetComponent<PlayerMovement>().enabled = enabled;
+        GetComponent<Block>().enabled = enabled;
+        crownObject.gameObject.SetActive(enabled);
 
-    //public void OnFireCursor()
-    //{
-    //    dragDropPlayer.OnFire();
-    //}
+        if (playerWon)
+            crownObject.enabled = true;
+        else
+            crownObject.enabled = false;
+    }
 
     private void ExplosionSound()
     {
         Source.PlayOneShot(Explosion);
     }
 
-    void OnEscape()
+    private void OnEscape()
     {
         escMenu.OnEscape();
     }
