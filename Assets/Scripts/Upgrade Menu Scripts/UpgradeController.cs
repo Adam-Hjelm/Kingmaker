@@ -14,6 +14,7 @@ public class UpgradeController : MonoBehaviour
     public Transform[] cardSpawnPos;
     public Button[] playerButtons;
     public List<Button> upgradeCardButtons = new List<Button>();
+    private int amountOfTimesSpawned = 0;
 
     //public Button[] upgradeCardButtons;
     public Button startUpgradeCard;
@@ -59,6 +60,7 @@ public class UpgradeController : MonoBehaviour
     void Start()
     {
         upgradePlayerStats = GetComponent<UpgradePlayerStats>();
+        SpawnNewCards();
     }
 
     void Update()
@@ -132,6 +134,7 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
+        amountOfTimesSpawned++;
         //chosenUpgradeCard.gameObject.SetActive(false);
         //chosenUpgradeCard = null;
 
@@ -145,23 +148,46 @@ public class UpgradeController : MonoBehaviour
 
         upgradeCardButtons = upgradeCardButtons.Where(item => item != null).ToList();
 
+        List<int> randomNumbers = new List<int>();
+
         for (int i = 0; i < cardSpawnPos.Length; i++)
         {
-            var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCanvas.transform).GetComponent<Button>();
+            int randomNumber = UnityEngine.Random.Range(1, 8);
+            int currentLoopNumber = 0;
+            while (randomNumbers.Any(r => r == randomNumber) && currentLoopNumber < 10000)
+            {
+                randomNumber = UnityEngine.Random.Range(1, 8);
+                currentLoopNumber++;
+            }
+            randomNumbers.Add(randomNumber);
 
+            var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCanvas.transform).GetComponent<Button>();
+            newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
             newButton.onClick.AddListener(MoveToPlayerButtons);
             //newButton.transform.SetParent(upgradeCanvas.transform, true);
             startUpgradeCard = newButton;
 
             upgradeCardButtons.Add(newButton.GetComponent<Button>());
         }
-
-        chosenUpgradeCard.gameObject.SetActive(false);
+        if (chosenUpgradeCard != null)
+        {
+            chosenUpgradeCard.gameObject.SetActive(false);
+        }
         //chosenUpgradeCard = null;
 
         playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
         //startUpgradeCard = upgradeCardButtons[0].GetComponent<Button>();
-        CheckForNextPlayer();
+
+        if (amountOfTimesSpawned <= 1)
+        {
+            eventSysInUse = playerEventSys1;
+            eventSysInUse.SetSelectedGameObject(startUpgradeCard.gameObject);
+            return;
+        }
+        else
+        {
+            CheckForNextPlayer();
+        }
     }
 
     private void CheckForNextPlayer()
@@ -263,6 +289,7 @@ public class UpgradeController : MonoBehaviour
         textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
         textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
 
+        amountOfTimesSpawned = 0;
         GameManager.Instance.FinishedUpgrade();
     }
 

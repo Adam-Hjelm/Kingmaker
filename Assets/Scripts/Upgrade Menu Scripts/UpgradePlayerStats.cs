@@ -34,8 +34,9 @@ public class UpgradePlayerStats : MonoBehaviour
                 IncreaseHealth(upgradeCardScript.maxHealthModifier);
                 ChangePlayerSpeed(-upgradeCardScript.moveSpeedModifier);
                 break;
-            case UpgradeCardScript.CardType.SpeedUp:
+            case UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed:
                 ChangePlayerSpeed(upgradeCardScript.moveSpeedModifier);
+                ChangeBulletSpeed(-upgradeCardScript.moveSpeedModifier * 1.75f);
                 break;
             case UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed:
                 ChangeBulletDamage(upgradeCardScript.bulletDamageModifier);

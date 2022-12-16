@@ -285,10 +285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCardType: 0
-  damageCardAnimController: {fileID: 9100000, guid: 1c57d1b692bf1cf4fa231fb98ddc8876, type: 2}
-  healthCardAnimController: {fileID: 9100000, guid: 3a27aaf61b75d8348ad8fb1b7919f0fe, type: 2}
-  fireRateCardAnimController: {fileID: 9100000, guid: e7ee80c7e744ebf4bb39ff663147e197, type: 2}
-  speedCardAnimController: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
+  HealthUpButBiggerPlayerSprite: {fileID: -1591534958, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  HealthUpButSlowerPlayerSpeedSprite: {fileID: 123673249, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  SpeedUpButSlowerBulletSpeedSprite: {fileID: -428782418, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  DamageUpButSlowerBulletSpeedSprite: {fileID: -126374713, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  FireRateUpButSmallerBulletsSprite: {fileID: 714259579, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  BulletSpeedUpButSlowerFireRateSprite: {fileID: 2029884274, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  MoreBulletsButMoreSpreadSprite: {fileID: -442097248, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
   moveSpeedModifier: 1.2
   maxHealthModifier: 4
   bulletDamageModifier: 1
