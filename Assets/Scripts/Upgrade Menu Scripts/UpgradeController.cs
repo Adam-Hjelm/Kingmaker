@@ -28,7 +28,7 @@ public class UpgradeController : MonoBehaviour
     public GameObject textChoosePlayer;
     public GameObject arrowIndicator;
     public Animation textfade;
-
+    public Animator cardAnim;
 
     private UpgradePlayerStats upgradePlayerStats;
     public DisplayPlayerStats displayPlayerStats;
@@ -317,6 +317,7 @@ public class UpgradeController : MonoBehaviour
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
 
         inPlayerButtons = true;
+        cardAnim.SetTrigger("MoveCard");
         textPickCard.SetActive(true);
         textPickCard2.SetActive(false);
         textChoosePlayer.SetActive(true);
