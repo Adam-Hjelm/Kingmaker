@@ -132,18 +132,20 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             player.isAlive = false;
-            PlayerEnabled(false, player.gameObject);
+            PlayerEnabled(false, player.controller);
             //player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             CheckRoundOver(player);
         }
     }
 
-    private void PlayerEnabled(bool enabled, GameObject playerObject)
+    private void PlayerEnabled(bool enabled, PlayerController playerController)
     {
-        playerObject.GetComponent<SpriteRenderer>().enabled = enabled;
-        playerObject.GetComponent<Collider2D>().enabled = enabled;
-        playerObject.GetComponent<PlayerMovement>().enabled = enabled;
-        playerObject.GetComponent<Block>().enabled = enabled;
+        //playerController.GetComponent<SpriteRenderer>().enabled = enabled;
+        //playerController.GetComponent<Collider2D>().enabled = enabled;
+        //playerController.GetComponent<PlayerMovement>().enabled = enabled;
+        //playerController.GetComponent<Block>().enabled = enabled;
+
+        playerController.SetPlayerEnabled(enabled);
         //if (playerObject.gameObject.GetComponentInChildren<Canvas>() == false)
         //{
         //    playerObject.gameObject.GetComponent<PlayerController>().healthBarBackdrop.enabled = enabled;
@@ -193,13 +195,16 @@ public class GameManager : MonoBehaviour
         GameState = GameStates.UpgradeScreen;
         gameScene.SetActive(false);
 
-        PlayerEnabled(false, lastPlayer);
-        lastPlayer.GetComponent<PlayerController>().roundOver = true;
-        lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
         foreach (var player in players)
         {
+            player.controller.playerWon = false;
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
         }
+        var controller = lastPlayer.GetComponent<PlayerController>();
+        controller.playerWon = true;
+        PlayerEnabled(false, controller);
+        controller.roundOver = true;
+        lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
 
         upgradeScreen.gameObject.SetActive(true);
     }
@@ -266,7 +271,7 @@ public class GameManager : MonoBehaviour
                 player.gameObject.transform.position = player4SpawnPos.position;
                 break;
         }
-        PlayerEnabled(true, player.gameObject);
+        PlayerEnabled(true, player.controller);
         //player.gameObject.GetComponentInChildren<Canvas>().enabled = true;
 
     }
@@ -278,7 +283,7 @@ public class GameManager : MonoBehaviour
         //}
         test.SetActive(false);
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
-        PlayerEnabled(false, winningPlayer.gameObject);
+        PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
         //TODO: change states
     }
