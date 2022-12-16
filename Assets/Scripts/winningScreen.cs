@@ -26,7 +26,7 @@ public class winningScreen : MonoBehaviour
         crownSprite.SetActive(true);
         yield return new WaitForSeconds(.7f);
         lightRay.SetActive(true);
-        shadow.SetActive(true);
+        //shadow.SetActive(true);
         yield return new WaitForSeconds(.5f);
         text.SetActive(true);
         //buttons.SetActive(true);
