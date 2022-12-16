@@ -87,15 +87,23 @@ public class UpgradeController : MonoBehaviour
 
         inPlayerButtons = true;
 
-        upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
-        displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
+        if (GameManager.Instance.GetPlayerInput(playerNumberToGiveStat) == null)
+        {
+            Debug.Log((playerNumberToGiveStat + 1) + ", No Player Detected");
+            return;
+        }
+        else
+        {
+            upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
+            displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
 
-        SpawnNewCards();
+            SpawnNewCards();
 
-        inPlayerButtons = false;
-        textPickCard.SetActive(false);
-        textPickCard2.SetActive(true);
-        textChoosePlayer.SetActive(false);
+            inPlayerButtons = false;
+            textPickCard.SetActive(false);
+            textPickCard2.SetActive(true);
+            textChoosePlayer.SetActive(false);
+        }
     }
 
 
@@ -267,7 +275,16 @@ public class UpgradeController : MonoBehaviour
             playerButtons[i].GetComponent<Image>().color = Color.white;
         }
 
-
+        if (GameManager.Instance.GetPlayerInput(3) == null)
+        {
+            playerButtons[2].onClick.RemoveListener(UpgradePlayerStat);
+            playerButtons[2].GetComponent<Image>().color = grayedOutColor;
+        }
+        if (GameManager.Instance.GetPlayerInput(4) == null)
+        {
+            playerButtons[3].onClick.RemoveListener(UpgradePlayerStat);
+            playerButtons[3].GetComponent<Image>().color = grayedOutColor;
+        }
 
         playerButtons[playerToChooseCard - 1].onClick.RemoveListener(UpgradePlayerStat); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;

@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowJoining: 1
-  gameScene: Kevins scene
+  gameScene: GameScene
   totalPlayers: 0
   maxAllowedPlayers: 4
   playerCardPrefab: {fileID: 5661398130770407780, guid: 2ee8340089a55384492fef6d37d373b6, type: 3}

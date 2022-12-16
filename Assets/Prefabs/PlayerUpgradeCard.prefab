@@ -77,8 +77,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279377219
+  m_fontColor: {r: 0.2627451, g: 0.11372549, b: 0.07058824, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 32.856632, y: 23.46902, z: 34.300888, w: 25.274326}
+  m_margin: {x: 30.898256, y: 29.344128, z: 30.873749, w: 27.722294}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 5976875056413958745}
   - component: {fileID: 5976875056413958742}
   - component: {fileID: 5976875056413958746}
-  - component: {fileID: 5976875056413958747}
   m_Layer: 5
   m_Name: PlayerUpgradeCard
   m_TagString: Card
@@ -207,7 +206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b0458d84f4fd97419b411be5b5b6803, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80a2272e32e27e74d978cb8aa25493ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -290,29 +289,8 @@ MonoBehaviour:
   healthCardAnimController: {fileID: 9100000, guid: 3a27aaf61b75d8348ad8fb1b7919f0fe, type: 2}
   fireRateCardAnimController: {fileID: 9100000, guid: e7ee80c7e744ebf4bb39ff663147e197, type: 2}
   speedCardAnimController: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
-  anim: {fileID: 5976875056413958747}
-  moveSpeedModifier: 1.25
+  moveSpeedModifier: 1.2
   maxHealthModifier: 4
   bulletDamageModifier: 1
   fireRateModifier: 0.2
   sizeModifier: {x: 0.6, y: 0.6, z: 0.6}
---- !u!95 &5976875056413958747
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5976875056413958740}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 54870014d83d10e4ab3748fbbb09d612, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

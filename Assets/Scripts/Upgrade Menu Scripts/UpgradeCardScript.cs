@@ -22,10 +22,10 @@ public class UpgradeCardScript : MonoBehaviour
 
 
 
-    public Animator anim;
+    //public Animator anim;
 
     [Header("Stats Upgrade")]
-    public float moveSpeedModifier = 1.25f;
+    public float moveSpeedModifier = 1.2f;
     public int maxHealthModifier = 4;
     public int bulletDamageModifier = 1;
     public float fireRateModifier = 0.3f;
@@ -46,7 +46,7 @@ public class UpgradeCardScript : MonoBehaviour
 
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
+        //anim = gameObject.GetComponent<Animator>();
 
         randomNumber = Random.Range(0, 100);
         if (randomNumber <= 100)

@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8636872361627527586}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -808,17 +808,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8636872361546844758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3073192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8636872361627527586}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 183, y: 24.9}
+  m_AnchoredPosition: {x: 188.65121, y: 29.799988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8636872361627527587
@@ -857,11 +857,11 @@ RectTransform:
   - {fileID: 8636872362231127669}
   - {fileID: 8636872362012437945}
   - {fileID: 8636872361533958232}
-  - {fileID: 8636872362363971843}
-  - {fileID: 8636872361546844761}
-  - {fileID: 8636872362959718609}
-  - {fileID: 8636872361848181695}
   - {fileID: 5744647150009449754}
+  - {fileID: 8636872361848181695}
+  - {fileID: 8636872362959718609}
+  - {fileID: 8636872361546844761}
+  - {fileID: 8636872362363971843}
   - {fileID: 8806525883970820731}
   - {fileID: 8636872361769933429}
   - {fileID: 8636872361695378494}
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   displayPlayerStats: {fileID: 0}
   playerNumberToGiveStat: 1
   inPlayerButtons: 0
-  cardOffset: {x: -0.1, y: 1.75, z: 0}
+  cardOffset: {x: -0.1, y: 2.25, z: 5}
   playerToChooseCard: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
   grayedOutColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0.39215687}
@@ -1429,17 +1429,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8636872361848181692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3073192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8636872361627527586}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -91, y: 23.9}
+  m_AnchoredPosition: {x: -91.34871, y: 29.799988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8636872362012437941
@@ -1914,17 +1914,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8636872362363971840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3073192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8636872361627527586}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 88, y: 23.9}
+  m_AnchoredPosition: {x: 88.651215, y: 29.80002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8636872362524166424
@@ -2357,8 +2357,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8636872362959718638}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3073192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2367,7 +2367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -195, y: 23.9}
+  m_AnchoredPosition: {x: -191.34875, y: 29.799988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8636872363034566302
@@ -3088,6 +3088,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8806525883970820731}
     m_Modifications:
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.11372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279377219
+      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard (2)
@@ -3233,6 +3249,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8806525883970820731}
     m_Modifications:
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.11372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279377219
+      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard
@@ -3350,6 +3382,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8806525883970820731}
     m_Modifications:
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.11372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279377219
+      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard (3)
@@ -3495,6 +3543,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8806525883970820731}
     m_Modifications:
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.11372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976875054636289486, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279377219
+      objectReference: {fileID: 0}
     - target: {fileID: 5976875056413958740, guid: b1006d3ecc0d7c14fb144e56cb337dea, type: 3}
       propertyPath: m_Name
       value: UpgradeCard (1)
