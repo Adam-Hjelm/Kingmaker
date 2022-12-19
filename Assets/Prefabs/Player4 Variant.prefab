@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 904080732419055229, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
+      propertyPath: blockTimeup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 904080732419055229, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
+      propertyPath: blockCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1753709221305505236, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
       propertyPath: m_Name
       value: Player4 Variant
