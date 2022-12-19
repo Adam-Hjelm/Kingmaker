@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class WinningScreen : MonoBehaviour
 {
     public Image characterSprite;
-    public GameObject crownSprite;
-    public GameObject lightRay;
+    //public GameObject crownSprite;
+    //public GameObject lightRay;
     public GameObject shadow;
     //public GameObject text;
     //public GameObject buttons;
@@ -22,9 +22,9 @@ public class WinningScreen : MonoBehaviour
         Debug.Log("PrintOnEnable: script was enabled");
         characterSprite.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
-        crownSprite.SetActive(true);
+        //crownSprite.SetActive(true);
         yield return new WaitForSeconds(.7f);
-        lightRay.SetActive(true);
+        //lightRay.SetActive(true);
         //shadow.SetActive(true);
         yield return new WaitForSeconds(.5f);
         //text.SetActive(true);
