@@ -285,13 +285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCardType: 0
-  HealthUpButBiggerPlayerSprite: {fileID: -1591534958, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  HealthUpButSlowerPlayerSpeedSprite: {fileID: 123673249, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  SpeedUpButSlowerBulletSpeedSprite: {fileID: -428782418, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  DamageUpButSlowerBulletSpeedSprite: {fileID: -126374713, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  FireRateUpButSmallerBulletsSprite: {fileID: 714259579, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  BulletSpeedUpButSlowerFireRateSprite: {fileID: 2029884274, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
-  MoreBulletsButMoreSpreadSprite: {fileID: -442097248, guid: 38cee448e4cb81849a6cd8506e6e0c4d, type: 3}
+  HealthUpButBiggerPlayerSprite: {fileID: -1795101120, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  HealthUpButSlowerPlayerSpeedSprite: {fileID: 45728460, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  SpeedUpButSlowerBulletSpeedSprite: {fileID: 1207454830, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  DamageUpButSlowerBulletSpeedSprite: {fileID: -1683858575, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  FireRateUpButSmallerBulletsSprite: {fileID: 1246001552, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  BulletSpeedUpButSlowerFireRateSprite: {fileID: -1001306609, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  MoreBulletsButMoreSpreadSprite: {fileID: -1603581585, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
   moveSpeedModifier: 1.2
   maxHealthModifier: 4
   bulletDamageModifier: 1
