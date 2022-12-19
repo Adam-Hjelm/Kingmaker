@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Kevins scene 1.unity
     guid: 17f0e6200902ee843895316cf9b812ed
   - enabled: 1
-    path: Assets/Scenes/Kevins scene.unity
-    guid: e475d01be596f3845bacef3071ed8a9f
-  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: f0adc5b79cdcc60489d5c818285e8ba5
   m_configObjects:

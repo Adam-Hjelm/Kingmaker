@@ -307,12 +307,12 @@ public class UpgradeController : MonoBehaviour
             playerButtons[i].GetComponent<Image>().color = Color.white;
         }
 
-        if (GameManager.Instance.GetPlayerInput(3) == null)
+        if (GameManager.Instance.GetPlayerInput(2) == null)
         {
             playerButtons[2].onClick.RemoveListener(UpgradePlayerStat);
             playerButtons[2].GetComponent<Image>().color = grayedOutColor;
         }
-        if (GameManager.Instance.GetPlayerInput(4) == null)
+        if (GameManager.Instance.GetPlayerInput(3) == null)
         {
             playerButtons[3].onClick.RemoveListener(UpgradePlayerStat);
             playerButtons[3].GetComponent<Image>().color = grayedOutColor;
