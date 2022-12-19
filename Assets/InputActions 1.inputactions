@@ -812,6 +812,17 @@
                 },
                 {
                     "name": "",
+                    "id": "606ffaba-e01e-4f87-993a-bbc6b3862d85",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2abb62e1-737f-4a33-9407-805beead116a",
                     "path": "<HID::Nintendo GameCube Controller Adapter>/button2",
                     "interactions": "",
@@ -1244,11 +1255,6 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
