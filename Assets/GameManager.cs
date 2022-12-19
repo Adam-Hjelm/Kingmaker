@@ -48,10 +48,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject test;
     [SerializeField] DestroyableObject[] allWallScripts;
 
-    //[SerializeField] DragDropScript playerDragDrop1;
-    //[SerializeField] DragDropScript playerDragDrop2;
-    //[SerializeField] DragDropScript playerDragDrop3;
-    //[SerializeField] DragDropScript playerDragDrop4;
+    [SerializeField] Sprite player1Sprite;
+    [SerializeField] Sprite player2Sprite;
+    [SerializeField] Sprite player3Sprite;
+    [SerializeField] Sprite player4Sprite;
 
     GameObject lastPlayer;
     PlayerInputManager pim;
@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         test.SetActive(false);
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
-        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject);
+        canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
         //TODO: change states
     }
 
@@ -305,7 +305,24 @@ public class GameManager : MonoBehaviour
             score = 0,
             isAlive = true
         };
-
+        Debug.Log("ID = " + player.ID);
+        Debug.Log(player.sprite);
+        switch (player.ID) // placeholder
+        {
+            case 0:
+                player.sprite = player1Sprite;
+                break;
+            case 1:
+                player.sprite = player2Sprite;
+                break;
+            case 2:
+                player.sprite = player3Sprite;
+                break;
+            case 3:
+                player.sprite = player4Sprite;
+                break;
+        }
+        Debug.Log(player.sprite);
         players.Add(player);
         RespawnPlayer(player);
 
@@ -398,6 +415,7 @@ public class GameManager : MonoBehaviour
         public PlayerInput playerInput;
         public int score;
         public bool isAlive;
+        public Sprite sprite;
     }
 
     //IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)

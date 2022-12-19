@@ -13,12 +13,12 @@ public class CanvasHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerScore4;
 
     [SerializeField] GameObject scoreScreen;
-    [SerializeField] GameObject p1WinScreen;
-    [SerializeField] GameObject p2WinScreen;
-    [SerializeField] GameObject p3WinScreen;
-    [SerializeField] GameObject p4WinScreen;
-    [SerializeField] GameObject currentWinScreen;
-    [SerializeField] GameObject winCanvasObject;
+    //[SerializeField] GameObject p1WinScreen;
+    //[SerializeField] GameObject p2WinScreen;
+    //[SerializeField] GameObject p3WinScreen;
+    //[SerializeField] GameObject p4WinScreen;
+    [SerializeField] WinningScreen winningScreen;
+    //[SerializeField] GameObject winCanvasObject;
     [SerializeField] TextMeshProUGUI winGameText;
     [SerializeField] TextMeshProUGUI winRoundText;
 
@@ -44,28 +44,29 @@ public class CanvasHandler : MonoBehaviour
         }
     }
 
-    public void StartWinScreen(int ID, string playerName, GameObject playerObject)
+    public void StartWinScreen(int ID, string playerName, GameObject playerObject, Sprite playerSprite)
     {
-        switch (ID)
-        {
-            default:
-            case 0:
-                currentWinScreen = p1WinScreen;
-                break;
-            case 1:
-                currentWinScreen = p2WinScreen;
-                break;
-            case 2:
-                currentWinScreen = p3WinScreen;
-                break;
-            case 3:
-                currentWinScreen = p4WinScreen;
-                break;
-        }
+        //switch (ID)
+        //{
+        //    default:
+        //    case 0:
+        //        currentWinScreen = p1WinScreen;
+        //        break;
+        //    case 1:
+        //        currentWinScreen = p2WinScreen;
+        //        break;
+        //    case 2:
+        //        currentWinScreen = p3WinScreen;
+        //        break;
+        //    case 3:
+        //        currentWinScreen = p4WinScreen;
+        //        break;
+        //}
 
-        winCanvasObject.SetActive(true);
-        playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winCanvasObject.GetComponentInChildren<Button>().gameObject);
-        currentWinScreen.SetActive(true);
+        //winCanvasObject.SetActive(true);
+        winningScreen.characterSprite.sprite = playerSprite;
+        winningScreen.gameObject.SetActive(true);
+        playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winningScreen.GetComponentInChildren<Button>().gameObject);
         winGameText.text = $"{playerName} wins the game!";
     }
 
@@ -83,7 +84,7 @@ public class CanvasHandler : MonoBehaviour
 
     public void StartNewGame()
     {
-        currentWinScreen.SetActive(false);
+        winningScreen.gameObject.SetActive(false);
         scoreScreen.SetActive(true);
         for (int i = 1; i <= 4; i++)
         {
