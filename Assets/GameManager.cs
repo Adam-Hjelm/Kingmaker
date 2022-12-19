@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
     [SerializeField] CanvasHandler canvasHandler;
 
+    [SerializeField] GameObject destroyableWalls;
+    DestroyableObject[] destroyableObject;
+
+    [SerializeField] UpgradeController upgradeController;
+    [SerializeField] TextMeshProUGUI countdownText;
+
+    [Header("Player Stuff")]
     [SerializeField] Transform player1SpawnPos;
     [SerializeField] Transform player2SpawnPos;
     [SerializeField] Transform player3SpawnPos;
@@ -45,8 +53,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player2Prefab;
     [SerializeField] GameObject player3Prefab;
     [SerializeField] GameObject player4Prefab;
-    [SerializeField] GameObject test;
-    [SerializeField] DestroyableObject[] allWallScripts;
 
     [SerializeField] Sprite player1Sprite;
     [SerializeField] Sprite player2Sprite;
@@ -55,8 +61,8 @@ public class GameManager : MonoBehaviour
 
     GameObject lastPlayer;
     PlayerInputManager pim;
+    Coroutine countDownRoutine;
 
-    [SerializeField] UpgradeController upgradeController;
 
     void Awake()
     {
@@ -81,6 +87,45 @@ public class GameManager : MonoBehaviour
             pim.playerPrefab = player1Prefab;
     }
 
+    public void StartGame()
+    {
+        Debug.Log(countDownRoutine);
+        if (countDownRoutine == null)
+            countDownRoutine = StartCoroutine(StartCountdown());
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        yield return null;
+        yield return null;
+
+        foreach (var player in players)
+        {
+            player.controller.SetPlayerEnabled(false);
+            player.controller.spriteRenderer.enabled = true;
+        }
+
+        int timer = 3;
+        countdownText.gameObject.SetActive(true);
+        countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
+        yield return new WaitForSeconds(1);
+        timer--;
+        countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
+        yield return new WaitForSeconds(1);
+        timer--;
+        countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
+        yield return new WaitForSeconds(1);
+        timer--;
+        countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
+        yield return new WaitForSeconds(1);
+        countdownText.gameObject.SetActive(false);
+
+        foreach (var player in players)
+        {
+            player.controller.SetPlayerEnabled(true);
+        }
+    }
+
     public int GetPlayerScore(int playerToGetScoreFrom)
     {
         if (playerToGetScoreFrom < 5 && playerToGetScoreFrom > -1)
@@ -98,7 +143,6 @@ public class GameManager : MonoBehaviour
         {
             return 69420;
         }
-
     }
 
     public PlayerInput GetPlayerInput(int ID)
@@ -133,25 +177,13 @@ public class GameManager : MonoBehaviour
         {
             player.isAlive = false;
             PlayerEnabled(false, player.controller);
-            //player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             CheckRoundOver(player);
         }
     }
 
     private void PlayerEnabled(bool enabled, PlayerController playerController)
     {
-        //playerController.GetComponent<SpriteRenderer>().enabled = enabled;
-        //playerController.GetComponent<Collider2D>().enabled = enabled;
-        //playerController.GetComponent<PlayerMovement>().enabled = enabled;
-        //playerController.GetComponent<Block>().enabled = enabled;
-
         playerController.SetPlayerEnabled(enabled);
-        //if (playerObject.gameObject.GetComponentInChildren<Canvas>() == false)
-        //{
-        //    playerObject.gameObject.GetComponent<PlayerController>().healthBarBackdrop.enabled = enabled;
-        //    playerObject.gameObject.GetComponentInChildren<Canvas>().enabled = enabled;
-        //}
-        //playerObject.GetComponent<PlayerMovement>().enabled = enabled;
     }
 
     /// <summary>
@@ -232,8 +264,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("RESETTING SCENE");
         gameScene.SetActive(true);
 
-        allWallScripts = test.GetComponentsInChildren<DestroyableObject>();
-        foreach (DestroyableObject wallScript in allWallScripts)
+        destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
+        foreach (DestroyableObject wallScript in destroyableObject)
         {
             wallScript.timesHit = 6;
             wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
@@ -251,6 +283,10 @@ public class GameManager : MonoBehaviour
             player.controller.currentHealth = player.controller.maxHealth;
             canvasHandler.UpdateScore(player.ID, player.score);
         }
+
+        if (countDownRoutine != null)
+            StopCoroutine(countDownRoutine);
+        countDownRoutine = StartCoroutine(StartCountdown());
     }
 
     private void RespawnPlayer(PlayerInstance player)
@@ -281,7 +317,7 @@ public class GameManager : MonoBehaviour
         //foreach (var player in players)
         //{
         //}
-        test.SetActive(false);
+        destroyableWalls.SetActive(false);
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);

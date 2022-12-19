@@ -295,6 +295,11 @@ public class SelectionScreen : MonoBehaviour
             PlayerInputManager.instance.JoinPlayer(playerIndex: player.PlayerID, pairWithDevice: player.Device);
         }
 
+        if (GameManager.Instance == null)
+            Debug.LogError("No instance of GameManager exists yet!");
+
+        GameManager.Instance.StartGame();
+
         Destroy(gameObject);
     }
 
