@@ -13,16 +13,21 @@ public class BulletScript : MonoBehaviour
     public AudioSource Source;
     public AudioClip explosion;
 
+    //Rigidbody2D rb2d;
+    //Vector3 LastVelocity;
+
     void Start()
     {
         Destroy(gameObject, 2);
         //gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * bulletSpeed;
         Source = GetComponent<AudioSource>();
+
+        //rb2d = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-
+        //LastVelocity = rb2d.velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,10 +36,9 @@ public class BulletScript : MonoBehaviour
         {
             if (other.GetComponent<PlayerController>().dashing == false)
             {
-
                 GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
                 newExplosion.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-                Destroy(newExplosion, 0.5f);
+                Destroy(newExplosion, 0.4f);
                 Destroy(gameObject);
             }
 
@@ -44,12 +48,18 @@ public class BulletScript : MonoBehaviour
         {
             GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
             Explosion();
-            Destroy(newExplosion, 0.5f);
+            Destroy(newExplosion, 0.4f);
             Destroy(gameObject);
-
         }
-
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+        //var speed = LastVelocity.magnitude;
+        //var direction = Vector3.Reflect(LastVelocity.normalized, collision.contacts[0].normal);
+        //rb2d.velocity = direction * Mathf.Max(speed, 0f);
+    //}
+
     private void Explosion()
     {
         //Debug.Log("explodedddd");

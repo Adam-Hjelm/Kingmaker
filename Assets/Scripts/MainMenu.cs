@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public void start()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(0);
     }
 
     public void quit()
@@ -19,6 +19,6 @@ public class MainMenu : MonoBehaviour
 
     public void settings()
     {
-        //SceneManager.LoadScene("Settings);
+        SceneManager.LoadScene("Settings");
     }
 }
