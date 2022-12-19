@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRound: 0
   playersConnected: 0
-  maxScoreToWin: 1
+  maxScoreToWin: 3
   maxNumberOfRounds: 7
   upgradeScreen: {fileID: 605809786}
   gameScene: {fileID: 40744559}

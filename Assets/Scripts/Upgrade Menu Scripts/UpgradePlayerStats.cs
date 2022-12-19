@@ -62,13 +62,21 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeFireRate(float fireRate)
     {
         playerStats.fireRate += fireRate;
-        displayPlayerStats.firerateToAdd += fireRate;
+
     }
 
     private void ChangePlayerSpeed(float moveSpeed)
     {
         playerStats.moveSpeed += moveSpeed;
-        displayPlayerStats.speedToAdd += moveSpeed;
+        if (moveSpeed < 0)
+        {
+            displayPlayerStats.numOfSpeedBars--;
+        }
+        if (moveSpeed > 0)
+        {
+            displayPlayerStats.numOfSpeedBars++;
+        }
+
     }
 
     private void ChangeBulletSpeed(float bulletSpeed = 4)
@@ -79,7 +87,14 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeBulletDamage(int bulletDamage = 1)
     {
         playerStats.bulletDamage += bulletDamage;
-        displayPlayerStats.dmgToAdd += bulletDamage;
+        if (bulletDamage < 0)
+        {
+            displayPlayerStats.numOfDamageBars--;
+        }
+        if (bulletDamage > 0)
+        {
+            displayPlayerStats.numOfDamageBars++;
+        }
     }
 
     private void ChangeBulletScale(Vector3 sizeModifier)
@@ -96,6 +111,6 @@ public class UpgradePlayerStats : MonoBehaviour
     private void IncreaseHealth(int maxHealth)
     {
         playerStats.maxHealth += maxHealth;
-        displayPlayerStats.hphToAdd += maxHealth;
+        displayPlayerStats.numOfHealthBars++;
     }
 }

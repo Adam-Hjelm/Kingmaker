@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DisplayPlayerStats : MonoBehaviour
+public class DisplayPlayerStatsDEPRECATED : MonoBehaviour
 {
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI dmgText;

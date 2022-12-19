@@ -2551,6 +2551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStatsScreen (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5553359801021605676, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
+      propertyPath: playerNumberDisplayBelongsTo
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6601423301324287533, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2713,6 +2717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStatsScreen (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5553359801021605676, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
+      propertyPath: playerNumberDisplayBelongsTo
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6601423301324287533, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2851,6 +2859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStatsScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5553359801021605676, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
+      propertyPath: playerNumberDisplayBelongsTo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9048593217131866056, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2949,69 +2961,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8636872361695378494}
     m_Modifications:
-    - target: {fileID: 896454531426015578, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 896454531426015578, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 896454531426015578, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 2362296974435332168, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 2362296974435332168, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362296974435332168, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
     - target: {fileID: 3366842371357108619, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
       propertyPath: m_Name
       value: PlayerStatsScreen (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6601423301324287533, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 6601423301324287533, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6601423301324287533, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 7521770106627587721, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 7521770106627587721, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521770106627587721, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
-    - target: {fileID: 8324243622640276466, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8324243622640276466, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8324243622640276466, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+    - target: {fileID: 5553359801021605676, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
+      propertyPath: playerNumberDisplayBelongsTo
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9048593217131866056, guid: 9f8fb7a41e14936489c44c7f5e0318ae, type: 3}
       propertyPath: m_Pivot.x

@@ -284,8 +284,8 @@ public class UpgradeController : MonoBehaviour
 
         for (int i = 0; i < playerButtons.Length; i++)
         {
-            displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
-            displayPlayerStats.CleanupStatScreen(i);
+            //displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+            //displayPlayerStats.CleanupStatScreen(i);
         }
         eventSysInUse = playerEventSys1;
         playerToChooseCard = 1;
