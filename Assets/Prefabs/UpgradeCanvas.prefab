@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ee7e90f4634076458c3b5998d1ebe70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0166d5cf22c4d41448243833065ad216, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -409,7 +409,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAYER 1, CHOOSE A PLAYER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
   m_sharedMaterial: {fileID: -7906073524502221020, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -434,15 +434,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 23.9
+  m_fontSizeBase: 23.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.12532045, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &2715860222739078950
@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 6148993210668809492}
   - component: {fileID: 6069288683266894331}
   - component: {fileID: 6674943284692300880}
+  - component: {fileID: 2722739704827180007}
   m_Layer: 5
   m_Name: PlayerChooseCardText (1)
   m_TagString: Untagged
@@ -565,8 +566,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAYER 1, PICK A CARD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
-  m_sharedMaterial: {fileID: -7906073524502221020, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
+  m_sharedMaterial: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -590,15 +591,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 23.9
+  m_fontSizeBase: 23.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -652,6 +653,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2722739704827180007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555054920268058841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a64f72a5614d1e42b7b1ad313e7a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punch: {x: 0.5, y: 0.5, z: 0.5}
+  duration: 0.5
+  vibrato: 5
+  elasticity: 2
 --- !u!1 &8636872361436952279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1765,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAYER 1, PICK A CARD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
   m_sharedMaterial: {fileID: -7906073524502221020, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1773,15 +1790,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 23.9
+  m_fontSizeBase: 23.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1812,7 +1829,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0.12532045, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &2643625484352561263
