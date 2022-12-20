@@ -136,7 +136,7 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
-        
+
         amountOfTimesSpawned++;
         //chosenUpgradeCard.gameObject.SetActive(false);
         //chosenUpgradeCard = null;
@@ -177,8 +177,7 @@ public class UpgradeController : MonoBehaviour
             chosenUpgradeCard.gameObject.SetActive(false);
         }
         //chosenUpgradeCard = null;
-
-        playerChooseText.text = $"PLAYER {playerToChooseCard},CHOOSE A CARD";
+        ColorCoordinateText(playerToChooseCard);
         //startUpgradeCard = upgradeCardButtons[0].GetComponent<Button>();
 
         if (amountOfTimesSpawned <= 1)
@@ -190,6 +189,33 @@ public class UpgradeController : MonoBehaviour
         else
         {
             CheckForNextPlayer();
+        }
+    }
+
+    private void ColorCoordinateText(int playerToGiveColorOf)
+    {
+        switch (playerToGiveColorOf)
+        {
+            case 1:
+                textPickCard.GetComponent<TextMeshProUGUI>().text = $"<color=#ff372e>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"<color=#ff372e>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"<color=#ff372e>PLAYER {playerToGiveColorOf}</color>,CHOOSE A PLAYER";
+                break;
+            case 2:
+                textPickCard.GetComponent<TextMeshProUGUI>().text = $"<color=#4498ff>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"<color=#4498ff>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"<color=#4498ff>PLAYER {playerToGiveColorOf}</color>,CHOOSE A PLAYER";
+                break;
+            case 3:
+                textPickCard.GetComponent<TextMeshProUGUI>().text = $"<color=#96e431>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"<color=#96e431>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"<color=#96e431>PLAYER {playerToGiveColorOf}</color>,CHOOSE A PLAYER";
+                break;
+            case 4:
+                textPickCard.GetComponent<TextMeshProUGUI>().text = $"<color=#ec3c9a>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textPickCard2.GetComponent<TextMeshProUGUI>().text = $"<color=#ec3c9a>PLAYER {playerToGiveColorOf}</color>,CHOOSE A CARD";
+                textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"<color=#ec3c9a>PLAYER {playerToGiveColorOf}</color>,CHOOSE A PLAYER";
+                break;
         }
     }
 
@@ -258,8 +284,7 @@ public class UpgradeController : MonoBehaviour
                 //break;
         }
 
-        textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
-        textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
+        ColorCoordinateText(playerToChooseCard);
 
         playerEventSys1.SetSelectedGameObject(null);
         playerEventSys2.SetSelectedGameObject(null);
@@ -290,9 +315,7 @@ public class UpgradeController : MonoBehaviour
         eventSysInUse = playerEventSys1;
         playerToChooseCard = 1;
 
-        textPickCard.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
-        textPickCard2.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, PICK A CARD";
-        textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
+        ColorCoordinateText(playerToChooseCard);
 
         amountOfTimesSpawned = 1;
         GameManager.Instance.FinishedUpgrade();
@@ -326,7 +349,7 @@ public class UpgradeController : MonoBehaviour
         textPickCard.SetActive(true);
         textPickCard2.SetActive(false);
         textChoosePlayer.SetActive(true);
-        textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
+        //textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
         //if (chosenUpgradeCard != null)
         //{
         //    // Here you can make the card do some cool animations before it goes away and has been given to the player

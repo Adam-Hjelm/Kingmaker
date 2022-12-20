@@ -62,7 +62,7 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeFireRate(float fireRate)
     {
         playerStats.fireRate += fireRate;
-
+        displayPlayerStats.firerateAnim.speed = playerStats.fireRate / 0.4f;
     }
 
     private void ChangePlayerSpeed(float moveSpeed)
