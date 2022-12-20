@@ -18,7 +18,11 @@ public class DisplayPlayerStats : MonoBehaviour
     public int numOfSpeedBars;
     public Image[] barsOfSpeed;
 
+    public Animator firerateAnim;
+
     private PlayerController playerStats;
+
+
 
     [Header("Score Components")]
     public int playerNumberDisplayBelongsTo;
