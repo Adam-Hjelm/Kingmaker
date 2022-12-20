@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
             shadowSprite.enabled = false;
             //healthBarBackdrop.fillAmount = healthBar.fillAmount;
             GameObject newDeath = Instantiate(DeathPrefab, DeathAnimationPoint.position, DeathAnimationPoint.rotation);
-            Destroy(newDeath, 1);
+            //Destroy(newDeath, 1);
             GameManager.Instance.KillPlayer(gameObject);
             //ExplosionSound();
             shake.start = true;
