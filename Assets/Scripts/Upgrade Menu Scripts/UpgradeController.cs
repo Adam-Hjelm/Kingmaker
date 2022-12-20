@@ -325,9 +325,21 @@ public class UpgradeController : MonoBehaviour
     {
         for (int i = 0; i < playerButtons.Length; i++)
         {
+
             playerButtons[i].onClick.RemoveAllListeners();
             playerButtons[i].onClick.AddListener(UpgradePlayerStat);
             playerButtons[i].GetComponent<Image>().color = Color.white;
+
+            if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+            {
+                DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+
+                if (currentDisplayScript.CheckIfStatMaxed(currentlySelectedCard.gameObject) == true)
+                {
+                    playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
+                    playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+                }
+            }
         }
 
         if (GameManager.Instance.GetPlayerInput(2) == null)
@@ -343,6 +355,8 @@ public class UpgradeController : MonoBehaviour
 
         playerButtons[playerToChooseCard - 1].onClick.RemoveListener(UpgradePlayerStat); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
+
+
 
         inPlayerButtons = true;
         cardAnim.SetTrigger("MoveCard");

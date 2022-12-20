@@ -22,7 +22,8 @@ public class DisplayPlayerStats : MonoBehaviour
 
     private PlayerController playerStats;
 
-
+    public int currentProjectileSpeedNerfs;
+    public int maxProjectileSpeedModifiers;
 
     [Header("Score Components")]
     public int playerNumberDisplayBelongsTo;
@@ -117,5 +118,34 @@ public class DisplayPlayerStats : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+    }
+
+    public bool CheckIfStatMaxed(GameObject currentUpgradeCard)
+    {
+        var currentUpgradeCardScript = currentUpgradeCard.GetComponent<UpgradeCardScript>();
+
+        if (numOfHealthBars >= barsOfHealth.Length
+            && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer ||
+             currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButSlowerPlayerSpeed))
+        {
+            return true;
+        }
+        else if (numOfDamageBars >= barsOfDamage.Length
+            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
+        {
+            return true;
+        }
+        else if (numOfSpeedBars >= barsOfSpeed.Length
+            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed)
+        {
+            return true;
+        }
+        else if (currentProjectileSpeedNerfs >= maxProjectileSpeedModifiers
+            && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed ||
+            currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed))
+        {
+            return true;
+        }
+        return false;
     }
 }

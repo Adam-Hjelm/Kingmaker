@@ -1038,6 +1038,8 @@ MonoBehaviour:
   - {fileID: 3233605366069747822}
   - {fileID: 1279099258557058666}
   firerateAnim: {fileID: 3030472591126753197}
+  currentProjectileSpeedNerfs: 0
+  maxProjectileSpeedModifiers: 5
   playerNumberDisplayBelongsTo: 0
   currentScore: 0
   scoreCrown1: {fileID: 1675924363829421250}

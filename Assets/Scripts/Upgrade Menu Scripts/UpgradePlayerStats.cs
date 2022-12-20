@@ -82,6 +82,7 @@ public class UpgradePlayerStats : MonoBehaviour
     private void ChangeBulletSpeed(float bulletSpeed = 4)
     {
         playerStats.GetComponent<ShootController>().bulletSpeed += bulletSpeed;
+        displayPlayerStats.currentProjectileSpeedNerfs++;
     }
 
     private void ChangeBulletDamage(int bulletDamage = 1)

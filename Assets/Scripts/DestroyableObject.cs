@@ -14,7 +14,7 @@ public class DestroyableObject : MonoBehaviour
     //public Transform explosionPoint;
 
 
-    Collider2D Col;
+    public Collider2D col;
 
     public int timesHit;
     public bool canHit;
@@ -23,7 +23,7 @@ public class DestroyableObject : MonoBehaviour
     void Start()
     {
         SR = GetComponent<SpriteRenderer>();
-        Col = GetComponent<Collider2D>();
+        col = GetComponent<Collider2D>();
         //gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         //timesHit = 3;
         canHit = true;
@@ -65,7 +65,7 @@ public class DestroyableObject : MonoBehaviour
             {
                 SR.sprite = sprite4;
                 StartCoroutine(Hit());
-                Col.enabled = !Col.enabled;
+                col.enabled = !col.enabled;
                 GameObject newExplosion = Instantiate(DestroyEffectPrefab, transform.position, transform.rotation);
                 Destroy(newExplosion, 0.5f);
             }

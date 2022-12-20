@@ -275,6 +275,7 @@ public class GameManager : MonoBehaviour
         foreach (DestroyableObject wallScript in destroyableObject)
         {
             wallScript.timesHit = 6;
+            wallScript.col.enabled = true;
             wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
         }
         Debug.Log("resetting for reals");
