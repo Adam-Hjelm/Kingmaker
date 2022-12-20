@@ -6,10 +6,20 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
-public class GameSettings : MonoBehaviour
+public class SettingsCon : MonoBehaviour
 {
     public AudioMixer audioMix;
     public void SetMasterVolume(float volume)
+    {
+        audioMix.SetFloat("volume", volume);
+        Debug.Log(volume);
+    }
+    public void SetEffectVolume(float volume)
+    {
+        audioMix.SetFloat("volume", volume);
+        Debug.Log(volume);
+    }
+    public void SetBackgroundVolume(float volume)
     {
         audioMix.SetFloat("volume", volume);
         Debug.Log(volume);
