@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject destroyableWalls;
     DestroyableObject[] destroyableObject;
+    public GameObject DeathAnimation;
 
     [SerializeField] UpgradeController upgradeController;
     [SerializeField] TextMeshProUGUI countdownText;
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+
         Debug.Log(countDownRoutine);
         if (countDownRoutine == null)
             countDownRoutine = StartCoroutine(StartCountdown());
@@ -193,6 +195,9 @@ public class GameManager : MonoBehaviour
     {
         var livingPlayers = players.Where(p => p.isAlive).ToList();
 
+        DeathAnimation = GameObject.FindGameObjectWithTag("DeathAnimation");
+        Destroy(DeathAnimation,2.8f);
+
         if (livingPlayers.Count() == 1)
         {
             livingPlayers[0].score++;
@@ -263,6 +268,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("RESETTING SCENE");
         gameScene.SetActive(true);
+
+
 
         destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
         foreach (DestroyableObject wallScript in destroyableObject)

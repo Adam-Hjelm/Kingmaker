@@ -18,6 +18,7 @@ TagManager:
   - Shield
   - GameManager
   - PlayerStatScreen
+  - DeathAnimation
   layers:
   - Default
   - TransparentFX
