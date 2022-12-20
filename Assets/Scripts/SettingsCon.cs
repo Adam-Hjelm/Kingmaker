@@ -34,4 +34,9 @@ public class SettingsCon : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
 }
