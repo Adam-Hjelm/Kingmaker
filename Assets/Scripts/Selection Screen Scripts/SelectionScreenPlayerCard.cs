@@ -28,6 +28,8 @@ public class SelectionScreenPlayerCard : MonoBehaviour
         rumbler.Constant(0.123f, 0.234f, 0.2f);
     }
 
+
+
     public void OnReady()
     {
         isReady = !isReady;

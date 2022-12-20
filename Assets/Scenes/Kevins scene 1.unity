@@ -551,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ee7e90f4634076458c3b5998d1ebe70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f399a33795c5ad4ab51bdc7b2b276f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -832,6 +832,7 @@ GameObject:
   - component: {fileID: 1609473504}
   - component: {fileID: 1609473506}
   - component: {fileID: 1609473505}
+  - component: {fileID: 1609473507}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -881,7 +882,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game starts in: 3 seconds!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
   m_sharedMaterial: {fileID: -7906073524502221020, guid: 0cb8bfcd5b9575c45b58ceb547f235bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -912,7 +913,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -945,7 +946,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1609473506
@@ -956,6 +957,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609473503}
   m_CullTransparentMesh: 1
+--- !u!114 &1609473507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609473503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a64f72a5614d1e42b7b1ad313e7a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punch: {x: 0.5, y: 0.5, z: 0.5}
+  duration: 0.8
+  vibrato: 5
+  elasticity: 2
 --- !u!1 &1672822404
 GameObject:
   m_ObjectHideFlags: 0
