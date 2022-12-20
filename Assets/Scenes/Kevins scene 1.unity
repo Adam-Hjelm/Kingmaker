@@ -898,7 +898,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PRESS
 
-    <sprite=8><sprite=48><sprite=72><sprite=101>
+    <sprite=48><sprite=72><sprite=101>
 
     TO JOIN!'
   m_isRightToLeft: 0
@@ -1189,7 +1189,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PRESS
 
-    <sprite=8><sprite=48><sprite=72><sprite=101>
+    <sprite=48><sprite=72><sprite=101>
 
     TO JOIN!'
   m_isRightToLeft: 0
@@ -1632,7 +1632,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PRESS
 
-    <sprite=8><sprite=48><sprite=72><sprite=101>
+    <sprite=48><sprite=72><sprite=101>
 
     TO JOIN!'
   m_isRightToLeft: 0
@@ -1771,7 +1771,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PRESS
 
-    <sprite=8><sprite=48><sprite=72><sprite=101>
+    <sprite=48><sprite=72><sprite=101>
 
     TO JOIN!'
   m_isRightToLeft: 0
