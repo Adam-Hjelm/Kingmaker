@@ -123,7 +123,7 @@ public class ShootController : MonoBehaviour
         }
         else
         {
-            float randomizedScale = UnityEngine.Random.Range(0.25f, 4f);
+            float randomizedScale = UnityEngine.Random.Range(0.4f, 4f);
             newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
         }
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());

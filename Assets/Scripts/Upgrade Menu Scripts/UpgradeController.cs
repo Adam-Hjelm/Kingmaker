@@ -30,6 +30,7 @@ public class UpgradeController : MonoBehaviour
     public Animation textfade;
     public Animator cardAnim;
 
+    [SerializeField] Button startPlayerButton;
     private UpgradePlayerStats upgradePlayerStats;
     public DisplayPlayerStats displayPlayerStats;
 
@@ -62,6 +63,11 @@ public class UpgradeController : MonoBehaviour
     {
         upgradePlayerStats = GetComponent<UpgradePlayerStats>();
         SpawnNewCards();
+
+        for (int i = 0; i < playerButtons.Length; i++)
+        {
+            playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+        }
     }
 
     void Update()
@@ -75,6 +81,14 @@ public class UpgradeController : MonoBehaviour
         {
             currentlySelectedCard = eventSysInUse.currentSelectedGameObject.GetComponent<Button>();
             arrowIndicator.transform.position = eventSysInUse.currentSelectedGameObject.GetComponent<Transform>().position + cardOffset;
+            if (playerToChooseCard == 1)
+            {
+                startPlayerButton.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = Color.white;
+            }
         }
 
         if (inPlayerButtons && chosenUpgradeCard != null)
@@ -223,9 +237,10 @@ public class UpgradeController : MonoBehaviour
     {
         for (int i = 0; i < playerButtons.Length; i++)
         {
-            playerButtons[i].GetComponent<Image>().color = Color.white;
-
+            playerButtons[i].GetComponent<Image>().color = grayedOutColor;
         }
+        //Debug.Log(playerButtons[playerToChooseCard]);
+        //playerButtons[playerToChooseCard].GetComponent<Image>().color = Color.white;
 
         switch (playerToChooseCard)
         {
@@ -309,8 +324,7 @@ public class UpgradeController : MonoBehaviour
 
         for (int i = 0; i < playerButtons.Length; i++)
         {
-            //displayPlayerStats = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
-            //displayPlayerStats.CleanupStatScreen(i);
+            playerButtons[i].GetComponent<Image>().color = grayedOutColor;
         }
         eventSysInUse = playerEventSys1;
         playerToChooseCard = 1;
