@@ -14,7 +14,8 @@ public class ShootController : MonoBehaviour
     private float spreadOffset;
 
     PlayerController playerController;
-    private bool canShoot = true;
+    public bool canShoot = true;
+    public static bool roundStarted;
     private float timer;
     private float startTimer = 1f;
 
@@ -51,9 +52,13 @@ public class ShootController : MonoBehaviour
             canShoot = false;
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else
+        else if(roundStarted == true)
         {
             canShoot = true;
+            spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
 

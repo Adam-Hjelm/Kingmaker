@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider2D>().enabled = enabled;
         GetComponent<PlayerMovement>().enabled = enabled;
         GetComponent<Block>().enabled = enabled;
+        //GetComponent<ShootController>().canShoot = enabled;
         crownObject.gameObject.SetActive(enabled);
 
         if (playerWon)
