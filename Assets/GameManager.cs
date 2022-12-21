@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
         var livingPlayers = players.Where(p => p.isAlive).ToList();
 
         DeathAnimation = GameObject.FindGameObjectWithTag("DeathAnimation");
-        Destroy(DeathAnimation,2.8f);
+        Destroy(DeathAnimation, 2.8f);
 
         if (livingPlayers.Count() == 1)
         {
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
         PlayerEnabled(false, controller);
         controller.roundOver = true;
         lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
+        lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = false;
 
         upgradeScreen.gameObject.SetActive(true);
     }
@@ -251,6 +252,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("UPGRADE DONE");
         lastPlayer.GetComponent<PlayerController>().roundOver = false;
         lastPlayer.GetComponentInChildren<Canvas>().enabled = true;
+        lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = true;
 
         foreach (var player in players)
         {

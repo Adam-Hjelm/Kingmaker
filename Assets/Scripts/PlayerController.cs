@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     //public GameManager gameManager;
     [SerializeField] GameObject DeathPrefab;
     [SerializeField] Transform DeathAnimationPoint;
-    [SerializeField] SpriteRenderer shadowSprite;
+    public SpriteRenderer shadowSprite;
 
     [SerializeField] EscMenu escMenu;
     [SerializeField] SpriteRenderer crownObject;

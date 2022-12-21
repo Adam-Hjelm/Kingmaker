@@ -120,7 +120,7 @@ public class DisplayPlayerStats : MonoBehaviour
 
     }
 
-    public bool CheckIfStatMaxed(GameObject currentUpgradeCard)
+    public bool CheckIfStatMaxed(GameObject currentUpgradeCard) // TODO: Add feedback to show that the player has maxed said stat, change the max stat you can have to something higher
     {
         var currentUpgradeCardScript = currentUpgradeCard.GetComponent<UpgradeCardScript>();
 
