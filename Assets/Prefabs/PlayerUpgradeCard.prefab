@@ -131,7 +131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 30.898256, y: 29.344128, z: 30.873749, w: 27.722294}
+  m_margin: {x: 26.650324, y: 27.29414, z: 26.269897, w: 25.452541}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 80a2272e32e27e74d978cb8aa25493ba, type: 3}
+  m_Sprite: {fileID: 1332532482, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -285,13 +285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCardType: 0
-  HealthUpButBiggerPlayerSprite: {fileID: -1795101120, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  HealthUpButSlowerPlayerSpeedSprite: {fileID: 45728460, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  SpeedUpButSlowerBulletSpeedSprite: {fileID: 1207454830, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  DamageUpButSlowerBulletSpeedSprite: {fileID: -1683858575, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  FireRateUpButSmallerBulletsSprite: {fileID: 1246001552, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  BulletSpeedUpButSlowerFireRateSprite: {fileID: -1001306609, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
-  MoreBulletsButMoreSpreadSprite: {fileID: -1603581585, guid: d3055e2781aaf9f46a48c1ad270cb64d, type: 3}
+  HealthUpButBiggerPlayerSprite: {fileID: -1271854047, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  EveryFourthBulletHealsSprite: {fileID: 1452305378, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  SpeedUpButSlowerBulletSpeedSprite: {fileID: 102821504, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  DamageUpButSlowerBulletSpeedSprite: {fileID: -818073532, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  FireRateUpButSmallerBulletsSprite: {fileID: 144066220, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  randomSizedBullets: {fileID: 1452305378, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  MoreBulletsButMoreSpreadSprite: {fileID: 773848925, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   moveSpeedModifier: 1.2
   maxHealthModifier: 4
   bulletDamageModifier: 1

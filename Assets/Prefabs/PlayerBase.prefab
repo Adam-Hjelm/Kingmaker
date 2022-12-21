@@ -291,6 +291,8 @@ MonoBehaviour:
   currentHealth: 4
   bulletAmount: 1
   bulletSpread: 0
+  bulletsRandomSized: 0
+  healingBullets: 0
   flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   flashDuration: 0.1
@@ -349,6 +351,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 4594921739533266442}
   centralPoint: {fileID: 1019928324130379953}
   bulletSpeed: 12
+  healingBulletAnim: {fileID: 9100000, guid: 478f9fcc64031bc45b7f69c0e1ce4530, type: 2}
   handAnim: {fileID: 0}
   Source: {fileID: 8694816148440275922}
   Fireball: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}

@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
 
     public GameObject explosionPrefab;
     public Transform explosionPoint;
+    public bool healingBullet = false;
+    public RuntimeAnimatorController healingExplosionAnim;
 
     public AudioSource Source;
     public AudioClip explosion;
@@ -36,8 +38,12 @@ public class BulletScript : MonoBehaviour
         {
             if (other.GetComponent<PlayerController>().dashing == false)
             {
-                GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+                GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, Quaternion.identity);
                 newExplosion.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                if (healingBullet == true)
+                {
+                    newExplosion.GetComponent<Animator>().runtimeAnimatorController = healingExplosionAnim;
+                }
                 Destroy(newExplosion, 0.4f);
                 Destroy(gameObject);
             }
@@ -46,7 +52,12 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Environment") || other.CompareTag("Shield"))
         {
-            GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+            GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, Quaternion.identity);
+            newExplosion.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            if (healingBullet == true)
+            {
+                newExplosion.GetComponent<Animator>().runtimeAnimatorController = healingExplosionAnim;
+            }
             Explosion();
             Destroy(newExplosion, 0.4f);
             Destroy(gameObject);
@@ -55,9 +66,9 @@ public class BulletScript : MonoBehaviour
 
     //private void OnCollisionEnter2D(Collision2D collision)
     //{
-        //var speed = LastVelocity.magnitude;
-        //var direction = Vector3.Reflect(LastVelocity.normalized, collision.contacts[0].normal);
-        //rb2d.velocity = direction * Mathf.Max(speed, 0f);
+    //var speed = LastVelocity.magnitude;
+    //var direction = Vector3.Reflect(LastVelocity.normalized, collision.contacts[0].normal);
+    //rb2d.velocity = direction * Mathf.Max(speed, 0f);
     //}
 
     private void Explosion()

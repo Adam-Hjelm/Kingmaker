@@ -125,8 +125,7 @@ public class DisplayPlayerStats : MonoBehaviour
         var currentUpgradeCardScript = currentUpgradeCard.GetComponent<UpgradeCardScript>();
 
         if (numOfHealthBars >= barsOfHealth.Length
-            && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer ||
-             currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButSlowerPlayerSpeed))
+            && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer))
         {
             return true;
         }

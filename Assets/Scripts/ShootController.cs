@@ -18,10 +18,13 @@ public class ShootController : MonoBehaviour
     private float timer;
     private float startTimer = 1f;
 
+    public RuntimeAnimatorController healingBulletAnim;
 
     public Animator handAnim;
     public AudioSource Source;
     public AudioClip Fireball;
+
+    private int fireballShotCounter;
 
     //public GameObject SmokePrefab;
     //public Transform SmokePoint;
@@ -107,12 +110,32 @@ public class ShootController : MonoBehaviour
 
 
         newBullet.GetComponent<Rigidbody2D>().velocity = moveDirection * bulletSpeed;
-
-        Vector3 scaleChange = new Vector3(playerController.bulletSize.x + playerController.bulletDamage, playerController.bulletSize.y +
-            playerController.bulletDamage, playerController.bulletSize.z) / 2;
-        newBullet.transform.localScale = scaleChange;
+        if (playerController.bulletsRandomSized != true)
+        {
+            Vector3 scaleChange = new Vector3(playerController.bulletSize.x + playerController.bulletDamage, playerController.bulletSize.y +
+                playerController.bulletDamage, playerController.bulletSize.z) / 2;
+            newBullet.transform.localScale = scaleChange;
+        }
+        else
+        {
+            float randomizedScale = UnityEngine.Random.Range(0.5f, 3f);
+            newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
+        }
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
+
+        if (playerController.healingBullets == true)
+        {
+            fireballShotCounter++;
+            if (fireballShotCounter >= 4)
+            {
+                newBullet.GetComponent<BulletScript>().bulletDamage = -playerController.bulletDamage;
+                newBullet.GetComponent<Animator>().runtimeAnimatorController = healingBulletAnim;
+                newBullet.GetComponent<BulletScript>().healingBullet = true;
+                Debug.Log("HEALING BULLET FIRED!");
+                fireballShotCounter = 0;
+            }
+        }
 
         FireBallSound();
 

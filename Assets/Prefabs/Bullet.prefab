@@ -126,6 +126,8 @@ MonoBehaviour:
   bulletDamage: 25
   explosionPrefab: {fileID: 6476322781609491897, guid: a71119a1d4861e94ba3de32ce815a96b, type: 3}
   explosionPoint: {fileID: 7700254078455848841}
+  healingBullet: 0
+  healingExplosionAnim: {fileID: 9100000, guid: 25ea57fd1ab91d94588c3a824888add2, type: 2}
   Source: {fileID: 2821722667751778697}
   explosion: {fileID: 8300000, guid: 3dc0b2e0f5b394b45b01e13432866bdd, type: 3}
 --- !u!58 &4103908170809164284

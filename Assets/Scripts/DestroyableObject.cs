@@ -42,7 +42,14 @@ public class DestroyableObject : MonoBehaviour
     {
         if (other.CompareTag("bullet") && canHit == true)
         {
-            timesHit -= 1;
+            if (other.GetComponent<BulletScript>().healingBullet == true)
+            {
+                timesHit++;
+            }
+            else
+            {
+                timesHit -= 1;
+            }
 
             if (timesHit == 6)
             {

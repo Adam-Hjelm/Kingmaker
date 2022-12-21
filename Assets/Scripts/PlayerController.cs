@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public int currentHealth = 100;
     public int bulletAmount = 1;
     public int bulletSpread = 0;
+    public bool bulletsRandomSized = false;
+    public bool healingBullets = false;
 
     [Header("Materials")]
     public Material flashMaterial;
@@ -107,6 +109,11 @@ public class PlayerController : MonoBehaviour
         {
             healthBarBackdrop.transform.parent.gameObject.SetActive(true);
             healthBarBackdrop.GetComponentInParent<Canvas>().enabled = true;
+        }
+
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
         }
     }
 

@@ -30,9 +30,9 @@ public class UpgradePlayerStats : MonoBehaviour
                 IncreaseHealth(upgradeCardScript.maxHealthModifier);
                 ChangePlayerScale(upgradeCardScript.sizeModifier);
                 break;
-            case UpgradeCardScript.CardType.HealthUpButSlowerPlayerSpeed:
-                IncreaseHealth(upgradeCardScript.maxHealthModifier);
-                ChangePlayerSpeed(-upgradeCardScript.moveSpeedModifier);
+            case UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals:
+                ChangeFireRate(upgradeCardScript.fireRateModifier);
+                playerStats.healingBullets = true;
                 break;
             case UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed:
                 ChangePlayerSpeed(upgradeCardScript.moveSpeedModifier);
@@ -46,9 +46,8 @@ public class UpgradePlayerStats : MonoBehaviour
                 ChangeFireRate(upgradeCardScript.fireRateModifier);
                 ChangeBulletScale(upgradeCardScript.sizeModifier);
                 break;
-            case UpgradeCardScript.CardType.BulletSpeedUpButSlowerFireRate:
-                ChangeBulletSpeed(upgradeCardScript.moveSpeedModifier * 1.75f);
-                ChangeFireRate(-upgradeCardScript.fireRateModifier);
+            case UpgradeCardScript.CardType.RandomSizedBullets:
+                playerStats.bulletsRandomSized = true;
                 break;
             case UpgradeCardScript.CardType.MoreBulletsButMoreSpread:
                 playerStats.bulletAmount *= 2;
