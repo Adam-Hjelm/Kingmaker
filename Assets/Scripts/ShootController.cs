@@ -123,7 +123,7 @@ public class ShootController : MonoBehaviour
         }
         else
         {
-            float randomizedScale = UnityEngine.Random.Range(0.5f, 3f);
+            float randomizedScale = UnityEngine.Random.Range(0.25f, 4f);
             newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
         }
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -137,7 +137,6 @@ public class ShootController : MonoBehaviour
                 newBullet.GetComponent<BulletScript>().bulletDamage = -playerController.bulletDamage;
                 newBullet.GetComponent<Animator>().runtimeAnimatorController = healingBulletAnim;
                 newBullet.GetComponent<BulletScript>().healingBullet = true;
-                Debug.Log("HEALING BULLET FIRED!");
                 fireballShotCounter = 0;
             }
         }
