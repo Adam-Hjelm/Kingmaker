@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a22d51290e6be45a146d82ab8df0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveRange: 1
+  duration: 0.5
+  snapping: 0
 --- !u!1 &1354542570545470075
 GameObject:
   m_ObjectHideFlags: 0
