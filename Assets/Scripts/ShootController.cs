@@ -59,6 +59,7 @@ public class ShootController : MonoBehaviour
         }
         else
         {
+            canShoot = false;
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
 
