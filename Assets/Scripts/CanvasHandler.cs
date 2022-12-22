@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
@@ -66,8 +67,15 @@ public class CanvasHandler : MonoBehaviour
         //winCanvasObject.SetActive(true);
         winningScreen.characterSprite.sprite = playerSprite;
         winningScreen.gameObject.SetActive(true);
-        playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winningScreen.GetComponentInChildren<Button>().gameObject);
         winGameText.text = $"{playerName} wins the game!";
+        //playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winningScreen.GetComponentInChildren<Button>().gameObject);
+        StartCoroutine(DelayWinMenuInteraction(playerObject));
+    }
+
+    private IEnumerator DelayWinMenuInteraction(GameObject playerObject)
+    {
+        yield return new WaitForSeconds(3);
+        playerObject.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(winningScreen.GetComponentInChildren<Button>().gameObject);
     }
 
     public void StartWinRoundScreen(string playerName)
