@@ -12,6 +12,7 @@ public class ShootController : MonoBehaviour
     public Transform centralPoint;
     public float bulletSpeed;
     private float spreadOffset;
+    public int healingBulletsAmount;
 
     PlayerController playerController;
     public bool canShoot = true;
@@ -138,7 +139,7 @@ public class ShootController : MonoBehaviour
         if (playerController.healingBullets == true)
         {
             fireballShotCounter++;
-            if (fireballShotCounter >= 4)
+            if (fireballShotCounter >= 5 - healingBulletsAmount)
             {
                 newBullet.GetComponent<BulletScript>().bulletDamage = -playerController.bulletDamage;
                 newBullet.GetComponent<Animator>().runtimeAnimatorController = healingBulletAnim;

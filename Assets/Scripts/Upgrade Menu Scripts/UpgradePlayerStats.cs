@@ -33,6 +33,7 @@ public class UpgradePlayerStats : MonoBehaviour
             case UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals:
                 ChangeFireRate(upgradeCardScript.fireRateModifier);
                 playerStats.healingBullets = true;
+                playerStats.GetComponent<ShootController>().healingBulletsAmount++;
                 break;
             case UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed:
                 ChangePlayerSpeed(upgradeCardScript.moveSpeedModifier);
