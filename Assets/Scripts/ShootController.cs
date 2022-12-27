@@ -52,7 +52,7 @@ public class ShootController : MonoBehaviour
             canShoot = false;
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        else if(roundStarted == true)
+        else if (roundStarted == true)
         {
             canShoot = true;
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -116,16 +116,21 @@ public class ShootController : MonoBehaviour
 
 
         newBullet.GetComponent<Rigidbody2D>().velocity = moveDirection * bulletSpeed;
+        Vector3 scaleChange = new Vector3(playerController.bulletSize.x, playerController.bulletSize.y, playerController.bulletSize.z);
         if (playerController.bulletsRandomSized != true)
         {
-            Vector3 scaleChange = new Vector3(playerController.bulletSize.x + playerController.bulletDamage, playerController.bulletSize.y +
-                playerController.bulletDamage, playerController.bulletSize.z) / 2;
             newBullet.transform.localScale = scaleChange;
         }
         else
         {
-            float randomizedScale = UnityEngine.Random.Range(0.4f, 4f);
+            float randomizedScale = UnityEngine.Random.Range(0.4f, 1.5f + playerController.bulletSize.x);
             newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
+        }
+
+        if(newBullet.transform.localScale.magnitude >= Vector3.one.magnitude * 4)
+        {
+            // max size reached, disable the ability to give bullet size cards TODO
+            newBullet.transform.localScale = Vector3.one * 4;
         }
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;

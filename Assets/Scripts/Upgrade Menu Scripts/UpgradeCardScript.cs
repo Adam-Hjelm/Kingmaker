@@ -38,7 +38,7 @@ public class UpgradeCardScript : MonoBehaviour
     public int bulletDamageModifier = 1;
     public float fireRateModifier = 0.3f;
     //public Vector3 sizeDecreaseModifier = new Vector3(0.6f, 0.6f, 0.6f);
-    public Vector3 sizeModifier = new Vector3(0.6f, 0.6f, 0.6f);
+    public Vector3 sizeModifier = new Vector3(0.5f, 0.5f, 0.5f);
 
     public enum CardType
     {

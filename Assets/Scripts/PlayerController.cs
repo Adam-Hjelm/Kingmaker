@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
             shadowSprite.enabled = false;
             //healthBarBackdrop.fillAmount = healthBar.fillAmount;
             GameObject newDeath = Instantiate(DeathPrefab, DeathAnimationPoint.position, DeathAnimationPoint.rotation);
+            newDeath.transform.localScale = transform.localScale;
             //Destroy(newDeath, 1);
             GameManager.Instance.KillPlayer(gameObject);
             //ExplosionSound();
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        roundOver = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -190,6 +192,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider2D>().enabled = enabled;
         GetComponent<PlayerMovement>().enabled = enabled;
         GetComponent<Block>().enabled = enabled;
+        //HideInMenus.enableGO = enabled;
         //GetComponent<ShootController>().canShoot = enabled;
         crownObject.gameObject.SetActive(enabled);
 

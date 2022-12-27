@@ -236,12 +236,12 @@ public class GameManager : MonoBehaviour
         foreach (var player in players)
         {
             player.controller.playerWon = false;
+            player.controller.roundOver = true;
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
         }
         var controller = lastPlayer.GetComponent<PlayerController>();
         controller.playerWon = true;
         PlayerEnabled(false, controller);
-        controller.roundOver = true;
         lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
         lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = false;
 
