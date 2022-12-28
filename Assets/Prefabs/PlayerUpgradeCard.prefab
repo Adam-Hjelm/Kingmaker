@@ -70,8 +70,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
+  m_sharedMaterial: {fileID: -7866696617200623365, guid: e1f73a875810ad044a5c6ffe1597f661, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -290,7 +290,7 @@ MonoBehaviour:
   SpeedUpButSlowerBulletSpeedSprite: {fileID: 102821504, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   DamageUpButSlowerBulletSpeedSprite: {fileID: -818073532, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   FireRateUpButSmallerBulletsSprite: {fileID: 144066220, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
-  randomSizedBullets: {fileID: 1452305378, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
+  randomSizedBullets: {fileID: -1257059117, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   MoreBulletsButMoreSpreadSprite: {fileID: 773848925, guid: cbb0f98c9a276da41861dd0b7b73e37d, type: 3}
   moveSpeedModifier: 1.2
   maxHealthModifier: 4
