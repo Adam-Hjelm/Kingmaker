@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject destroyableWalls;
     DestroyableObject[] destroyableObject;
-    public GameObject DeathAnimation;
 
     [SerializeField] UpgradeController upgradeController;
     [SerializeField] TextMeshProUGUI countdownText;
@@ -63,6 +62,8 @@ public class GameManager : MonoBehaviour
     GameObject lastPlayer;
     PlayerInputManager pim;
     Coroutine countDownRoutine;
+
+    bool havePointBeenGivenThisRound = false;
 
 
     void Awake()
@@ -196,23 +197,34 @@ public class GameManager : MonoBehaviour
     {
         var livingPlayers = players.Where(p => p.isAlive).ToList();
 
-        DeathAnimation = GameObject.FindGameObjectWithTag("DeathAnimation");
+        GameObject DeathAnimation = GameObject.FindGameObjectWithTag("DeathAnimation");
         Destroy(DeathAnimation, 2.8f);
 
         if (livingPlayers.Count() == 1)
         {
-            livingPlayers[0].score++;
-            lastPlayer = livingPlayers[0].gameObject;
+            Debug.LogWarning("{livingPlayers.Count() == 1}");
 
+            if (!havePointBeenGivenThisRound)
+            {
+                livingPlayers[0].score++;
+                havePointBeenGivenThisRound = true;
+            }
+            else
+                return;
+
+            lastPlayer = livingPlayers[0].gameObject;
         }
         else if (livingPlayers.Count() < 1)
+        {
+            Debug.LogWarning("{livingPlayers.Count() < 1}");
             lastKilledPlayer.score++;
+        }
         else
             return; // do this to avoid the win conditions check below
 
         var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
-        if (leadingPlayer.score >= maxScoreToWin || currentRound >= maxNumberOfRounds)
+        if (leadingPlayer.score >= maxScoreToWin /*|| currentRound >= maxNumberOfRounds*/)
             HandleWin(leadingPlayer);
         else
             StartCoroutine(HandleNewRound(livingPlayers[0].name));
@@ -225,6 +237,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         ShootController.roundStarted = false;
+        havePointBeenGivenThisRound = false;
         StartUpgradeScreen();
     }
 

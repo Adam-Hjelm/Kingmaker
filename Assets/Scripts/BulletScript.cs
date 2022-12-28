@@ -74,6 +74,7 @@ public class BulletScript : MonoBehaviour
     private void Explosion()
     {
         //Debug.Log("explodedddd");
-        Source.PlayOneShot(explosion);
+        if (Source.enabled)
+            Source.PlayOneShot(explosion);
     }
 }
