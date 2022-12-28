@@ -150,7 +150,6 @@ public class UpgradeController : MonoBehaviour
 
     private void SpawnNewCards()
     {
-
         amountOfTimesSpawned++;
         //chosenUpgradeCard.gameObject.SetActive(false);
         //chosenUpgradeCard = null;
@@ -337,6 +336,17 @@ public class UpgradeController : MonoBehaviour
 
     public void MoveToPlayerButtons() // TODO: GE EN NONO SOUND EFFECT NÄR SPELAREN FÖRSÖKER VÄLJA SIG SJÄLV ATT GE KORT
     {
+        for (int i = 0; i < upgradeCardButtons.Count; i++)
+        {
+            if (upgradeCardButtons[i] != null)
+            {
+                upgradeCardButtons[i].GetComponent<Image>().enabled = false;
+                upgradeCardButtons[i].GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            }
+        }
+        currentlySelectedCard.GetComponent<Image>().enabled = true;
+        currentlySelectedCard.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+
         for (int i = 0; i < playerButtons.Length; i++)
         {
 

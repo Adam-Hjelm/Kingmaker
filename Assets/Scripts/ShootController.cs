@@ -133,13 +133,17 @@ public class ShootController : MonoBehaviour
             // max size reached, disable the ability to give bullet size cards TODO
             newBullet.transform.localScale = Vector3.one * 4;
         }
+        else if (newBullet.transform.localScale.magnitude <= Vector3.one.magnitude * 0.2f)
+        {
+            newBullet.transform.localScale = Vector3.one * 0.2f;
+        }
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
         if (playerController.healingBullets == true)
         {
             fireballShotCounter++;
-            if (fireballShotCounter >= 5 - healingBulletsAmount)
+            if (fireballShotCounter >= 5 - healingBulletsAmount) // TODO: Limita hur många såna här kort man kan ge ut till en person så man inte kan ge ut mer än 4 och enbart ha healing bullets
             {
                 newBullet.GetComponent<BulletScript>().bulletDamage = -playerController.bulletDamage;
                 newBullet.GetComponent<Animator>().runtimeAnimatorController = healingBulletAnim;

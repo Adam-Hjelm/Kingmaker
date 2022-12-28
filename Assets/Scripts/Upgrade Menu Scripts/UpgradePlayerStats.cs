@@ -45,7 +45,7 @@ public class UpgradePlayerStats : MonoBehaviour
                 break;
             case UpgradeCardScript.CardType.FireRateUpButSmallerBullets:
                 ChangeFireRate(upgradeCardScript.fireRateModifier);
-                ChangeBulletScale(upgradeCardScript.sizeModifier);
+                ChangeBulletScale(-upgradeCardScript.sizeModifier * 0.75f);
                 break;
             case UpgradeCardScript.CardType.RandomSizedBullets:
                 playerStats.bulletsRandomSized = true;
