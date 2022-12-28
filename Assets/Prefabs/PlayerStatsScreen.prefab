@@ -1040,6 +1040,8 @@ MonoBehaviour:
   firerateAnim: {fileID: 3030472591126753197}
   currentProjectileSpeedNerfs: 0
   maxProjectileSpeedModifiers: 5
+  currentHealingBullets: 0
+  maxHealingBullets: 3
   playerNumberDisplayBelongsTo: 0
   currentScore: 0
   scoreCrown1: {fileID: 1675924363829421250}

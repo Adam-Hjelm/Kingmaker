@@ -25,6 +25,9 @@ public class DisplayPlayerStats : MonoBehaviour
     public int currentProjectileSpeedNerfs;
     public int maxProjectileSpeedModifiers;
 
+    public int currentHealingBullets;
+    public int maxHealingBullets;
+
     [Header("Score Components")]
     public int playerNumberDisplayBelongsTo;
     public int currentScore;
@@ -35,16 +38,6 @@ public class DisplayPlayerStats : MonoBehaviour
 
     public Sprite crownEmpty;
     public Sprite crownPoint;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     public void UpdateStatScreen(int playerNumberToUpdate)
     {
@@ -85,7 +78,7 @@ public class DisplayPlayerStats : MonoBehaviour
         }
     }
 
-    public void OnEnable() // its in update. i dont care, fight me about it why dont'chu
+    public void OnEnable()
     {
         if (GameManager.Instance.GetPlayerScore(playerNumberDisplayBelongsTo - 1) > 0 && GameManager.Instance.GetPlayerScore(playerNumberDisplayBelongsTo - 1) < 5)
         {
@@ -108,7 +101,6 @@ public class DisplayPlayerStats : MonoBehaviour
             scoreCrown2.sprite = crownPoint;
         }
 
-
         if (GameManager.Instance.GetPlayerInput(playerNumberDisplayBelongsTo - 1) != null)
         {
             UpdateStatScreen(playerNumberDisplayBelongsTo);
@@ -117,7 +109,6 @@ public class DisplayPlayerStats : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
     }
 
     public bool CheckIfStatMaxed(GameObject currentUpgradeCard) // TODO: Add feedback to show that the player has maxed said stat, change the max stat you can have to something higher
@@ -142,6 +133,11 @@ public class DisplayPlayerStats : MonoBehaviour
         else if (currentProjectileSpeedNerfs >= maxProjectileSpeedModifiers
             && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed ||
             currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed))
+        {
+            return true;
+        }
+        else if (currentHealingBullets >= maxHealingBullets
+            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals)
         {
             return true;
         }
