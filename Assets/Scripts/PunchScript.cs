@@ -16,6 +16,7 @@ public class PunchScript : MonoBehaviour
     public void OnEnable()
     {
         //transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 0.5f, 5, 2);
+        transform.localScale = Vector3.one;
         transform.DOPunchScale(punch, duration, vibrato, elasticity);
     }
 }
