@@ -107,7 +107,7 @@ public class UpgradeController : MonoBehaviour
 
         if (GameManager.Instance.GetPlayerInput(playerNumberToGiveStat) == null)
         {
-            Debug.Log((playerNumberToGiveStat + 1) + ", No Player Detected");
+            Debug.LogWarning((playerNumberToGiveStat + 1) + ", No Player Detected");
             return;
         }
         else
@@ -238,7 +238,6 @@ public class UpgradeController : MonoBehaviour
         {
             playerButtons[i].GetComponent<Image>().color = grayedOutColor;
         }
-        //Debug.Log(playerButtons[playerToChooseCard]);
         //playerButtons[playerToChooseCard].GetComponent<Image>().color = Color.white;
 
         switch (playerToChooseCard)

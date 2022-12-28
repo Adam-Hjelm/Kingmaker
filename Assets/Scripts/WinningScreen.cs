@@ -19,7 +19,6 @@ public class WinningScreen : MonoBehaviour
 
     IEnumerator DoCode()
     {
-        Debug.Log("PrintOnEnable: script was enabled");
         characterSprite.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         //crownSprite.SetActive(true);

@@ -17,9 +17,6 @@ public class UpgradePlayerStats : MonoBehaviour
 
     public void UpgradePlayer(int playerNumberToGiveStat)
     {
-        Debug.Log("Upgrade player stat");
-
-        //playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
         playerStats = GameManager.Instance.GetPlayerInput(playerNumberToGiveStat).GetComponent<PlayerController>();
         upgradeCardScript = upgradeController.chosenUpgradeCard.GetComponent<UpgradeCardScript>();
         displayPlayerStats = upgradeController.displayPlayerStats;
@@ -106,7 +103,6 @@ public class UpgradePlayerStats : MonoBehaviour
 
     private void ChangePlayerScale(Vector3 sizeIncrease)
     {
-        Debug.Log(sizeIncrease + " Size of player!");
         playerStats.gameObject.transform.localScale += sizeIncrease;
     }
 

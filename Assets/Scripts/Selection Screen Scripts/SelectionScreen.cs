@@ -185,7 +185,6 @@ public class SelectionScreen : MonoBehaviour
         //allPlayersReady = false;
 
         totalPlayers--;
-        Debug.Log("Player was removed!");
 
         if (allPlayersReady)
         {
@@ -213,7 +212,6 @@ public class SelectionScreen : MonoBehaviour
 
     public void PlayerChangedReadyState(InputDevice device, bool isReady)
     {
-        Debug.LogWarning("allPlayersReady = " + allPlayersReady);
         if (!isReady)
             allPlayersReady = false;
 
@@ -293,7 +291,7 @@ public class SelectionScreen : MonoBehaviour
 
     public void GameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.LogWarning("Scene Loaded: " + scene.name);
         if (scene.name == gameScene)
         {
             StartCoroutine(InstantiatePlayers());
@@ -317,7 +315,6 @@ public class SelectionScreen : MonoBehaviour
             Debug.LogError("No instance of GameManager exists yet!");
 
         GameManager.Instance.StartGame();
-
         Destroy(gameObject);
     }
 

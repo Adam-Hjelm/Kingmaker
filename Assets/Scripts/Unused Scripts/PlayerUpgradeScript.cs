@@ -62,8 +62,8 @@ public class PlayerUpgradeScript : MonoBehaviour
     private void ReturnFromPlayerButtons()
     {
         EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(selectedCard.gameObject);
-        Debug.Log("getted");
     }
+
     public void ChangeToPlayerButtons()
     {
         lastSelectedGameObject = EventSystem.current.currentSelectedGameObject.GetComponent<GameObject>();
@@ -91,7 +91,6 @@ public class PlayerUpgradeScript : MonoBehaviour
         {
             playerStats = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>();
         }
-        Debug.Log("added health");
         playerStats.maxHealth += 100;
     }
 
@@ -114,7 +113,6 @@ public class PlayerUpgradeScript : MonoBehaviour
         {
             playerStats = GameObject.FindGameObjectWithTag("Player4").GetComponent<PlayerController>();
         }
-        Debug.Log("added damage");
         // Add Damage
     }
 

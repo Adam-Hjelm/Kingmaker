@@ -63,7 +63,6 @@ public class PlayerCardDropZone : MonoBehaviour
 
         for (int i = 0; i < slotsToPlace.Length; i++)  // TODO: Fix so players can't give themselves a card
         {
-            //Debug.Log("forloop enter");
             if (i >= slotsUsed)
             {
                 CardToPosition.transform.position = slotsToPlace[i].transform.position;
@@ -88,7 +87,6 @@ public class PlayerCardDropZone : MonoBehaviour
     private void UpgradePlayerStats()
     {
         playerStats = GameObject.FindGameObjectWithTag($"Player{playerNumberToGiveStat}").GetComponent<PlayerController>();
-        Debug.Log("upgrading...");
         if (upgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer)
         {
             playerStats.maxHealth += 100;

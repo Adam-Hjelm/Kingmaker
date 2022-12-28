@@ -32,7 +32,6 @@ public class EscMenu : MonoBehaviour
         //    var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
         //    test.SetUpdate(true);
         //    Time.timeScale = 0;
-        //    Debug.Log("You paused");
 
         //    if (endPosY <= 0f)
         //    {
@@ -44,7 +43,6 @@ public class EscMenu : MonoBehaviour
         //    var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
         //    test.SetUpdate(true);
         //    Time.timeScale = 1;
-        //    Debug.Log("You unpaused");
 
         //    if (startPosY >= 10f)
         //    {
@@ -64,7 +62,6 @@ public class EscMenu : MonoBehaviour
             var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
             test.SetUpdate(true);
             Time.timeScale = 1;
-            Debug.Log("pressed");
 
             if (startPosY >= 10f)
             {
@@ -85,7 +82,6 @@ public class EscMenu : MonoBehaviour
             var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
             test.SetUpdate(true);
             Time.timeScale = 0;
-            Debug.Log("You paused");
 
             if (endPosY <= 0f)
             {
@@ -97,7 +93,6 @@ public class EscMenu : MonoBehaviour
             var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
             test.SetUpdate(true);
             Time.timeScale = 1;
-            Debug.Log("You unpaused");
 
             if (startPosY >= 10f)
             {
