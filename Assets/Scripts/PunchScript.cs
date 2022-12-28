@@ -10,16 +10,22 @@ public class PunchScript : MonoBehaviour
     public int vibrato = 5;
     public float elasticity = 2;
 
+    private Vector3 originalLocalScale;
+
+    private void Awake()
+    {
+        originalLocalScale = transform.localScale;
+    }
 
     private void OnEnable()
     {
-        transform.localScale = Vector3.one;
+        transform.localScale = originalLocalScale;
         transform.DOPunchScale(punch, duration, vibrato, elasticity);
     }
 
     private void OnDisable()
     {
-        transform.localScale = Vector3.one;
+        transform.localScale = originalLocalScale;
         transform.DOKill();
     }
 }
