@@ -5,11 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    //public int playerNumber = 1;
-    //public float movementSpeed = 3;
     public Vector2 currentPos = new Vector2();
     public Vector2 moveDirection;
     public Vector2 lookDirection;
@@ -35,18 +32,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        playerController = gameObject.GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController>();
         handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
+        PlayerRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        rBody2D = gameObject.GetComponent<Rigidbody2D>();
-        PlayerRenderer = gameObject.GetComponent<SpriteRenderer>();
-
+        rBody2D = GetComponent<Rigidbody2D>();
+        rBody2D.gravityScale = 0f;
         myColliders = new List<Collider2D>();
         myColliders.AddRange(GetComponentsInChildren<Collider2D>());
 
         FindOtherPlayersCollidersForDashAbility();
-
-        rBody2D.gravityScale = 0f;
     }
 
     private void FindOtherPlayersCollidersForDashAbility()
@@ -58,28 +53,20 @@ public class PlayerMovement : MonoBehaviour
         {
             playerColliders.AddRange(player.GetComponentsInChildren<Collider2D>());
         }
-
     }
 
     void FixedUpdate()
     {
         if (isDashing)
-        {
             return;
-        }
 
         currentPos = transform.position;
-
-        //Vector2 LDirection = new Vector2(Input.GetAxisRaw($"LHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"LVertical {playerController.playerNumber}"));
-        //Vector2 RDirection = new Vector2(Input.GetAxisRaw($"RHorizontal {playerController.playerNumber}"), Input.GetAxisRaw($"RVertical {playerController.playerNumber}"));
         lookDirection.Normalize();
 
         float inputMagnitude = Mathf.Clamp01(moveDirection.magnitude);
         moveDirection.Normalize();
-
         transform.Translate(moveDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
-        //rBody2D.velocity = LDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime;
-
+        
         if (lookDirection != Vector2.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
@@ -108,14 +95,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (playerController.isBlocking == true)
-        {
             handCrosshairSprite.gameObject.SetActive(false);
-        }
         else if (playerController.isBlocking == false)
-        {
             handCrosshairSprite.gameObject.SetActive(true);
-        }
-
     }
 
     void OnMove(InputValue input)
@@ -131,9 +113,7 @@ public class PlayerMovement : MonoBehaviour
     void OnDash()
     {
         if (enabled && canDash)
-        {
             StartCoroutine(Dash());
-        }
     }
 
     private IEnumerator Dash()
@@ -162,8 +142,6 @@ public class PlayerMovement : MonoBehaviour
 
             GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position - (Vector3)moveDirection.normalized, inverseToRotation);
             Destroy(newSmoke, 0.3f);
-
-
 
             rBody2D.velocity = new Vector2(moveDirection.x, moveDirection.y) * dashingPower;
             yield return new WaitForSeconds(dashingTime);

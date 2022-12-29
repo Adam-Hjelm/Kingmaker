@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class ShootController : MonoBehaviour
 {
-    //public int playerNumber = 1;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public Transform centralPoint;
@@ -67,9 +66,6 @@ public class ShootController : MonoBehaviour
             if (timer <= playerController.fireRate && canShoot == true)
             {
                 handAnim.SetTrigger("Casting");
-                //dostuff
-
-
 
                 if (playerController.bulletSpread > 0)
                 {
@@ -100,12 +96,10 @@ public class ShootController : MonoBehaviour
     private void InstantiateBullet(float bulletRotation)
     {
         GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.Euler(0f, 0f, (bulletRotation - 90)));
-
         Vector2 moveDirection = new Vector2(Mathf.Cos(bulletRotation * Mathf.Deg2Rad), Mathf.Sin(bulletRotation * Mathf.Deg2Rad));
-
-
         newBullet.GetComponent<Rigidbody2D>().velocity = moveDirection * bulletSpeed;
         Vector3 scaleChange = new Vector3(playerController.bulletSize.x, playerController.bulletSize.y, playerController.bulletSize.z);
+
         if (playerController.bulletsRandomSized != true)
         {
             newBullet.transform.localScale = scaleChange;
@@ -116,22 +110,18 @@ public class ShootController : MonoBehaviour
             newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
         }
 
-        if(newBullet.transform.localScale.magnitude >= Vector3.one.magnitude * 4)
-        {
-            // max size reached, disable the ability to give bullet size cards TODO
+        if (newBullet.transform.localScale.magnitude >= Vector3.one.magnitude * 4)
             newBullet.transform.localScale = Vector3.one * 4;
-        }
         else if (newBullet.transform.localScale.magnitude <= Vector3.one.magnitude * 0.2f)
-        {
             newBullet.transform.localScale = Vector3.one * 0.2f;
-        }
+
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
         if (playerController.healingBullets == true)
         {
             fireballShotCounter++;
-            if (fireballShotCounter >= 5 - healingBulletsAmount) // TODO: Limita hur många såna här kort man kan ge ut till en person så man inte kan ge ut mer än 4 och enbart ha healing bullets
+            if (fireballShotCounter >= 5 - healingBulletsAmount)
             {
                 newBullet.GetComponent<BulletScript>().bulletDamage = -playerController.bulletDamage;
                 newBullet.GetComponent<Animator>().runtimeAnimatorController = healingBulletAnim;
@@ -141,7 +131,6 @@ public class ShootController : MonoBehaviour
         }
 
         FireBallSound();
-
     }
 
     private void FireBallSound()

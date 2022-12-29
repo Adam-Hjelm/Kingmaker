@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviour
 
     public int currentRound = 0;
     public int playersConnected = 0;
-    public int maxScoreToWin = 3; // placeholder value
-    public int maxNumberOfRounds = 7; // placeholder value
+    public int maxScoreToWin = 3;
 
     [SerializeField, Tooltip("Must exist in scene")] GameObject upgradeScreen;
     [SerializeField] GameObject gameScene;
@@ -61,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Scaler transitionScreen;
 
-    GameObject lastPlayer;
     PlayerInputManager pim;
     Coroutine countDownRoutine;
 
@@ -197,11 +195,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void CheckRoundOver(PlayerInstance lastKilledPlayer)
     {
+        if (havePointBeenGivenThisRound)
+            return;
+
         var livingPlayers = players.Where(p => p.isAlive).ToList();
-
-        GameObject DeathAnimation = GameObject.FindGameObjectWithTag("DeathAnimation");
-        Destroy(DeathAnimation, 2.8f);
-
         if (livingPlayers.Count() == 1)
         {
             if (!havePointBeenGivenThisRound)
@@ -211,8 +208,6 @@ public class GameManager : MonoBehaviour
             }
             else
                 return;
-
-            lastPlayer = livingPlayers[0].gameObject;
         }
         else if (livingPlayers.Count() < 1)
         {
@@ -223,25 +218,31 @@ public class GameManager : MonoBehaviour
 
         var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
-        if (leadingPlayer.score >= maxScoreToWin /*|| currentRound >= maxNumberOfRounds*/)
+        if (leadingPlayer.score >= maxScoreToWin)
             HandleWin(leadingPlayer);
         else
-            StartCoroutine(HandleNewRound(livingPlayers[0].name));
+            StartCoroutine(HandleNewRound(livingPlayers[0]));
     }
 
-    private IEnumerator HandleNewRound(string playerName)
+    private IEnumerator HandleNewRound(PlayerInstance lastPlayer)
     {
         currentRound++;
-        canvasHandler.StartWinRoundScreen(playerName);
+        canvasHandler.StartWinRoundScreen(lastPlayer.name);
 
         yield return new WaitForSeconds(3);
         ShootController.roundStarted = false;
         havePointBeenGivenThisRound = false;
-        StartUpgradeScreen();
+        StartUpgradeScreen(lastPlayer);
     }
 
-    private void StartUpgradeScreen()
+    private void StartUpgradeScreen(PlayerInstance lastPlayer)
     {
+        var DeathAnimations = GameObject.FindGameObjectsWithTag("DeathAnimation");
+        foreach (var DeathAnimation in DeathAnimations)
+        {
+            Destroy(DeathAnimation);
+        }
+
         GameState = GameStates.UpgradeScreen;
         gameScene.SetActive(false);
 
@@ -251,21 +252,14 @@ public class GameManager : MonoBehaviour
             player.controller.roundOver = true;
             player.playerInput.SwitchCurrentActionMap("UpgradeMenu");
         }
-        var controller = lastPlayer.GetComponent<PlayerController>();
+        var controller = lastPlayer.controller;
         controller.playerWon = true;
         PlayerEnabled(false, controller);
-        lastPlayer.GetComponentInChildren<Canvas>().enabled = false;
-        lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = false;
-
-        upgradeScreen.gameObject.SetActive(true);
+        upgradeScreen.SetActive(true);
     }
 
     public void FinishedUpgrade()
     {
-        lastPlayer.GetComponent<PlayerController>().roundOver = false;
-        lastPlayer.GetComponentInChildren<Canvas>().enabled = true;
-        lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = true;
-
         foreach (var player in players)
         {
             player.controller.SetPlayerHealthToMax();

@@ -311,6 +311,7 @@ MonoBehaviour:
   shadowSprite: {fileID: 3842099448292883828}
   escMenu: {fileID: 0}
   crownObject: {fileID: 1390600156288181303}
+  healthCanvas: {fileID: 4099246096159884115}
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +352,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 4594921739533266442}
   centralPoint: {fileID: 1019928324130379953}
   bulletSpeed: 12
+  healingBulletsAmount: 0
+  canShoot: 1
   healingBulletAnim: {fileID: 9100000, guid: 478f9fcc64031bc45b7f69c0e1ce4530, type: 2}
   handAnim: {fileID: 0}
   Source: {fileID: 8694816148440275922}
