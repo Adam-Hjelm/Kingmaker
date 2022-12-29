@@ -11,6 +11,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-    public static GameStates GameState { get; private set; } = GameStates.SelectionScreen;
-
+    
+    public bool isPaused = false;
     public int currentRound = 0;
     public int playersConnected = 0;
     public int maxScoreToWin = 3;
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] UpgradeController upgradeController;
     [SerializeField] TextMeshProUGUI countdownText;
+
+    [SerializeField] EscMenu escMenu;
 
     [Header("Player Stuff")]
     [SerializeField] Transform player1SpawnPos;
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
             player.controller.spriteRenderer.enabled = true;
         }
 
+        transitionScreen.gameObject.SetActive(true);
         transitionScreen.StartAnimation();
         yield return new WaitForSeconds(transitionScreen.duration);
 
@@ -243,7 +247,6 @@ public class GameManager : MonoBehaviour
             Destroy(DeathAnimation);
         }
 
-        GameState = GameStates.UpgradeScreen;
         gameScene.SetActive(false);
 
         foreach (var player in players)
@@ -418,23 +421,34 @@ public class GameManager : MonoBehaviour
 
     #region scene functions
 
-    public void StartNewGame()
+    public void TogglePause()
     {
-        SceneManager.LoadScene(0);
+        isPaused = !isPaused;
+        escMenu.gameObject.SetActive(isPaused);
+        escMenu.OnEscape(isPaused);
 
-        currentRound = 0;
-
-        //foreach (var player in players)
-        //{
-        //    player.score = 0;
-        //    player.isAlive = true;
-        //    player.gameObject.SetActive(true);
-        //}
-
-        //TODO: Reset the players stats to default, or just load the game scene and auto assign back players to the same characters.
+        if (isPaused)
+        {
+            foreach (var player in players)
+            {
+                player.playerInput.SwitchCurrentActionMap("UI");
+            }
+        }
+        else
+        {
+            foreach (var player in players)
+            {
+                player.playerInput.SwitchCurrentActionMap("Player");
+            }
+        }
     }
 
-    public void GoToMainMenu()
+    public void LoadSelectionScreen()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }

@@ -75,29 +75,44 @@ public class EscMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void OnEscape()
+    public void OnEscape(bool isPaused)
     {
-        if (hidden == true && inplace == false)
+        if (isPaused)
         {
-            var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
-            test.SetUpdate(true);
             Time.timeScale = 0;
-
-            if (endPosY <= 0f)
-            {
-                inplace = true;
-            }
         }
-        if (hidden == false && inplace == true)
+
+        if (!isPaused)
         {
-            var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
-            test.SetUpdate(true);
             Time.timeScale = 1;
-
-            if (startPosY >= 10f)
-            {
-                inplace = false;
-            }
         }
+
+    //    if (hidden == true && inplace == false)
+    //    {
+    //        var test = transform.DOMoveY(endPosY, 0.6f).OnComplete(Complete).SetEase(Ease.OutCirc);
+    //        test.SetUpdate(true);
+    //        Time.timeScale = 0;
+
+    //        if (endPosY <= 0f)
+    //        {
+    //            inplace = true;
+    //        }
+    //    }
+    //    if (hidden == false && inplace == true)
+    //    {
+    //        var test = transform.DOMoveY(startPosY, 0.6f).OnComplete(Complete).SetEase(Ease.InCirc);
+    //        test.SetUpdate(true);
+    //        Time.timeScale = 1;
+
+    //        if (startPosY >= 10f)
+    //        {
+    //            inplace = false;
+    //        }
+    //    }
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1;
     }
 }

@@ -158,8 +158,13 @@ public class PlayerController : MonoBehaviour
         Source.PlayOneShot(Explosion);
     }
 
-    private void OnEscape()
+    public void OnPause()
     {
-        escMenu.OnEscape();
+        GameManager.Instance.TogglePause();
     }
+
+    //private void OnEscape()
+    //{
+    //    escMenu.OnEscape();
+    //}
 }
