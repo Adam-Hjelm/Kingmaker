@@ -44,7 +44,6 @@ public class DragDropScript : MonoBehaviour
     {
         if (currentState == State.Dragging)
         {
-            Debug.Log("pressed submit");
             DropObject();
         }
 

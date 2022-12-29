@@ -74,12 +74,9 @@ public class UpgradeCardScript : MonoBehaviour
     {
         //int chosenStatCard = Random.Range(0 + 1, amountOfStats + 1);
 
-        //Debug.Log(chosenStatCard);
-
         switch (chosenStatCard)
         {
             case 1:
-                Debug.Log("Given damage card");
                 //anim.runtimeAnimatorController = damageCardAnimController;
                 gameObject.GetComponent<Image>().sprite = DamageUpButSlowerBulletSpeedSprite;
                 currentCardType = CardType.DamageUpButSlowerBulletSpeed;
@@ -87,7 +84,6 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 2:
-                Debug.Log("Given health card");
                 //anim.runtimeAnimatorController = healthCardAnimController;
                 gameObject.GetComponent<Image>().sprite = HealthUpButBiggerPlayerSprite;
                 currentCardType = CardType.HealthUpButBiggerPlayer;
@@ -95,7 +91,6 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 3:
-                Debug.Log("Given health card");
                 //anim.runtimeAnimatorController = healthCardAnimController;
                 gameObject.GetComponent<Image>().sprite = EveryFourthBulletHealsSprite;
                 currentCardType = CardType.FasterFireRateButEveryFourthBulletHeals;
@@ -103,7 +98,6 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 4:
-                Debug.Log("Given fire rate card");
                 //anim.runtimeAnimatorController = fireRateCardAnimController;
                 gameObject.GetComponent<Image>().sprite = FireRateUpButSmallerBulletsSprite;
                 currentCardType = CardType.FireRateUpButSmallerBullets;
@@ -111,20 +105,17 @@ public class UpgradeCardScript : MonoBehaviour
                 break;
 
             case 5:
-                Debug.Log("Given speed card");
                 //anim.runtimeAnimatorController = speedCardAnimController;
                 gameObject.GetComponent<Image>().sprite = SpeedUpButSlowerBulletSpeedSprite;
                 currentCardType = CardType.SpeedUpButSlowerBulletSpeed;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+MOVESPEED\n---- \n-PROJECTILE SPEED";
                 break;
             case 6:
-                Debug.Log("Given BulletSpeedUpButSlowerFireRate card");
                 gameObject.GetComponent<Image>().sprite = randomSizedBullets;
                 currentCardType = CardType.RandomSizedBullets;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
                 break;
             case 7:
-                Debug.Log("Given more bullets card card");
                 gameObject.GetComponent<Image>().sprite = MoreBulletsButMoreSpreadSprite;
                 currentCardType = CardType.MoreBulletsButMoreSpread;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+PROJECTILE AMOUNT\n--- \n+PROJECTILE SPREAD";

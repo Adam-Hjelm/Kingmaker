@@ -43,11 +43,6 @@ public class ShootController : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        //Debug.Log(timer);
-
-
-        //Debug.Log(centralPoint.rotation.eulerAngles.z);
-
         if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
         {
             canShoot = false;
@@ -63,12 +58,6 @@ public class ShootController : MonoBehaviour
             canShoot = false;
             spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
-
-
-
-        // Vector2 MousePos = Input.mousePosition;
-        // MousePos = Camera.main.ScreenToWorldPoint(MousePos);
-        // transform.up = (Vector3)MousePos - transform.position;
     }
 
     void OnFire()
@@ -85,7 +74,6 @@ public class ShootController : MonoBehaviour
                 if (playerController.bulletSpread > 0)
                 {
                     float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
-                    Debug.Log(facingRotation);
                     float startRotation = facingRotation + playerController.bulletSpread / 2f;
                     float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
 

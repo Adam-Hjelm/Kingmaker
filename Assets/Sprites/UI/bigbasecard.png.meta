@@ -109,9 +109,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 576
-        width: 160
-        height: 192
+        y: 288
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: bigbasecard_1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 576
-        width: 160
-        height: 192
+        x: 80
+        y: 288
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: bigbasecard_2
       rect:
         serializedVersion: 2
-        x: 320
-        y: 576
-        width: 160
-        height: 192
+        x: 160
+        y: 288
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: bigbasecard_3
       rect:
         serializedVersion: 2
-        x: 480
-        y: 576
-        width: 160
-        height: 192
+        x: 240
+        y: 288
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,9 +193,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 160
-        height: 192
+        y: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: bigbasecard_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 384
-        width: 160
-        height: 192
+        x: 80
+        y: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: bigbasecard_6
       rect:
         serializedVersion: 2
-        x: 320
-        y: 384
-        width: 160
-        height: 192
+        x: 160
+        y: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +255,10 @@ TextureImporter:
       name: bigbasecard_7
       rect:
         serializedVersion: 2
-        x: 480
-        y: 384
-        width: 160
-        height: 192
+        x: 240
+        y: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,9 +277,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 160
-        height: 192
+        y: 96
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +297,10 @@ TextureImporter:
       name: bigbasecard_9
       rect:
         serializedVersion: 2
-        x: 160
-        y: 192
-        width: 160
-        height: 192
+        x: 80
+        y: 96
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,10 +318,10 @@ TextureImporter:
       name: bigbasecard_10
       rect:
         serializedVersion: 2
-        x: 320
-        y: 192
-        width: 160
-        height: 192
+        x: 160
+        y: 96
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,10 +339,10 @@ TextureImporter:
       name: bigbasecard_11
       rect:
         serializedVersion: 2
-        x: 480
-        y: 192
-        width: 160
-        height: 192
+        x: 240
+        y: 96
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,8 +362,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 160
-        height: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,10 +381,10 @@ TextureImporter:
       name: bigbasecard_13
       rect:
         serializedVersion: 2
-        x: 160
+        x: 80
         y: 0
-        width: 160
-        height: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,10 +402,10 @@ TextureImporter:
       name: bigbasecard_14
       rect:
         serializedVersion: 2
-        x: 320
+        x: 160
         y: 0
-        width: 160
-        height: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,10 +423,10 @@ TextureImporter:
       name: bigbasecard_15
       rect:
         serializedVersion: 2
-        x: 480
+        x: 240
         y: 0
-        width: 160
-        height: 192
+        width: 80
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

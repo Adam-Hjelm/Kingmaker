@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerTakeDmg(int dmg)
     {
-        Debug.Log("take damage");
         currentHealth -= dmg;
         healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
 

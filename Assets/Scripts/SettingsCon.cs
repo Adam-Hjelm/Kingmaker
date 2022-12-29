@@ -9,6 +9,10 @@ using UnityEngine.Audio;
 public class SettingsCon : MonoBehaviour
 {
     public AudioMixer audioMix;
+
+
+    // ---QUESTION---
+    // Are these functions meant to change later? They all do the same thing.
     public void SetMasterVolume(float volume)
     {
         audioMix.SetFloat("volume", volume);
@@ -24,6 +28,7 @@ public class SettingsCon : MonoBehaviour
         audioMix.SetFloat("volume", volume);
         Debug.Log(volume);
     }
+    // -----QUESTION-----
 
     public void SetFullscreen(bool isFullscreen)
     {

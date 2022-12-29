@@ -107,7 +107,7 @@ public class UpgradeController : MonoBehaviour
 
         if (GameManager.Instance.GetPlayerInput(playerNumberToGiveStat) == null)
         {
-            Debug.Log((playerNumberToGiveStat + 1) + ", No Player Detected");
+            Debug.LogWarning((playerNumberToGiveStat + 1) + ", No Player Detected");
             return;
         }
         else

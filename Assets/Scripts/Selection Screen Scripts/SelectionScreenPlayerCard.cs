@@ -29,11 +29,9 @@ public class SelectionScreenPlayerCard : MonoBehaviour
     }
 
 
-
     public void OnReady()
     {
         isReady = !isReady;
-        Debug.Log("on ready");
         if (isReady)
         {
             readyBtn.SetActive(true);
@@ -48,7 +46,7 @@ public class SelectionScreenPlayerCard : MonoBehaviour
         SelectionScreen.Instance.PlayerChangedReadyState(device, isReady);
     }
 
-    private void OnLeave()
+    public void OnLeave()
     {
         SelectionScreen.Instance.RemovePlayer(device);
     }

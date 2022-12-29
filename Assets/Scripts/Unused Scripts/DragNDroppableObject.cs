@@ -20,7 +20,6 @@ public class DragNDroppableObject : MonoBehaviour
     {
         if (transform.parent == null && other.gameObject.CompareTag("DropZone"))
         {
-            //Debug.Log("entered right");
             playerCardDropZone = other.gameObject.GetComponent<PlayerCardDropZone>();
 
             StartCoroutine(CallFunctions());

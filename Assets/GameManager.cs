@@ -91,8 +91,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-
-        Debug.Log(countDownRoutine);
         if (countDownRoutine == null)
             countDownRoutine = StartCoroutine(StartCountdown());
     }
@@ -202,8 +200,6 @@ public class GameManager : MonoBehaviour
 
         if (livingPlayers.Count() == 1)
         {
-            Debug.LogWarning("{livingPlayers.Count() == 1}");
-
             if (!havePointBeenGivenThisRound)
             {
                 livingPlayers[0].score++;
@@ -216,7 +212,6 @@ public class GameManager : MonoBehaviour
         }
         else if (livingPlayers.Count() < 1)
         {
-            Debug.LogWarning("{livingPlayers.Count() < 1}");
             lastKilledPlayer.score++;
         }
         else
@@ -263,7 +258,6 @@ public class GameManager : MonoBehaviour
 
     public void FinishedUpgrade()
     {
-        Debug.Log("UPGRADE DONE");
         lastPlayer.GetComponent<PlayerController>().roundOver = false;
         lastPlayer.GetComponentInChildren<Canvas>().enabled = true;
         lastPlayer.GetComponent<PlayerController>().shadowSprite.enabled = true;
@@ -282,19 +276,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetScene()
     {
-        Debug.Log("RESETTING SCENE");
         gameScene.SetActive(true);
-
-
-
         destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
+
         foreach (DestroyableObject wallScript in destroyableObject)
         {
             wallScript.timesHit = 6;
             wallScript.col.enabled = true;
             wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
         }
-        Debug.Log("resetting for reals");
+        
         canvasHandler.StartNewRound();
         canvasHandler.RoundText = $"Round: {currentRound}";
 
@@ -350,8 +341,6 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        Debug.Log("ON PLAYER JOIN METHOD TRIGGERED! " + playerInput.playerIndex);
-
         playersConnected++;
         int playerNumber = playerInput.playerIndex;
 
@@ -365,8 +354,7 @@ public class GameManager : MonoBehaviour
             score = 0,
             isAlive = true
         };
-        Debug.Log("ID = " + player.ID);
-        Debug.Log(player.sprite);
+        
         switch (player.ID) // placeholder
         {
             case 0:
@@ -382,7 +370,7 @@ public class GameManager : MonoBehaviour
                 player.sprite = player4Sprite;
                 break;
         }
-        Debug.Log(player.sprite);
+        
         players.Add(player);
         RespawnPlayer(player);
 
@@ -418,8 +406,6 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerLeft(PlayerInput player)
     {
-        Debug.Log("ON PLAYER LEFT METHOD TRIGGERED!");
-
         PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
 
         if (player != null)
