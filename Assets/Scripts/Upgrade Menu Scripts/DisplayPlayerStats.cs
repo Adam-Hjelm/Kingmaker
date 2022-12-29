@@ -28,6 +28,8 @@ public class DisplayPlayerStats : MonoBehaviour
     public int currentHealingBullets;
     public int maxHealingBullets;
 
+    public bool hasRandomSizedBullets;
+
     [Header("Score Components")]
     public int playerNumberDisplayBelongsTo;
     public int currentScore;
@@ -138,6 +140,10 @@ public class DisplayPlayerStats : MonoBehaviour
         }
         else if (currentHealingBullets >= maxHealingBullets
             && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals)
+        {
+            return true;
+        }
+        else if(hasRandomSizedBullets == true)
         {
             return true;
         }

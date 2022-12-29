@@ -132,28 +132,28 @@ public class UpgradeCardScript : MonoBehaviour
         }
     }
 
-    private void SpecialCard()
-    {
-        Debug.Log("Given SPECIAL CARD");
-        currentCardType = CardType.AbilityCard;
-        int chosenRare = Random.Range(0, amountOfRares);
-        switch (chosenRare)
-        {
-            case 1:
+    //private void SpecialCard()
+    //{
+    //    Debug.Log("Given SPECIAL CARD");
+    //    currentCardType = CardType.AbilityCard;
+    //    int chosenRare = Random.Range(0, amountOfRares);
+    //    switch (chosenRare)
+    //    {
+    //        case 1:
 
-                break;
+    //            break;
 
-            case 2:
+    //        case 2:
 
-                break;
+    //            break;
 
-            case 3:
+    //        case 3:
 
-                break;
+    //            break;
 
-            case 4:
+    //        case 4:
 
-                break;
-        }
-    }
+    //            break;
+    //    }
+    //}
 }

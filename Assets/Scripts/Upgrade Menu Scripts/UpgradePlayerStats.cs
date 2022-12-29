@@ -50,6 +50,7 @@ public class UpgradePlayerStats : MonoBehaviour
                 break;
             case UpgradeCardScript.CardType.RandomSizedBullets:
                 playerStats.bulletsRandomSized = true;
+                displayPlayerStats.hasRandomSizedBullets = true;
                 break;
             case UpgradeCardScript.CardType.MoreBulletsButMoreSpread:
                 playerStats.bulletAmount *= 2;
