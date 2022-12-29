@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash()
     {
-        if (canDash == true)
+        if (enabled && canDash)
         {
             StartCoroutine(Dash());
         }
