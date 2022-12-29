@@ -182,11 +182,10 @@ public class SelectionScreen : MonoBehaviour
 
         players.Remove(player);
         Destroy(player.PlayerGameObject);
-        //allPlayersReady = false;
 
         totalPlayers--;
 
-        if (allPlayersReady)
+        if (allPlayersReady && totalPlayers >= 2)
         {
             StopTimer();
             StartTimer();
@@ -221,13 +220,9 @@ public class SelectionScreen : MonoBehaviour
             player.IsReady = isReady;
 
             if (players.Count >= 2 && players.All(p => p.IsReady))
-            {
                 StartTimer();
-            }
             else if (startRoutine != null)
-            {
                 StopTimer();
-            }
         }
     }
 
