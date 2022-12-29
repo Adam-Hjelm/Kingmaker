@@ -151,8 +151,6 @@ public class UpgradeController : MonoBehaviour
     private void SpawnNewCards()
     {
         amountOfTimesSpawned++;
-        //chosenUpgradeCard.gameObject.SetActive(false);
-        //chosenUpgradeCard = null;
 
         for (int i = 0; i < upgradeCardButtons.Count; i++)
         {
@@ -175,6 +173,7 @@ public class UpgradeController : MonoBehaviour
                 randomNumber = UnityEngine.Random.Range(1, 8);
                 currentLoopNumber++;
             }
+            CheckIfUpgradeIsAvailable(randomNumber);
             randomNumbers.Add(randomNumber);
 
             var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
@@ -189,9 +188,8 @@ public class UpgradeController : MonoBehaviour
         {
             chosenUpgradeCard.gameObject.SetActive(false);
         }
-        //chosenUpgradeCard = null;
+
         ColorCoordinateText(playerToChooseCard);
-        //startUpgradeCard = upgradeCardButtons[0].GetComponent<Button>();
 
         if (amountOfTimesSpawned <= 1)
         {
@@ -203,6 +201,28 @@ public class UpgradeController : MonoBehaviour
         {
             CheckForNextPlayer();
         }
+    }
+
+    private void CheckIfUpgradeIsAvailable(int randomAssignedUpgrade) // TODO: Make this thing work ;_;
+    {
+        bool allDisabled = true;
+        int playersToChooseFrom = 3;
+
+        if (GameManager.Instance.GetPlayerInput(2) == null)
+        {
+            playersToChooseFrom--;
+        }
+        if (GameManager.Instance.GetPlayerInput(3) == null)
+        {
+            playersToChooseFrom--;
+        }
+
+        for (int i = 0; i < playersToChooseFrom; i++)
+        {
+            // Use checkIfStatMaxed från displayplayerstats here to check for every available player if they can't use the card and if they can't make alldisabled true and redo the random number
+        }
+
+
     }
 
     private void ColorCoordinateText(int playerToGiveColorOf)
@@ -238,7 +258,6 @@ public class UpgradeController : MonoBehaviour
         {
             playerButtons[i].GetComponent<Image>().color = grayedOutColor;
         }
-        //playerButtons[playerToChooseCard].GetComponent<Image>().color = Color.white;
 
         switch (playerToChooseCard)
         {
@@ -278,9 +297,6 @@ public class UpgradeController : MonoBehaviour
                 }
                 break;
             case 4:
-                //eventSysInUse = playerEventSys1;
-                //playerToChooseCard = 1;
-
                 playerEventSys1.SetSelectedGameObject(null);
                 playerEventSys2.SetSelectedGameObject(null);
                 if (playerEventSys3 != null)
@@ -379,19 +395,12 @@ public class UpgradeController : MonoBehaviour
         playerButtons[playerToChooseCard - 1].onClick.RemoveListener(UpgradePlayerStat); // H�r kan vi graya ut knappen s� att spelaren inte tror att den kan interagera med sig sj�lv
         playerButtons[playerToChooseCard - 1].GetComponent<Image>().color = grayedOutColor;
 
-
-
         inPlayerButtons = true;
         cardAnim.SetTrigger("MoveCard");
         textPickCard.SetActive(true);
         textPickCard2.SetActive(false);
         textChoosePlayer.SetActive(true);
-        //textChoosePlayer.GetComponent<TextMeshProUGUI>().text = $"PLAYER {playerToChooseCard}, CHOOSE A PLAYER";
-        //if (chosenUpgradeCard != null)
-        //{
-        //    // Here you can make the card do some cool animations before it goes away and has been given to the player
-        //    chosenUpgradeCard.gameObject.SetActive(false);
-        //}
+
         chosenUpgradeCard = currentlySelectedCard;
 
         eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
