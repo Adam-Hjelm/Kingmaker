@@ -351,6 +351,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 4594921739533266442}
   centralPoint: {fileID: 1019928324130379953}
   bulletSpeed: 12
+  healingBulletsAmount: 0
+  canShoot: 1
   healingBulletAnim: {fileID: 9100000, guid: 478f9fcc64031bc45b7f69c0e1ce4530, type: 2}
   handAnim: {fileID: 0}
   Source: {fileID: 8694816148440275922}
@@ -1101,7 +1103,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.26}
+  m_Size: {x: 0.26666668, y: 0.26666668}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
