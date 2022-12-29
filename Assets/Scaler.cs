@@ -5,11 +5,18 @@ using DG.Tweening;
 
 public class Scaler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void OnEnable()
+    public float duration = 1;
+    Vector3 originalSize;
+
+
+    void Awake()
     {
-        transform.DOScale(0, 1);
+        originalSize = transform.localScale;
     }
 
-
+    public void StartAnimation()
+    {
+        transform.localScale = originalSize;
+        transform.DOScale(0, duration);
+    }
 }

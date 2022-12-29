@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite player3Sprite;
     [SerializeField] Sprite player4Sprite;
 
+    [SerializeField] Scaler transitionScreen;
+
     GameObject lastPlayer;
     PlayerInputManager pim;
     Coroutine countDownRoutine;
@@ -87,6 +89,8 @@ public class GameManager : MonoBehaviour
 
         if (player1Prefab != null && pim != null)
             pim.playerPrefab = player1Prefab;
+
+        //StartGame();
     }
 
     public void StartGame()
@@ -97,14 +101,14 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
-        yield return null;
-        yield return null;
-
         foreach (var player in players)
         {
             player.controller.SetPlayerEnabled(false);
             player.controller.spriteRenderer.enabled = true;
         }
+
+        transitionScreen.StartAnimation();
+        yield return new WaitForSeconds(transitionScreen.duration);
 
         int timer = 3;
         countdownText.gameObject.SetActive(true);
