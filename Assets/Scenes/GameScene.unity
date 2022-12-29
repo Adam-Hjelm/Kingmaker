@@ -1726,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1290046509057431611, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_fontStyle
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1290046509057431611, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_TextStyleHashCode
