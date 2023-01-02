@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour
         {
             player.controller.SetPlayerEnabled(true);
         }
-        ShootController.roundStarted = true;
     }
 
     public int GetPlayerScore(int playerToGetScoreFrom)
@@ -242,7 +241,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
-        ShootController.roundStarted = false;
         havePointBeenGivenThisRound = false;
         StartUpgradeScreen(lastPlayer);
     }

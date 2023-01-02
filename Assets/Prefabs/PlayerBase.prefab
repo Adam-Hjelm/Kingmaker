@@ -293,25 +293,24 @@ MonoBehaviour:
   bulletSpread: 0
   bulletsRandomSized: 0
   healingBullets: 0
-  flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
-  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  flashDuration: 0.1
-  spriteRenderer: {fileID: 1753709221305505238}
   dashing: 0
   isBlocking: 0
   roundOver: 0
   playerWon: 0
+  flashMaterial: {fileID: 2100000, guid: f7e38f349ac2317479eac2a9860b6105, type: 2}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  flashDuration: 0.1
+  spriteRenderer: {fileID: 1753709221305505238}
+  healthCanvas: {fileID: 4099246096159884115}
   healthBar: {fileID: 6147705600176697729}
   healthBarBackdrop: {fileID: 1877102802821831847}
   healthBarDegradeModifier: 0.3
   Explosion: {fileID: 8300000, guid: 83297c3f780004b47a7506cf2c9dcbee, type: 3}
   Source: {fileID: 8694816148440275922}
   DeathPrefab: {fileID: 2152205224053370364, guid: 423bd28745ed88847abe936b8381655d, type: 3}
-  DeathAnimationPoint: {fileID: 1229098084452305636}
   shadowSprite: {fileID: 3842099448292883828}
   escMenu: {fileID: 0}
   crownObject: {fileID: 1390600156288181303}
-  healthCanvas: {fileID: 4099246096159884115}
 --- !u!114 &3620701524542173329
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.enabled = enabled;
         GetComponent<Collider2D>().enabled = enabled;
         GetComponent<PlayerMovement>().enabled = enabled;
+        GetComponent<ShootController>().enabled = enabled;
         GetComponent<Block>().enabled = enabled;
         healthCanvas.enabled = enabled;
         crownObject.gameObject.SetActive(enabled);
