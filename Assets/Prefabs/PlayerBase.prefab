@@ -354,9 +354,9 @@ MonoBehaviour:
   healingBulletsAmount: 0
   canShoot: 1
   healingBulletAnim: {fileID: 9100000, guid: 478f9fcc64031bc45b7f69c0e1ce4530, type: 2}
-  handAnim: {fileID: 0}
-  Source: {fileID: 8694816148440275922}
-  Fireball: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}
+  handAnim: {fileID: 4328760045647433091}
+  source: {fileID: 8694816148440275922}
+  fireballSound: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}
 --- !u!114 &2642728012354391995
 MonoBehaviour:
   m_ObjectHideFlags: 0
