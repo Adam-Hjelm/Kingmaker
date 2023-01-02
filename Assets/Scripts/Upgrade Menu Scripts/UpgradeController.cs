@@ -15,6 +15,7 @@ public class UpgradeController : MonoBehaviour
     public Button[] playerButtons;
     public List<Button> upgradeCardButtons = new List<Button>();
     private int amountOfTimesSpawned = 0;
+    private bool allPlayerButtonsDisabled;
 
     //public Button[] upgradeCardButtons;
     public Button startUpgradeCard;
@@ -173,12 +174,19 @@ public class UpgradeController : MonoBehaviour
                 randomNumber = UnityEngine.Random.Range(1, 8);
                 currentLoopNumber++;
             }
-            CheckIfUpgradeIsAvailable(randomNumber);
+
             randomNumbers.Add(randomNumber);
 
             var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
             newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
             newButton.onClick.AddListener(MoveToPlayerButtons);
+            CheckIfUpgradeIsAvailable(newButton.gameObject);
+
+            if (allPlayerButtonsDisabled)
+            {
+                SpawnNewCards();
+                allPlayerButtonsDisabled = false;
+            }
             //newButton.transform.SetParent(upgradeCanvas.transform, true);
             startUpgradeCard = newButton;
 
@@ -203,26 +211,57 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
-    private void CheckIfUpgradeIsAvailable(int randomAssignedUpgrade) // TODO: Make this thing work ;_;
+    private void CheckIfUpgradeIsAvailable(GameObject upgradeCard) // TODO: Make this thing work ;_; STILL TODO ;-;
     {
-        bool allDisabled = true;
-        int playersToChooseFrom = 3;
+        string[] playerButtonStrings = new string[] { "Player 1", "Player 2", "Player 3", "Player 4", };
+        List<string> playersLeftToChoose = new List<string>();
+        playersLeftToChoose = playerButtonStrings.ToList();
+        Debug.Log(playersLeftToChoose.Count);
 
         if (GameManager.Instance.GetPlayerInput(2) == null)
         {
-            playersToChooseFrom--;
+            playersLeftToChoose.Remove("Player 3");
         }
         if (GameManager.Instance.GetPlayerInput(3) == null)
         {
-            playersToChooseFrom--;
+            playersLeftToChoose.Remove("Player 4");
         }
 
-        for (int i = 0; i < playersToChooseFrom; i++)
+        playersLeftToChoose.Remove($"Player {playerToChooseCard}");
+        Debug.Log(playersLeftToChoose.Count);
+
+        for (int i = 0; i < playerButtons.Length; i++)
         {
-            // Use checkIfStatMaxed från displayplayerstats here to check for every available player if they can't use the card and if they can't make alldisabled true and redo the random number
+
+            if (i <= playersLeftToChoose.Count - 1 && i >= 0)
+            {
+                if (playersLeftToChoose[i].Contains($"Player {i + 1}"))
+                {
+                    if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+                    {
+                        DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+                        Debug.Log(currentDisplayScript);
+                        if (currentDisplayScript.CheckIfStatMaxed(upgradeCard) == true)
+                        {
+                            playersLeftToChoose.Remove($"Player {i + 1}");
+                            Debug.Log(playersLeftToChoose.Count + " Stat Maxed!");
+                        }
+                    }
+                }
+
+            }
         }
 
-
+        if (playersLeftToChoose.Count >= 0)
+        {
+            allPlayerButtonsDisabled = false;
+            playersLeftToChoose = playersLeftToChoose.ToList();
+        }
+        else
+        {
+            allPlayerButtonsDisabled = true;
+            playersLeftToChoose = playersLeftToChoose.ToList();
+        }
     }
 
     private void ColorCoordinateText(int playerToGiveColorOf)
