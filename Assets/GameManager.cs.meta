@@ -3,7 +3,29 @@ guid: 0de0c7d25372d6745be4f09ba5e0c354
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - upgradeScreen: {instanceID: 0}
+  - gameScene: {instanceID: 0}
+  - canvasHandler: {instanceID: 0}
+  - destroyableWalls: {instanceID: 0}
+  - upgradeController: {instanceID: 0}
+  - countdownText: {instanceID: 0}
+  - escMenu: {instanceID: 0}
+  - player1SpawnPos: {instanceID: 0}
+  - player2SpawnPos: {instanceID: 0}
+  - player3SpawnPos: {instanceID: 0}
+  - player4SpawnPos: {instanceID: 0}
+  - player1Prefab: {instanceID: 0}
+  - player2Prefab: {instanceID: 0}
+  - player3Prefab: {instanceID: 0}
+  - player4Prefab: {instanceID: 0}
+  - player1Sprite: {instanceID: 0}
+  - player2Sprite: {instanceID: 0}
+  - player3Sprite: {instanceID: 0}
+  - player4Sprite: {instanceID: 0}
+  - transitionScreen: {instanceID: 0}
+  - yaySound: {fileID: 8300000, guid: 1dbfe32be79d07146917f06088380f95, type: 3}
+  - audioSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
