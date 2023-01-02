@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
                 healthBarBackdrop.fillAmount = healthBar.fillAmount;
         }
 
-        if(currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
             currentHealth = maxHealth;
     }
 
@@ -140,13 +140,19 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerEnabled(bool enabled)
     {
-        spriteRenderer.enabled = enabled;
+        //spriteRenderer.enabled = enabled;
         GetComponent<Collider2D>().enabled = enabled;
         GetComponent<PlayerMovement>().enabled = enabled;
         GetComponent<ShootController>().enabled = enabled;
         GetComponent<Block>().enabled = enabled;
         healthCanvas.enabled = enabled;
         crownObject.gameObject.SetActive(enabled);
+
+        SpriteRenderer[] allPlayerSprites = GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < allPlayerSprites.Length; i++)
+        {
+            allPlayerSprites[i].enabled = enabled;
+        }
 
         if (playerWon)
             crownObject.enabled = true;
