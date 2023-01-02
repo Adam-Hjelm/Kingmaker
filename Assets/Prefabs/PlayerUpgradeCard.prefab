@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 5976875056413958745}
   - component: {fileID: 5976875056413958742}
   - component: {fileID: 5976875056413958746}
+  - component: {fileID: 1846440318381369496}
   m_Layer: 5
   m_Name: PlayerUpgradeCard
   m_TagString: Card
@@ -297,3 +298,32 @@ MonoBehaviour:
   bulletDamageModifier: 1
   fireRateModifier: 0.2
   sizeModifier: {x: 0.6, y: 0.6, z: 0.6}
+--- !u!114 &1846440318381369496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976875056413958740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1647752903274821756, guid: b3a4594379a57d447b74f8feb5579ab2, type: 3}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
