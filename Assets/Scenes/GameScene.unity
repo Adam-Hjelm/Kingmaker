@@ -2817,6 +2817,10 @@ PrefabInstance:
       value: 152
       objectReference: {fileID: 0}
     - target: {fileID: 1290046509057431611, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
+      propertyPath: m_text
+      value: PLAYER X WINS THE GAME!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290046509057431611, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_fontStyle
       value: 16
       objectReference: {fileID: 0}
@@ -3114,7 +3118,7 @@ PrefabInstance:
       objectReference: {fileID: 71512872}
     - target: {fileID: 1290046510824580266, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartNewGame
+      value: LoadSelectionScreen
       objectReference: {fileID: 0}
     - target: {fileID: 1290046510824580267, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_AnchoredPosition.y

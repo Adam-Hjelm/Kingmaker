@@ -241,6 +241,8 @@ public class GameManager : MonoBehaviour
 
         audioSource.PlayOneShot(soundEffect);
         yield return new WaitForSeconds(3);
+
+        canvasHandler.DisableWinRoundText();
         ShootController.roundStarted = false;
         havePointBeenGivenThisRound = false;
         StartUpgradeScreen(lastPlayer);
@@ -275,7 +277,7 @@ public class GameManager : MonoBehaviour
             player.controller.SetPlayerHealthToMax();
             player.playerInput.SwitchCurrentActionMap("Player");
         }
-        upgradeScreen.gameObject.SetActive(false);
+        upgradeScreen.SetActive(false);
         ResetScene();
     }
 
@@ -294,8 +296,8 @@ public class GameManager : MonoBehaviour
             wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
         }
         
-        canvasHandler.StartNewRound();
-        canvasHandler.RoundText = $"Round: {currentRound}";
+        //canvasHandler.DisableWinText();
+        //canvasHandler.RoundText = $"Round: {currentRound}";
 
         foreach (var player in players)
         {
@@ -304,7 +306,7 @@ public class GameManager : MonoBehaviour
             player.isAlive = true;
             player.gameObject.SetActive(true);
             player.controller.currentHealth = player.controller.maxHealth;
-            canvasHandler.UpdateScore(player.ID, player.score);
+            //canvasHandler.UpdateScore(player.ID, player.score);
         }
 
         if (countDownRoutine != null)
