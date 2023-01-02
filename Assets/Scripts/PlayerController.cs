@@ -160,11 +160,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnPause()
     {
-        GameManager.Instance.TogglePause();
+        GameManager.Instance.TogglePause(this);
     }
-
-    //private void OnEscape()
-    //{
-    //    escMenu.OnEscape();
-    //}
 }

@@ -2959,6 +2959,11 @@ MonoBehaviour:
   duration: 0.5
   vibrato: 5
   elasticity: 2
+--- !u!1 &2091832978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2932877706033409359, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
+  m_PrefabInstance: {fileID: 8994921159975325198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2133115583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3469,9 +3474,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 401512102}
     - target: {fileID: 2229437036710350450, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229437036710350450, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 71512872}
+    - target: {fileID: 2229437036710350450, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3480276104864429140, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3564,11 +3577,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 7680966379550058746, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
+      propertyPath: firstSelected
+      value: 
+      objectReference: {fileID: 2091832978}
     - target: {fileID: 8061549786661197318, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 71512872}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8994921159975325204, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
+    - {fileID: 8994921159975325205, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0c57f7415d4a3241a306d6a86cd9d3c, type: 3}
 --- !u!114 &8994921159975325199 stripped
 MonoBehaviour:
