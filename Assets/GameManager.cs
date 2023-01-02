@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
     PlayerInputManager pim;
     Coroutine countDownRoutine;
 
-    [SerializeField] AudioClip soundEffect;
-    [SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioClip soundEffect;
+    //[SerializeField] AudioSource audioSource;
 
     bool havePointBeenGivenThisRound = false;
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
         pim = PlayerInputManager.instance;
 
@@ -241,7 +241,8 @@ public class GameManager : MonoBehaviour
         currentRound++;
         canvasHandler.StartWinRoundScreen(lastPlayer.name);
 
-        audioSource.PlayOneShot(soundEffect);
+        AudioManager.Instance.PlayWinSound();
+        //audioSource.PlayOneShot(soundEffect);
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
