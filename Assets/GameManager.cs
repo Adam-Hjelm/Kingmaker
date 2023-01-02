@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Audio;
 
 
 public class GameManager : MonoBehaviour
@@ -66,6 +67,9 @@ public class GameManager : MonoBehaviour
     PlayerInputManager pim;
     Coroutine countDownRoutine;
 
+    [SerializeField] AudioClip soundEffect;
+    [SerializeField] AudioSource audioSource;
+
     bool havePointBeenGivenThisRound = false;
 
 
@@ -79,6 +83,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         pim = PlayerInputManager.instance;
 
         if (canvasHandler == null)
@@ -233,6 +239,7 @@ public class GameManager : MonoBehaviour
         currentRound++;
         canvasHandler.StartWinRoundScreen(lastPlayer.name);
 
+        audioSource.PlayOneShot(soundEffect);
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
