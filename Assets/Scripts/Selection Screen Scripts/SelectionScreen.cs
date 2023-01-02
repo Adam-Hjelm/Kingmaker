@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SelectionScreen : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class SelectionScreen : MonoBehaviour
 
     Coroutine startRoutine;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip soundEffect;
+
 
     private void Awake()
     {
@@ -79,6 +83,8 @@ public class SelectionScreen : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (PlayerInputManager.instance != null)
             PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
     }
@@ -135,15 +141,18 @@ public class SelectionScreen : MonoBehaviour
             return;
         }
 
+        //audioSource.PlayOneShot(soundEffect);
         playerCard.GetComponent<SelectionScreenPlayerCard>().Initialize(device);
         var player = new PlayerObject
         {
             Device = device,
             PlayerGameObject = playerCard,
             PlayerID = ID
+
         };
 
         players.Add(player);
+        audioSource.PlayOneShot(soundEffect);
         totalPlayers++;
         StopTimer();
 
