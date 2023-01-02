@@ -10,20 +10,18 @@ public class ShootController : MonoBehaviour
     public Transform spawnPoint;
     public Transform centralPoint;
     public float bulletSpeed;
-    private float spreadOffset;
     public int healingBulletsAmount;
 
     PlayerController playerController;
     public bool canShoot = true;
-    public static bool roundStarted;
     private float timer;
     private float startTimer = 1f;
 
     public RuntimeAnimatorController healingBulletAnim;
 
     public Animator handAnim;
-    public AudioSource Source;
-    public AudioClip Fireball;
+    public AudioSource source;
+    public AudioClip fireballSound;
 
     private int fireballShotCounter;
 
@@ -35,61 +33,51 @@ public class ShootController : MonoBehaviour
     {
         playerController = gameObject.GetComponent<PlayerController>();
         handAnim = spawnPoint.GetComponent<Animator>();
-        Source = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     void Update()
     {
         timer -= Time.deltaTime;
-
-        if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
-        {
-            canShoot = false;
-            spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        }
-        else if (roundStarted == true)
-        {
-            canShoot = true;
-            spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        else
-        {
-            canShoot = false;
-            spawnPoint.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        }
     }
+
 
     void OnFire()
     {
-        if (playerController.isBlocking == false)
+        if (enabled && canShoot == true && playerController.isBlocking == false && timer <= playerController.fireRate)
         {
-            if (timer <= playerController.fireRate && canShoot == true)
+            handAnim.SetTrigger("Casting");
+
+            if (playerController.bulletSpread > 0)
             {
-                handAnim.SetTrigger("Casting");
+                float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
+                float startRotation = facingRotation + playerController.bulletSpread / 2f;
+                float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
 
-                if (playerController.bulletSpread > 0)
+                for (int i = 0; i < playerController.bulletAmount; i++)
                 {
-                    float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
-                    float startRotation = facingRotation + playerController.bulletSpread / 2f;
-                    float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
-
-                    for (int i = 0; i < playerController.bulletAmount; i++)
-                    {
-                        float tempRot = startRotation - angleIncrease * i;
-
-                        InstantiateBullet(tempRot);
-                    }
+                    InstantiateBullet(startRotation - angleIncrease * i);
                 }
-                else
-                {
-                    InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
-                }
-
-                //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
-                //Destroy(newSmoke, 0.2f);
-
-                timer = startTimer;
             }
+            else
+            {
+                InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
+            }
+
+            //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
+            //Destroy(newSmoke, 0.2f);
+
+            timer = startTimer;
         }
     }
 
@@ -135,6 +123,6 @@ public class ShootController : MonoBehaviour
 
     private void FireBallSound()
     {
-        Source.PlayOneShot(Fireball);
+        source.PlayOneShot(fireballSound);
     }
 }

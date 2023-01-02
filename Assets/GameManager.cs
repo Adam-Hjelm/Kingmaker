@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
 
         if (canvasHandler == null)
             canvasHandler = FindObjectOfType<CanvasHandler>();
-        //canvasHandler.RoundText = $"Round: {currentRound}";
 
         if (gameScene == null)
             gameScene = GameObject.Find("GameScene");
@@ -137,7 +136,6 @@ public class GameManager : MonoBehaviour
         {
             player.controller.SetPlayerEnabled(true);
         }
-        ShootController.roundStarted = true;
     }
 
     public int GetPlayerScore(int playerToGetScoreFrom)
@@ -243,7 +241,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
-        ShootController.roundStarted = false;
         havePointBeenGivenThisRound = false;
         StartUpgradeScreen(lastPlayer);
     }
@@ -295,9 +292,6 @@ public class GameManager : MonoBehaviour
             wallScript.col.enabled = true;
             wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
         }
-        
-        //canvasHandler.DisableWinText();
-        //canvasHandler.RoundText = $"Round: {currentRound}";
 
         foreach (var player in players)
         {
@@ -306,7 +300,6 @@ public class GameManager : MonoBehaviour
             player.isAlive = true;
             player.gameObject.SetActive(true);
             player.controller.currentHealth = player.controller.maxHealth;
-            //canvasHandler.UpdateScore(player.ID, player.score);
         }
 
         if (countDownRoutine != null)
@@ -339,14 +332,10 @@ public class GameManager : MonoBehaviour
 
     private void HandleWin(PlayerInstance winningPlayer)
     {
-        //foreach (var player in players)
-        //{
-        //}
         destroyableWalls.SetActive(false);
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
-        //TODO: change states
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -362,8 +351,12 @@ public class GameManager : MonoBehaviour
             controller = playerInput.GetComponent<PlayerController>(),
             playerInput = playerInput,
             score = 0,
-            isAlive = true
+            isAlive = true,
+            eventSys = playerInput.GetComponentInChildren<MultiplayerEventSystem>()
         };
+
+        if (player.eventSys == null)
+            Debug.LogError("player.eventSys is null!");
         
         switch (player.ID) // placeholder
         {
@@ -384,8 +377,7 @@ public class GameManager : MonoBehaviour
         players.Add(player);
         RespawnPlayer(player);
 
-        //canvasHandler.UpdateScore(playerNumber, 0);
-        var multiplayerEventSystem = player.gameObject.GetComponentInChildren<MultiplayerEventSystem>();
+        var multiplayerEventSystem = player.eventSys;
 
         switch (playerNumber)
         {
@@ -430,24 +422,38 @@ public class GameManager : MonoBehaviour
 
     #region scene functions
 
+    /// <summary>
+    /// This is for buttons' OnClick() function call
+    /// </summary>
     public void TogglePause()
+    {
+        HandlePause();
+    }
+
+    public void TogglePause(PlayerController playerController)
+    {
+        HandlePause();
+        escMenu.SetNavigatingPlayer(players.FirstOrDefault(p => p.controller == playerController).eventSys);
+    }
+
+    private void HandlePause()
     {
         isPaused = !isPaused;
         escMenu.gameObject.SetActive(isPaused);
-        escMenu.OnEscape(isPaused);
+        escMenu.TogglePause(isPaused);
 
         if (isPaused)
         {
-            foreach (var player in players)
+            foreach (var p in players)
             {
-                player.playerInput.SwitchCurrentActionMap("UI");
+                p.playerInput.SwitchCurrentActionMap("UI");
             }
         }
         else
         {
-            foreach (var player in players)
+            foreach (var p in players)
             {
-                player.playerInput.SwitchCurrentActionMap("Player");
+                p.playerInput.SwitchCurrentActionMap("Player");
             }
         }
     }
@@ -483,6 +489,7 @@ public class GameManager : MonoBehaviour
         public int score;
         public bool isAlive;
         public Sprite sprite;
+        public MultiplayerEventSystem eventSys;
     }
 
     //IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)
