@@ -350,15 +350,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 660932068092145584, guid: 002da20c3b69525459ec3cc484e939e9, type: 3}
+  meleeHitBox: {fileID: 3455530242286369147, guid: 93d9c2d82b83e8a409289c2f316ee081, type: 3}
   spawnPoint: {fileID: 4594921739533266442}
   centralPoint: {fileID: 1019928324130379953}
   bulletSpeed: 12
   healingBulletsAmount: 0
   canShoot: 1
+  timer: 0
+  startTimer: 1
   healingBulletAnim: {fileID: 9100000, guid: 478f9fcc64031bc45b7f69c0e1ce4530, type: 2}
   handAnim: {fileID: 4328760045647433091}
   source: {fileID: 8694816148440275922}
   fireballSound: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}
+  meleeHit: {fileID: 0}
 --- !u!114 &2642728012354391995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,7 +1041,9 @@ GameObject:
   - component: {fileID: 4594921739533266442}
   - component: {fileID: 7787022592966737041}
   - component: {fileID: 4328760045647433091}
-  m_Layer: 0
+  - component: {fileID: 6892337031744956309}
+  - component: {fileID: 5635618176511778644}
+  m_Layer: 7
   m_Name: HandBulletSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,6 +1137,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &6892337031744956309
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313068638354588006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.65
+--- !u!114 &5635618176511778644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313068638354588006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2fc683bc1e8984cbf930f87681c136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeRange: 0
+  meleeDamage: 0
+  shootController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1 &6834731329847539685
 GameObject:
   m_ObjectHideFlags: 0

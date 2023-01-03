@@ -118,6 +118,19 @@ public class PlayerController : MonoBehaviour
                 PlayerTakeDmg(other.gameObject.GetComponent<BulletScript>().bulletDamage);
             }
         }
+
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("meleeHitBox"))
+        {
+            Debug.Log("took melee damage");
+            Flash();
+            PlayerTakeDmg(other.gameObject.GetComponent<MeleeHit>().meleeDamage);
+            other.gameObject.GetComponentInParent<ShootController>().DeactivateMelee();
+        }
     }
 
     public void Flash()

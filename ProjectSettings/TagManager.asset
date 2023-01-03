@@ -19,6 +19,7 @@ TagManager:
   - GameManager
   - PlayerStatScreen
   - DeathAnimation
+  - meleeHitBox
   layers:
   - Default
   - TransparentFX
