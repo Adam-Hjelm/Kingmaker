@@ -926,15 +926,27 @@ PrefabInstance:
       objectReference: {fileID: 401512102}
     - target: {fileID: 8636872361695378494, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 152.20001
+      value: 156.80008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361695378494, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.300003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361720077462, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -206.49997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872361720077462, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.300003
       objectReference: {fileID: 0}
     - target: {fileID: 8636872361769933429, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45.900024
+      value: 50.50009
       objectReference: {fileID: 0}
     - target: {fileID: 8636872361769933429, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 37.399994
+      value: 29.600014
       objectReference: {fileID: 0}
     - target: {fileID: 8636872362012437943, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_DeselectOnBackgroundClick
@@ -946,7 +958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636872363034566273, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -111.00006
+      value: -106.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636872363034566273, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.3
       objectReference: {fileID: 0}
     - target: {fileID: 8636872363034566274, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
