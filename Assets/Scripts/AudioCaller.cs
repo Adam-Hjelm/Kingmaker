@@ -15,7 +15,7 @@ public class AudioCaller : MonoBehaviour
     }
     public void PlayBlueSound()
     {
-        AudioManager.Instance.GreenSound();
+        AudioManager.Instance.BlueSound();
     }
     public void PlayGreenSound()
     {

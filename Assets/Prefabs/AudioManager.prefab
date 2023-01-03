@@ -48,13 +48,14 @@ MonoBehaviour:
   maxVolume: 1
   volumeFive: 0.5
   volumeTwo: 0.2
+  volumeOne: 0.1
   fireballSound1: {fileID: 0}
   winSound1: {fileID: 8300000, guid: 20c6e65ff091a1f4ab334eea62d18e43, type: 3}
   buttonHoverSound1: {fileID: 8300000, guid: fcfe7b72b0a4d354bbc6ad7020b5ffec, type: 3}
   allWinSound1: {fileID: 8300000, guid: 4ef83fe6a87347440a2e7459e9ef14e5, type: 3}
   redSound: {fileID: 8300000, guid: cd3cb792e0fd06f47940c1105e676eb8, type: 3}
-  blueSound: {fileID: 8300000, guid: 8badcdaa35584054fac7b1c9c3933cc5, type: 3}
-  greenSound: {fileID: 8300000, guid: 200a8140e3750ab419a1620f60f27b89, type: 3}
+  blueSound: {fileID: 8300000, guid: 200a8140e3750ab419a1620f60f27b89, type: 3}
+  greenSound: {fileID: 8300000, guid: 8badcdaa35584054fac7b1c9c3933cc5, type: 3}
   pinkSound: {fileID: 8300000, guid: 3a14519e8ca1e7a4b97fcf0764c86fca, type: 3}
   source: {fileID: 7623501377653172552}
 --- !u!82 &7623501377653172552
