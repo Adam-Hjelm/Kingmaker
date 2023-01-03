@@ -136,6 +136,8 @@ public class PlayerController : MonoBehaviour
             Flash();
             PlayerTakeDmg(other.gameObject.GetComponent<MeleeHit>().meleeDamage);
             other.gameObject.GetComponentInParent<ShootController>().DeactivateMelee();
+
+            GetComponent<Knockback>().PrepareKnockBack(other);
         }
     }
 

@@ -387,41 +387,43 @@ public class UpgradeController : MonoBehaviour
 
         eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
 
-        CheckIfCardAvailable();
+        //CheckIfCardAvailable();
     }
 
-    private void CheckIfCardAvailable()
-    {
-        Debug.Log("Checking if available");
-        int amountofTimesChecked = 0;
+    //private void CheckIfCardAvailable()
+    //{
+    //    Debug.Log("Checking if available");
+    //    int amountofTimesChecked = 1;
 
-        for (int i = 0; i < playerButtons.Length; i++)
-        {
-            if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
-            {
-                amountofTimesChecked++;
-                Debug.Log(amountofTimesChecked);
-                int randomNumber = UnityEngine.Random.Range(1, 8);
-                if (amountofTimesChecked >= 4)
-                {
+    //    for (int i = 0; i < playerButtons.Length; i++)
+    //    {
+    //        if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
+    //        {
+    //            amountofTimesChecked++;
+    //            Debug.Log(amountofTimesChecked);
 
-                    chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
+    //        }
+    //    }
 
-                    if (playerButtons[playerToChooseCard].GetComponentInChildren<DisplayPlayerStats>() != null)
-                    {
-                        DisplayPlayerStats currentDisplayScript = playerButtons[playerToChooseCard].GetComponentInChildren<DisplayPlayerStats>();
+    //    if (amountofTimesChecked >= 4)
+    //    {
+    //        int randomNumber = UnityEngine.Random.Range(1, 8);
 
-                        if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
-                        {
-                            //playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
-                            //playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+    //        chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
+    //        for (int i = 0; i < playerButtons.Length; i++)
+    //        {
 
-                            CheckIfCardAvailable();
-                        }
+    //            if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+    //            {
+    //                DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
 
-                    }
-                }
-            }
-        }
-    }
+    //                Debug.Log(currentDisplayScript);
+    //                if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
+    //                {
+    //                    CheckIfCardAvailable();
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }

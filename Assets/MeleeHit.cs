@@ -15,19 +15,23 @@ public class MeleeHit : MonoBehaviour
         shootController = gameObject.GetComponentInParent<ShootController>();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerController.gameObject.GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerController.gameObject.GetComponent<Collider2D>());
         //float meleeDistance = 3f;
-        if (other.tag.Contains("Player") && shootController.timer <= playerController.fireRate)
+        if (other.tag.Contains("Player"))
         {
-            //float dist = Vector3.Distance(other.gameObject.transform.position, transform.position);
-
-            //Debug.Log("player INRANGE detected");
             meleeRange = true;
-
         }
-        else
+        //else
+        //{
+        //    meleeRange = false;
+        //}
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag.Contains("Player"))
         {
             meleeRange = false;
         }
