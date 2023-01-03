@@ -9,4 +9,21 @@ public class AudioCaller : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonHoverSound();
     }
+    public void PlayRedSound()
+    {
+        AudioManager.Instance.RedSound();
+    }
+    public void PlayBlueSound()
+    {
+        AudioManager.Instance.BlueSound();
+    }
+    public void PlayGreenSound()
+    {
+        AudioManager.Instance.GreenSound();
+    }
+    public void PlayPinkSound()
+    {
+        AudioManager.Instance.PinkSound();
+    }
+
 }

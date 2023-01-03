@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public float maxVolume = 1f;
     public float volumeFive = 0.5f;
     public float volumeTwo = 0.2f;
+    public float volumeOne = 0.1f;
 
     private static AudioManager _instance;
     public static AudioManager Instance
@@ -26,6 +27,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip winSound1;
     public AudioClip buttonHoverSound1;
     public AudioClip allWinSound1;
+    public AudioClip redSound;
+    public AudioClip blueSound;
+    public AudioClip greenSound;
+    public AudioClip pinkSound;
+
 
     [SerializeField] AudioSource source;
 
@@ -48,6 +54,27 @@ public class AudioManager : MonoBehaviour
     {
         source.volume = maxVolume;
         source.PlayOneShot(buttonHoverSound1);
+    }
+
+    public void RedSound()
+    {
+        source.volume = volumeOne;
+        source.PlayOneShot(redSound);
+    }
+    public void BlueSound()
+    {
+        source.volume = volumeOne;
+        source.PlayOneShot(blueSound);
+    }
+    public void GreenSound()
+    {
+        source.volume = volumeOne;
+        source.PlayOneShot(greenSound);
+    }
+    public void PinkSound()
+    {
+        source.volume = volumeOne;
+        source.PlayOneShot(pinkSound);
     }
 
     public void AllWin()
