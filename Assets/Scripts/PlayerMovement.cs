@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTime;
     public float dashingCooldown;
 
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] AudioSource audioSource;
+
     public GameObject smokePrefab;
     public Transform smokePoint;
 
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerController = GetComponent<PlayerController>();
         handCrosshairSprite = handCrosshair.GetComponentInChildren<SpriteRenderer>();
         PlayerRenderer = GetComponent<SpriteRenderer>();
@@ -140,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
             //    Destroy(newSmoke, 0.3f);
             //}
 
+            audioSource.PlayOneShot(dashSound);
             GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position - (Vector3)moveDirection.normalized, inverseToRotation);
             Destroy(newSmoke, 0.3f);
 
