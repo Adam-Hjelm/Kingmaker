@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip fireballSound1;
     public AudioClip winSound1;
+    public AudioClip buttonHoverSound1;
 
     [SerializeField] AudioSource source;
 
@@ -35,5 +36,10 @@ public class AudioManager : MonoBehaviour
     public void PlayWinSound()
     {
         source.PlayOneShot(winSound1);
+    }
+
+    public void PlayButtonHoverSound()
+    {
+        source.PlayOneShot(buttonHoverSound1);
     }
 }

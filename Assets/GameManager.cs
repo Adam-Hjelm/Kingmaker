@@ -457,7 +457,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var p in players)
             {
-                p.playerInput.SwitchCurrentActionMap("UI");
+                p.playerInput.SwitchCurrentActionMap("UpgradeMenu");
             }
         }
         else
