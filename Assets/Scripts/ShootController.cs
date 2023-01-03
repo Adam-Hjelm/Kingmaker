@@ -56,9 +56,6 @@ public class ShootController : MonoBehaviour
 
     }
 
-
-
-
     private void ActivateMelee()
     {
         Debug.Log("punched");
@@ -109,7 +106,7 @@ public class ShootController : MonoBehaviour
                     timer = startTimer;
                 }
             }
-            else
+            else if (timer <= playerController.fireRate && meleeHit == true)
             {
                 ActivateMelee();
                 timer = startTimer;

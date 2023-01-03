@@ -305,6 +305,7 @@ MonoBehaviour:
   healthBar: {fileID: 6147705600176697729}
   healthBarBackdrop: {fileID: 1877102802821831847}
   healthBarDegradeModifier: 0.3
+  slapSound: {fileID: 8300000, guid: 4ece689d1b40c1e42956cdbd4bbba825, type: 3}
   healingSound: {fileID: 8300000, guid: 5279621a73870584f8b4d6d58b629343, type: 3}
   Explosion: {fileID: 8300000, guid: 83297c3f780004b47a7506cf2c9dcbee, type: 3}
   Source: {fileID: 8694816148440275922}
@@ -393,8 +394,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02739966, y: -0.07}
-  m_Size: {x: 0.45, y: 0.66044253}
+  m_Offset: {x: -0.029937461, y: -0.07888234}
+  m_Size: {x: 0.4550756, y: 0.7644925}
   m_Direction: 0
 --- !u!82 &8694816148440275922
 AudioSource:

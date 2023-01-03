@@ -17,41 +17,50 @@ public class Knockback : MonoBehaviour
     {
         if (other.gameObject.CompareTag("bullet") || other.gameObject.CompareTag("meleeHitBox"))
         {
-            Rigidbody2D player = this.GetComponent<Rigidbody2D>();
-
-            if (player != null && player.gameObject.activeInHierarchy)
-            {
-                player.isKinematic = false;
-
-                Vector2 difference;
-                if (other.gameObject.GetComponent<Rigidbody2D>() != null)
-                {
-                    difference = other.gameObject.GetComponent<Rigidbody2D>().velocity;
-                }
-                else
-                {
-                    difference = transform.position - other.transform.position;
-                }
-
-
-                if (other.gameObject.CompareTag("meleeHitBox"))
-                {
-                    difference = 2 * thrust * difference.normalized;
-                }
-                else
-                {
-                    difference = difference.normalized * thrust;
-                }
-                player.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockBack(player));
-                other.GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
-                //GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
-                //Destroy(newExplosion, 0.8f);
-                PlayOnHit();
-            }
+            PrepareKnockBack(other);
         }
     }
-    private IEnumerator KnockBack(Rigidbody2D player)
+
+    public void PrepareKnockBack(Collider2D other)
+    {
+        Rigidbody2D player = this.GetComponent<Rigidbody2D>();
+
+        if (player != null && player.gameObject.activeInHierarchy)
+        {
+            Debug.Log("Preparin knockback");
+
+            player.isKinematic = false;
+
+            Vector2 difference;
+            if (other.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                difference = other.gameObject.GetComponent<Rigidbody2D>().velocity;
+            }
+            else
+            {
+                difference = transform.position - other.transform.position;
+            }
+
+
+            if (!other.gameObject.CompareTag("bullet"))
+            {
+                difference = 10 * thrust * difference.normalized;
+                Debug.Log("Preparin melee knockback");
+            }
+            else
+            {
+                difference = difference.normalized * thrust;
+            }
+            player.AddForce(difference, ForceMode2D.Impulse);
+            StartCoroutine(KnockBack(player));
+            //other.GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
+            //GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
+            //Destroy(newExplosion, 0.8f);
+            PlayOnHit();
+        }
+    }
+
+    public IEnumerator KnockBack(Rigidbody2D player)
     {
         if (player != null)
         {
