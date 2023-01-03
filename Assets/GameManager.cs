@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-    
+
     public bool isPaused = false;
     public int currentRound = 0;
     public int playersConnected = 0;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CanvasHandler canvasHandler;
 
     [SerializeField] GameObject destroyableWalls;
-    DestroyableObject[] destroyableObject;
+    public DestroyableObject[] destroyableObject;
 
     [SerializeField] UpgradeController upgradeController;
     [SerializeField] TextMeshProUGUI countdownText;
@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
     PlayerInputManager pim;
     Coroutine countDownRoutine;
 
-    [SerializeField] AudioClip soundEffect;
-    [SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioClip soundEffect;
+    //[SerializeField] AudioSource audioSource;
 
     bool havePointBeenGivenThisRound = false;
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
         pim = PlayerInputManager.instance;
 
@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
+        gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
+        gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
         foreach (var player in players)
         {
             player.controller.SetPlayerEnabled(false);
@@ -136,6 +138,8 @@ public class GameManager : MonoBehaviour
         {
             player.controller.SetPlayerEnabled(true);
         }
+        Debug.Log(gameScene);
+        
     }
 
     public int GetPlayerScore(int playerToGetScoreFrom)
@@ -237,7 +241,8 @@ public class GameManager : MonoBehaviour
         currentRound++;
         canvasHandler.StartWinRoundScreen(lastPlayer.name);
 
-        audioSource.PlayOneShot(soundEffect);
+        AudioManager.Instance.PlayWinSound();
+        //audioSource.PlayOneShot(soundEffect);
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
@@ -247,6 +252,7 @@ public class GameManager : MonoBehaviour
 
     private void StartUpgradeScreen(PlayerInstance lastPlayer)
     {
+        gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
         var DeathAnimations = GameObject.FindGameObjectsWithTag("DeathAnimation");
         foreach (var DeathAnimation in DeathAnimations)
         {
@@ -284,14 +290,17 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         gameScene.SetActive(true);
-        destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
+        gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
+        gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
 
-        foreach (DestroyableObject wallScript in destroyableObject)
-        {
-            wallScript.timesHit = 6;
-            wallScript.col.enabled = true;
-            wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
-        }
+        //destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
+
+        //foreach (DestroyableObject wallScript in destroyableObject)
+        //{
+        //    wallScript.timesHit = 6;
+        //    wallScript.col.enabled = true;
+        //    wallScript.GetComponent<SpriteRenderer>().sprite = wallScript.sprite1;
+        //}
 
         foreach (var player in players)
         {
@@ -357,7 +366,7 @@ public class GameManager : MonoBehaviour
 
         if (player.eventSys == null)
             Debug.LogError("player.eventSys is null!");
-        
+
         switch (player.ID) // placeholder
         {
             case 0:
@@ -373,7 +382,7 @@ public class GameManager : MonoBehaviour
                 player.sprite = player4Sprite;
                 break;
         }
-        
+
         players.Add(player);
         RespawnPlayer(player);
 
@@ -405,6 +414,8 @@ public class GameManager : MonoBehaviour
         if (players.Count >= pim.maxPlayerCount)
             pim.DisableJoining();
     }
+
+
 
     public void OnPlayerLeft(PlayerInput player)
     {
@@ -446,7 +457,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (var p in players)
             {
-                p.playerInput.SwitchCurrentActionMap("UI");
+                p.playerInput.SwitchCurrentActionMap("UpgradeMenu");
             }
         }
         else

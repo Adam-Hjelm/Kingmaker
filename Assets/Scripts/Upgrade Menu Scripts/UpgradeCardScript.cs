@@ -8,7 +8,7 @@ using TMPro;
 public class UpgradeCardScript : MonoBehaviour
 {
     //private int amountOfStats = 7;
-    private int amountOfRares = 4;
+    //private int amountOfRares = 4;
     private int randomNumber;
 
     public CardType currentCardType;

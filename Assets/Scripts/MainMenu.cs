@@ -4,20 +4,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class MainMenu : MonoBehaviour
 {
-    public void start()
+    public void StartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
-    public void quit()
+    public void QuitGame()
     {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
         Application.Quit();
+#endif
     }
 
-    public void settings()
+    public void Settings()
     {
         SceneManager.LoadScene("Settings");
     }
