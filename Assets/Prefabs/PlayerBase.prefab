@@ -333,6 +333,8 @@ MonoBehaviour:
   dashingPower: 10
   dashingTime: 0.2
   dashingCooldown: 1
+  dashSound: {fileID: 8300000, guid: 950205de78a5f1649865087c087d2550, type: 3}
+  audioSource: {fileID: 8694816148440275922}
   smokePrefab: {fileID: 3741044013204637155, guid: 4922384c3571c4c478aa36c0d4a05205, type: 3}
   smokePoint: {fileID: 5477547436412040974}
 --- !u!114 &2445163105356265177
@@ -401,7 +403,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bbb3b015d1b71b644af8bacd0fbc488f, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
