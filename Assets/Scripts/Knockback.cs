@@ -15,18 +15,36 @@ public class Knockback : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        if (other.gameObject.CompareTag("bullet") || other.gameObject.CompareTag("meleeHitBox"))
         {
             Rigidbody2D player = this.GetComponent<Rigidbody2D>();
 
             if (player != null && player.gameObject.activeInHierarchy)
             {
                 player.isKinematic = false;
-                Vector2 difference = other.gameObject.GetComponent<Rigidbody2D>().velocity;
-                difference = difference.normalized * thrust;
+
+                Vector2 difference;
+                if (other.gameObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    difference = other.gameObject.GetComponent<Rigidbody2D>().velocity;
+                }
+                else
+                {
+                    difference = transform.position - other.transform.position;
+                }
+
+
+                if (other.gameObject.CompareTag("meleeHitBox"))
+                {
+                    difference = 2 * thrust * difference.normalized;
+                }
+                else
+                {
+                    difference = difference.normalized * thrust;
+                }
                 player.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(KnockBack(player));
-
+                other.GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
                 //GameObject newExplosion = Instantiate(explosionPrefab, explosionPoint.position, explosionPoint.rotation);
                 //Destroy(newExplosion, 0.8f);
                 PlayOnHit();
@@ -35,7 +53,7 @@ public class Knockback : MonoBehaviour
     }
     private IEnumerator KnockBack(Rigidbody2D player)
     {
-        if(player != null)
+        if (player != null)
         {
             yield return new WaitForSeconds(knockTime);
             player.velocity = Vector2.zero;

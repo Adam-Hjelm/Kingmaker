@@ -47,7 +47,6 @@ public class BulletScript : MonoBehaviour
                 Destroy(newExplosion, 0.4f);
                 Destroy(gameObject);
             }
-
         }
 
         if (other.CompareTag("Environment") || other.CompareTag("Shield"))

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4103908170809164284}
   - component: {fileID: 4351651724063745775}
   - component: {fileID: 2821722667751778697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7700254078455848841}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

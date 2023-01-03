@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2445163105356265177, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
+      propertyPath: meleeHitBox
+      value: 
+      objectReference: {fileID: 3455530242286369147, guid: 93d9c2d82b83e8a409289c2f316ee081, type: 3}
     - target: {fileID: 2542684992179699206, guid: 8cce049616e97554fbfbeadc8aae4804, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1.4

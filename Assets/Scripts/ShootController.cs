@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class ShootController : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject meleeHitBox;
     public Transform spawnPoint;
     public Transform centralPoint;
     public float bulletSpeed;
@@ -14,14 +15,15 @@ public class ShootController : MonoBehaviour
 
     PlayerController playerController;
     public bool canShoot = true;
-    private float timer;
-    private float startTimer = 1f;
+    public float timer;
+    public float startTimer = 1f;
 
     public RuntimeAnimatorController healingBulletAnim;
 
     public Animator handAnim;
     public AudioSource source;
     public AudioClip fireballSound;
+    public MeleeHit meleeHit;
 
     private int fireballShotCounter;
 
@@ -34,6 +36,7 @@ public class ShootController : MonoBehaviour
         playerController = gameObject.GetComponent<PlayerController>();
         handAnim = spawnPoint.GetComponent<Animator>();
         source = GetComponent<AudioSource>();
+        meleeHit = spawnPoint.GetComponent<MeleeHit>();
     }
 
     private void OnEnable()
@@ -49,37 +52,67 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+
+
     }
 
+   
+    
+
+    private void ActivateMelee()
+    {
+        Debug.Log("punched");
+        var handCollider = spawnPoint.GetComponent<Collider2D>();
+
+        spawnPoint.gameObject.tag = "meleeHitBox";
+        Physics2D.IgnoreCollision(handCollider, GetComponent<Collider2D>());
+
+        meleeHit.meleeDamage = playerController.bulletDamage;
+        handAnim.SetTrigger("Punching");
+    }
+
+    public void DeactivateMelee()
+    {
+        spawnPoint.gameObject.tag = "Untagged";
+    }
 
     void OnFire()
     {
-        if (enabled && canShoot == true && playerController.isBlocking == false && timer <= playerController.fireRate)
+        if (!meleeHit.meleeRange)
         {
-            handAnim.SetTrigger("Casting");
-
-            if (playerController.bulletSpread > 0)
+            if (enabled && canShoot == true && playerController.isBlocking == false && timer <= playerController.fireRate)
             {
-                float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
-                float startRotation = facingRotation + playerController.bulletSpread / 2f;
-                float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
+                handAnim.SetTrigger("Casting");
 
-                for (int i = 0; i < playerController.bulletAmount; i++)
+                if (playerController.bulletSpread > 0)
                 {
-                    InstantiateBullet(startRotation - angleIncrease * i);
+                    float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
+                    float startRotation = facingRotation + playerController.bulletSpread / 2f;
+                    float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
+
+                    for (int i = 0; i < playerController.bulletAmount; i++)
+                    {
+                        InstantiateBullet(startRotation - angleIncrease * i);
+                    }
                 }
-            }
-            else
-            {
-                InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
-            }
+                else
+                {
+                    InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
+                }
 
-            //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
-            //Destroy(newSmoke, 0.2f);
+                //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
+                //Destroy(newSmoke, 0.2f);
 
+                timer = startTimer;
+            }
+        }
+        else
+        {
+            ActivateMelee();
             timer = startTimer;
         }
     }
+
 
     private void InstantiateBullet(float bulletRotation)
     {
@@ -104,6 +137,7 @@ public class ShootController : MonoBehaviour
             newBullet.transform.localScale = Vector3.one * 0.2f;
 
         Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(newBullet.GetComponent<Collider2D>(), spawnPoint.GetComponent<Collider2D>());
         newBullet.GetComponent<BulletScript>().bulletDamage = playerController.bulletDamage;
 
         if (playerController.healingBullets == true)
