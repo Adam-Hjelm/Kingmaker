@@ -180,13 +180,7 @@ public class UpgradeController : MonoBehaviour
             var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
             newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
             newButton.onClick.AddListener(MoveToPlayerButtons);
-            CheckIfUpgradeIsAvailable(newButton.gameObject);
 
-            if (allPlayerButtonsDisabled)
-            {
-                SpawnNewCards();
-                allPlayerButtonsDisabled = false;
-            }
             //newButton.transform.SetParent(upgradeCanvas.transform, true);
             startUpgradeCard = newButton;
 
@@ -211,58 +205,7 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
-    private void CheckIfUpgradeIsAvailable(GameObject upgradeCard) // TODO: Make this thing work ;_; STILL TODO ;-;
-    {
-        string[] playerButtonStrings = new string[] { "Player 1", "Player 2", "Player 3", "Player 4", };
-        List<string> playersLeftToChoose = new List<string>();
-        playersLeftToChoose = playerButtonStrings.ToList();
-        Debug.Log(playersLeftToChoose.Count);
 
-        if (GameManager.Instance.GetPlayerInput(2) == null)
-        {
-            playersLeftToChoose.Remove("Player 3");
-        }
-        if (GameManager.Instance.GetPlayerInput(3) == null)
-        {
-            playersLeftToChoose.Remove("Player 4");
-        }
-
-        playersLeftToChoose.Remove($"Player {playerToChooseCard}");
-        Debug.Log(playersLeftToChoose.Count);
-
-        for (int i = 0; i < playerButtons.Length; i++)
-        {
-
-            if (i <= playersLeftToChoose.Count - 1 && i >= 0)
-            {
-                if (playersLeftToChoose[i].Contains($"Player {i + 1}"))
-                {
-                    if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
-                    {
-                        DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
-                        Debug.Log(currentDisplayScript);
-                        if (currentDisplayScript.CheckIfStatMaxed(upgradeCard) == true)
-                        {
-                            playersLeftToChoose.Remove($"Player {i + 1}");
-                            Debug.Log(playersLeftToChoose.Count + " Stat Maxed!");
-                        }
-                    }
-                }
-
-            }
-        }
-
-        if (playersLeftToChoose.Count >= 0)
-        {
-            allPlayerButtonsDisabled = false;
-            playersLeftToChoose = playersLeftToChoose.ToList();
-        }
-        else
-        {
-            allPlayerButtonsDisabled = true;
-            playersLeftToChoose = playersLeftToChoose.ToList();
-        }
-    }
 
     private void ColorCoordinateText(int playerToGiveColorOf)
     {
@@ -443,5 +386,35 @@ public class UpgradeController : MonoBehaviour
         chosenUpgradeCard = currentlySelectedCard;
 
         eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
+
+        CheckIfCardAvailable();
+    }
+
+    private void CheckIfCardAvailable()
+    {
+        Debug.Log("Checking if available");
+        for (int i = 0; i < playerButtons.Length; i++)
+        {
+            if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
+            {
+                int randomNumber = UnityEngine.Random.Range(1, 8);
+
+                chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
+
+                if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+                {
+                    DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+
+                    if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
+                    {
+                        playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
+                        playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+
+                        CheckIfCardAvailable();
+                    }
+                    
+                }
+            }
+        }
     }
 }
