@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float healthBarDegradeModifier;
 
     [Header("Other")]
+    [SerializeField] AudioClip slapSound;
     [SerializeField] AudioClip healingSound;
     [SerializeField] AudioClip Explosion;
     [SerializeField] AudioSource Source;
@@ -130,6 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("meleeHitBox"))
         {
+            Source.PlayOneShot(slapSound);
             Debug.Log("took melee damage");
             Flash();
             PlayerTakeDmg(other.gameObject.GetComponent<MeleeHit>().meleeDamage);
