@@ -56,8 +56,8 @@ public class ShootController : MonoBehaviour
 
     }
 
-   
-    
+
+
 
     private void ActivateMelee()
     {
@@ -78,38 +78,42 @@ public class ShootController : MonoBehaviour
 
     void OnFire()
     {
-        if (!meleeHit.meleeRange)
+        if (meleeHit != null)
         {
-            if (enabled && canShoot == true && playerController.isBlocking == false && timer <= playerController.fireRate)
+
+            if (!meleeHit.meleeRange)
             {
-                handAnim.SetTrigger("Casting");
-
-                if (playerController.bulletSpread > 0)
+                if (enabled && canShoot == true && playerController.isBlocking == false && timer <= playerController.fireRate)
                 {
-                    float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
-                    float startRotation = facingRotation + playerController.bulletSpread / 2f;
-                    float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
+                    handAnim.SetTrigger("Casting");
 
-                    for (int i = 0; i < playerController.bulletAmount; i++)
+                    if (playerController.bulletSpread > 0)
                     {
-                        InstantiateBullet(startRotation - angleIncrease * i);
+                        float facingRotation = centralPoint.rotation.eulerAngles.z + 90;
+                        float startRotation = facingRotation + playerController.bulletSpread / 2f;
+                        float angleIncrease = playerController.bulletSpread / ((float)playerController.bulletAmount - 1f);
+
+                        for (int i = 0; i < playerController.bulletAmount; i++)
+                        {
+                            InstantiateBullet(startRotation - angleIncrease * i);
+                        }
                     }
-                }
-                else
-                {
-                    InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
-                }
+                    else
+                    {
+                        InstantiateBullet(centralPoint.rotation.eulerAngles.z + 90);
+                    }
 
-                //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
-                //Destroy(newSmoke, 0.2f);
+                    //GameObject newSmoke = Instantiate(SmokePrefab, SmokePoint.position, SmokePoint.rotation);
+                    //Destroy(newSmoke, 0.2f);
 
+                    timer = startTimer;
+                }
+            }
+            else
+            {
+                ActivateMelee();
                 timer = startTimer;
             }
-        }
-        else
-        {
-            ActivateMelee();
-            timer = startTimer;
         }
     }
 

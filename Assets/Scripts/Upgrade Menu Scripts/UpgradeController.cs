@@ -393,26 +393,33 @@ public class UpgradeController : MonoBehaviour
     private void CheckIfCardAvailable()
     {
         Debug.Log("Checking if available");
+        int amountofTimesChecked = 0;
+
         for (int i = 0; i < playerButtons.Length; i++)
         {
             if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
             {
+                amountofTimesChecked++;
+                Debug.Log(amountofTimesChecked);
                 int randomNumber = UnityEngine.Random.Range(1, 8);
-
-                chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
-
-                if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+                if (amountofTimesChecked >= 4)
                 {
-                    DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
 
-                    if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
+                    chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
+
+                    if (playerButtons[playerToChooseCard].GetComponentInChildren<DisplayPlayerStats>() != null)
                     {
-                        playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
-                        playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+                        DisplayPlayerStats currentDisplayScript = playerButtons[playerToChooseCard].GetComponentInChildren<DisplayPlayerStats>();
 
-                        CheckIfCardAvailable();
+                        if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
+                        {
+                            //playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
+                            //playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+
+                            CheckIfCardAvailable();
+                        }
+
                     }
-                    
                 }
             }
         }
