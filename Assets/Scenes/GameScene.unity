@@ -2286,6 +2286,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1382326482}
+    - target: {fileID: 1290046509197843562, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1290046509252295354, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2386,10 +2390,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 71512872}
+    - target: {fileID: 1290046510318814117, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -186.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1290046510824580266, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 71512872}
+    - target: {fileID: 1290046510824580267, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -129.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003064210382121198, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bd7b3e70e313fa48bffb89d23a717c8, type: 3}
 --- !u!114 &2133115585 stripped

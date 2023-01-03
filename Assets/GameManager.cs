@@ -345,6 +345,7 @@ public class GameManager : MonoBehaviour
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
+        AudioManager.Instance.AllWin();
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -471,7 +472,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadSelectionScreen()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void LoadMainMenu()

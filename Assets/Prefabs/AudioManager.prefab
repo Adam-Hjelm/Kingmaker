@@ -48,6 +48,7 @@ MonoBehaviour:
   fireballSound1: {fileID: 0}
   winSound1: {fileID: 8300000, guid: 20c6e65ff091a1f4ab334eea62d18e43, type: 3}
   buttonHoverSound1: {fileID: 8300000, guid: fcfe7b72b0a4d354bbc6ad7020b5ffec, type: 3}
+  allWinSound1: {fileID: 8300000, guid: 4ef83fe6a87347440a2e7459e9ef14e5, type: 3}
   source: {fileID: 7623501377653172552}
 --- !u!82 &7623501377653172552
 AudioSource:
