@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float healthBarDegradeModifier;
 
     [Header("Other")]
+    [SerializeField] AudioClip healingSound;
     [SerializeField] AudioClip Explosion;
     [SerializeField] AudioSource Source;
     [SerializeField] GameObject DeathPrefab;
@@ -54,6 +55,8 @@ public class PlayerController : MonoBehaviour
     Coroutine flashRoutine;
     CameraShake shake;
 
+    BulletScript bulletScript;
+
 
     void Awake()
     {
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Source = GetComponent<AudioSource>();
         spriteRenderer.material = defaultMaterial;
         shake = Camera.main.GetComponent<CameraShake>();
         shadowSprite.enabled = true;
