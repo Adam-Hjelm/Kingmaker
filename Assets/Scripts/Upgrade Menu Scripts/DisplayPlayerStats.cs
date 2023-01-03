@@ -113,9 +113,90 @@ public class DisplayPlayerStats : MonoBehaviour
         }
     }
 
+    public bool CheckIfStatMaxed(UpgradeCardScript.CardType cardType)
+    {
+        if (numOfHealthBars >= barsOfHealth.Length
+            && (cardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer))
+        {
+            return true;
+        }
+        else if (numOfDamageBars >= barsOfDamage.Length
+            && cardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
+        {
+            return true;
+        }
+        else if (numOfSpeedBars >= barsOfSpeed.Length
+            && cardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed)
+        {
+            return true;
+        }
+        else if (currentProjectileSpeedNerfs >= maxProjectileSpeedModifiers
+            && (cardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed ||
+            cardType == UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed))
+        {
+            return true;
+        }
+        else if (currentHealingBullets >= maxHealingBullets
+            && cardType == UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals)
+        {
+            return true;
+        }
+        else if (hasRandomSizedBullets == true
+            && cardType == UpgradeCardScript.CardType.RandomSizedBullets)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool CheckIfStatMaxed(GameObject currentUpgradeCard) // TODO: Add feedback to show that the player has maxed said stat, change the max stat you can have to something higher
     {
         var currentUpgradeCardScript = currentUpgradeCard.GetComponent<UpgradeCardScript>();
+
+        //switch (currentUpgradeCardScript.currentCardType)
+        //{
+        //    case UpgradeCardScript.CardType.HealthUpButBiggerPlayer:
+        //        if (numOfHealthBars >= barsOfHealth.Length)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.SpeedUpButSlowerBulletSpeed:
+        //        if (numOfSpeedBars >= barsOfSpeed.Length)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.FireRateUpButSmallerBullets:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.RandomSizedBullets:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.MoreBulletsButMoreSpread:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+
+        //    case UpgradeCardScript.CardType.AbilityCard:
+        //        if (currentHealingBullets >= maxHealingBullets)
+        //            return true;
+        //        break;
+        //}
+
+        //return false;
 
         if (numOfHealthBars >= barsOfHealth.Length
             && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.HealthUpButBiggerPlayer))

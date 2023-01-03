@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
+
 public class UpgradeController : MonoBehaviour
 {
     public Transform[] cardSpawnPos;
@@ -163,29 +164,61 @@ public class UpgradeController : MonoBehaviour
 
         upgradeCardButtons = upgradeCardButtons.Where(item => item != null).ToList();
 
-        List<int> randomNumbers = new List<int>();
-
-        for (int i = 0; i < cardSpawnPos.Length; i++)
+        List<int> randomNumbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6 };
+        List<int> indexesToRemoveFromRandomNumbers = new List<int>();
+        for (int i = 0; i < randomNumbers.Count; i++)
         {
-            int randomNumber = UnityEngine.Random.Range(1, 8);
-            int currentLoopNumber = 0;
-            while (randomNumbers.Any(r => r == randomNumber) && currentLoopNumber < 10000)
+            int playersAmountSomething = GameManager.Instance.playersConnected - 1;
+            for (int j = 0; j < playerButtons.Length; j++)
             {
-                randomNumber = UnityEngine.Random.Range(1, 8);
-                currentLoopNumber++;
+                if (amountOfTimesSpawned <= 1)
+                {
+                    if (j <= playerToChooseCard)
+                        continue;
+                }
+                else
+                {
+                    if (j == (playerToChooseCard + 1))
+                        continue;
+                }
+
+                DisplayPlayerStats currentDisplayScript = playerButtons[j].GetComponentInChildren<DisplayPlayerStats>();
+                if (currentDisplayScript != null && currentDisplayScript.CheckIfStatMaxed((UpgradeCardScript.CardType)i))
+                    playersAmountSomething--;
             }
 
-            randomNumbers.Add(randomNumber);
-
-            var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
-            newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
-            newButton.onClick.AddListener(MoveToPlayerButtons);
-
-            //newButton.transform.SetParent(upgradeCanvas.transform, true);
-            startUpgradeCard = newButton;
-
-            upgradeCardButtons.Add(newButton.GetComponent<Button>());
+            if (playersAmountSomething <= 0)
+                indexesToRemoveFromRandomNumbers.Add(randomNumbers[i]);
         }
+        for (int i = 0; i < indexesToRemoveFromRandomNumbers.Count; i++)
+        {
+            randomNumbers.Remove(indexesToRemoveFromRandomNumbers[i]);
+        }
+
+        List<int> pickedUpgradeNumbers = new List<int>();
+
+        List<int> randomSelectionOfNumbers = new List<int>();
+        randomSelectionOfNumbers = randomNumbers.OrderBy(x => Guid.NewGuid()).Take(3).ToList(); // cool and smart Max solution to taking specific random elements.
+        for (int i = 0; i < cardSpawnPos.Length; i++)
+        {
+            var newButton = GenerateNewCard(randomSelectionOfNumbers[i], cardSpawnPos[i].position);
+            startUpgradeCard = newButton;
+            upgradeCardButtons.Add(newButton);
+        }
+
+        //for (int i = 0; i < cardSpawnPos.Length; i++)
+        //{
+        //    int numberIndex = UnityEngine.Random.Range(0, randomNumbers.Count);
+        //    int randomNumber = randomNumbers[numberIndex];
+
+        //    pickedUpgradeNumbers.Add(randomNumber);
+        //    randomNumbers.Remove(randomNumber);
+
+        //    var newButton = GenerateNewCard(randomNumber, cardSpawnPos[i].position);
+        //    startUpgradeCard = newButton;
+        //    upgradeCardButtons.Add(newButton);
+        //}
+
         if (chosenUpgradeCard != null)
         {
             chosenUpgradeCard.gameObject.SetActive(false);
@@ -205,6 +238,15 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
+    private Button GenerateNewCard(int statCardNumber, Vector3 position)
+    {
+        var newButton = Instantiate(cardButtonPrefab, position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
+        newButton.GetComponent<UpgradeCardScript>().StatCard((UpgradeCardScript.CardType)statCardNumber);
+        newButton.onClick.AddListener(MoveToPlayerButtons);
+        //newButton.transform.SetParent(upgradeCanvas.transform, true);
+
+        return newButton;
+    }
 
 
     private void ColorCoordinateText(int playerToGiveColorOf)
@@ -387,34 +429,39 @@ public class UpgradeController : MonoBehaviour
 
         eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
 
-        CheckIfCardAvailable();
+        //CheckIfCardAvailable();
     }
 
-    private void CheckIfCardAvailable()
+    private void RemoveNonApplicableCards()
     {
-        Debug.Log("Checking if available");
-        for (int i = 0; i < playerButtons.Length; i++)
-        {
-            if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
-            {
-                int randomNumber = UnityEngine.Random.Range(1, 8);
 
-                chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
-
-                if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
-                {
-                    DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
-
-                    if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
-                    {
-                        playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
-                        playerButtons[i].GetComponent<Image>().color = grayedOutColor;
-
-                        CheckIfCardAvailable();
-                    }
-                    
-                }
-            }
-        }
     }
+
+    //private void CheckIfCardAvailable()
+    //{
+    //    Debug.Log("Checking if available");
+    //    for (int i = 0; i < playerButtons.Length; i++)
+    //    {
+    //        if (playerButtons[i].GetComponent<Image>().color == grayedOutColor)
+    //        {
+    //            int randomNumber = UnityEngine.Random.Range(1, 8);
+
+    //            chosenUpgradeCard.GetComponent<UpgradeCardScript>().StatCard((UpgradeCardScript.CardType)randomNumber);
+
+    //            if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+    //            {
+    //                DisplayPlayerStats currentDisplayScript = playerButtons[i].GetComponentInChildren<DisplayPlayerStats>();
+
+    //                if (currentDisplayScript.CheckIfStatMaxed(chosenUpgradeCard.gameObject) == true)
+    //                {
+    //                    playerButtons[i].onClick.RemoveListener(UpgradePlayerStat);
+    //                    playerButtons[i].GetComponent<Image>().color = grayedOutColor;
+
+    //                    CheckIfCardAvailable();
+    //                }
+
+    //            }
+    //        }
+    //    }
+    //}
 }

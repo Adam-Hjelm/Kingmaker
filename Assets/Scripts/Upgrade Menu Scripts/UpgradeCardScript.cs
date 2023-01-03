@@ -70,52 +70,54 @@ public class UpgradeCardScript : MonoBehaviour
         //}
     }
 
-    public void StatCard(int chosenStatCard)
+    public void StatCard(CardType chosenStatCard)
     {
         //int chosenStatCard = Random.Range(0 + 1, amountOfStats + 1);
 
         switch (chosenStatCard)
         {
-            case 1:
-                //anim.runtimeAnimatorController = damageCardAnimController;
-                gameObject.GetComponent<Image>().sprite = DamageUpButSlowerBulletSpeedSprite;
-                currentCardType = CardType.DamageUpButSlowerBulletSpeed;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+DAMAGE \n---- \n-PROJECTILE SPEED";
-                break;
-
-            case 2:
+            case CardType.HealthUpButBiggerPlayer:
                 //anim.runtimeAnimatorController = healthCardAnimController;
                 gameObject.GetComponent<Image>().sprite = HealthUpButBiggerPlayerSprite;
                 currentCardType = CardType.HealthUpButBiggerPlayer;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+HEALTH\n---- \n+PLAYER SIZE";
                 break;
 
-            case 3:
+            case CardType.FasterFireRateButEveryFourthBulletHeals:
                 //anim.runtimeAnimatorController = healthCardAnimController;
                 gameObject.GetComponent<Image>().sprite = EveryFourthBulletHealsSprite;
                 currentCardType = CardType.FasterFireRateButEveryFourthBulletHeals;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+FIRE RATE\n---- \n EVERY FOURTH SHOT HEALS";
                 break;
 
-            case 4:
+            case CardType.SpeedUpButSlowerBulletSpeed:
+                //anim.runtimeAnimatorController = speedCardAnimController;
+                gameObject.GetComponent<Image>().sprite = SpeedUpButSlowerBulletSpeedSprite;
+                currentCardType = CardType.SpeedUpButSlowerBulletSpeed;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+MOVESPEED\n---- \n-PROJECTILE SPEED";
+                break;
+
+            case CardType.DamageUpButSlowerBulletSpeed:
+                //anim.runtimeAnimatorController = damageCardAnimController;
+                gameObject.GetComponent<Image>().sprite = DamageUpButSlowerBulletSpeedSprite;
+                currentCardType = CardType.DamageUpButSlowerBulletSpeed;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+DAMAGE \n---- \n-PROJECTILE SPEED";
+                break;
+
+            case CardType.FireRateUpButSmallerBullets:
                 //anim.runtimeAnimatorController = fireRateCardAnimController;
                 gameObject.GetComponent<Image>().sprite = FireRateUpButSmallerBulletsSprite;
                 currentCardType = CardType.FireRateUpButSmallerBullets;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+FIRE RATE\n---- \n-PROJECTILE SIZE";
                 break;
 
-            case 5:
-                //anim.runtimeAnimatorController = speedCardAnimController;
-                gameObject.GetComponent<Image>().sprite = SpeedUpButSlowerBulletSpeedSprite;
-                currentCardType = CardType.SpeedUpButSlowerBulletSpeed;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+MOVESPEED\n---- \n-PROJECTILE SPEED";
-                break;
-            case 6:
+            case CardType.RandomSizedBullets:
                 gameObject.GetComponent<Image>().sprite = randomSizedBullets;
                 currentCardType = CardType.RandomSizedBullets;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
                 break;
-            case 7:
+
+            case CardType.MoreBulletsButMoreSpread:
                 gameObject.GetComponent<Image>().sprite = MoreBulletsButMoreSpreadSprite;
                 currentCardType = CardType.MoreBulletsButMoreSpread;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+PROJECTILE AMOUNT\n--- \n+PROJECTILE SPREAD";
