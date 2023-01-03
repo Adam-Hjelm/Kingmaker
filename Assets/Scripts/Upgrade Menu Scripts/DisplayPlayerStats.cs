@@ -143,7 +143,8 @@ public class DisplayPlayerStats : MonoBehaviour
         {
             return true;
         }
-        else if(hasRandomSizedBullets == true)
+        else if(hasRandomSizedBullets == true
+            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.RandomSizedBullets)
         {
             return true;
         }
