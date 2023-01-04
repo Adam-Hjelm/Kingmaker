@@ -112,30 +112,14 @@ public class UpgradeCardScript : MonoBehaviour
                 currentCardType = CardType.SpeedUpButSlowerBulletSpeed;
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+MOVESPEED\n---- \n-PROJECTILE SPEED";
                 break;
+
             case 6:
-                if (!noMoreRandomSizeBulletCards)
-                {
-                    gameObject.GetComponent<Image>().sprite = randomSizedBullets;
-                    currentCardType = CardType.RandomSizedBullets;
-                    gameObject.GetComponentInChildren<TextMeshProUGUI>().transform.position += new Vector3(0, -0.3f);
-                    gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
-                    break;
-                }
-                else
-                {
-                    UpgradeController upgradeController = GameObject.Find("UpgradeMenuController").GetComponent<UpgradeController>();
-                    int currentLoopNumber = 0;
-                    while (upgradeController.randomNumbers.Any(r => r == chosenStatCard) && currentLoopNumber < 10000)
-                    {
-                        chosenStatCard = UnityEngine.Random.Range(1, 8);
-                        currentLoopNumber++;
-                    }
+                gameObject.GetComponent<Image>().sprite = randomSizedBullets;
+                currentCardType = CardType.RandomSizedBullets;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().transform.position += new Vector3(0, -0.3f);
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
+                break;
 
-                    upgradeController.randomNumbers.Add(chosenStatCard);
-
-                    StatCard(UnityEngine.Random.Range(1, 8));
-                    break;
-                }
             case 7:
                 gameObject.GetComponent<Image>().sprite = MoreBulletsButMoreSpreadSprite;
                 currentCardType = CardType.MoreBulletsButMoreSpread;
