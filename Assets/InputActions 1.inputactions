@@ -374,7 +374,7 @@
                 {
                     "name": "",
                     "id": "ecf677ee-6bba-4c11-bd5f-edd1c6a32d45",
-                    "path": "<HID::Nintendo GameCube Controller Adapter>/trigger",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button5",
                     "interactions": "",
                     "processors": "",
                     "groups": "GameCube",
@@ -414,6 +414,39 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "4c283d1c-6757-4cf2-a286-d55b91aa2736",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "83da5940-578d-4149-b34f-9165b94369bb",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/rz",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "e116868d-a8fd-4da8-a467-5ec74a9506b9",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -507,15 +540,6 @@
                     "type": "PassThrough",
                     "id": "9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be",
                     "expectedControlType": "Quaternion",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Escape",
-                    "type": "Button",
-                    "id": "7104e31b-adfb-4768-975e-ca72419b5440",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -697,7 +721,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Joystick",
+                    "name": "GameCube",
                     "id": "6c58a9c0-2317-4442-a946-66115493df30",
                     "path": "2DVector",
                     "interactions": "",
@@ -973,17 +997,6 @@
                 },
                 {
                     "name": "",
-                    "id": "03a99dfd-cacb-4d76-ae57-1b0016182041",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Escape",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "228390a6-64f4-4308-82c8-bcfacfd36590",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -1152,6 +1165,83 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "GameCube",
+                    "id": "8aa03234-1243-41f1-8e3d-7269b2673c0d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCursor",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "4f49e19a-c613-4981-8a3b-e8742013dc57",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "5bb0e4be-7d85-4e54-aadb-7845f595cf4e",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "cd83d94a-a540-4217-aee4-c3fdf4fa4a86",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "967307df-2aa8-4edb-b334-581af37e06b6",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "66b01631-2df0-4412-ae5e-ae6571993a9e",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/rz",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f703abb5-8535-41c3-b9c3-6983fbc76beb",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
+                    "action": "MoveCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "WASD",
                     "id": "58849686-e0d0-4ea4-b201-4a0a6649b906",
                     "path": "Dpad",
@@ -1290,6 +1380,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
+                    "action": "FireCursor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93489e0c-42bb-486c-9795-c873f7c85d23",
+                    "path": "<HID::Nintendo GameCube Controller Adapter>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameCube",
                     "action": "FireCursor",
                     "isComposite": false,
                     "isPartOfComposite": false
