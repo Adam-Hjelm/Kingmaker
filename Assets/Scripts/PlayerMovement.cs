@@ -144,7 +144,8 @@ public class PlayerMovement : MonoBehaviour
             //    Destroy(newSmoke, 0.3f);
             //}
 
-            audioSource.PlayOneShot(dashSound);
+            //audioSource.PlayOneShot(dashSound);
+            AudioManager.Instance.PlayDashSound();
             GameObject newSmoke = Instantiate(smokePrefab, smokePoint.position - (Vector3)moveDirection.normalized, inverseToRotation);
             Destroy(newSmoke, 0.3f);
 

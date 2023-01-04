@@ -131,12 +131,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("meleeHitBox"))
         {
-            Source.PlayOneShot(slapSound);
-            Debug.Log("took melee damage");
+            AudioManager.Instance.PlaySlapSound();
             Flash();
             PlayerTakeDmg(other.gameObject.GetComponent<MeleeHit>().meleeDamage);
             other.gameObject.GetComponentInParent<ShootController>().DeactivateMelee();
-
             GetComponent<Knockback>().PrepareKnockBack(other);
         }
     }

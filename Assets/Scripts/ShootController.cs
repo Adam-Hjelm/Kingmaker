@@ -105,7 +105,7 @@ public class ShootController : MonoBehaviour
                     //Destroy(newSmoke, 0.2f);
 
                     timer = startTimer;
-                    FireBallSound();
+                    PlayFireballSound();
                 }
             }
             else if (timer <= playerController.fireRate && meleeHit == true)
@@ -157,8 +157,8 @@ public class ShootController : MonoBehaviour
         }
     }
 
-    private void FireBallSound()
+    private void PlayFireballSound()
     {
-        source.PlayOneShot(fireballSound);
+        AudioManager.Instance.PlayFireballSound();
     }
 }

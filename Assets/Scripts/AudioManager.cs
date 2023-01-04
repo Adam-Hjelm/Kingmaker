@@ -20,24 +20,42 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    [SerializeField, Range(0, 1)] float maxVolume = 1f;
-    [SerializeField, Range(0, 1)] float volumeFive = 0.5f;
-    [SerializeField, Range(0, 1)] float volumeThree = 0.3f;
-    [SerializeField, Range(0, 1)] float volumeTwo = 0.2f;
-    [SerializeField, Range(0, 1)] float volumeOne = 0.1f;
+    //[SerializeField, Range(0, 1)] float maxVolume = 1f;
+    //[SerializeField, Range(0, 1)] float volumeFive = 0.5f;
+    //[SerializeField, Range(0, 1)] float volumeThree = 0.3f;
+    //[SerializeField, Range(0, 1)] float volumeTwo = 0.2f;
+    //[SerializeField, Range(0, 1)] float volumeOne = 0.1f;
 
-    public AudioClip fireballSound1;
-    public AudioClip winSound1;
+
+    [Header("Volumes")]
+    [SerializeField, Range(0, 1)] float fireballVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float dashVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float slapVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float buttonVolume = 1;
+    [SerializeField, Range(0, 1)] float redVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float blueVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float greenVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float pinkVolume = 0.75f;
+    [SerializeField, Range(0, 1)] float winVolume = 1;
+    [SerializeField, Range(0, 1)] float allWinVolume = 0.75f;
+
+
+    [Header("Audio Clips")]
+    public AudioClip fireballSound;
+    public AudioClip dashSound;
+    public AudioClip slapSound;
     public AudioClip buttonHoverSound1;
+    public AudioClip winSound1;
     public AudioClip allWinSound1;
     public AudioClip redSound;
     public AudioClip blueSound;
     public AudioClip greenSound;
     public AudioClip pinkSound;
 
+
+    [Header("Other")]
     [SerializeField] AudioSource SoundEffectsSource;
     [SerializeField] AudioSource MusicSource;
-    //[SerializeField] AudioMixer audioMixer;
 
     private bool pressed;
 
@@ -66,33 +84,48 @@ public class AudioManager : MonoBehaviour
         MusicSource.PlayOneShot(clip, clipVolume);
     }
 
-    //private void SetAudioMixerGroup(string audioMixerGroupName)
-    //{
-    //    var mixerGroup = audioMixer.FindMatchingGroups(audioMixerGroupName).FirstOrDefault();
-    //    if (mixerGroup == null)
-    //        Debug.LogError($"No AudioMixerGroup of name '{audioMixerGroupName}' exists!");
-    //    SoundEffectsSource.outputAudioMixerGroup = mixerGroup;
-    //}
-
     #endregion
 
 
-    public void PlayWinSound()
+    public void PlayFireballSound()
     {
-        PlaySoundEffect(winSound1, maxVolume);
+        PlaySoundEffect(fireballSound, fireballVolume);
+    }
+
+    public void PlayDashSound()
+    {
+        PlaySoundEffect(dashSound, dashVolume);
+    }
+
+    public void PlaySlapSound()
+    {
+        PlaySoundEffect(slapSound, slapVolume);
     }
 
     public void PlayButtonHoverSound()
     {
-        PlaySoundEffect(buttonHoverSound1, maxVolume);
+        PlaySoundEffect(buttonHoverSound1, buttonVolume);
     }
+
+    public void PlayWinSound()
+    {
+        PlaySoundEffect(winSound1, winVolume);
+    }
+
+    public void PlayAllWin()
+    {
+        PlaySoundEffect(allWinSound1, allWinVolume);
+    }
+
+
+    #region Player Sounds
 
     public void PlayRedSound()
     {
         if (pressed == false)
         {
-            PlaySoundEffect(redSound, volumeOne);
-            StartCoroutine(AntiSpam());
+            PlaySoundEffect(redSound, redVolume);
+            StartCoroutine(AntiSpam(redSound.length));
         }
     }
 
@@ -100,8 +133,8 @@ public class AudioManager : MonoBehaviour
     {
         if (pressed == false)
         {
-            PlaySoundEffect(blueSound, volumeOne);
-            StartCoroutine(AntiSpam());
+            PlaySoundEffect(blueSound, blueVolume);
+            StartCoroutine(AntiSpam(blueSound.length));
         }
     }
 
@@ -109,8 +142,8 @@ public class AudioManager : MonoBehaviour
     {
         if (pressed == false)
         {
-            PlaySoundEffect(greenSound, volumeOne);
-            StartCoroutine(AntiSpam());
+            PlaySoundEffect(greenSound, greenVolume);
+            StartCoroutine(AntiSpam(greenSound.length));
         }
     }
 
@@ -118,20 +151,17 @@ public class AudioManager : MonoBehaviour
     {
         if (pressed == false)
         {
-            PlaySoundEffect(pinkSound, volumeOne);
-            StartCoroutine(AntiSpam());
+            PlaySoundEffect(pinkSound, pinkVolume);
+            StartCoroutine(AntiSpam(pinkSound.length));
         }
     }
 
-    public void PlayAllWin()
-    {
-        PlaySoundEffect(allWinSound1, volumeTwo);
-    }
-
-    private IEnumerator AntiSpam()
+    private IEnumerator AntiSpam(float duration)
     {
         pressed = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(duration);
         pressed = false;
     }
+
+    #endregion
 }

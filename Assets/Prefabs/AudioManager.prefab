@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7771a51a8590f048b28e13025202738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVolume: 1
-  volumeFive: 0.5
-  volumeThree: 0.3
-  volumeTwo: 0.2
-  volumeOne: 0.1
-  fireballSound1: {fileID: 0}
-  winSound1: {fileID: 8300000, guid: 20c6e65ff091a1f4ab334eea62d18e43, type: 3}
+  fireballVolume: 0.75
+  dashVolume: 0.75
+  slapVolume: 0.3
+  buttonVolume: 1
+  redVolume: 0.75
+  blueVolume: 0.75
+  greenVolume: 0.75
+  pinkVolume: 0.75
+  winVolume: 1
+  allWinVolume: 0.75
+  fireballSound: {fileID: 8300000, guid: ae76805962ee2904a88c3fad5e7d46c5, type: 3}
+  dashSound: {fileID: 8300000, guid: 950205de78a5f1649865087c087d2550, type: 3}
+  slapSound: {fileID: 8300000, guid: 4ece689d1b40c1e42956cdbd4bbba825, type: 3}
   buttonHoverSound1: {fileID: 8300000, guid: fcfe7b72b0a4d354bbc6ad7020b5ffec, type: 3}
+  winSound1: {fileID: 8300000, guid: 20c6e65ff091a1f4ab334eea62d18e43, type: 3}
   allWinSound1: {fileID: 8300000, guid: 4ef83fe6a87347440a2e7459e9ef14e5, type: 3}
   redSound: {fileID: 8300000, guid: cd3cb792e0fd06f47940c1105e676eb8, type: 3}
   blueSound: {fileID: 8300000, guid: 200a8140e3750ab419a1620f60f27b89, type: 3}
