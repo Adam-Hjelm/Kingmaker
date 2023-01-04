@@ -291,8 +291,8 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         gameScene.SetActive(true);
-        gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
-        gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
+        //gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
+        //gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
 
         //destroyableObject = destroyableWalls.GetComponentsInChildren<DestroyableObject>();
 
