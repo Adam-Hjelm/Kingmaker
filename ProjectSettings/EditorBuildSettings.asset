@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: baa04b0429d1fa14a9f550d69ab8fcd5
   - enabled: 1
-    path: Assets/Scenes/Kevins scene 1.unity
+    path: Assets/Scenes/SelectionScreen.unity
     guid: 17f0e6200902ee843895316cf9b812ed
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
