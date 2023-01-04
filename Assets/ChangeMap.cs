@@ -17,10 +17,11 @@ public class ChangeMap : MonoBehaviour
 
     public void RandomizeMap()
     {
-        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        int randomNumber = Random.Range(0, sprites.Length);
+        GetComponent<SpriteRenderer>().sprite = sprites[randomNumber];
         randomPrefab = Random.Range(0, wallPrefabs.Length);
 
-        if (randomPrefab == 11)
+        if (randomNumber == 11)
         {
             //var duckPos = new Vector3(duckSpot.x, duckSpot.y, duckSpot.z);
 
