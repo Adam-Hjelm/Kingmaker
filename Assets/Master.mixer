@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Background
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: be8ddc4a882a6554abbbb9a52930cb8c
   m_Children: []
@@ -35,8 +35,12 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 7319a48ebfcdc104ca581c62652756db
+    name: EffectsVolume
   - guid: ee345b2b94b353e43a6de0e85e955111
-    name: volume
+    name: MasterVolume
+  - guid: df0fd3b80aa29b0418e02c662ccf0605
+    name: MusicVolume
   m_AudioMixerGroupViews:
   - guids:
     - 56d7ad15ccbf7134185d2be43a0e2c55
@@ -128,7 +132,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SoundEffects
+  m_Name: Effects
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c1d60dd392d309041912bc8f0886a5d5
   m_Children: []
