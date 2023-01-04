@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
         foreach (var player in players)
         {
+            player.gameObject.GetComponentInChildren<MeleeHit>().meleeRange = false;
             player.controller.SetPlayerEnabled(false);
             player.controller.spriteRenderer.enabled = true;
         }
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
             player.controller.SetPlayerEnabled(true);
         }
         Debug.Log(gameScene);
-        
+
     }
 
     public int GetPlayerScore(int playerToGetScoreFrom)
