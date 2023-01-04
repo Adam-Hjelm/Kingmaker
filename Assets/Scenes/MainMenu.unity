@@ -978,11 +978,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 10
+  - eventID: 11
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 555212831}
+        - m_Target: {fileID: 1227004649}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
           m_Mode: 1
@@ -1183,17 +1183,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &555212831 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7623501377653172555, guid: aec3724b140479142893a0122f10cadf, type: 3}
-  m_PrefabInstance: {fileID: 254327280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7771a51a8590f048b28e13025202738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &580804700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,11 +1823,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 10
+  - eventID: 11
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 555212831}
+        - m_Target: {fileID: 1227004649}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
           m_Mode: 1
@@ -1859,6 +1848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227004648}
+  - component: {fileID: 1227004649}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1889,6 +1879,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -111}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1227004649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227004647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e922232f3ca26914fb9adb79953c6bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1410611866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,12 +2084,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 10
+  - eventID: 11
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 555212831}
-          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        - m_Target: {fileID: 1227004649}
+          m_TargetAssemblyTypeName: AudioCaller, Assembly-CSharp
           m_MethodName: PlayButtonHoverSound
           m_Mode: 1
           m_Arguments:
@@ -2576,10 +2578,10 @@ AudioSource:
   m_GameObject: {fileID: 2137573145}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: bbb3b015d1b71b644af8bacd0fbc488f, type: 2}
+  OutputAudioMixerGroup: {fileID: -4903910087559207118, guid: bbb3b015d1b71b644af8bacd0fbc488f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2b94e915670343644bb9c1b4d3f37966, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
