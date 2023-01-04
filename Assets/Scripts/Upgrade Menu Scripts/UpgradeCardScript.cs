@@ -113,6 +113,7 @@ public class UpgradeCardScript : MonoBehaviour
             case 6:
                 gameObject.GetComponent<Image>().sprite = randomSizedBullets;
                 currentCardType = CardType.RandomSizedBullets;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().transform.position += new Vector3(0, -0.3f);
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
                 break;
             case 7:
