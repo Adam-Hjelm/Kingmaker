@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballVolume: 0.75
   dashVolume: 0.75
-  slapVolume: 0.75
+  slapVolume: 1
   buttonVolume: 1
   redVolume: 0.75
   blueVolume: 0.75
