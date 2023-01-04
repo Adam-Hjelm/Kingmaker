@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
-        gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
-        gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
+        //gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
+        //gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
         foreach (var player in players)
         {
             player.gameObject.GetComponentInChildren<MeleeHit>().meleeRange = false;
