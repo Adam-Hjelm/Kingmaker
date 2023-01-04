@@ -11,19 +11,26 @@ public class AudioCaller : MonoBehaviour
     }
     public void PlayRedSound()
     {
-        AudioManager.Instance.RedSound();
+        AudioManager.Instance.PlayRedSound();
     }
     public void PlayBlueSound()
     {
-        AudioManager.Instance.BlueSound();
+        AudioManager.Instance.PlayBlueSound();
     }
     public void PlayGreenSound()
     {
-        AudioManager.Instance.GreenSound();
+        AudioManager.Instance.PlayGreenSound();
     }
     public void PlayPinkSound()
     {
-        AudioManager.Instance.PinkSound();
+        AudioManager.Instance.PlayPinkSound();
     }
-
+    public void PlayWinSound()
+    {
+        AudioManager.Instance.PlayWinSound();
+    }
+    public void PlayAllWin()
+    {
+        AudioManager.Instance.PlayAllWin();
+    }
 }

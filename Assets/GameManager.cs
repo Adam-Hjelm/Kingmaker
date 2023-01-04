@@ -347,7 +347,7 @@ public class GameManager : MonoBehaviour
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
-        AudioManager.Instance.AllWin();
+        AudioManager.Instance.PlayAllWin();
     }
 
     //private void HandleWin(PlayerInstance winningPlayer)

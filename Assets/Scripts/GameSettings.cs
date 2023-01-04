@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using System.Linq;
 
 public class GameSettings : MonoBehaviour
 {
@@ -14,36 +15,33 @@ public class GameSettings : MonoBehaviour
     [SerializeField] Slider effectsVolumeSlider;
     [SerializeField] Slider musicVolumeSlider;
 
-    private string masterVolumeName = "MasterVolume";
-    private string effectsVolumeName = "EffectsVolume";
-    private string musicVolumeName = "MusicVolume";
-
 
     void Start()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat(masterVolumeName, 0.75f);
-        effectsVolumeSlider.value = PlayerPrefs.GetFloat(effectsVolumeName, 0.75f);
-        musicVolumeSlider.value = PlayerPrefs.GetFloat(musicVolumeName, 0.75f);
+        masterVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefNames.MasterVolume, 0.75f);
+        effectsVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefNames.EffectsVolume, 0.75f);
+        musicVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefNames.MusicVolume, 0.75f);
     }
+
 
     #region Volume
 
     public void SetMasterVolume(float sliderValue)
     {
-        SetVolume(masterVolumeName, sliderValue);
+        SetVolume(PlayerPrefNames.MasterVolume, sliderValue);
     }
 
     public void SetEffectsVolume(float sliderValue)
     {
-        SetVolume(effectsVolumeName, sliderValue);
+        SetVolume(PlayerPrefNames.EffectsVolume, sliderValue);
     }
 
     public void SetMusicVolume(float sliderValue)
     {
-        SetVolume(musicVolumeName, sliderValue);
+        SetVolume(PlayerPrefNames.MusicVolume, sliderValue);
     }
 
-    private void SetVolume(string name, float sliderValue)
+    public void SetVolume(string name, float sliderValue)
     {
         if (sliderValue > 1)
             sliderValue = 1;
