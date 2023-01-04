@@ -12,6 +12,7 @@ public class ShootController : MonoBehaviour
     public Transform centralPoint;
     public float bulletSpeed;
     public int healingBulletsAmount;
+    public int randomSizeBulletAmount;
 
     PlayerController playerController;
     public bool canShoot = true;
@@ -129,12 +130,13 @@ public class ShootController : MonoBehaviour
         }
         else
         {
-            float randomizedScale = UnityEngine.Random.Range(0.4f, 1.5f + playerController.bulletSize.x);
+            
+            float randomizedScale = UnityEngine.Random.Range(1f / randomSizeBulletAmount, 1 * randomSizeBulletAmount + playerController.bulletSize.x);
             newBullet.transform.localScale = new Vector3(randomizedScale, randomizedScale, randomizedScale);
         }
 
-        if (newBullet.transform.localScale.magnitude >= Vector3.one.magnitude * 4)
-            newBullet.transform.localScale = Vector3.one * 4;
+        if (newBullet.transform.localScale.magnitude >= Vector3.one.magnitude * 5)
+            newBullet.transform.localScale = Vector3.one * 5;
         else if (newBullet.transform.localScale.magnitude <= Vector3.one.magnitude * 0.2f)
             newBullet.transform.localScale = Vector3.one * 0.2f;
 

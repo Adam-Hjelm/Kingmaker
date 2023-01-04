@@ -126,26 +126,6 @@ public class UpgradeController : MonoBehaviour
             newLevelUpAnim.transform.localScale = new Vector3(150, 150, 1);
             Destroy(newLevelUpAnim.gameObject, 0.5f);
 
-            for (int i = 0; i < playerButtons.Length; i++)
-            {
-                int numberOfRandomSize = 0;
-                int numberOfPlayersConnected = 0;
-                if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
-                {
-                    numberOfPlayersConnected++;
-                    if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>().hasRandomSizedBullets == true)
-                    {
-                        numberOfRandomSize++;
-
-                        if (numberOfRandomSize >= numberOfPlayersConnected - 1)
-                        {
-                            Debug.Log("No more random sized bullets!");
-                            UpgradeCardScript.noMoreRandomSizeBulletCards = true;
-                        }
-                    }
-                }
-            }
-
             SpawnNewCards();
 
             inPlayerButtons = false;
@@ -193,7 +173,7 @@ public class UpgradeController : MonoBehaviour
 
         upgradeCardButtons = upgradeCardButtons.Where(item => item != null).ToList();
 
-         randomNumbers = new List<int>();
+        randomNumbers = new List<int>();
 
         for (int i = 0; i < cardSpawnPos.Length; i++)
         {

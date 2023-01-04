@@ -28,7 +28,8 @@ public class DisplayPlayerStats : MonoBehaviour
     public int currentHealingBullets;
     public int maxHealingBullets;
 
-    public bool hasRandomSizedBullets;
+    public int hasRandomSizedBulletsMax = 5;
+    public int currentRandomSizedAmount;
 
     [Header("Score Components")]
     public int playerNumberDisplayBelongsTo;
@@ -144,7 +145,7 @@ public class DisplayPlayerStats : MonoBehaviour
         {
             return true;
         }
-        else if (hasRandomSizedBullets == true
+        else if (hasRandomSizedBulletsMax <= currentRandomSizedAmount
             && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.RandomSizedBullets)
         {
             return true;

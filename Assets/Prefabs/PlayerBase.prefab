@@ -357,6 +357,7 @@ MonoBehaviour:
   centralPoint: {fileID: 1019928324130379953}
   bulletSpeed: 12
   healingBulletsAmount: 0
+  randomSizeBulletAmount: 1
   canShoot: 1
   timer: 0
   startTimer: 1
