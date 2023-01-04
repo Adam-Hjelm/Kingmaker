@@ -7,8 +7,11 @@ public class AudioManager : MonoBehaviour
 {
     public float maxVolume = 1f;
     public float volumeFive = 0.5f;
+    public float volumeThree = 0.3f;
     public float volumeTwo = 0.2f;
     public float volumeOne = 0.1f;
+
+    private bool pressed;
 
     private static AudioManager _instance;
     public static AudioManager Instance
@@ -52,34 +55,58 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonHoverSound()
     {
-        source.volume = maxVolume;
+        source.volume = volumeThree;
         source.PlayOneShot(buttonHoverSound1);
     }
 
     public void RedSound()
     {
-        source.volume = volumeOne;
-        source.PlayOneShot(redSound);
+        if (pressed == false)
+        {
+            source.volume = volumeOne;
+            source.PlayOneShot(redSound);
+            StartCoroutine(AntiSpam());
+        }
     }
     public void BlueSound()
     {
-        source.volume = volumeOne;
-        source.PlayOneShot(blueSound);
+        if (pressed == false)
+        {
+            source.volume = volumeOne;
+            source.PlayOneShot(blueSound);
+            StartCoroutine(AntiSpam());
+        }
     }
     public void GreenSound()
     {
-        source.volume = volumeOne;
-        source.PlayOneShot(greenSound);
+        if (pressed == false)
+        {
+            source.volume = volumeOne;
+            source.PlayOneShot(greenSound);
+            StartCoroutine(AntiSpam());
+        }
     }
     public void PinkSound()
     {
-        source.volume = volumeOne;
-        source.PlayOneShot(pinkSound);
+        if (pressed == false)
+        {
+            source.volume = volumeOne;
+            source.PlayOneShot(pinkSound);
+            StartCoroutine(AntiSpam());
+        }
     }
 
     public void AllWin()
     {
         source.volume = volumeTwo;
         source.PlayOneShot(allWinSound1);
+    }
+
+    private IEnumerator AntiSpam()
+    {
+        pressed = true;
+        yield return new WaitForSeconds(2f);
+
+        pressed = false;
     }
 }
