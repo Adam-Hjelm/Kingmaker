@@ -1216,9 +1216,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1e59d90b09989ad468ec01366643c39b, type: 3}
   - {fileID: 21300000, guid: df83ee2638e934f44b966a1072778df3, type: 3}
   - {fileID: 21300000, guid: f4f2ff957b6da974292d07461f35856f, type: 3}
+  - {fileID: 21300000, guid: 0bbfd0d3d96dedd4caa0dc0ca6c65369, type: 3}
+  - {fileID: 21300000, guid: 6d471015ac443554c954d4e0bf8a04b5, type: 3}
   wallPrefabs:
   - {fileID: 9120556324689063165, guid: 37dcd1a368e5957448712bbc86c09b65, type: 3}
   - {fileID: 8509301978109421182, guid: 3cb0d7e623634db44a4019201b0a6796, type: 3}
+  - {fileID: 101052905908247701, guid: 0f94964fd837f534d90d6579bfd1b501, type: 3}
+  - {fileID: 3789493288558690903, guid: 2ccd52a9fc6142247806134ac1039a93, type: 3}
+  - {fileID: 8323334307710904469, guid: c888415ec3d21d04bb449b3eda11aa7d, type: 3}
 --- !u!1001 &984913827
 PrefabInstance:
   m_ObjectHideFlags: 0

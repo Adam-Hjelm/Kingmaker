@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         float inputMagnitude = Mathf.Clamp01(moveDirection.magnitude);
         moveDirection.Normalize();
         transform.Translate(moveDirection * playerController.moveSpeed * inputMagnitude * Time.fixedDeltaTime, Space.World);
-        
+
         if (lookDirection != Vector2.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, lookDirection);

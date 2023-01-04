@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
         foreach (var player in players)
         {
+            player.gameObject.GetComponentInChildren<MeleeHit>().meleeRange = false;
             player.controller.SetPlayerEnabled(false);
             player.controller.spriteRenderer.enabled = true;
         }
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
             player.controller.SetPlayerEnabled(true);
         }
         Debug.Log(gameScene);
-        
+
     }
 
     public int GetPlayerScore(int playerToGetScoreFrom)
@@ -231,7 +232,7 @@ public class GameManager : MonoBehaviour
         var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
         if (leadingPlayer.score >= maxScoreToWin)
-            HandleWin(leadingPlayer);
+            StartCoroutine(HandleWinning(leadingPlayer));
         else
             StartCoroutine(HandleNewRound(livingPlayers[0]));
     }
@@ -339,14 +340,24 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void HandleWin(PlayerInstance winningPlayer)
+    IEnumerator HandleWinning(PlayerInstance winningPlayer)
     {
+        yield return new WaitForSeconds(2f);
         destroyableWalls.SetActive(false);
         //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
         PlayerEnabled(false, winningPlayer.controller);
         canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
         AudioManager.Instance.AllWin();
     }
+
+    //private void HandleWin(PlayerInstance winningPlayer)
+    //{
+    //    destroyableWalls.SetActive(false);
+    //    //winningPlayer.gameObject.GetComponent<SpriteRenderer>().enabled = false;/*.SetActive(false);*/
+    //    PlayerEnabled(false, winningPlayer.controller);
+    //    canvasHandler.StartWinScreen(winningPlayer.ID, winningPlayer.name, winningPlayer.gameObject, winningPlayer.sprite);
+    //    AudioManager.Instance.AllWin();
+    //}
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
