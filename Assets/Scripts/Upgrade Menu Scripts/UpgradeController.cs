@@ -53,7 +53,7 @@ public class UpgradeController : MonoBehaviour
 
     public MultiplayerEventSystem eventSysInUse;
 
-
+    public List<int> randomNumbers = new List<int>();
     public void OnEnable()
     { // kanske måste göra en null check ifall vi någonsin ska ha det att funka med mindre än 4 spelare
 
@@ -119,7 +119,8 @@ public class UpgradeController : MonoBehaviour
             displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
 
             var newLevelUpAnim = Instantiate(levelUpAnim.gameObject, eventSysInUse.currentSelectedGameObject.transform.position, Quaternion.identity);
-            newLevelUpAnim.transform.parent = upgradeCanvas.transform;
+            //newLevelUpAnim.transform.parent = upgradeCanvas.transform;
+            newLevelUpAnim.transform.SetParent(upgradeCanvas.transform);
             newLevelUpAnim.transform.SetSiblingIndex(index - 1);
             Debug.Log("setting hierarchy..");
             newLevelUpAnim.transform.localScale = new Vector3(150, 150, 1);
@@ -192,7 +193,7 @@ public class UpgradeController : MonoBehaviour
 
         upgradeCardButtons = upgradeCardButtons.Where(item => item != null).ToList();
 
-        List<int> randomNumbers = new List<int>();
+         randomNumbers = new List<int>();
 
         for (int i = 0; i < cardSpawnPos.Length; i++)
         {
@@ -208,6 +209,7 @@ public class UpgradeController : MonoBehaviour
 
             var newButton = Instantiate(cardButtonPrefab, cardSpawnPos[i].position, Quaternion.identity, upgradeCardsHolder.transform).GetComponent<Button>();
             newButton.GetComponent<UpgradeCardScript>().StatCard(randomNumber);
+
             newButton.onClick.AddListener(MoveToPlayerButtons);
 
             //newButton.transform.SetParent(upgradeCanvas.transform, true);

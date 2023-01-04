@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 using TMPro;
 
 public class UpgradeCardScript : MonoBehaviour
@@ -122,6 +123,16 @@ public class UpgradeCardScript : MonoBehaviour
                 }
                 else
                 {
+                    UpgradeController upgradeController = GameObject.Find("UpgradeMenuController").GetComponent<UpgradeController>();
+                    int currentLoopNumber = 0;
+                    while (upgradeController.randomNumbers.Any(r => r == chosenStatCard) && currentLoopNumber < 10000)
+                    {
+                        chosenStatCard = UnityEngine.Random.Range(1, 8);
+                        currentLoopNumber++;
+                    }
+
+                    upgradeController.randomNumbers.Add(chosenStatCard);
+
                     StatCard(UnityEngine.Random.Range(1, 8));
                     break;
                 }
