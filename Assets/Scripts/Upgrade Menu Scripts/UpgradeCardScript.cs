@@ -12,6 +12,7 @@ public class UpgradeCardScript : MonoBehaviour
     private int randomNumber;
 
     public CardType currentCardType;
+    public static bool noMoreRandomSizeBulletCards = false;
 
     [Space]
 
@@ -43,7 +44,7 @@ public class UpgradeCardScript : MonoBehaviour
     public enum CardType
     {
         HealthUpButBiggerPlayer,
-        FasterFireRateButEveryFourthBulletHeals,
+        DamageUpButEveryFourthBulletHeals,
         SpeedUpButSlowerBulletSpeed,
         DamageUpButSlowerBulletSpeed,
         FireRateUpButSmallerBullets,
@@ -93,8 +94,8 @@ public class UpgradeCardScript : MonoBehaviour
             case 3:
                 //anim.runtimeAnimatorController = healthCardAnimController;
                 gameObject.GetComponent<Image>().sprite = EveryFourthBulletHealsSprite;
-                currentCardType = CardType.FasterFireRateButEveryFourthBulletHeals;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+FIRE RATE\n---- \n EVERY FOURTH SHOT HEALS";
+                currentCardType = CardType.DamageUpButEveryFourthBulletHeals;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+DAMAGE\n---- \n EVERY FOURTH SHOT HEALS";
                 break;
 
             case 4:
@@ -111,11 +112,19 @@ public class UpgradeCardScript : MonoBehaviour
                 gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "+MOVESPEED\n---- \n-PROJECTILE SPEED";
                 break;
             case 6:
-                gameObject.GetComponent<Image>().sprite = randomSizedBullets;
-                currentCardType = CardType.RandomSizedBullets;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().transform.position += new Vector3(0, -0.3f);
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
-                break;
+                if (!noMoreRandomSizeBulletCards)
+                {
+                    gameObject.GetComponent<Image>().sprite = randomSizedBullets;
+                    currentCardType = CardType.RandomSizedBullets;
+                    gameObject.GetComponentInChildren<TextMeshProUGUI>().transform.position += new Vector3(0, -0.3f);
+                    gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "SIZE OF PROJECTILES ARE RANDOMIZED EVERY SHOT";
+                    break;
+                }
+                else
+                {
+                    StatCard(UnityEngine.Random.Range(1, 8));
+                    break;
+                }
             case 7:
                 gameObject.GetComponent<Image>().sprite = MoreBulletsButMoreSpreadSprite;
                 currentCardType = CardType.MoreBulletsButMoreSpread;

@@ -27,8 +27,8 @@ public class UpgradePlayerStats : MonoBehaviour
                 IncreaseHealth(upgradeCardScript.maxHealthModifier);
                 ChangePlayerScale(upgradeCardScript.sizeModifier);
                 break;
-            case UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals:
-                ChangeFireRate(upgradeCardScript.fireRateModifier);
+            case UpgradeCardScript.CardType.DamageUpButEveryFourthBulletHeals:
+                ChangeBulletDamage(upgradeCardScript.bulletDamageModifier);
                 playerStats.healingBullets = true;
                 playerStats.GetComponent<ShootController>().healingBulletsAmount++;
                 displayPlayerStats.currentHealingBullets++;

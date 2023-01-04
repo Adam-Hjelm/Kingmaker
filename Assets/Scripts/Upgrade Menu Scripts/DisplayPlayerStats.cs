@@ -123,7 +123,8 @@ public class DisplayPlayerStats : MonoBehaviour
             return true;
         }
         else if (numOfDamageBars >= barsOfDamage.Length
-            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed)
+            && (currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButSlowerBulletSpeed ||
+            currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButEveryFourthBulletHeals))
         {
             return true;
         }
@@ -139,11 +140,11 @@ public class DisplayPlayerStats : MonoBehaviour
             return true;
         }
         else if (currentHealingBullets >= maxHealingBullets
-            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.FasterFireRateButEveryFourthBulletHeals)
+            && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.DamageUpButEveryFourthBulletHeals)
         {
             return true;
         }
-        else if(hasRandomSizedBullets == true
+        else if (hasRandomSizedBullets == true
             && currentUpgradeCardScript.currentCardType == UpgradeCardScript.CardType.RandomSizedBullets)
         {
             return true;

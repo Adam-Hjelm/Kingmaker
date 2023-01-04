@@ -116,6 +116,26 @@ public class UpgradeController : MonoBehaviour
             upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
             displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
 
+            for (int i = 0; i < playerButtons.Length; i++)
+            {
+                int numberOfRandomSize = 0;
+                int numberOfPlayersConnected = 0;
+                if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>() != null)
+                {
+                    numberOfPlayersConnected++;
+                    if (playerButtons[i].GetComponentInChildren<DisplayPlayerStats>().hasRandomSizedBullets == true)
+                    {
+                        numberOfRandomSize++;
+
+                        if (numberOfRandomSize >= numberOfPlayersConnected - 1)
+                        {
+                            Debug.Log("No more random sized bullets!");
+                            UpgradeCardScript.noMoreRandomSizeBulletCards = true;
+                        }
+                    }
+                }
+            }
+
             SpawnNewCards();
 
             inPlayerButtons = false;
@@ -386,7 +406,6 @@ public class UpgradeController : MonoBehaviour
         chosenUpgradeCard = currentlySelectedCard;
 
         eventSysInUse.GetComponent<EventSystem>().SetSelectedGameObject(playerButtons[0].gameObject);
-
         //CheckIfCardAvailable();
     }
 
