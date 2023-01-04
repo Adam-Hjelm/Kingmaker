@@ -6,34 +6,38 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
-public class SettingsCon : MonoBehaviour
+public class GameSettings : MonoBehaviour
 {
     public AudioMixer audioMix;
     //public float maxVolume;
     //public float volume;
 
-    void Start()
-    {
-        //maxVolume = volume;
-    }
+
+    #region Volume
+
     public void SetMasterVolume(float volume)
     {
         audioMix.SetFloat("volume", volume);
         Debug.Log(volume);
     }
-    public void SetEffectVolume(float volume)
-    {
-        audioMix.SetFloat("volume", volume);
-        Debug.Log(volume);
-    }
-    public void SetBackgroundVolume(float volume)
+
+    public void SetEffectsVolume(float volume)
     {
         audioMix.SetFloat("volume", volume);
         Debug.Log(volume);
     }
 
+    public void SetMusicVolume(float volume)
+    {
+        audioMix.SetFloat("volume", volume);
+        Debug.Log(volume);
+    }
+
+    #endregion
+
     public void SetFullscreen(bool isFullscreen)
     {
+        Debug.Log(isFullscreen);
         Screen.fullScreen = isFullscreen;
     }
 
