@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public float maxVolume = 1f;
     public float volumeFive = 0.5f;
+    public float volumeThree = 0.3f;
     public float volumeTwo = 0.2f;
     public float volumeOne = 0.1f;
 
@@ -52,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonHoverSound()
     {
-        source.volume = maxVolume;
+        source.volume = volumeThree;
         source.PlayOneShot(buttonHoverSound1);
     }
 
