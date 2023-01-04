@@ -948,6 +948,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 29.600014
       objectReference: {fileID: 0}
+    - target: {fileID: 8636872361798554062, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
+      propertyPath: levelUpAnim
+      value: 
+      objectReference: {fileID: 7792883041599703679, guid: 9b74708296516db4baf962c5dfbd0bc2, type: 3}
     - target: {fileID: 8636872362012437943, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_DeselectOnBackgroundClick
       value: 0
@@ -958,11 +962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636872363034566273, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -106.4
+      value: -106.40001
       objectReference: {fileID: 0}
     - target: {fileID: 8636872363034566273, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 29.3
+      value: 29.300003
       objectReference: {fileID: 0}
     - target: {fileID: 8636872363034566274, guid: 36345f3b7cda00f42a3e85b988ed11b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1595,6 +1599,14 @@ PrefabInstance:
     - target: {fileID: 5527701919493383880, guid: 7d579817a76b28045bc9fd0fb721944a, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527701919493383880, guid: 7d579817a76b28045bc9fd0fb721944a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.9999847
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527701919493383880, guid: 7d579817a76b28045bc9fd0fb721944a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5527701919493383880, guid: 7d579817a76b28045bc9fd0fb721944a, type: 3}
       propertyPath: m_ConstrainProportionsScale

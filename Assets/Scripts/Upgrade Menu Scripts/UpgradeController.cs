@@ -30,6 +30,7 @@ public class UpgradeController : MonoBehaviour
     public GameObject arrowIndicator;
     public Animation textfade;
     public Animator cardAnim;
+    public Animator levelUpAnim;
 
     [SerializeField] Button startPlayerButton;
     private UpgradePlayerStats upgradePlayerStats;
@@ -113,8 +114,16 @@ public class UpgradeController : MonoBehaviour
         }
         else
         {
+            int index = eventSysInUse.currentSelectedGameObject.transform.GetSiblingIndex();
             upgradePlayerStats.UpgradePlayer(playerNumberToGiveStat);
             displayPlayerStats.UpdateStatScreen(playerNumberToGiveStat);
+
+            var newLevelUpAnim = Instantiate(levelUpAnim.gameObject, eventSysInUse.currentSelectedGameObject.transform.position, Quaternion.identity);
+            newLevelUpAnim.transform.parent = upgradeCanvas.transform;
+            newLevelUpAnim.transform.SetSiblingIndex(index - 1);
+            Debug.Log("setting hierarchy..");
+            newLevelUpAnim.transform.localScale = new Vector3(150, 150, 1);
+            Destroy(newLevelUpAnim.gameObject, 0.5f);
 
             for (int i = 0; i < playerButtons.Length; i++)
             {

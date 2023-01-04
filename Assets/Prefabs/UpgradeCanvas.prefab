@@ -1599,6 +1599,7 @@ MonoBehaviour:
   arrowIndicator: {fileID: 5538107030298204291}
   textfade: {fileID: 0}
   cardAnim: {fileID: 2191871469890825764}
+  levelUpAnim: {fileID: 0}
   startPlayerButton: {fileID: 8636872361769933430}
   displayPlayerStats: {fileID: 0}
   upgradeCardsHolder: {fileID: 3312067849058372504}
