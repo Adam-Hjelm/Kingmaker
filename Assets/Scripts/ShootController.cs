@@ -104,6 +104,7 @@ public class ShootController : MonoBehaviour
                     //Destroy(newSmoke, 0.2f);
 
                     timer = startTimer;
+                    FireBallSound();
                 }
             }
             else if (timer <= playerController.fireRate && meleeHit == true)
@@ -152,8 +153,6 @@ public class ShootController : MonoBehaviour
                 fireballShotCounter = 0;
             }
         }
-
-        FireBallSound();
     }
 
     private void FireBallSound()
