@@ -284,11 +284,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
-  maxHealth: 4
+  maxHealth: 5
   bulletDamage: 1
   bulletSize: {x: 1, y: 1, z: 1}
   fireRate: 0.4
-  currentHealth: 4
+  currentHealth: 5
   bulletAmount: 1
   bulletSpread: 0
   bulletsRandomSized: 0
