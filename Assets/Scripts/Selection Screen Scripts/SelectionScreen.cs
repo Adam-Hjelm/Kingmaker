@@ -295,7 +295,7 @@ public class SelectionScreen : MonoBehaviour
 
     public void GameSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.LogWarning("Scene Loaded: " + scene.name);
+        Debug.Log("Scene Loaded: " + scene.name);
         if (scene.name == gameScene)
         {
             StartCoroutine(InstantiatePlayers());
