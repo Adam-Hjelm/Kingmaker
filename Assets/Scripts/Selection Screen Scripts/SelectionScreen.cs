@@ -83,15 +83,16 @@ public class SelectionScreen : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
 
         if (PlayerInputManager.instance != null)
             PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
     }
 
+
     private void OnPlayerJoined(PlayerInput playerInput)
     {
-        //JoinPlayer(playerInput.gameObject);
         var device = playerInput.devices.FirstOrDefault();
         int ID = playerInput.playerIndex;
         List<int> ids = players.Select(p => p.PlayerID).ToList();
@@ -137,7 +138,7 @@ public class SelectionScreen : MonoBehaviour
         }
         else
         {
-            Debug.LogError("JoinPlayer method called but player count is already at maximum");
+            Debug.LogWarning("OnPlayerJoined method was called, but player count is already at maximum");
             return;
         }
 
@@ -148,7 +149,6 @@ public class SelectionScreen : MonoBehaviour
             Device = device,
             PlayerGameObject = playerCard,
             PlayerID = ID
-
         };
 
         players.Add(player);
@@ -270,6 +270,7 @@ public class SelectionScreen : MonoBehaviour
 
     public void StartGame()
     {
+        // Stop player from joining mid-game since it's not supported.
         if (PlayerInputManager.instance != null)
             PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
 
@@ -281,7 +282,10 @@ public class SelectionScreen : MonoBehaviour
         StartCoroutine(DestroyPlayersAndInputManager());
     }
 
-    // Do this in a coroutine to ensure nothing mess up when changing scenes
+    /// <summary>
+    /// Ensures there's no players registered in the <see cref="PlayerInputManager"/> before switching scene.<br/>
+    /// Necessary in order for InputDevices to be connected to the correct characters.
+    /// </summary>
     private IEnumerator DestroyPlayersAndInputManager()
     {
         foreach (var player in players)
@@ -289,7 +293,9 @@ public class SelectionScreen : MonoBehaviour
             Destroy(player.PlayerGameObject);
             yield return null;
         }
-        yield return null;
+
+        yield return null; // Delay 1 frame to make sure we don't get any player artifacts.
+
         SceneManager.LoadScene(gameScene);
     }
 
@@ -302,8 +308,12 @@ public class SelectionScreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called after GameScene is loaded to spawn all players' characters.
+    /// </summary>
     private IEnumerator InstantiatePlayers()
     {
+        // Wait some frames to ensure the scene have finished loading.
         yield return null;
         yield return null;
         yield return null;
@@ -321,6 +331,7 @@ public class SelectionScreen : MonoBehaviour
         GameManager.Instance.StartGame();
         Destroy(gameObject);
     }
+
 
     private class PlayerObject
     {

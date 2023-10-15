@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public int playersConnected = 0;
     public int maxScoreToWin = 3;
 
-    [SerializeField, Tooltip("Must exist in scene")] GameObject upgradeScreen;
+    [SerializeField] GameObject upgradeScreen;
     [SerializeField] GameObject gameScene;
 
     [SerializeField] List<PlayerInstance> players = new List<PlayerInstance>();
@@ -67,9 +67,6 @@ public class GameManager : MonoBehaviour
     PlayerInputManager pim;
     Coroutine countDownRoutine;
 
-    //[SerializeField] AudioClip soundEffect;
-    //[SerializeField] AudioSource audioSource;
-
     bool havePointBeenGivenThisRound = false;
 
 
@@ -83,8 +80,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
-
         pim = PlayerInputManager.instance;
 
         if (canvasHandler == null)
@@ -99,6 +94,7 @@ public class GameManager : MonoBehaviour
         //StartGame();
     }
 
+
     public void StartGame()
     {
         if (countDownRoutine == null)
@@ -109,6 +105,7 @@ public class GameManager : MonoBehaviour
     {
         gameScene.GetComponentInChildren<ChangeMap>().ClearMap();
         gameScene.GetComponentInChildren<ChangeMap>().RandomizeMap();
+
         foreach (var player in players)
         {
             player.gameObject.GetComponentInChildren<MeleeHit>().meleeRange = false;
@@ -122,6 +119,7 @@ public class GameManager : MonoBehaviour
 
         int timer = 3;
         countdownText.gameObject.SetActive(true);
+
         countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
         yield return new WaitForSeconds(1);
         timer--;
@@ -133,6 +131,7 @@ public class GameManager : MonoBehaviour
         timer--;
         countdownText.text = $"GAME STARTS IN\n<b>{timer}</b>";
         yield return new WaitForSeconds(1);
+
         countdownText.gameObject.SetActive(false);
 
         foreach (var player in players)
@@ -227,7 +226,9 @@ public class GameManager : MonoBehaviour
             lastKilledPlayer.score++;
         }
         else
+        {
             return; // do this to avoid the win conditions check below
+        }
 
         var leadingPlayer = players.OrderByDescending(p => p.score).FirstOrDefault();
 
@@ -243,7 +244,6 @@ public class GameManager : MonoBehaviour
         canvasHandler.StartWinRoundScreen(lastPlayer.name);
 
         AudioManager.Instance.PlayWinSound();
-        //audioSource.PlayOneShot(soundEffect);
         yield return new WaitForSeconds(3);
 
         canvasHandler.DisableWinRoundText();
@@ -427,8 +427,6 @@ public class GameManager : MonoBehaviour
             pim.DisableJoining();
     }
 
-
-
     public void OnPlayerLeft(PlayerInput player)
     {
         PlayerInstance _player = players.FirstOrDefault(p => p.ID == player.playerIndex);
@@ -442,6 +440,7 @@ public class GameManager : MonoBehaviour
                 pim.EnableJoining();
         }
     }
+
 
     #region scene functions
 
@@ -502,6 +501,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+
     private class PlayerInstance
     {
         public int ID;
@@ -514,21 +514,6 @@ public class GameManager : MonoBehaviour
         public Sprite sprite;
         public MultiplayerEventSystem eventSys;
     }
-
-    //IEnumerable<GameObject> FindAllPrefabVariants(string parentAssetPath)
-    //{
-    //    return FindAllPrefabVariants(AssetDatabase.LoadAssetAtPath<GameObject>(parentAssetPath));
-    //}
-
-    //IEnumerable<GameObject> FindAllPrefabVariants(GameObject parent)
-    //{
-    //    return AssetDatabase.FindAssets("t:prefab").
-    //        Select(AssetDatabase.GUIDToAssetPath).
-    //        Select(AssetDatabase.LoadAssetAtPath<GameObject>).
-    //        Where(go => go != null).
-    //        Where(go => PrefabUtility.GetPrefabAssetType(go) == PrefabAssetType.Variant).
-    //        Where(go => PrefabUtility.GetCorrespondingObjectFromSource(go) == parent);
-    //}
 }
 
 public enum GameStates
